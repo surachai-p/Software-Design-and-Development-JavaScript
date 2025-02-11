@@ -128,7 +128,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 </body>
 </html>
 ```
-```javascrip
+```js
 document.getElementById('btn3').onclick = function() {
     alert('3:42 PM');
 };
