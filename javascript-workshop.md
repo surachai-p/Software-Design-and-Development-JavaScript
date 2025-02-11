@@ -1,4 +1,4 @@
-# การทดลอง พื้นฐาน JavaScript และการใช้งานร่วมกับ HTML/CSS
+![image](https://github.com/user-attachments/assets/ab9903ce-80c0-462d-92da-17a34ced57fd)# การทดลอง พื้นฐาน JavaScript และการใช้งานร่วมกับ HTML/CSS
 ## การทดลองที่ 1 : ทำความรู้จักกับ JavaScript
 ###  การเพิ่ม JavaScript ลงในเว็บเพจ
 
@@ -76,9 +76,52 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('ชื่อนักศึกษาคือ: ชื่อของคุณ ภวินท์')">ปุ่มที่ 1</button>
+    <button id="btn2">ปุ่มที่ 2</button>
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+    <br>
+    <label for="textbox">กรอกข้อความ: </label>
+    <input type="text" id="textbox">
+    <button onclick="showMessage()">แสดงข้อความ</button>
+    <p id="messageOutput"></p>
+
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            const currentDate = new Date();
+            alert('วันที่ปัจจุบัน: ' + currentDate.toLocaleDateString());
+        };
+
+        function showMessage() {
+            const message = document.getElementById('textbox').value;
+            document.getElementById('messageOutput').innerText = 'ข้อความที่กรอก: ' + message;
+        }
+
+        function hello3() {
+            const currentTime = new Date();
+            alert('เวลาปัจจุบัน: ' + currentTime.toLocaleTimeString());
+        }   
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 1]
+![image](https://github.com/user-attachments/assets/ad03f58c-6e44-4f01-9950-7b2984e159f7)
+![image](https://github.com/user-attachments/assets/436e0a3a-04c7-4d3a-b1d3-e5020f6cf940)
+![image](https://github.com/user-attachments/assets/c44a74a3-2e33-487c-a986-7d27f3dc6bc5)
+
+
+
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -134,7 +177,33 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[// ประกาศตัวแปรเก็บข้อมูลนักศึกษา
+let studentID = "123456789";      // รหัสนักศึกษา (String)
+let studentName = "สมชาย";       // ชื่อนักศึกษา (String)
+let midtermScore = 75;            // คะแนนสอบกลางภาค (Number)
+let finalScore = 85;              // คะแนนสอบปลายภาค (Number)
+
+// การคำนวณคะแนนรวมและเกรด (สมมติว่าใช้เกรด A, B, C)
+let totalScore = midtermScore + finalScore;    // คะแนนรวม
+let grade = totalScore >= 160 ? "A" : totalScore >= 140 ? "B" : "C"; // การกำหนดเกรด
+
+// การประกาศ Object สำหรับเก็บข้อมูลนักศึกษา
+const studentInfo = {
+    studentID: studentID,      // รหัสนักศึกษา
+    name: studentName,         // ชื่อนักศึกษา
+    major: "วิทยาการคอมพิวเตอร์", // สาขาวิชา
+    GPA: 3.5                   // เกรดเฉลี่ย (สมมติ)
+};
+
+// แสดงข้อมูล
+console.log("ข้อมูลนักศึกษา:");
+console.log("รหัสนักศึกษา:", studentInfo.studentID);
+console.log("ชื่อนักศึกษา:", studentInfo.name);
+console.log("สาขาวิชา:", studentInfo.major);
+console.log("เกรดเฉลี่ย:", studentInfo.GPA);
+console.log("คะแนนรวม:", totalScore);
+console.log("เกรด:", grade);
+]
 ```
 [รูปผลการทดลองที่ 2.1]
 
