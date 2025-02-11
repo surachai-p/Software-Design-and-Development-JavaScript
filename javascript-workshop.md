@@ -71,10 +71,53 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ
 ### บันทึกผลการทดลอง 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+   
+    <button onclick="alert('ชื่อนักศึกษา: ชยางกูร สองพิมพ์')">ปุ่มที่ 1</button>
+
+    
+    <button onclick="showDate()">ปุ่มที่ 2</button>
+    <script>
+        function showDate() {
+            const today = new Date();
+            alert('วันที่ปัจจุบัน: 2/11/2025' );
+        }
+    </script>
+
+    
+    <button onclick="showTime()">ปุ่มที่ 3</button>
+    <script src="script.js"></script>
+</body>
+</html>
+
 [บันทึกโค้ด ที่นี่]
+function showTime() {
+    const now = new Date();
+    alert('เวลาปัจจุบัน: 3:48 PM ');
+}
+function showInputText() {
+    const inputText = document.getElementById("inputText").value;
+    const displayTextDiv = document.getElementById("displayText");
+    displayTextDiv.innerHTML = '<p>ข้อความที่กรอก: ' + inputText + '</p>';
+}
+
 ```
 [รูปผลการทดลองที่ 1]
-  
+  ![image](https://github.com/user-attachments/assets/dd750668-0966-483f-9457-539155c70516)
+  ![image](https://github.com/user-attachments/assets/72390412-53c1-4ec4-970c-8865137779e9)
+  ![image](https://github.com/user-attachments/assets/451278ce-8a05-43df-b0ef-83524ba63ab0)
+  ![image](https://github.com/user-attachments/assets/d67fe53e-aa29-46ce-a61c-1d4726b6250b)
+
+
+
+
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
 
@@ -130,8 +173,23 @@ let person = {
 ### บันทึกผลการทดลอง 2.1
 ```html
 [บันทึกโค้ด ที่นี่]
+const studentId = "67030052";
+const studentName = "ชยางกูร สองพิมพ์";
+let midtermScore = 72;
+let finalScore = 70;
+
+const studentInfo = {
+    id: studentId,
+    name: studentName,
+    major: "วิทยาการคอมพิวเตอร์",
+    gpa: 3.21
+};
+
+console.log(studentInfo);
 ```
 [รูปผลการทดลองที่ 2.1]
+![image](https://github.com/user-attachments/assets/55f6ee3f-1813-497a-976f-3bc1219940c9)
+
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
