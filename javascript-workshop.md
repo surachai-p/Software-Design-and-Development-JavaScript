@@ -71,9 +71,46 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('นางสาว ชุธิพร เชาว์ชัย 67030059')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('2/11/2025');
+        };
+    </script>
+    <input type="text" id="textInput" placeholder="กรอกข้อความที่นี่">
+    <button onclick="showText();">แสดงข้อความ</button>
+    <script>
+        function showText(){
+            var text = document.getElementById('textInput').value;
+            alert('ข้อความที่กรอก:' + text);
+        }
+    </script>
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>]
 ```
-[รูปผลการทดลองที่ 1]
+[![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+]
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
