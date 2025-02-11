@@ -206,6 +206,8 @@ console.log("เกรด:", grade);
 ]
 ```
 [รูปผลการทดลองที่ 2.1]
+![image](https://github.com/user-attachments/assets/a52a6cb3-4814-48f6-9b18-e5c94b1b9b89)
+
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -257,9 +259,33 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+// เขียนโปรแกรม กำหนดคะแนน  3 วิชา แล้วหาค่าคะแนนเฉลี่ย แล้วแสดงผลการคำนวณ
+[let score1 = 83;
+let score2 = 90;
+let score3 = 78;
+
+let averageScore = (score1 + score2 + score3)/ 3;
+
+console.log("คะแนนเฉลี่ยของนักศึกษา:", averageScore);
+
+// เขียนโปรแกรม กำหนดชื่อสินค้า ราคาสินค้า คำนวณราคาสินค้าที่รวม VAT 7% แล้วแสดงผลการคำนวณ
+let productName = "Phone";
+let price = 15000;
+
+let vatRate = 0.07;
+let vatAmount = price * vatRate;
+let tolatPrice = price + vatAmount
+
+console.log("ProductName", productName);
+console.log("price", price);
+console.log("tax VAT 7%", vatAmount);
+console.log("Price includes VAT 7%", tolatPrice);
 ```
 [รูปผลการทดลองที่ 2.2]
+เขียนโปรแกรม กำหนดคะแนน  3 วิชา แล้วหาค่าคะแนนเฉลี่ย แล้วแสดงผลการคำนวณ
+![Screenshot 2025-02-11 165417](https://github.com/user-attachments/assets/6f43692a-db9a-41fb-95e5-8fb394ed7aee)
+เขียนโปรแกรม กำหนดชื่อสินค้า ราคาสินค้า คำนวณราคาสินค้าที่รวม VAT 7% แล้วแสดงผลการคำนวณ
+![image](https://github.com/user-attachments/assets/9e15c982-50ec-4995-bf70-5990f6998d13)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -390,9 +416,47 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+// กำหนดตัวเลขที่ต้องการตรวจสอบ
+let number = 7;
+if (number % 2 === 0) {
+    console.log(number + " เป็นเลขคู่");
+} else {
+    console.log(number + " เป็นเลขคี่");
+}
+//สร้าง loop แบบ for แสดงตารางสูตรคูณ แม่ 2 และ loop แบบ while แสดงสูตรคูณ แม่ 3
+for (let i = 1; i <= 12; i++) {
+    console.log("2 * " + i + " = " + (2 * i));
+}
+//เขียนโปรแกรมนับถอยหลังจาก 10 ถึง 1
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+}
+//เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่)
+let age = 16;
+
+if (age >= 0 && age <= 12) {
+    console.log("วัยเด็ก");
+} else if (age >= 13 && age <= 18) {
+    console.log("วัยรุ่น");
+} else if (age >= 19 && age <= 60) {
+    console.log("วัยผู้ใหญ่");
+} else if (age > 60) {
+    console.log("วัยชรา");
+} else {
+    console.log("อายุไม่ถูกต้อง");
+}
+
 ```
 [รูปผลการทดลองที่ 2.3]
+กำหนดตัวเลข และตรวจสอบว่าตัวเลขที่กำหนดเป็นเลขคู่หรือเลขคี่
+![image](https://github.com/user-attachments/assets/4b9ef0a9-6fe5-47fb-b4b8-cf4affccee2c)
+สร้าง loop แบบ for แสดงตารางสูตรคูณ แม่ 2 และ loop แบบ while แสดงสูตรคูณ แม่ 3
+![image](https://github.com/user-attachments/assets/88aeae01-09c1-4fa2-b35d-b4cf2cf8a6a6)
+//เขียนโปรแกรมนับถอยหลังจาก 10 ถึง 1
+![image](https://github.com/user-attachments/assets/05f34e6d-ca0a-457f-970a-1cb0c4bba9e5)
+//เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่)
+![image](https://github.com/user-attachments/assets/10296f8c-6d5b-4af4-8748-097f6fd0ab42)
+
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -504,10 +568,56 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+//สร้าง function คำนวณค่า BMI (ดัชนีมวลกาย) จากน้ำหนักและส่วนสูง
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);
+    return bmi;
+}
+
+let weight = 70;  // น้ำหนัก
+let height = 1.75;  // ส่วนสูง 
+let bmi = calculateBMI(weight, height);
+console.log("BMI ของคุณคือ:", bmi.toFixed(2));
+//สร้าง function ที่รับชื่อและอายุ แล้วแสดงข้อความทักทายที่เหมาะสมกับอายุ
+function greetByAge(name, age) {
+    let greeting = "";
+
+    if (age < 18) {
+        greeting = "สวัสดี " + name + " คุณยังเด็ก!";
+    } else if (age >= 18 && age <= 60) {
+        greeting = "สวัสดี " + name + " คุณเป็นผู้ใหญ่!";
+    } else {
+        greeting = "สวัสดี " + name + " คุณอยู่ในวัยเกษียณ!";
+    }
+
+    console.log(greeting);
+}
+
+// ทดสอบการแสดงผล
+greetByAge("สมชาย", 15);  // สวัสดี สมชาย คุณยังเด็ก!
+greetByAge("สมหญิง", 30);  // สวัสดี สมหญิง คุณเป็นผู้ใหญ่!
+greetByAge("ป้าเจี๊ยบ", 65);  // สวัสดี ป้าเจี๊ยบ คุณอยู่ในวัยเกษียณ!
+//เขียน function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
+function checkPasswordLength(password) {
+    if (password.length > 8) {
+        console.log("รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร");
+    } else {
+        console.log("รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร");
+    }
+}
+
+// ทดสอบการตรวจสอบรหัสผ่าน
+checkPasswordLength("password123"); 
+checkPasswordLength("pass");      
+
 ```
 [รูปผลการทดลองที่ 2.4.1]
-
+//สร้าง function คำนวณค่า BMI (ดัชนีมวลกาย) จากน้ำหนักและส่วนสูง
+![image](https://github.com/user-attachments/assets/ae84a9ed-5fb6-4512-b5eb-b146f9c602ee)
+//สร้าง function ที่รับชื่อและอายุ แล้วแสดงข้อความทักทายที่เหมาะสมกับอายุ
+![image](https://github.com/user-attachments/assets/98873603-0b1c-4ec6-b169-12b6abe914c4)
+//เขียน function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
+![image](https://github.com/user-attachments/assets/4016c048-7c2c-4a25-b98d-11009db954f1)
 
 
 #### 2.4.2 Arrow Function
