@@ -173,9 +173,32 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+// ประกาศตัวแปรเก็บข้อมูลนักศึกษา
+const studentID = "67030021";  // รหัสนักศึกษา (ค่าคงที่)
+let studentName = "กันต์ฤทัย แก้วสว่าง";  // ชื่อนักศึกษา
+let midtermScore = 85;  // คะแนนสอบกลางภาค
+let finalScore = 90;    // คะแนนสอบปลายภาค
+
+// ประกาศ Object เก็บข้อมูลนักศึกษา
+let student = {
+    id: "67030021",
+    name: "กันต์ฤทัย แก้วสว่าง",
+    major: "เทคโนโลยีคอมพิวเตอร์",
+    gpa: 3.75
+};
+
+// แสดงผลข้อมูลนักศึกษา
+console.log("รหัสนักศึกษา:", studentID);
+console.log("ชื่อนักศึกษา:", studentName);
+console.log("คะแนนสอบกลางภาค:", midtermScore);
+console.log("คะแนนสอบปลายภาค:", finalScore);
+console.log("ข้อมูลนักศึกษา:", student);
+
 ```
-[รูปผลการทดลองที่ 2.1]
+  ![คำอธิบายรูป](![Screenshot 2025-02-11 160759](https://github.com/user-attachments/assets/6234dc98-bbd4-4531-b971-23bcd6182c7d)
+
+)
+
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
