@@ -71,9 +71,74 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงข้อความที่กรอก</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Nirapada Khattiya')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('2/11/2025');
+        };
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+<body>
+    <fieldset>
+       
+
+        <!-- ช่องกรอกข้อความ -->
+        <input type="text" id="myInput" placeholder="กรอกชื่อที่นี่">
+
+        <!-- ปุ่ม -->
+        <button onclick="displayMessage()">ส่งข้อมูล</button>
+
+        <!-- แสดงผลข้อความ -->
+        <p id="output"></p>
+    </fieldset>
+
+    <script>
+        function displayMessage() {
+            // ดึงค่าจากช่องกรอกข้อความ
+            var message = document.getElementById("myInput").value;
+
+            // แสดงผลข้อความใน <p> ที่มี id="output"
+            document.getElementById("output").innerText = "ข้อความที่คุณกรอกคือ: " + message;
+        }
+    </script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 1]
+```javascrip
+document.getElementById('btn3').onclick = function() {
+    alert('3:42 PM');
+};
+```
+![image](https://github.com/user-attachments/assets/b61b777d-9442-41c5-ad88-db52681da970)
+![image](https://github.com/user-attachments/assets/89ab7fbe-f8a4-4d7c-82e2-73b4eefce1e8)
+![image](https://github.com/user-attachments/assets/ed44eb7d-6f66-4990-b73b-a7045b742875)
+![image](https://github.com/user-attachments/assets/66288bfb-a6af-4453-b289-41d4bd921650)
+
+
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
