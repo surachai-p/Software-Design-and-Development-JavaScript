@@ -567,9 +567,46 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);
+    return bmi.toFixed(2); // ปัดเศษทศนิยม 2 ตำแหน่ง
+}
+
+// ทดสอบการใช้งาน
+console.log("BMI:", calculateBMI(70, 1.75)); // น้ำหนัก 70 กก. สูง 1.75 เมตร
+
+
+function greetByAge(name, age) {
+    if (age < 12) {
+        console.log(`สวัสดีหนู ${name}! เป็นเด็กดีนะ`);
+    } else if (age < 20) {
+        console.log(`สวัสดีวัยรุ่น ${name}! ใช้ชีวิตให้เต็มที่`);
+    } else {
+        console.log(`สวัสดีคุณ ${name}! ขอให้มีวันที่ดี`);
+    }
+}
+
+// ทดสอบการใช้งาน
+greetByAge("สมชาย", 10);  // "สวัสดีหนู สมชาย! เป็นเด็กดีนะ"
+greetByAge("สมหญิง", 17); // "สวัสดีวัยรุ่น สมหญิง! ใช้ชีวิตให้เต็มที่"
+greetByAge("ณัฐ", 25);     // "สวัสดีคุณ กิต! ขอให้มีวันที่ดี"
+
+
+function validatePassword(password) {
+    if (password.length > 8) {
+        return "รหัสผ่านถูกต้อง";
+    } else {
+        return "รหัสผ่านต้องมีมากกว่า 8 ตัวอักษร";
+    }
+}
+
+// ทดสอบการใช้งาน
+console.log(validatePassword("1234567"));    // "รหัสผ่านต้องมีมากกว่า 8 ตัวอักษร"
+console.log(validatePassword("securePass1")); // "รหัสผ่านถูกต้อง"
+
 ```
-[รูปผลการทดลองที่ 2.4.1]
+(![Screenshot 2025-02-11 163402](https://github.com/user-attachments/assets/fec50517-87f1-4d7e-bb2d-2088996fe3f7)
+)
 
 
 
@@ -610,10 +647,37 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
-```
-[รูปผลการทดลองที่ 2.4.2]
+const calculateBMI = (weight, height) => (weight / (height * height)).toFixed(2);
 
+// ทดสอบการใช้งาน
+console.log("BMI:", calculateBMI(70, 1.75)); // น้ำหนัก 70 กก. สูง 1.75 เมตร
+
+
+const greetByAge = (name, age) => {
+    if (age < 12) {
+        console.log(`สวัสดีหนู ${name}! เป็นเด็กดีนะ`);
+    } else if (age < 20) {
+        console.log(`สวัสดีวัยรุ่น ${name}! ใช้ชีวิตให้เต็มที่`);
+    } else {
+        console.log(`สวัสดีคุณ ${name}! ขอให้มีวันที่ดี`);
+    }
+};
+
+// ทดสอบการใช้งาน
+greetByAge("สมชาย", 10);  // "สวัสดีหนู สมชาย! เป็นเด็กดีนะ"
+greetByAge("สมหญิง", 17); // "สวัสดีวัยรุ่น สมหญิง! ใช้ชีวิตให้เต็มที่"
+greetByAge("ณัฐ", 25);     // "สวัสดีคุณ ณัฐ! ขอให้มีวันที่ดี"
+
+
+const validatePassword = password => password.length > 8 ? "รหัสผ่านถูกต้อง" : "รหัสผ่านต้องมีมากกว่า 8 ตัวอักษร";
+
+// ทดสอบการใช้งาน
+console.log(validatePassword("1234567"));    // "รหัสผ่านต้องมีมากกว่า 8 ตัวอักษร"
+console.log(validatePassword("securePass1")); // "รหัสผ่านถูกต้อง"
+
+```
+(![image](https://github.com/user-attachments/assets/6415c96c-ad07-4505-b999-c9c735513f28)
+)
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
 ### การทดลองที่ 3.1 การสร้างปุ่มและจัดการ Event ด้วย JavaScript
@@ -680,9 +744,162 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #34495e;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .error {
+            color: #e74c3c;
+            background-color: #fde8e7;
+            padding: 0.5rem;
+            border-radius: 4px;
+            display: none;
+        }
+        .hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: -0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>คำนวณค่า BMI (ดัชนีมวลกาย)</h2>
+        
+        <div class="form-group">
+            <label for="weight">น้ำหนัก (kg):</label>
+            <input type="number" id="weight" min="1" max="300" required>
+            <div id="weightError" class="error">กรุณากรอกน้ำหนักที่ถูกต้อง (1-300 kg)</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="height">ส่วนสูง (cm):</label>
+            <input type="number" id="height" min="1" max="300" required>
+            <div id="heightError" class="error">กรุณากรอกส่วนสูงที่ถูกต้อง (1-300 cm)</div>
+        </div>
+        
+        <button onclick="calculateBMI()">คำนวณ BMI</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const calculateBMI = () => {
+            // รีเซ็ตการแสดงข้อผิดพลาด
+            document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+            
+            // รับค่าและแปลงเป็นตัวเลข
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightCm = parseFloat(document.getElementById('height').value);
+            
+            // ตรวจสอบความถูกต้องของข้อมูล
+            if (!weight || weight < 1 || weight > 300) {
+                document.getElementById('weightError').style.display = 'block';
+                return;
+            }
+            
+            if (!heightCm || heightCm < 1 || heightCm > 300) {
+                document.getElementById('heightError').style.display = 'block';
+                return;
+            }
+            
+            // แปลงส่วนสูงจาก cm เป็น m
+            const height = heightCm / 100;
+            
+            // คำนวณ BMI
+            const bmi = weight / (height * height);
+            
+            // กำหนดผลลัพธ์และสี
+            let result = '';
+            let color = '';
+            
+            if (bmi < 18.5) {
+                result = 'ผอม';
+                color = '#3498db';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                result = 'สมส่วน';
+                color = '#2ecc71';
+            } else if (bmi >= 25 && bmi < 30) {
+                result = 'น้ำหนักเกิน';
+                color = '#f1c40f';
+            } else {
+                result = 'อ้วน';
+                color = '#e74c3c';
+            }
+            
+            // แสดงผลลัพธ์
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `
+                ค่า BMI ของคุณคือ: <strong>${bmi.toFixed(2)}</strong><br>
+                <span style="color: ${color}; font-size: 1.2rem; font-weight: bold;">
+                    ${result}
+                </span>
+            `;
+            resultElement.style.backgroundColor = `${color}20`;
+            resultElement.style.border = `1px solid ${color}`;
+        };
+    </script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 3.1]
+(![Screenshot 2025-02-11 165106](https://github.com/user-attachments/assets/c64a0b41-3780-4e80-9342-239ade766240)
+)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
