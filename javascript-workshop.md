@@ -71,9 +71,57 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Piyawit Pholsri')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('02/11/2025');
+        };
+    </script>
+    
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- ช่องกรอกข้อความ และปุ่มแสดงผล -->
+    <input id="txt1" placeholder="กรอกข้อความที่นี่">
+    <button id="showTextBtn">แสดงข้อความ</button>
+
+    <!-- พื้นที่แสดงผลข้อความ -->
+    <p id="outputText"></p>
+    
+    <script>
+        document.getElementById('showTextBtn').onclick = function() {
+            let inputText = document.getElementById('txt1').value;
+            alert(inputText);
+        };
+    </script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 1]
+```js
+function hello3() {
+    alert('03:53PM');
+}
+```
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -128,11 +176,22 @@ let person = {
 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา  ประกอบด้วยข้อมูล รหัสนักศึกษา, ชื่อ, สาขาวิชา, เกรดเฉลี่ย
 
 ### บันทึกผลการทดลอง 2.1
-```html
-[บันทึกโค้ด ที่นี่]
-```
-[รูปผลการทดลองที่ 2.1]
+```js
+// StudentRecord
+let studentId = "67030142";
+let studentName = "Piyawit Pholsri";
+let midtermScore = "26";
+let finalScore = "40";
 
+// Object StudentRecord
+const student = {
+    id: "67030143",
+    name: "Pholsri Piyawit",
+    major: "Techcom",
+    gpa: "3.46"
+};
+
+```
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
 

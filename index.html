@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Piyawit Pholsri')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('02/11/2025');
+        };
+    </script>
+    
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- ช่องกรอกข้อความ และปุ่มแสดงผล -->
+    <input id="txt1" placeholder="กรอกข้อความที่นี่">
+    <button id="showTextBtn">แสดงข้อความ</button>
+
+    <!-- พื้นที่แสดงผลข้อความ -->
+    <p id="outputText"></p>
+    
+    <script>
+        document.getElementById('showTextBtn').onclick = function() {
+            let inputText = document.getElementById('txt1').value;
+            alert(inputText);
+        };
+    </script>
+</body>
+</html>
