@@ -78,8 +78,62 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+
+    <!-- ปุ่มที่ 1: ใช้ Inline JavaScript -->
+    <button onclick="showStudentName()">ปุ่มที่ 1: แสดงชื่อนักศึกษา</button>
+
+    <!-- ปุ่มที่ 2: ใช้ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2: แสดงวันที่ปัจจุบัน</button>
+
+    <!-- ปุ่มที่ 3: ใช้ External JavaScript -->
+    <button id="btn3" onclick="showCurrentTime()">ปุ่มที่ 3: แสดงเวลาปัจจุบัน</button>
+
+    <!-- ช่องกรอกข้อความ -->
+    <input type="text" id="textbox" placeholder="กรอกข้อความที่นี่">
+    <button onclick="displayText()">แสดงข้อความที่กรอก</button>
+
+    <!-- แสดงผลข้อความที่กรอก -->
+    <div id="displayResult"></div>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // ปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('btn2').onclick = function() {
+            alert('วันที่ปัจจุบัน: ' + new Date().toLocaleDateString());
+        };
+
+        // ฟังก์ชันสำหรับปุ่มที่ 1: แสดงชื่อนักศึกษา
+        function showStudentName() {
+            alert('ชื่อนักศึกษา: จิรวัตร พูลรัตน์');
+        }
+
+        // ฟังก์ชันสำหรับปุ่มที่ 3: แสดงเวลาปัจจุบัน
+        function showCurrentTime() {
+            alert('เวลาปัจจุบัน: ' + new Date().toLocaleTimeString());
+        }
+
+        // ฟังก์ชันสำหรับแสดงข้อความที่กรอกในกล่องข้อความ
+        function displayText() {
+            var text = document.getElementById('textbox').value;
+            document.getElementById('displayResult').innerHTML = 'ข้อความที่กรอก: ' + text;
+        }
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
 [รูปผลการทดลองที่ 1]
-  
+![alt text](image.png)
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
 
