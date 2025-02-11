@@ -250,9 +250,41 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+// กำหนดคะแนน 3 วิชา
+let score1 = 85;
+let score2 = 90;
+let score3 = 78;
+
+// คำนวณคะแนนเฉลี่ย
+let averageScore = (score1 + score2 + score3) / 3;
+
+// แสดงผลลัพธ์
+console.log("คะแนนวิชาที่ 1:", score1);
+console.log("คะแนนวิชาที่ 2:", score2);
+console.log("คะแนนวิชาที่ 3:", score3);
+console.log("คะแนนเฉลี่ย:", averageScore.toFixed(2)); // ปัดเศษทศนิยม 2 ตำแหน่ง
+
 ```
-[รูปผลการทดลองที่ 2.2]
+  ![คำอธิบายรูป](![Screenshot 2025-02-11 161435](https://github.com/user-attachments/assets/1094df00-85f4-4ac9-8aed-d4171862fc4b)
+
+)
+// กำหนดชื่อสินค้า และราคาสินค้า
+let productName = "โน้ตบุ๊ก";
+let productPrice = 15000; // ราคาไม่รวม VAT
+
+// คำนวณราคาสินค้ารวม VAT 7%
+let vat = productPrice * 0.07;
+let totalPrice = productPrice + vat;
+
+// แสดงผลลัพธ์
+console.log("สินค้า:", productName);
+console.log("ราคาสินค้า:", productPrice, "บาท");
+console.log("VAT 7%:", vat.toFixed(2), "บาท");
+console.log("ราคารวม VAT:", totalPrice.toFixed(2), "บาท");
+  ![คำอธิบายรูป](![Screenshot 2025-02-11 161858](https://github.com/user-attachments/assets/87bfaeab-b8f0-4fde-a83e-f5634fac6ac1)
+
+)
+
 
 ### 2.3 การควบคุมการทำงาน
 
