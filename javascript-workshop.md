@@ -85,55 +85,46 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
     <title>ทดลอง JavaScript</title>
 </head>
 <body>
+  
+    <button onclick="alert('ชื่อนักศึกษา: จิรวัตร')">ปุ่มที่ 1</button>
 
-    <!-- ปุ่มที่ 1: ใช้ Inline JavaScript -->
-    <button onclick="showStudentName()">ปุ่มที่ 1: แสดงชื่อนักศึกษา</button>
+    
+    <button id="btn2">ปุ่มที่ 2</button>
 
-    <!-- ปุ่มที่ 2: ใช้ Internal JavaScript -->
-    <button id="btn2">ปุ่มที่ 2: แสดงวันที่ปัจจุบัน</button>
+   
+    <button id="btn3" onclick="showTime()">ปุ่มที่ 3</button>
 
-    <!-- ปุ่มที่ 3: ใช้ External JavaScript -->
-    <button id="btn3" onclick="showCurrentTime()">ปุ่มที่ 3: แสดงเวลาปัจจุบัน</button>
+    <br><br>
 
-    <!-- ช่องกรอกข้อความ -->
-    <input type="text" id="textbox" placeholder="กรอกข้อความที่นี่">
-    <button onclick="displayText()">แสดงข้อความที่กรอก</button>
+    
+    <input type="text" id="studentName" placeholder="กรอกชื่อของคุณ">
+    <button onclick="showStudentName()">แสดงชื่อนักศึกษา</button>
 
-    <!-- แสดงผลข้อความที่กรอก -->
-    <div id="displayResult"></div>
-
-    <!-- Internal JavaScript -->
+    
     <script>
-        // ปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        
         document.getElementById('btn2').onclick = function() {
             alert('วันที่ปัจจุบัน: ' + new Date().toLocaleDateString());
         };
 
-        // ฟังก์ชันสำหรับปุ่มที่ 1: แสดงชื่อนักศึกษา
+       
+        function showTime() {
+            let currentTime = new Date().toLocaleTimeString();
+            alert('เวลาปัจจุบัน: ' + currentTime);
+        }
+
+        
         function showStudentName() {
-            alert('ชื่อนักศึกษา: จิรวัตร พูลรัตน์');
-        }
-
-        // ฟังก์ชันสำหรับปุ่มที่ 3: แสดงเวลาปัจจุบัน
-        function showCurrentTime() {
-            alert('เวลาปัจจุบัน: ' + new Date().toLocaleTimeString());
-        }
-
-        // ฟังก์ชันสำหรับแสดงข้อความที่กรอกในกล่องข้อความ
-        function displayText() {
-            var text = document.getElementById('textbox').value;
-            document.getElementById('displayResult').innerHTML = 'ข้อความที่กรอก: ' + text;
+            let studentName = document.getElementById('studentName').value;
+            alert("ชื่อนักศึกษาที่กรอก: " + studentName);
         }
     </script>
-
-    <!-- External JavaScript -->
-    <script src="script.js"></script>
 
 </body>
 </html>
 
 [รูปผลการทดลองที่ 1]
-![alt text](image.png)
+![alt text](image-2.png)
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
 
@@ -190,16 +181,42 @@ let person = {
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองประกาศตัวแปร</title>
+</head>
+<body>
+    <h1>บันทึกผลการทดลอง 2.1: การทดลองประกาศตัวแปร</h1>
+
+    <script>
+       
+        let studentID = "67030043";         
+        let studentName = "Jirawat Pooral";
+        let midTermScore = 81;             
+        let finalTermScore = 90;           
+
+        
+        const student = {
+            studentID: "123456",          
+            studentName: "จิรวัตร นะจ้ะ",  
+            major: "เทคโนโลยีตอมพิวเตอร์",  
+            GPA: 3.80                      
+        };
+    </script>
+</body>
+</html>
+
 [รูปผลการทดลองที่ 2.1]
-
-
+---------------------------------------
 ### 2.2 การดำเนินการทางคณิตศาสตร์
 
 JavaScript มีตัวดำเนินการทางคณิตศาสตร์พื้นฐานดังนี้:
-- `+` การบวก
+- `+` การบวก 
 - `-` การลบ
 - `*` การคูณ
-- `/` การหาร
+- `/` การหาร 
 - `%` การหารเอาเศษ (modulo)
 - `**` การยกกำลัง (exponentiation)
 - `++` การเพิ่มค่าทีละ 1 (increment)

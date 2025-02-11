@@ -5,33 +5,22 @@
     <title>การทดลองประกาศตัวแปร</title>
 </head>
 <body>
-    <h1>สถาเทคโนโลยีพระจอมเกล้าเจ้าคุณมหารลาดกระบัง</h1>
-
-    <h2>ข้อมูลนักศึกษา:</h2>
-    <p id="studentInfo"></p>
+    <h1>บันทึกผลการทดลอง 2.1: การทดลองประกาศตัวแปร</h1>
 
     <script>
-        // 1. สร้างตัวแปรเก็บข้อมูล รหัสนักศึกษา ชื่อนักศึกษา คะแนนสอบกลางภาค, คะแนนสอบปลายภาค
-        let studentID = "67030043";          // รหัสนักศึกษา
-        let studentName = "จิรวัตร พูลรัตน์";  // ชื่อนักศึกษา
-        let midTermScore = 34;             // คะแนนสอบกลางภาค
-        let finalTermScore = 55;           // คะแนนสอบปลายภาค
+       
+        let studentID = "67030043";         
+        let studentName = "Jirawat Pooral";
+        let midTermScore = 81;             
+        let finalTermScore = 90;           
 
-        // 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา
+        
         const student = {
-            studentID: "67030043",          // รหัสนักศึกษา
-            studentName: "จิรวัตร พูลรัตน์", // ชื่อ
-            major: "คอมพิวเตอร์", // สาขาวิชา
-            GPA: 3.23                      // เกรดเฉลี่ย
+            studentID: "123456",          
+            studentName: "จิรวัตร นะจ้ะ",  
+            major: "เทคโนโลยีตอมพิวเตอร์",  
+            GPA: 3.80                      
         };
-
-        // แสดงข้อมูลในหน้าเว็บ
-        document.getElementById('studentInfo').innerHTML = `
-            รหัสนักศึกษา: ${student.studentID} <br>
-            ชื่อ: ${student.studentName} <br>
-            สาขาวิชา: ${student.major} <br>
-            เกรดเฉลี่ย: ${student.GPA}
-        `;
     </script>
 </body>
 </html>
