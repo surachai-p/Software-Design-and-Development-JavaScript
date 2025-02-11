@@ -196,7 +196,6 @@ console.log("ข้อมูลนักศึกษา:", student);
 
 ```
   ![คำอธิบายรูป](![Screenshot 2025-02-11 160759](https://github.com/user-attachments/assets/6234dc98-bbd4-4531-b971-23bcd6182c7d)
-
 )
 
 
@@ -266,9 +265,8 @@ console.log("คะแนนเฉลี่ย:", averageScore.toFixed(2)); // �
 
 ```
   ![คำอธิบายรูป](![Screenshot 2025-02-11 161435](https://github.com/user-attachments/assets/1094df00-85f4-4ac9-8aed-d4171862fc4b)
-
 )
-// กำหนดชื่อสินค้า และราคาสินค้า
+```// กำหนดชื่อสินค้า และราคาสินค้า
 let productName = "โน้ตบุ๊ก";
 let productPrice = 15000; // ราคาไม่รวม VAT
 
@@ -281,8 +279,8 @@ console.log("สินค้า:", productName);
 console.log("ราคาสินค้า:", productPrice, "บาท");
 console.log("VAT 7%:", vat.toFixed(2), "บาท");
 console.log("ราคารวม VAT:", totalPrice.toFixed(2), "บาท");
+```
   ![คำอธิบายรูป](![Screenshot 2025-02-11 161858](https://github.com/user-attachments/assets/87bfaeab-b8f0-4fde-a83e-f5634fac6ac1)
-
 )
 
 
