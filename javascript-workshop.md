@@ -284,6 +284,7 @@ console.log("Price includes VAT 7%", tolatPrice);
 [รูปผลการทดลองที่ 2.2]
 เขียนโปรแกรม กำหนดคะแนน  3 วิชา แล้วหาค่าคะแนนเฉลี่ย แล้วแสดงผลการคำนวณ
 ![Screenshot 2025-02-11 165417](https://github.com/user-attachments/assets/6f43692a-db9a-41fb-95e5-8fb394ed7aee)
+
 เขียนโปรแกรม กำหนดชื่อสินค้า ราคาสินค้า คำนวณราคาสินค้าที่รวม VAT 7% แล้วแสดงผลการคำนวณ
 ![image](https://github.com/user-attachments/assets/9e15c982-50ec-4995-bf70-5990f6998d13)
 
@@ -450,11 +451,14 @@ if (age >= 0 && age <= 12) {
 [รูปผลการทดลองที่ 2.3]
 กำหนดตัวเลข และตรวจสอบว่าตัวเลขที่กำหนดเป็นเลขคู่หรือเลขคี่
 ![image](https://github.com/user-attachments/assets/4b9ef0a9-6fe5-47fb-b4b8-cf4affccee2c)
+
 สร้าง loop แบบ for แสดงตารางสูตรคูณ แม่ 2 และ loop แบบ while แสดงสูตรคูณ แม่ 3
 ![image](https://github.com/user-attachments/assets/88aeae01-09c1-4fa2-b35d-b4cf2cf8a6a6)
-//เขียนโปรแกรมนับถอยหลังจาก 10 ถึง 1
+
+เขียนโปรแกรมนับถอยหลังจาก 10 ถึง 1
 ![image](https://github.com/user-attachments/assets/05f34e6d-ca0a-457f-970a-1cb0c4bba9e5)
-//เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่)
+
+เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่)
 ![image](https://github.com/user-attachments/assets/10296f8c-6d5b-4af4-8748-097f6fd0ab42)
 
 
