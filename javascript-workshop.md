@@ -71,9 +71,46 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Thanut-orn Sripoohtron')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+    <input type="text" id="inputText" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showText()">แสดงข้อความ</button>
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('2/11/2025');
+        };
+
+        function showText(){
+            var text = document.getElementById("inputText").value;
+            alert('ข้อความที่กรอก ' + text);
+        }
+    </script>
+    
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 1]
+![image](https://github.com/user-attachments/assets/a83afc05-2c73-4a77-af98-31bc9e0e1fd1)
+![image](https://github.com/user-attachments/assets/8858be1a-2b71-470d-a64a-9c838a07fb59)
+![image](https://github.com/user-attachments/assets/4928d3db-1ee8-4bff-8712-f9e55bcc7971)
+![image](https://github.com/user-attachments/assets/6033fc1a-a3d4-4bd4-86da-02f32ebf74d7)
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
