@@ -196,7 +196,8 @@ let person = {
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
-[รูปผลการทดลองที่ 2.1]
+![image](https://github.com/user-attachments/assets/6c0a1a1a-38cf-4e7f-9c36-9401e2fcffab)
+
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
