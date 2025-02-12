@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-orange-200 to-orange-500 h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-96 max-w-md">
+        <h2 class="text-3xl font-extrabold text-center mb-6 text-orange-600">คำนวณค่า BMI</h2>
+        <form id="bmiForm" class="space-y-6">
+            <div>
+                <label for="weight" class="block text-sm font-medium text-gray-700">น้ำหนัก (กิโลกรัม)</label>
+                <input type="number" id="weight" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="กรอกน้ำหนัก" required>
+            </div>
+            <div>
+                <label for="height" class="block text-sm font-medium text-gray-700">ส่วนสูง (เซนติเมตร)</label>
+                <input type="number" id="height" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="กรอกส่วนสูง (cm)" required>
+            </div>
+            <button type="submit" class="w-full py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 transform transition-all duration-300">คำนวณ BMI</button>
+        </form>
+        <div id="result" class="mt-6 text-center text-xl font-semibold text-gray-800"></div>
+        <div class="mt-6 text-center text-sm text-gray-500">กฤตนัย บ. 67030011</div>
+    </div>
+
+    <script>
+        const calculateBMI = (weight, height) => weight / ((height / 100) * (height / 100));
+        const classifyBMI = bmi => {
+            if (bmi < 18.5) return 'ผอม';
+            if (bmi >= 18.5 && bmi < 24.9) return 'สมส่วน';
+            return 'อ้วน';
+        };
+
+        document.getElementById('bmiForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('result').textContent = 'กรุณากรอกข้อมูลให้ถูกต้อง';
+                return;
+            }
+
+            const bmi = calculateBMI(weight, height);
+            const classification = classifyBMI(bmi);
+            document.getElementById('result').textContent = `ค่า BMI: ${bmi.toFixed(2)} (${classification})`;
+        });
+    </script>
+
+</body>
+</html>
