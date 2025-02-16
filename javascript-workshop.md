@@ -682,52 +682,54 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
     <title>Document</title>
 </head>
 <body>
-    <script src="lab07.js"></script>
+    <script src="Lab08.js"></script>
 </body>
 </html>
 ```
 ```js
-function calculateBMI(w, h) { //w = น้ำหนัก  h=ส่วนสูง
-    let bmi = w/(h**2);
-    return bmi; 
-} 
-let w = 55;
-let h = 1.63;
-let bmi = calculateBMI(w,h);
-console.log("ค่า BMI คือ: " + bmi.toFixed(2));    
+console.log("คำนวณค่าBMI")
+const calculateBMI = (w,h) => (w/(h**2)).toFixed(2);
+console.log(calculateBMI(55,1.63));
+console.log("")
 
-
-function greetUser(name,age){
-    let greeting = 'สวัสดีจ้า';
-
-    if (name,age <= 12){
-        greeting += "เด็กน้อยน่ารัก";
-    }else if (name,age > 12 && age <= 25 ){
-        greeting += "วัยรุ่นแล้วเย้";
-    }else {
-        greeting += "วัยผู้ใหญ่"
-
+console.log("ตรวจสอบอายุ")
+const greetUser = (name,age) => {
+    if(age < 0){
+        return "อายุไม่ถูกต้อง"
     }
-    console.log(greeting);
-    
+    else if (name,age < 18){
+        return "สวัสดีจ้าคุณเด็ก"
+    }
+    else if (name,age >18 && age <=60){
+        return " สวัสดีจ้าคนวัยทำงานทั้งหลาย"
+    }
+    else {
+        return "สวัสดีค่ะขอให้อายุยืนยาวนะคะ"
+    }
+        
 }
-greetUser("แป้ง", 10);   // ทักทายเด็ก
-greetUser("นูรีน", 18);  // ทักทายวัยรุ่น
-greetUser("นัท", 30);     // ทักทายผู้ใหญ่
 
-function checkPassword(password){
-        if (password.length >= 8) {
-            console.log("รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า 8 ตัว");
-        } else {
-            console.log("กรุณาตั้งรหัสผ่านให้ยาวมากกว่า 8 ตัว");
-        }
+console.log(greetUser("แป้ง",10));
+console.log(greetUser("พี่รีน",40));
+console.log(greetUser("นัท",100));
+console.log("")
+
+console.log("ตรวจสอบรหัสผ่าน")
+const checkPassword = (password) => {
+    if(password.length >= 8){
+        return "รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า 8 ตัว"
     }
-    
-    checkPassword("Nirapada");  // รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า
-    checkPassword("Pang1188");  // รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า
-    checkPassword("short");     // กรณีรหัสผ่านสั้นกว่า 8 ตัว
+    else{
+        return "กรุณาตั้งรหัสผ่านให้ยาวมากกว่า 8 ตัว"
+    }
+}
+
+console.log(checkPassword("Nirapada"));
+console.log(checkPassword("Pang14"));
+console.log(checkPassword("short"));
 ```
-![image](https://github.com/user-attachments/assets/36f07615-5355-40f0-95c7-f40bc97c89bd)
+![image](https://github.com/user-attachments/assets/f6f3248a-00e4-4f09-9017-dc414cb6c9e0)
+
 
 
 
