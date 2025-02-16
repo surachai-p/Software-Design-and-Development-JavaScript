@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบรหัสผ่าน</title>
+</head>
+
+<body>
+    <h2>ตรวจสอบความยาวของรหัสผ่าน</h2>
+
+    <label for="password">กรอกรหัสผ่าน:</label>
+    <input type="password" id="password" placeholder="ใส่รหัสผ่าน">
+
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="result"></p>
+
+    <script>
+        // ฟังก์ชันตรวจสอบความยาวรหัสผ่าน
+        function checkPassword() {
+            let password = document.getElementById("password").value;
+
+            // ตรวจสอบความยาวรหัสผ่าน
+            if (password.length > 8) {
+                document.getElementById("result").innerText = "✅ รหัสผ่านถูกต้อง (มากกว่า 8 ตัวอักษร)";
+            } else {
+                document.getElementById("result").innerText = "❌ รหัสผ่านต้องมีมากกว่า 8 ตัวอักษร";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
