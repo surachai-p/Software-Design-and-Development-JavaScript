@@ -190,7 +190,6 @@ const student = {
     major: "Techcom",
     gpa: "3.46"
 };
-
 ```
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -242,9 +241,32 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+// 3 Subject
+let subject1 = 18;
+let subject2 = 69;
+let subject3 = 45;
+
+// AverageScore
+let averageScore = (subject1 + subject2 + subject3) / 3;
+
+// Result
+console.log("คะแนนเฉลี่ย:", averageScore.toFixed(2));
+
+// Product
+let productName = "IPAD PRO";
+let price = 37900; // Price
+
+// VAT
+let vat = price * 0.07;
+let totalPrice = price + vat;
+
+// Result
+console.log("สินค้า:", productName);
+console.log("ราคาสินค้า:", price, "THB");
+console.log("VAT 7%:", vat.toFixed(2), "THB");
+console.log("ราคารวม VAT:", totalPrice.toFixed(2), "THB");
 ```
-[รูปผลการทดลองที่ 2.2]
+![alt text](image-4.png)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -375,10 +397,44 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
-```
-[รูปผลการทดลองที่ 2.3]
+let number = 7;
 
+if (number % 2 === 0) {
+    console.log(number, "is even number");
+} else {
+    console.log(number, "is odd number");
+}
+
+console.log("multiplicand 2");
+for (let i = 1; i <= 12; i++) {
+    console.log(`2 x ${i} = ${2 * i}`);
+}
+
+console.log("📌 ตารางสูตรคูณแม่ 3");
+let i = 1;
+while (i <= 12) {
+    console.log(`3 x ${i} = ${3 * i}`);
+    i++;
+}
+
+console.log(" 10 - 1");
+for (let i = 10; i >= 1; i--) { // ลด 1
+    console.log(i);
+}
+
+let age = 25;
+
+if (age >= 0 && age <= 12) {
+    console.log("You are in child.");
+} else if (age >= 13 && age <= 19) {
+    console.log("You are in teen.");
+} else if (age >= 20 && age <= 59) {
+    console.log("You are in adult.");
+} else {
+    console.log("You are in old age.");
+}
+```
+![alt text](image-5.png)
 ### 2.4 Functions และ Arrow Functions
 
 Functions คือกลุ่มคำสั่งที่สามารถนำมาใช้ซ้ำได้ ใน JavaScript มีวิธีการเขียน function 2 แบบหลักๆ:
@@ -489,10 +545,39 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
-```
-[รูปผลการทดลองที่ 2.4.1]
+function calculateBMI(weight, height) {
+    let bmi = weight / (height ** 2);
+    return bmi.toFixed(2);
+}
 
+console.log("BMI:", calculateBMI(60, 1.55));
+
+function greetUser(name, age) {
+    let message = `Hello, ${name}! `;
+    
+    if (age < 12) {
+        message += "You're a child. Have fun!";
+    } else if (age < 20) {
+        message += "You're a teenager. Enjoy your life";
+    } else if (age < 60) {
+        message += "You're an adult. Work hard and take care!";
+    } else {
+        message += "You're a senior. Stay happy!";
+    }
+    
+    return message;
+}
+
+console.log(greetUser("Piyawit", 21));
+
+function isPasswordValid(password) {
+    return password.length > 8;
+}
+
+console.log(isPasswordValid("1669"));
+console.log(isPasswordValid("1212312121"));
+```
+![alt text](image-6.png)
 
 
 #### 2.4.2 Arrow Function
@@ -532,9 +617,33 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+const calculateBMI = (weight, height) => Math.round((weight / (height * height)) * 100) / 100;
+console.log(calculateBMI(50, 1.55));
+
+
+const greetUser = (name, age) => {
+    let message = `Hello, ${name}! `;
+    if (age < 12) {
+        message += "You're a child!";
+    } else if (age < 20) {
+        message += "You're a teenager!";
+    } else if (age < 60) {
+        message += "You're an adult!";
+    } else {
+        message += "You're a senior!";
+    }
+    return message;
+};
+
+console.log(greetUser("Piyawit", 21));
+
+
+const isPasswordValid = password => password.length > 8;
+
+console.log(isPasswordValid("1212312121"));
+console.log(isPasswordValid("just12"));
 ```
-[รูปผลการทดลองที่ 2.4.2]
+![alt text](image-7.png)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
