@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+</head>
+<body>
+    <h2>คำนวณค่า BMI (ดัชนีมวลกาย)</h2>
+
+    <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+    <input type="number" id="weight" placeholder="ป้อนน้ำหนักของคุณ">
+
+    <label for="height">ส่วนสูง (เซนติเมตร):</label>
+    <input type="number" id="height" placeholder="ป้อนส่วนสูงของคุณ">
+
+    <button onclick="calculateBMI()">คำนวณ</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="result"></p>
+
+    <script>
+        // Arrow function คำนวณค่า BMI
+        const calculateBMI = () => {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value) / 100; // แปลงเป็นเมตร
+            let result = document.getElementById("result");
+
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                result.innerText = "❌ กรุณากรอกค่าน้ำหนักและส่วนสูงให้ถูกต้อง";
+                return;
+            }
+
+            let bmi = (weight / (height * height)).toFixed(2); // คำนวณ BMI และปัดเป็นทศนิยม 2 ตำแหน่ง
+            let status = "";
+
+            if (bmi < 18.5) {
+                status = "ผอม";
+            } else if (bmi < 24.9) {
+                status = "สมส่วน";
+            } else if (bmi < 29.9) {
+                status = "น้ำหนักเกิน";
+            } else {
+                status = "อ้วน";
+            }
+
+            result.innerText = `ค่า BMI ของคุณคือ ${bmi} (${status})`;
+        };
+    </script>
+</body>
+</html>
