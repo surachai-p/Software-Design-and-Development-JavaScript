@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = "th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณราคาสินค้ารวม VAT</title>
+</head>
+<body>
+    <h2>ราคาสินค้ารวม VAT 7%</h2>
+    <p id="result"></p>
+
+    <script>
+        let productName = "ปากกา"
+        let price = 15;
+        let vatRate = 0.07;
+
+        let vatAmount = price * vatRate;
+        let totalPrice = price + vatAmount;
+
+        document.getElementById("result").innerHTML = 
+            "ชื่อสินค้า" + productName + "<br>" +
+            "ราคาสินค้า" + price.toFixed(2) + "บาท<br>" +
+            "VAT 7%" + vatRate.toFixed(2) + "บาท<br>" +
+            "ราคารวม" + totalPrice.toFixed(2) + "บาท";
+
+    </script>
+
+</body>
+</html> 

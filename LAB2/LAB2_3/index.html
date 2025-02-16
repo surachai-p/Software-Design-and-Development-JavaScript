@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ 2.3</title>
+</head>
+<body>
+    <h2>โปรแกรมทดสอบ</h2>
+
+    <button onclick="checkEvenOdd()">ตรวจสอบเลขคู่-คี่</button>
+    <button onclick="showMultiplication2()">แสดงสูตรคูณแม่ 2</button>
+    <button onclick="showMultiplication3()">แสดงสูตรคูณแม่ 3</button>
+    <button onclick="countDown()">นับถอยหลัง</button>
+    <button onclick="checkAge()">ตรวจสอบช่วงวัย</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkEvenOdd() {
+            let number = prompt("กรอกตัวเลข:");
+            number = parseInt(number);
+            if (number % 2 === 0) {
+                document.getElementById("result").innerHTML = number + " เป็นเลขคู่";
+            } else {
+                document.getElementById("result").innerHTML = number + " เป็นเลขคี่";
+            }
+        }
+
+        function showMultiplication2() {
+            let text = "<b> ตารางสูตรคูณแม่ 2</b><br>";
+            for (let i = 1; i <= 12; i++) {
+                text += "2 × " + i + " = " + (2 * i) + "<br>";
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        function showMultiplication3() {
+            let text = "<b> ตารางสูตรคูณแม่ 3</b><br>";
+            let j = 1;
+            while (j <= 12) {
+                text += "3 × " + j + " = " + (3 * j) + "<br>";
+                j++;
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        function countDown() {
+            let text = "<b> นับถอยหลังจาก 10 ถึง 1</b><br>";
+            for (let k = 10; k >= 1; k--) {
+                text += k + "<br>";
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        function checkAge() {
+            let age = prompt("กรอกอายุของคุณ:");
+            age = parseInt(age);
+            let resultText = "";
+
+            if (age >= 0 && age <= 12) {
+                resultText = "อายุ " + age + " ปี: วัยเด็ก";
+            } else if (age >= 13 && age <= 18) {
+                resultText = "อายุ " + age + " ปี: วัยรุ่น";
+            } else {
+                resultText = "อายุ " + age + " ปี: วัยผู้ใหญ่";
+            }
+
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>

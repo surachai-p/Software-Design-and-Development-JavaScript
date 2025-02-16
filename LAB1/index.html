@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+  
+    <button onclick="alert('ชื่อนักศึกษา: จิรวัตร')">ปุ่มที่ 1</button>
+
+    
+    <button id="btn2">ปุ่มที่ 2</button>
+
+   
+    <button id="btn3" onclick="showTime()">ปุ่มที่ 3</button>
+
+    <br><br>
+
+    
+    <input type="text" id="studentName" placeholder="กรอกชื่อของคุณ">
+    <button onclick="showStudentName()">แสดงชื่อนักศึกษา</button>
+
+    
+    <script>
+        
+        document.getElementById('btn2').onclick = function() {
+            alert('วันที่ปัจจุบัน: ' + new Date().toLocaleDateString());
+        };
+
+       
+        function showTime() {
+            let currentTime = new Date().toLocaleTimeString();
+            alert('เวลาปัจจุบัน: ' + currentTime);
+        }
+
+        
+        function showStudentName() {
+            let studentName = document.getElementById('studentName').value;
+            alert("ชื่อนักศึกษาที่กรอก: " + studentName);
+        }
+    </script>
+
+</body>
+</html>
