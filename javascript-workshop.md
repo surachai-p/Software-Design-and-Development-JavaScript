@@ -638,9 +638,81 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ Functions</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.1: Functions</h1>
+    
+    <h2>คำนวณ BMI</h2>
+    <p>น้ำหนัก: <input type="number" id="weight" placeholder="น้ำหนัก (kg)" step="0.1"></p>
+    <p>ส่วนสูง: <input type="number" id="height" placeholder="ส่วนสูง (m)" step="0.01">
+    <button onclick="showBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+    
+    <h2>ทักทายผู้ใช้ตามอายุ</h2>
+    <p>ชื่อ: <input type="text" id="name" placeholder="ชื่อ"></p>
+    <p>อายุ: <input type="number" id="age" placeholder="อายุ"></p>
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greeting"></p>
+    
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <p>รหัสผ่าน: <input type="text" id="password" placeholder="รหัสผ่าน"></p>
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+    
+    <script>
+        function calculateBMI(weight, height) {
+            return (weight / (height * height)).toFixed(2);
+        }
+        
+        function showBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+                return;
+            }
+            
+            // ตรวจสอบว่าส่วนสูงอยู่ในช่วงที่เป็นไปได้ (0.5m - 2.5m)
+            if (height < 0.5 || height > 2.5) {
+                alert("ส่วนสูงไม่อยู่ในช่วงที่เป็นไปได้ กรุณาตรวจสอบว่าคุณกรอกส่วนสูงในหน่วยเมตร (เช่น 1.65 สำหรับ 165 ซม.)");
+                return;
+            }
+            
+            const bmi = calculateBMI(weight, height);
+            document.getElementById('bmiResult').innerText = `BMI ของคุณคือ: ${bmi}`;
+        }
+        
+        function greetUser() {
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+            if (!name || isNaN(age) || age <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+                return;
+            }
+            let greeting = age < 18 ? `สวัสดีครับ/ค่ะ ${name}! คุณยังเด็กมาก!` :
+                        age <= 30 ? `สวัสดีครับ/ค่ะ ${name}! คุณกำลังอยู่ในช่วงวัยหนุ่มสาว!` :
+                                    `สวัสดีครับ/ค่ะ ${name}! ยินดีที่ได้พบคุณ!`;
+            document.getElementById('greeting').innerText = greeting;
+        }
+        
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            document.getElementById('passwordResult').innerText = 
+                password.length > 8 ? "รหัสผ่านยาวพอ" : "รหัสผ่านต้องยาวกว่า 8 ตัวอักษร";
+        }
+    </script>
+</body>
+</html>]
 ```
-[รูปผลการทดลองที่ 2.4.1]
+[![image](https://github.com/user-attachments/assets/58f11c85-0d5f-4279-a6b5-04fe9dcddb08)
+]
 
 
 
