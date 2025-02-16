@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ Functions</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.1: Functions</h1>
+
+    <h2>คำนวณ BMI</h2>
+    <p>น้ำหนัก: <input type="number" id="weight" placeholder="น้ำหนัก (kg)"></p>
+    <p>ส่วนสูง: <input type="number" id="height" placeholder="ส่วนสูง (m)"></p>
+    <button onclick="showBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+
+    <h2>ทักทายผู้ใช้ตามอายุ</h2>
+    <p>ชื่อ: <input type="text" id="name" placeholder="ชื่อ"></p>
+    <p>อายุ: <input type="number" id="age" placeholder="อายุ"></p>
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greeting"></p>
+
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <p>รหัสผ่าน: <input type="text" id="password" placeholder="รหัสผ่าน"></p>
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+
+    <script>
+        // ฟังก์ชันคำนวณ BMI
+        function calculateBMI(weight, height) {
+            let bmi = weight / (height * height);
+            return bmi.toFixed(2);
+        }
+
+        function showBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+            } else {
+                const bmi = calculateBMI(weight, height);
+                document.getElementById('bmiResult').innerText = `BMI ของคุณคือ: ${bmi}`;
+            }
+        }
+
+        // ฟังก์ชันทักทายผู้ใช้
+        function greetUser() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            let greeting = '';
+            if (age < 18) {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! คุณยังเด็กมาก!`;
+            } else if (age >= 18 && age <= 30) {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! คุณกำลังอยู่ในช่วงวัยหนุ่มสาว!`;
+            } else {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! ยินดีที่ได้พบคุณ!`;
+            }
+            document.getElementById('greeting').innerText = greeting;
+        }
+
+        // ฟังก์ชันตรวจสอบรหัสผ่าน
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password.length > 8) {
+                document.getElementById('passwordResult').innerText = "รหัสผ่านยาวพอ";
+            } else {
+                document.getElementById('passwordResult').innerText = "รหัสผ่านต้องยาวกว่า 8 ตัวอักษร";
+            }
+        }
+    </script>
+</body>
+</html>

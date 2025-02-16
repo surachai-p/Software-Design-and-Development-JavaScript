@@ -260,9 +260,67 @@ number /= 2;          // เท่ากับ number = number / 2
 ### บันทึกผลการทดลอง 2.2
 ```html
 [บันทึกโค้ด ที่นี่]
-```
-[รูปผลการทดลองที่ 2.2]
+``` 
+1. =
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.2</title>
+</head>
+<body>
 
+    <script>
+        let mathtest = 75;
+        let comtest = 70;
+        let engtest = 78;
+
+
+    let average = (mathtest + comtest + engtest) / 3;
+
+
+    document.write("<h2>คะแนนเฉลี่ย: " + average.toFixed(2) + "</h2>");
+    </script>
+
+</body>
+</html> 
+
+ 2. =
+ <!DOCTYPE html>
+<html lang = "th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณราคาสินค้ารวม VAT</title>
+</head>
+<body>
+    <h2>ราคาสินค้ารวม VAT 7%</h2>
+    <p id="result"></p>
+
+    <script>
+        let productName = "ปากกา"
+        let price = 15;
+        let vatRate = 0.07;
+
+        let vatAmount = price * vatRate;
+        let totalPrice = price + vatAmount;
+
+        document.getElementById("result").innerHTML = 
+            "ชื่อสินค้า" + productName + "<br>" +
+            "ราคาสินค้า" + price.toFixed(2) + "บาท<br>" +
+            "VAT 7%" + vatRate.toFixed(2) + "บาท<br>" +
+            "ราคารวม" + totalPrice.toFixed(2) + "บาท";
+
+    </script>
+
+</body>
+</html> 
+
+
+[รูปผลการทดลองที่ 2.2]
+1. ![alt text](image-3.png)
+2. ![alt text](image-4.png)
 ### 2.3 การควบคุมการทำงาน
 
 JavaScript มีโครงสร้างควบคุมการทำงานหลักๆ ดังนี้:
@@ -394,8 +452,83 @@ for (let i = 1; i <= 5; i++) {
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
-[รูปผลการทดลองที่ 2.3]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ 2.3</title>
+</head>
+<body>
+    <h2>โปรแกรมทดสอบ</h2>
 
+    <button onclick="checkEvenOdd()">ตรวจสอบเลขคู่-คี่</button>
+    <button onclick="showMultiplication2()">แสดงสูตรคูณแม่ 2</button>
+    <button onclick="showMultiplication3()">แสดงสูตรคูณแม่ 3</button>
+    <button onclick="countDown()">นับถอยหลัง</button>
+    <button onclick="checkAge()">ตรวจสอบช่วงวัย</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkEvenOdd() {
+            let number = prompt("กรอกตัวเลข:");
+            number = parseInt(number);
+            if (number % 2 === 0) {
+                document.getElementById("result").innerHTML = number + " เป็นเลขคู่";
+            } else {
+                document.getElementById("result").innerHTML = number + " เป็นเลขคี่";
+            }
+        }
+
+        function showMultiplication2() {
+            let text = "<b> ตารางสูตรคูณแม่ 2</b><br>";
+            for (let i = 1; i <= 12; i++) {
+                text += "2 × " + i + " = " + (2 * i) + "<br>";
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        function showMultiplication3() {
+            let text = "<b> ตารางสูตรคูณแม่ 3</b><br>";
+            let j = 1;
+            while (j <= 12) {
+                text += "3 × " + j + " = " + (3 * j) + "<br>";
+                j++;
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        function countDown() {
+            let text = "<b> นับถอยหลังจาก 10 ถึง 1</b><br>";
+            for (let k = 10; k >= 1; k--) {
+                text += k + "<br>";
+            }
+            document.getElementById("result").innerHTML = text;
+        }
+
+        function checkAge() {
+            let age = prompt("กรอกอายุของคุณ:");
+            age = parseInt(age);
+            let resultText = "";
+
+            if (age >= 0 && age <= 12) {
+                resultText = "อายุ " + age + " ปี: วัยเด็ก";
+            } else if (age >= 13 && age <= 18) {
+                resultText = "อายุ " + age + " ปี: วัยรุ่น";
+            } else {
+                resultText = "อายุ " + age + " ปี: วัยผู้ใหญ่";
+            }
+
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>
+
+[รูปผลการทดลองที่ 2.3]
+![alt text](image-5.png)
 ### 2.4 Functions และ Arrow Functions
 
 Functions คือกลุ่มคำสั่งที่สามารถนำมาใช้ซ้ำได้ ใน JavaScript มีวิธีการเขียน function 2 แบบหลักๆ:
@@ -508,8 +641,81 @@ process(function() {
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
-[รูปผลการทดลองที่ 2.4.1]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ Functions</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.1: Functions</h1>
 
+    <h2>คำนวณ BMI</h2>
+    <p>น้ำหนัก: <input type="number" id="weight" placeholder="น้ำหนัก (kg)"></p>
+    <p>ส่วนสูง: <input type="number" id="height" placeholder="ส่วนสูง (m)"></p>
+    <button onclick="showBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+
+    <h2>ทักทายผู้ใช้ตามอายุ</h2>
+    <p>ชื่อ: <input type="text" id="name" placeholder="ชื่อ"></p>
+    <p>อายุ: <input type="number" id="age" placeholder="อายุ"></p>
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greeting"></p>
+
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <p>รหัสผ่าน: <input type="text" id="password" placeholder="รหัสผ่าน"></p>
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+
+    <script>
+        // ฟังก์ชันคำนวณ BMI
+        function calculateBMI(weight, height) {
+            let bmi = weight / (height * height);
+            return bmi.toFixed(2);
+        }
+
+        function showBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+            } else {
+                const bmi = calculateBMI(weight, height);
+                document.getElementById('bmiResult').innerText = `BMI ของคุณคือ: ${bmi}`;
+            }
+        }
+
+        // ฟังก์ชันทักทายผู้ใช้
+        function greetUser() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            let greeting = '';
+            if (age < 18) {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! คุณยังเด็กมาก!`;
+            } else if (age >= 18 && age <= 30) {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! คุณกำลังอยู่ในช่วงวัยหนุ่มสาว!`;
+            } else {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! ยินดีที่ได้พบคุณ!`;
+            }
+            document.getElementById('greeting').innerText = greeting;
+        }
+
+        // ฟังก์ชันตรวจสอบรหัสผ่าน
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password.length > 8) {
+                document.getElementById('passwordResult').innerText = "รหัสผ่านยาวพอ";
+            } else {
+                document.getElementById('passwordResult').innerText = "รหัสผ่านต้องยาวกว่า 8 ตัวอักษร";
+            }
+        }
+    </script>
+</body>
+</html>
+
+[รูปผลการทดลองที่ 2.4.1]
+![alt text](image-6.png)
 
 
 #### 2.4.2 Arrow Function
@@ -551,8 +757,73 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
-[รูปผลการทดลองที่ 2.4.2]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ Arrow Function</title>
+</head>
+<body>
+    <h1>แบบทดสอบ 2.4.2: Arrow Function</h1>
 
+    <h2>คำนวณ BMI</h2>
+    <p>น้ำหนัก: <input type="number" id="weight" placeholder="น้ำหนัก (kg)"></p>
+    <p>ส่วนสูง: <input type="number" id="height" placeholder="ส่วนสูง (m)"></p>
+    <button onclick="showBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+
+    <h2>ทักทายผู้ใช้ตามอายุ</h2>
+    <p>ชื่อ: <input type="text" id="name" placeholder="ชื่อ"></p>
+    <p>อายุ: <input type="number" id="age" placeholder="อายุ"></p>
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greeting"></p>
+
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <p>รหัสผ่าน: <input type="text" id="password" placeholder="รหัสผ่าน"></p>
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+
+    <script>
+        // ฟังก์ชันคำนวณ BMI ด้วย Arrow Function
+        const calculateBMI = (weight, height) => weight / (height * height);
+
+        function showBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+            } else {
+                const bmi = calculateBMI(weight, height);
+                document.getElementById('bmiResult').innerText = `BMI ของคุณคือ: ${bmi.toFixed(2)}`;
+            }
+        }
+
+        // ฟังก์ชันทักทายผู้ใช้ตามอายุด้วย Arrow Function
+        const greetUser = (name, age) => {
+            let greeting = '';
+            if (age < 18) {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! คุณยังเด็กมาก!`;
+            } else if (age >= 18 && age <= 30) {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! คุณกำลังอยู่ในช่วงวัยหนุ่มสาว!`;
+            } else {
+                greeting = `สวัสดีครับ/ค่ะ ${name}! ยินดีที่ได้พบคุณ!`;
+            }
+            document.getElementById('greeting').innerText = greeting;
+        };
+
+        // ฟังก์ชันตรวจสอบรหัสผ่านด้วย Arrow Function
+        const checkPassword = () => {
+            const password = document.getElementById('password').value;
+            const result = password.length > 8 ? "รหัสผ่านยาวพอ" : "รหัสผ่านต้องยาวกว่า 8 ตัวอักษร";
+            document.getElementById('passwordResult').innerText = result;
+        };
+    </script>
+</body>
+</html>
+
+[รูปผลการทดลองที่ 2.4.2]
+![alt text](image-7.png)
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
 ### การทดลองที่ 3.1 การสร้างปุ่มและจัดการ Event ด้วย JavaScript
@@ -621,8 +892,55 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
-[รูปผลการทดลองที่ 3.1]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+</head>
+<body>
+    <h1>คำนวณค่า BMI (ดัชนีมวลกาย)</h1>
 
+    <label for="weight">น้ำหนัก (กก.):</label>
+    <input type="number" id="weight" required>
+    
+    <label for="height">ส่วนสูง (ม.):</label>
+    <input type="number" id="height" step="0.01" required>
+    
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+    
+    <p id="result"></p>
+
+    <script>
+        const calculateBMI = () => {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (!weight || !height) {
+                document.getElementById('result').innerHTML = "กรุณากรอกข้อมูลให้ครบถ้วน!";
+                return;
+            }
+
+            const bmi = weight / (height * height);
+
+            let status = '';
+            if (bmi < 18.5) {
+                status = "ผอม";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                status = "สมส่วน";
+            } else {
+                status = "อ้วน";
+            }
+
+            document.getElementById('result').innerHTML = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)} - สถานะ: ${status}`;
+        }
+    </script>
+</body>
+</html>
+
+[รูปผลการทดลองที่ 3.1]
+![alt text](image-8.png)
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
 
@@ -783,8 +1101,132 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
-[รูปผลการทดลองที่ 3.2.2]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
 
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+</body>
+</html>
+
+[รูปผลการทดลองที่ 3.2.2]
+![alt text](image-9.png)
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
 
@@ -890,7 +1332,209 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const checkin = new Date(document.getElementById('checkin').value);
+            const checkout = new Date(document.getElementById('checkout').value);
+            const today = new Date();
+            
+            if (checkin < today) {
+                alert('กรุณาเลือกวันเช็คอินที่ยังไม่ผ่านมา');
+                return;
+            }
+            
+            if (checkout <= checkin) {
+                alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+                return;
+            }
+            
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลัก)');
+                return;
+            }
+            
+            const days = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+            
+            const roomtype = document.getElementById('roomtype');
+            const roomtypeText = roomtype.options[roomtype.selectedIndex].text;
+            
+            const summary = `
+                สรุปการจอง:
+                - ชื่อผู้จอง: ${document.getElementById('fullname').value}
+                - ประเภทห้อง: ${roomtypeText}
+                - วันที่เข้าพัก: ${checkin.toLocaleDateString('th-TH')}
+                - วันที่ออก: ${checkout.toLocaleDateString('th-TH')}
+                - จำนวนวันที่พัก: ${days} วัน
+                - จำนวนผู้เข้าพัก: ${document.getElementById('guests').value} ท่าน
+            `;
+            
+            if (confirm(summary + '\n\nยืนยันการจองห้องพัก?')) {
+                alert('จองห้องพักเรียบร้อยแล้ว');
+                this.reset();
+            }
+        });
+
+        document.getElementById('checkin').addEventListener('change', function() {
+            document.getElementById('checkout').min = this.value;
+        });
+
+        document.getElementById('roomtype').addEventListener('change', function() {
+            const guestsInput = document.getElementById('guests');
+            if (this.value === 'standard') {
+                guestsInput.max = 2;
+            } else if (this.value === 'deluxe') {
+                guestsInput.max = 3;
+            } else if (this.value === 'suite') {
+                guestsInput.max = 4;
+            }
+            
+            if (guestsInput.value > guestsInput.max) {
+                guestsInput.value = guestsInput.max;
+            }
+        });
+    </script>
+</body>
+</html>
+
 [รูปผลการทดลองที่ 3.2.3]
+![alt text](image-10.png)
+
+[สรุปผลการทดลอง]
+สรุปผลการทดลอง: การเพิ่มฟังก์ชันด้วย JavaScript
+ในการทดลองนี้ได้ทำการเพิ่มฟังก์ชันต่างๆ ด้วย JavaScript เพื่อเพิ่มความสามารถให้กับฟอร์มจองห้องพักออนไลน์ โดยได้ทดลองปรับแต่งฟังก์ชันหลายๆ ส่วน ดังนี้:
+การตรวจสอบความถูกต้องของข้อมูล:ระบบได้ทำการตรวจสอบวันที่เช็คอินและเช็คเอาท์ เพื่อให้มั่นใจว่าเลือกวันที่ถูกต้อง โดยวันที่เช็คอินต้องไม่เป็นวันที่ในอดีต และวันที่เช็คเอาท์ต้องอยู่หลังจากวันที่เช็คอิน
+การตรวจสอบเบอร์โทรศัพท์ก็ถูกเพิ่มเข้ามาเพื่อให้ผู้ใช้กรอกเบอร์โทรที่มีรูปแบบถูกต้อง (10 หลัก)
+การคำนวณจำนวนวันที่พัก:ระบบสามารถคำนวณจำนวนวันที่ผู้ใช้จะเข้าพักได้โดยอัตโนมัติ เมื่อเลือกวันที่เช็คอินและเช็คเอาท์ ทำให้ผู้ใช้สามารถทราบระยะเวลาการพักโดยไม่ต้องคำนวณเอง
+การแสดงสรุปการจอง:หลังจากกรอกข้อมูล ฟอร์มจะแสดงสรุปการจองทั้งหมด เช่น ชื่อผู้จอง, ประเภทห้อง, วันที่เข้าพัก, วันที่เช็คเอาท์, จำนวนวันที่พัก และจำนวนผู้เข้าพัก
+ระบบจะขอให้ผู้ใช้ยืนยันการจองก่อนการทำรายการ เมื่อผู้ใช้ยืนยันแล้ว ฟอร์มจะรีเซ็ตข้อมูลให้พร้อมสำหรับการจองครั้งต่อไป
+การตรวจสอบวันที่แบบ Real-time:เมื่อผู้ใช้เลือกวันที่เช็คอิน ระบบจะตั้งค่าขั้นต่ำของวันที่เช็คเอาท์ให้เป็นวันที่เช็คอิน เพื่อป้องกันไม่ให้ผู้ใช้เลือกวันที่เช็คเอาท์ก่อนวันเช็คอิน
+เมื่อผู้ใช้เลือกประเภทห้องพัก ระบบจะปรับจำนวนผู้เข้าพักสูงสุดตามประเภทห้อง เช่น ห้องมาตรฐานสามารถพักได้สูงสุด 2 คน, ห้องดีลักซ์ 3 คน และห้องสวีท 4 คน
 
 
 ## คำแนะนำเพิ่มเติม
