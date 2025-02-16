@@ -171,7 +171,20 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+const studentID = "67030134"; 
+let studentName = "ปรียาภรณ์ นาคสมบูรณ์"; 
+let midtermScore = 85; 
+let finalScore = 90;
+
+// ประกาศ Object สำหรับเก็บข้อมูลนักศึกษา
+let student = {
+    id: "67030134",
+    name: "ปรียาภรณ์ นาคสมบูรณ์",
+    major: "เทคโนโลยีคอมพิวเตอร์",
+    gpa: 3.85
+};
+
+console.log(student);
 ```
 [รูปผลการทดลองที่ 2.1]
 
