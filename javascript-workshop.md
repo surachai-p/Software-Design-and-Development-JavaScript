@@ -190,7 +190,23 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[
+// ประกาศตัวแปรสำหรับเก็บข้อมูลนักศึกษา
+let studentId = "67030091";      
+let studentName = "ธนวัฒน์ พุทธา";      
+let midTermScore = 19;          
+let finalTermScore = 30;        
+ 
+const GPA = 3.40   // เกรดเฉลี่ย (ใช้ const เพราะค่าไม่ควรเปลี่ยนแปลงหลังจากคำนวณ)
+ 
+let ST = {
+    studentId: "67030091",
+    studentName: "ธนวัฒน์ พุทธา",
+    midTermScore: "17",
+    finalTermScore: "39",
+    GPA: "3.40"
+};
+]
 ```
 [รูปผลการทดลองที่ 2.1]
 
@@ -244,9 +260,63 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณคะแนนเฉลี่ย</title>
+</head>
+<body>
+    <h2>โปรแกรมคำนวณคะแนนเฉลี่ย</h2>
+    
+    <label for="subject1">คะแนนวิชาที่ 1:</label>
+    <input type="number" id="subject1"><br><br>
+
+    <label for="subject2">คะแนนวิชาที่ 2:</label>
+    <input type="number" id="subject2"><br><br>
+
+    <label for="subject3">คะแนนวิชาที่ 3:</label>
+    <input type="number" id="subject3"><br><br>
+
+    <button onclick="calculateAverage()">คำนวณ</button>
+    <p id="result"></p>
+
+    <script src="Lab2.2.js"></script>
+</body>
+</html>
+]
 ```
-[รูปผลการทดลองที่ 2.2]
+```html
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณราคาสินค้ารวม VAT</title>
+</head>
+<body>
+    <h2>คำนวณราคาสินค้ารวม VAT 7%</h2>
+
+    <label for="productName">ชื่อสินค้า:</label>
+    <input type="text" id="productName"><br><br>
+
+    <label for="productPrice">ราคาสินค้า (บาท):</label>
+    <input type="number" id="productPrice"><br><br>
+
+    <button id="calculateBtn">คำนวณ</button>
+    
+    <h3>ผลลัพธ์:</h3>
+    <p id="result"></p>
+
+    <script src="Lab2.2.2.js"></script>
+</body>
+</html>
+]
+```
+[![alt text](image-4.png)]
+
+[![alt text](image-5.png)]
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -377,9 +447,84 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบเลขคู่/คี่ และแสดงสูตรคูณ</title>
+</head>
+<body>
+    <h2>ตรวจสอบเลขคู่หรือเลขคี่</h2>
+    <label for="numberInput">กรอกตัวเลข:</label>
+    <input type="number" id="numberInput">
+    <button id="checkBtn">ตรวจสอบ</button>
+    <p id="resultCheck"></p>
+
+    <h2>ตารางสูตรคูณแม่ 2</h2>
+    <pre id="multiplicationTable2"></pre>
+
+    <h2>ตารางสูตรคูณแม่ 3</h2>
+    <pre id="multiplicationTable3"></pre>
+
+    <script src="Lab2.3.js"></script>
+</body>
+</html>
+]
 ```
-[รูปผลการทดลองที่ 2.3]
+
+```html
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นับถอยหลัง</title>
+</head>
+<body>
+    <h2>นับถอยหลังจาก 10 ถึง 1</h2>
+    
+    <h3>ใช้ for loop</h3>
+    <pre id="countdownFor"></pre>
+
+    <h3>ใช้ while loop</h3>
+    <pre id="countdownWhile"></pre>
+
+    <script src="Lab2.3.2.js"></script>
+</body>
+</html>
+]
+```
+
+```html
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบช่วงวัยตามอายุ</title>
+</head>
+<body>
+    <h2>ตรวจสอบช่วงวัยตามอายุ</h2>
+
+    <label for="ageInput">กรอกอายุของคุณ:</label>
+    <input type="number" id="ageInput">
+    <button id="checkBtn">ตรวจสอบ</button>
+    
+    <h3>ผลลัพธ์:</h3>
+    <p id="result"></p>
+
+    <script src="Lab2.3.3.js"></script>
+</body>
+</html>
+]
+```
+
+[![alt text](image-6.png)]
+
+[![alt text](image-7.png)]
+
+[![alt text](image-8.png)]
 
 ### 2.4 Functions และ Arrow Functions
 
