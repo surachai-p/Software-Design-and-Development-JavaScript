@@ -522,8 +522,11 @@ for (let i = 1; i <= 5; i++) {
 </body>
 </html>]
 ```
-[![Screenshot 2025-02-16 214824](https://github.com/user-attachments/assets/2559e406-3111-4cc3-a06e-00b0250b368f)
-]
+[![Screenshot 2025-02-16 214824](https://github.com/user-attachments/assets/57b2b42b-7580-475f-9474-9fa8e063a846)]
+[![Screenshot 2025-02-16 214824](https://github.com/user-attachments/assets/6c0815df-85b3-4927-b684-1b942115c46c)]
+[![Screenshot 2025-02-16 214824](https://github.com/user-attachments/assets/2a7ab1ea-302c-49dd-9439-8d02daea45e0)]
+[![Screenshot 2025-02-16 214824](https://github.com/user-attachments/assets/eac8fc33-eff4-4118-b724-5c42ab9c0518)]
+[![Screenshot 2025-02-16 214824](https://github.com/user-attachments/assets/3e955f3e-0473-455e-8168-66a527eb34b6)]
 
 ### 2.4 Functions และ Arrow Functions
 
