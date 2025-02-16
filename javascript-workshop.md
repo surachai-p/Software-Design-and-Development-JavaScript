@@ -695,8 +695,30 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### บันทึกผลการทดลอง 2.4.2
 ```html
 [บันทึกโค้ด ที่นี่]
+const calculateBMI = (weight, height) => {
+    const bmi = weight / (height ** 2);
+    return bmi.toFixed(2);
+};
+
+console.log("BMI:", calculateBMI(70, 1.75));
+
+const greetUser = (name, age) => {
+    if (age < 15) return `สวัสดีครับ ${name}`;
+    if (age < 23) return `สวัสดีครับผม ${name}`;
+    return `สวัสดีคุณ ${name}`;
+};
+
+console.log(greetUser("กาย", 10));
+console.log(greetUser("นิว", 18));
+console.log(greetUser("ตะวัน", 25));
+
+const checkPassword = password => 
+    password.length > 8 ? "รหัสผ่านแข็งแรง" : "รหัสผ่านสั้นเกินไป"
+
 ```
 [รูปผลการทดลองที่ 2.4.2]
+![image](https://github.com/user-attachments/assets/1427eb18-69a0-42db-adc6-b154b4e12acf)
+
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -765,8 +787,64 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### บันทึกผลการทดลอง 3.1
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+</head>
+<body>
+    <h2>คำนวณค่า BMI</h2>
+    <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+    <input type="number" id="weight" placeholder="ใส่น้ำหนัก" step="0.1"><br><br>
+
+    <label for="height">ส่วนสูง (เซนติเมตร):</label>
+    <input type="number" id="height" placeholder="ใส่ส่วนสูง" step="0.1"><br><br>
+
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value);
+
+           
+            height = height / 100;
+
+           
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById("result").innerHTML = "กรุณากรอกข้อมูลให้ถูกต้อง!";
+                return;
+            }
+
+            
+            let bmi = (weight / (height ** 2)).toFixed(2);
+
+            
+            let status = "";
+            if (bmi < 18.5) {
+                status = "น้ำหนักต่ำกว่าเกณฑ์ (ผอม)";
+            } else if (bmi < 24.9) {
+                status = "น้ำหนักปกติ (สมส่วนดี)";
+            } else if (bmi < 29.9) {
+                status = "น้ำหนักเกิน (ไม่สมส่วน)";
+            } else {
+                status = "ลดน้ำหนักด่วน";
+            }
+
+            // แสดงผลลัพธ์
+            document.getElementById("result").innerHTML = `ค่า BMI ของคุณคือ ${bmi} (${status})`;
+        }
+    </script>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 3.1]
+![image](https://github.com/user-attachments/assets/f57fc7f8-7edb-4fa0-bd97-45ce6208bfcb)
+
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
