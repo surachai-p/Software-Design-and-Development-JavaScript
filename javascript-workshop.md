@@ -404,9 +404,39 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การควบคุมการทำงาน</title>
+    <script defer src="script.js"></script> <!-- เชื่อมกับไฟล์ JavaScript -->
+</head>
+<body>
+    <h2>ตรวจสอบเลขคู่หรือเลขคี่</h2>
+    <label>ป้อนตัวเลข: <input type="number" id="number"></label>
+    <button onclick="checkEvenOdd()">ตรวจสอบ</button>
+    <p id="resultEvenOdd"></p>
+
+    <h2>ตารางสูตรคูณแม่ 2</h2>
+    <pre id="multiplicationTable2"></pre>
+
+    <h2>ตารางสูตรคูณแม่ 3 (ใช้ while loop)</h2>
+    <pre id="multiplicationTable3"></pre>
+
+    <h2>นับถอยหลังจาก 10 ถึง 1</h2>
+    <pre id="countdown"></pre>
+
+    <h2>ตรวจสอบช่วงวัยตามอายุ</h2>
+    <label>ป้อนอายุ: <input type="number" id="ageInput"></label>
+    <button onclick="checkAgeGroup()">ตรวจสอบช่วงวัย</button>
+    <p id="ageGroup"></p>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 2.3]
+![image](https://github.com/user-attachments/assets/70e4c59b-ddab-49e5-ba04-c95cb2de2386)![image](https://github.com/user-attachments/assets/0009b6fb-9ec3-4606-9570-1e8a51402abb)
+
+
 
 ### 2.4 Functions และ Arrow Functions
 
