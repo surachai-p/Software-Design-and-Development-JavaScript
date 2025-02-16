@@ -1336,8 +1336,8 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 </body>
 </html>]
 ```
-[![image](https://github.com/user-attachments/assets/99b1f6c9-7067-4002-a7e4-e8403da6ea03)
-]
+[![image](https://github.com/user-attachments/assets/be43e421-2eb6-42ef-bbac-a0138ce2541b)]
+[![image](https://github.com/user-attachments/assets/52be77ce-a00f-4a01-ab27-3cb85a4c844e)]
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
