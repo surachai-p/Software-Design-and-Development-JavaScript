@@ -1059,9 +1059,125 @@ console.log(validatePassword("securePass1")); // "รหัสผ่านถู
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #e0f7fa, #80deea);
+            color: #2c3e50;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #00796b;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #00796b;
+            box-shadow: 0 0 6px rgba(0, 150, 136, 0.5);
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            font-size: 16px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ฟอร์มจองห้องพัก</h1>
+    <form id="bookingForm">
+        <label for="fullname">ชื่อ-นามสกุล:</label>
+        <input type="text" id="fullname" name="fullname" placeholder="กรุณากรอกชื่อ-นามสกุล" required>
+
+        <label for="email">อีเมล:</label>
+        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+        <label for="phone">เบอร์โทรศัพท์:</label>
+        <input type="tel" id="phone" name="phone" placeholder="เบอร์โทร 10 หลัก" required>
+
+        <label for="checkin">วันที่เช็คอิน:</label>
+        <input type="date" id="checkin" name="checkin" required>
+
+        <label for="checkout">วันที่เช็คเอาท์:</label>
+        <input type="date" id="checkout" name="checkout" required>
+
+        <label for="roomtype">ประเภทห้องพัก:</label>
+        <select id="roomtype" name="roomtype" required>
+            <option value="">-- เลือกประเภทห้องพัก --</option>
+            <option value="standard">ห้องมาตรฐาน</option>
+            <option value="deluxe">ห้องดีลักซ์</option>
+            <option value="suite">ห้องสวีท</option>
+        </select>
+
+        <label for="guests">จำนวนผู้เข้าพัก (1-4):</label>
+        <input type="number" id="guests" name="guests" min="1" max="4" required>
+
+        <button type="submit">ยืนยันการจอง</button>
+    </form>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 3.2.2]
+(![Screen-Recording-2025-02-16-233314](https://github.com/user-attachments/assets/7ed3e4c3-6f3d-4647-b903-da777cb6df47))
+
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
