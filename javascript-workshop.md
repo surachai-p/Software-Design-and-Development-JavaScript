@@ -166,7 +166,19 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+let studentID = "67030085";
+let studentName = "Thanut-orn Sripoohtron";
+let midtermScore = 65;
+let finalScore = 80;
+let isStudent = true;
+
+let student = {
+    studentID: "67030085",
+    name: "Thanut-orn Sripoohtron",
+    major: "เทคโนโลยีคอมพิวเตอร์",
+    gpa: 3.50,
+    isStudent: true
+};
 ```
 [รูปผลการทดลองที่ 2.1]
 
