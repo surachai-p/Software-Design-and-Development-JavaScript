@@ -753,9 +753,94 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ Arrow Functions</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.2: Arrow Functions</h1>
+    
+    <h2>คำนวณ BMI</h2>
+    <p>น้ำหนัก: <input type="number" id="weight" placeholder="น้ำหนัก (kg)" step="0.1"></p>
+    <p>ส่วนสูง: <input type="number" id="height" placeholder="ส่วนสูง (m)" step="0.01">
+    <small>กรอกในหน่วยเมตร เช่น 1.65 สำหรับ 165 ซม.</small></p>
+    <button onclick="showBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+    
+    <h2>ทักทายผู้ใช้ตามอายุ</h2>
+    <p>ชื่อ: <input type="text" id="name" placeholder="ชื่อ"></p>
+    <p>อายุ: <input type="number" id="age" placeholder="อายุ"></p>
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greeting"></p>
+    
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <p>รหัสผ่าน: <input type="text" id="password" placeholder="รหัสผ่าน"></p>
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+    
+    <script>
+        // 1. Arrow function คำนวณค่า BMI
+        const calculateBMI = (weight, height) => (weight / (height * height)).toFixed(2);
+        
+        // ฟังก์ชันแสดงผล BMI
+        const showBMI = () => {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+                return;
+            }
+            
+            // ตรวจสอบว่าส่วนสูงอยู่ในช่วงที่เป็นไปได้ (0.5m - 2.5m)
+            if (height < 0.5 || height > 2.5) {
+                alert("ส่วนสูงไม่อยู่ในช่วงที่เป็นไปได้ กรุณาตรวจสอบว่าคุณกรอกส่วนสูงในหน่วยเมตร (เช่น 1.65 สำหรับ 165 ซม.)");
+                return;
+            }
+            
+            const bmi = calculateBMI(weight, height);
+            document.getElementById('bmiResult').innerText = `BMI ของคุณคือ: ${bmi}`;
+        };
+        
+        // 2. Arrow function รับชื่อและอายุ แล้วแสดงข้อความทักทายที่เหมาะสมกับอายุ
+        const getGreeting = (name, age) => {
+            if (age < 18) return `สวัสดีครับ/ค่ะ ${name}! คุณยังเด็กมาก!`;
+            if (age <= 30) return `สวัสดีครับ/ค่ะ ${name}! คุณกำลังอยู่ในช่วงวัยหนุ่มสาว!`;
+            return `สวัสดีครับ/ค่ะ ${name}! ยินดีที่ได้พบคุณ!`;
+        };
+        
+        // ฟังก์ชันแสดงผลการทักทาย
+        const greetUser = () => {
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+            if (!name || isNaN(age) || age <= 0) {
+                alert("กรุณากรอกข้อมูลให้ถูกต้อง!");
+                return;
+            }
+            
+            const greeting = getGreeting(name, age);
+            document.getElementById('greeting').innerText = greeting;
+        };
+        
+        // 3. Arrow function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
+        const isPasswordValid = password => password.length > 8;
+        
+        // ฟังก์ชันแสดงผลการตรวจสอบรหัสผ่าน
+        const checkPassword = () => {
+            const password = document.getElementById('password').value;
+            const isValid = isPasswordValid(password);
+            document.getElementById('passwordResult').innerText = 
+                isValid ? "รหัสผ่านยาวพอ" : "รหัสผ่านต้องยาวกว่า 8 ตัวอักษร";
+        };
+    </script>
+</body>
+</html>]
 ```
-[รูปผลการทดลองที่ 2.4.2]
+[![image](https://github.com/user-attachments/assets/4e8f81c8-75f7-416d-849c-f2d1ccaa8ec5)
+]
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
