@@ -1115,9 +1115,229 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        div {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+        
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #3498db;
+        }
+        
+        .success-message {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+            <span class="error-message" id="fullname-error"></span>
+        </div>
+        
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message" id="email-error"></span>
+        </div>
+        
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <span class="error-message" id="phone-error"></span>
+        </div>
+        
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+            <span class="error-message" id="checkin-error"></span>
+        </div>
+        
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+            <span class="error-message" id="checkout-error"></span>
+        </div>
+        
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+            <span class="error-message" id="roomtype-error"></span>
+        </div>
+        
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+            <span class="error-message" id="guests-error"></span>
+        </div>
+        
+        <button type="submit">จองห้องพัก</button>
+    </form>
+    
+    <div id="success-message" class="success-message">
+        การจองห้องพักเสร็จสมบูรณ์ ขอบคุณที่ใช้บริการ!
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('bookingForm');
+            const successMessage = document.getElementById('success-message');
+            
+            // ตั้งค่าวันที่ต่ำสุดเป็นวันนี้
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkin').min = today;
+            document.getElementById('checkout').min = today;
+            
+            // ตรวจสอบว่าวันที่เช็คเอาท์ต้องมากกว่าวันที่เช็คอิน
+            document.getElementById('checkin').addEventListener('change', function() {
+                document.getElementById('checkout').min = this.value;
+                
+                // หากวันที่เช็คเอาท์น้อยกว่าวันที่เช็คอินใหม่ ให้รีเซ็ต
+                const checkout = document.getElementById('checkout');
+                if (checkout.value && checkout.value < this.value) {
+                    checkout.value = this.value;
+                }
+            });
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // ล้างข้อความผิดพลาดเก่า
+                const errorElements = document.querySelectorAll('.error-message');
+                errorElements.forEach(element => {
+                    element.textContent = '';
+                });
+                
+                let isValid = true;
+                
+                // ตรวจสอบรูปแบบอีเมล
+                const email = document.getElementById('email').value;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    document.getElementById('email-error').textContent = 'กรุณากรอกอีเมลให้ถูกต้อง';
+                    isValid = false;
+                }
+                
+                // ตรวจสอบเบอร์โทรศัพท์
+                const phone = document.getElementById('phone').value;
+                const phonePattern = /^0\d{9}$/;
+                if (!phonePattern.test(phone)) {
+                    document.getElementById('phone-error').textContent = 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (เช่น 0812345678)';
+                    isValid = false;
+                }
+                
+                // ตรวจสอบวันที่
+                const checkin = new Date(document.getElementById('checkin').value);
+                const checkout = new Date(document.getElementById('checkout').value);
+                if (checkout <= checkin) {
+                    document.getElementById('checkout-error').textContent = 'วันที่เช็คเอาท์ต้องมากกว่าวันที่เช็คอิน';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // ซ่อนฟอร์มและแสดงข้อความสำเร็จ
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // ในระบบจริงควรส่งข้อมูลไปยัง server ด้วย
+                    // fetch('/api/booking', {
+                    //     method: 'POST',
+                    //     body: new FormData(form)
+                    // })
+                }
+            });
+        });
+    </script>
+</body>
+</html>]
 ```
-[รูปผลการทดลองที่ 3.2.2]
+[![image](https://github.com/user-attachments/assets/99b1f6c9-7067-4002-a7e4-e8403da6ea03)
+]
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
