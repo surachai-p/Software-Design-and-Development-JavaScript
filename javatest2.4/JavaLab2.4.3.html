@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบรหัสผ่าน</title>
+</head>
+<body>
+    <h2>ตรวจสอบความยาวของรหัสผ่าน</h2>
+
+    <label for="passwordInput">กรอกรหัสผ่าน:</label>
+    <input type="password" id="passwordInput">
+    
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    
+    <h3>ผลลัพธ์:</h3>
+    <p id="result"></p>
+
+    <script>
+        function checkPassword() {
+            let password = document.getElementById("passwordInput").value.trim();
+            let message = password.length > 8 ? "✅ รหัสผ่านถูกต้อง" : "❌ รหัสผ่านต้องมีมากกว่า 8 ตัวอักษร";
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</body>
+</html>

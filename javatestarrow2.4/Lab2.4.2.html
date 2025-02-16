@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทักทายตามอายุ</title>
+</head>
+<body>
+    <h2>โปรแกรมทักทายตามช่วงอายุ</h2>
+
+    <label for="name">ชื่อของคุณ:</label>
+    <input type="text" id="name" placeholder="ป้อนชื่อของคุณ">
+
+    <label for="age">อายุของคุณ:</label>
+    <input type="number" id="age" placeholder="ป้อนอายุของคุณ">
+
+    <button onclick="greetUser()">ทักทาย</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="result"></p>
+
+    <script>
+        // ฟังก์ชันทักทายตามช่วงอายุ
+        function greetUser() {
+            let name = document.getElementById("name").value.trim();
+            let age = parseInt(document.getElementById("age").value);
+
+            if (!name || isNaN(age) || age <= 0) {
+                document.getElementById("result").innerText = "❌ กรุณากรอกชื่อและอายุให้ถูกต้อง";
+                return;
+            }
+
+            let greeting = `สวัสดี ${name}, `;
+            
+            if (age < 13) {
+                greeting += "คุณเป็นเด็ก ขอให้มีความสุขกับการเรียนและการเล่นนะ! 🎉";
+            } else if (age < 20) {
+                greeting += "คุณเป็นวัยรุ่น สนุกกับช่วงวัยแห่งการเติบโต! 🚀";
+            } else {
+                greeting += "คุณเป็นผู้ใหญ่ ขอให้ประสบความสำเร็จในทุกสิ่งที่ทำ! 💪";
+            }
+
+            document.getElementById("result").innerText = greeting;
+        }
+    </script>
+</body>
+</html>
