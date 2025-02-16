@@ -1442,9 +1442,277 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+            <div id="fullname-error" class="error"></div>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+            <div id="email-error" class="error"></div>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <div id="phone-error" class="error"></div>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+            <div id="checkin-error" class="error"></div>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+            <div id="checkout-error" class="error"></div>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+            <div id="roomtype-error" class="error"></div>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+            <div id="guests-error" class="error"></div>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('bookingForm');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // ตั้งค่าวันที่ขั้นต่ำเป็นวันนี้
+            const todayStr = today.toISOString().split('T')[0];
+            document.getElementById('checkin').min = todayStr;
+            document.getElementById('checkout').min = todayStr;
+            
+            // ล้างข้อความแสดงข้อผิดพลาด
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('.error');
+                errorElements.forEach(el => el.textContent = '');
+            }
+            
+            // แสดงข้อความผิดพลาด
+            function showError(fieldId, message) {
+                document.getElementById(fieldId + '-error').textContent = message;
+            }
+
+            document.getElementById('checkin').addEventListener('change', function() {
+                const checkoutInput = document.getElementById('checkout');
+                checkoutInput.min = this.value;
+                
+                // ถ้าวันที่เช็คเอาท์น้อยกว่าวันที่เช็คอินใหม่ ให้กำหนดเป็นวันเช็คอิน
+                if (checkoutInput.value && new Date(checkoutInput.value) < new Date(this.value)) {
+                    checkoutInput.value = this.value;
+                }
+            });
+
+            document.getElementById('roomtype').addEventListener('change', function() {
+                const guestsInput = document.getElementById('guests');
+                if (this.value === 'standard') {
+                    guestsInput.max = 2;
+                } else if (this.value === 'deluxe') {
+                    guestsInput.max = 3;
+                } else if (this.value === 'suite') {
+                    guestsInput.max = 4;
+                }
+                
+                if (guestsInput.value > guestsInput.max) {
+                    guestsInput.value = guestsInput.max;
+                }
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                clearErrors();
+                
+                let isValid = true;
+                
+                // ตรวจสอบชื่อ-นามสกุล
+                const fullname = document.getElementById('fullname').value.trim();
+                if (fullname.length < 3) {
+                    showError('fullname', 'กรุณากรอกชื่อ-นามสกุลให้ถูกต้อง');
+                    isValid = false;
+                }
+                
+                // ตรวจสอบอีเมล
+                const email = document.getElementById('email').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    showError('email', 'กรุณากรอกอีเมลให้ถูกต้อง');
+                    isValid = false;
+                }
+                
+                // ตรวจสอบเบอร์โทรศัพท์
+                const phone = document.getElementById('phone').value.trim();
+                const phoneRegex = /^[0-9]{10}$/;
+                if (!phoneRegex.test(phone)) {
+                    showError('phone', 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลัก)');
+                    isValid = false;
+                }
+                
+                // ตรวจสอบวันที่เช็คอิน
+                const checkin = new Date(document.getElementById('checkin').value);
+                if (isNaN(checkin.getTime()) || checkin < today) {
+                    showError('checkin', 'กรุณาเลือกวันเช็คอินที่ถูกต้อง');
+                    isValid = false;
+                }
+                
+                // ตรวจสอบวันที่เช็คเอาท์
+                const checkout = new Date(document.getElementById('checkout').value);
+                if (isNaN(checkout.getTime())) {
+                    showError('checkout', 'กรุณาเลือกวันเช็คเอาท์ที่ถูกต้อง');
+                    isValid = false;
+                } else if (checkout <= checkin) {
+                    showError('checkout', 'วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+                    isValid = false;
+                }
+                
+                // ตรวจสอบประเภทห้องพัก
+                const roomtype = document.getElementById('roomtype');
+                if (!roomtype.value) {
+                    showError('roomtype', 'กรุณาเลือกประเภทห้องพัก');
+                    isValid = false;
+                }
+                
+                // ตรวจสอบจำนวนผู้เข้าพัก
+                const guests = parseInt(document.getElementById('guests').value);
+                const guestsInput = document.getElementById('guests');
+                if (isNaN(guests) || guests < 1 || guests > guestsInput.max) {
+                    showError('guests', `จำนวนผู้เข้าพักต้องอยู่ระหว่าง 1-${guestsInput.max} ท่าน`);
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    const days = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+                    const roomtypeText = roomtype.options[roomtype.selectedIndex].text;
+                    
+                    const summary = `
+                        สรุปการจอง:
+                        - ชื่อผู้จอง: ${fullname}
+                        - ประเภทห้อง: ${roomtypeText}
+                        - วันที่เข้าพัก: ${checkin.toLocaleDateString('th-TH')}
+                        - วันที่ออก: ${checkout.toLocaleDateString('th-TH')}
+                        - จำนวนวันที่พัก: ${days} วัน
+                        - จำนวนผู้เข้าพัก: ${guests} ท่าน
+                    `;
+                    
+                    if (confirm(summary + '\n\nยืนยันการจองห้องพัก?')) {
+                        alert('จองห้องพักเรียบร้อยแล้ว');
+                        form.reset();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>]
 ```
-[รูปผลการทดลองที่ 3.2.3]
+[![image](https://github.com/user-attachments/assets/32fc787b-7ced-4eb3-af29-29300224e455)]
+[![image](https://github.com/user-attachments/assets/fb5d0bd6-1d71-41ec-8655-e4070e329e27)]
+[![image](https://github.com/user-attachments/assets/d15bd1aa-aada-4deb-8b86-04d39167ddf0)]
 
 
 ## คำแนะนำเพิ่มเติม
