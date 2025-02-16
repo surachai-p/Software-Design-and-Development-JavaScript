@@ -251,9 +251,72 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การคำนวณคะแนนเฉลี่ย</title>
+</head>
+<body>
+    <h1>การคำนวณคะแนนเฉลี่ย</h1>
+    <form id="scoreForm">
+        <label for="subject1">คะแนนวิชาที่ 1:</label>
+        <input type="number" id="subject1" name="subject1"><br><br>
+        <label for="subject2">คะแนนวิชาที่ 2:</label>
+        <input type="number" id="subject2" name="subject2"><br><br>
+        <label for="subject3">คะแนนวิชาที่ 3:</label>
+        <input type="number" id="subject3" name="subject3"><br><br>
+        <button type="button" onclick="calculateAverage()">คำนวณคะแนนเฉลี่ย</button>
+    </form>
+    <p id="result">ผลการคำนวณ: </p>
+
+    <script>
+        function calculateAverage() {
+            let subject1 = parseFloat(document.getElementById('subject1').value);
+            let subject2 = parseFloat(document.getElementById('subject2').value);
+            let subject3 = parseFloat(document.getElementById('subject3').value);
+            let average = (subject1 + subject2 + subject3) / 3;
+            document.getElementById('result').innerHTML = "ผลการคำนวณ: " + average.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การคำนวณราคาสินค้ารวม VAT</title>
+</head>
+<body>
+    <h1>การคำนวณราคาสินค้ารวม VAT</h1>
+    <form id="priceForm">
+        <label for="productName">ชื่อสินค้า:</label>
+        <input type="text" id="productName" name="productName"><br><br>
+        <label for="productPrice">ราคาสินค้า:</label>
+        <input type="number" id="productPrice" name="productPrice"><br><br>
+        <button type="button" onclick="calculateVAT()">คำนวณราคาสินค้ารวม VAT</button>
+    </form>
+    <p id="resultVAT">ผลการคำนวณ: </p>
+
+    <script>
+        function calculateVAT() {
+            let productPrice = parseFloat(document.getElementById('productPrice').value);
+            let vat = productPrice * 0.07;
+            let totalPrice = productPrice + vat;
+            document.getElementById('resultVAT').innerHTML = "ผลการคำนวณ: " + totalPrice.toFixed(2) + " (รวม VAT 7%)";
+        }
+    </script>
+</body>
+</html>
+]
 ```
-[รูปผลการทดลองที่ 2.2]
+[![Screenshot 2025-02-16 213914](https://github.com/user-attachments/assets/e04f4166-a3bc-4bb7-8339-5b96ad9f17e2)
+]
+[![image](https://github.com/user-attachments/assets/5715ede4-2cc4-4a07-9488-e27e67bb0147)
+]
 
 ### 2.3 การควบคุมการทำงาน
 
