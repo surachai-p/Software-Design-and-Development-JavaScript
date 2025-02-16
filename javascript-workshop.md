@@ -711,7 +711,93 @@ console.log(isPasswordValid("just12"));
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>BMI Calculator</h1>
+    <p>Enter your weight (kg) and height (m) to calculate your BMI.</p>
+
+    <form id="bmiForm">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight"><br><br>
+
+        <label for="height">Height (m):</label>
+        <input type="number" id="height" step="0.01"><br><br>
+
+        <button type="submit">Calculate BMI</button>
+    </form>
+
+    <div class="result">
+        <h3>Your BMI: <span id="bmiResult"></span></h3>
+        <h3>Category: <span id="bmiCategory"></span></h3>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #2973B2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9ACBD0;
+}
+
+.result {
+    margin-top: 25px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+```
+
+```js
+document.getElementById("bmiForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
+
+    const bmi = weight / (height * height);
+    document.getElementById("bmiResult").textContent = bmi.toFixed(2);
+
+    let category = "";
+    if (bmi < 18.5) {
+        category = "Underweight (ผอม)";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        category = "Normal weight (สมส่วน)";
+    } else if (bmi >= 25 && bmi < 29.9) {
+        category = "Overweight (อ้วน)";
+    } else {
+        category = "NaN";
+    }
+
+    document.getElementById("bmiCategory").textContent = category;
+});
 ```
 [รูปผลการทดลองที่ 3.1]
 
