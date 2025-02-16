@@ -1282,10 +1282,83 @@ console.log(validatePassword("securePass1")); // "รหัสผ่านถู
 
 ### บันทึกผลการทดลอง 3.2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #2c3e50;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            width: 320px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #74ebd5;
+            outline: none;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    <form id="bookingForm">
+        <input type="text" id="fullname" placeholder="ชื่อ-นามสกุล" required>
+        <input type="email" id="email" placeholder="อีเมล" required>
+        <input type="tel" id="phone" placeholder="เบอร์โทร (10 หลัก)" required>
+        <input type="date" id="checkin" required>
+        <input type="date" id="checkout" required>
+        <select id="roomtype" required>
+            <option value="">เลือกประเภทห้อง</option>
+            <option value="standard">มาตรฐาน</option>
+            <option value="deluxe">ดีลักซ์</option>
+            <option value="suite">สวีท</option>
+        </select>
+        <input type="number" id="guests" min="1" max="4" placeholder="จำนวนผู้เข้าพัก" required>
+        <button type="submit">จองห้องพัก</button>
+    </form>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 3.2.3]
-
+(![Screen-Recording-2025-02-16-234753](https://github.com/user-attachments/assets/4ff1eb98-d3b8-48a8-bc34-ce1632bbd9ea)
+)
 
 ## คำแนะนำเพิ่มเติม
 - ทดลองเขียนโค้ดทุกตัวอย่างด้วยตัวเอง
