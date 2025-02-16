@@ -106,7 +106,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 </body>
 </html>
 ```
-![Lab1](#)
+![Lab1](img/Lab1.png)
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -184,7 +184,7 @@ let person = {
     </script>
 ```
 [รูปผลการทดลองที่ 2.1]
-![Lab2](#)
+![Lab2](img/Lab2.1.png)
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
 
@@ -318,8 +318,8 @@ number /= 2;          // เท่ากับ number = number / 2
 </body>
 </html>
 ```
-![Lab2.2](#)
-![Lab2.2II](#)
+![Lab2.2](img/Lab2.2.mp4)
+![Lab2.2II](img/Lab2.2II.mp4)
 ### 2.3 การควบคุมการทำงาน
 
 JavaScript มีโครงสร้างควบคุมการทำงานหลักๆ ดังนี้:
@@ -488,7 +488,7 @@ if (age >= 0 && age <= 12) {
     console.log("อายุไม่ถูกต้อง");
 }
 ```
-![Lab](#)
+![Lab](img/Lab2.3.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -646,7 +646,7 @@ let password = "mypassword123";
 let isValid = isPasswordValid(password);
 console.log("รหัสผ่านถูกต้องหรือไม่: " + isValid);
 ```
-![Lab2.4.1](#)
+![Lab2.4.1](img/Lab2.4.1.png)
 
 
 
@@ -720,7 +720,7 @@ let password = "mypassword123";
 let isValid = isPasswordValid(password);
 console.log("รหัสผ่านถูกต้องหรือไม่: " + isValid);
 ```
-![Lab2.4.2](#)
+![Lab2.4.2](img/Lab2.4.2.png)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -842,7 +842,7 @@ console.log("รหัสผ่านถูกต้องหรือไม่:
 </body>
 </html>
 ```
-![Lab3.1](#)
+![Lab3.1](img/Lab3.1.mp4)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -1154,7 +1154,7 @@ console.log("รหัสผ่านถูกต้องหรือไม่:
 </body>
 </html>
 ```
-![Lab3.2.2](#)
+![Lab3.2.2](img/Lab3.2.mp4)
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -1455,7 +1455,7 @@ console.log("รหัสผ่านถูกต้องหรือไม่:
 </body>
 </html>
 ```
-![Lab3.2.3](#)
+![Lab3.2.3](img/Lab3.2.3.mp4)
 
 
 ## คำแนะนำเพิ่มเติม
