@@ -908,9 +908,54 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+</head>
+<body>
+    <h1>คำนวณค่า BMI (ดัชนีมวลกาย)</h1>
+
+    <label for="weight">น้ำหนัก (กก.):</label>
+    <input type="number" id="weight" required>
+    
+    <label for="height">ส่วนสูง (ม.):</label>
+    <input type="number" id="height" step="0.01" required>
+    
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+    
+    <p id="result"></p>
+
+    <script>
+        const calculateBMI = () => {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (!weight || !height) {
+                document.getElementById('result').innerHTML = "กรุณากรอกข้อมูลให้ครบถ้วน!";
+                return;
+            }
+
+            const bmi = weight / (height * height);
+
+            let status = '';
+            if (bmi < 18.5) {
+                status = "ผอม";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                status = "สมส่วน";
+            } else {
+                status = "อ้วน";
+            }
+
+            document.getElementById('result').innerHTML = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)} - สถานะ: ${status}`;
+        }
+    </script>
+</body>
+</html>]
 ```
-[รูปผลการทดลองที่ 3.1]
+[![image](https://github.com/user-attachments/assets/c72c9429-6801-4ac5-a1c5-5a701f343e6b)]
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
