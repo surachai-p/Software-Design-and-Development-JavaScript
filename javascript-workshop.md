@@ -172,7 +172,32 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองประกาศตัวแปร</title>
+</head>
+<body>
+    <h1>บันทึกผลการทดลอง 2.1: การทดลองประกาศตัวแปร</h1>
+
+    <script>
+       
+        let studentID = "67030073";         
+        let studentName = "Natthapong Niampradit";
+        let midTermScore = 60;             
+        let finalTermScore = 80;           
+
+        
+        const student = {
+            studentID: "67030073",          
+            studentName: "ณัฐพงศ์ เนียมประดิษฐ",  
+            major: "เทคโนโลยีตอมพิวเตอร์",  
+            GPA: 3.09                   
+        };
+    </script>
+</body>
+</html>]
 ```
 [รูปผลการทดลองที่ 2.1]
 
