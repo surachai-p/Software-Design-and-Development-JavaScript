@@ -712,9 +712,63 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[// ฟังก์ชันคำนวณค่า BMI (ดัชนีมวลกาย)//
+
+function calculateBMI(weight, height) {
+    // คำนวณค่า BMI
+    let bmi = weight / (height * height);
+    
+    // แสดงค่า BMI และสถานะน้ำหนัก
+    console.log("ค่า BMI: " + bmi.toFixed(2));  // ปัดค่าทศนิยม 2 ตำแหน่ง
+    
+    if (bmi < 18.5) {
+        console.log("น้ำหนักน้อยเกินไป");
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        console.log("น้ำหนักปกติ");
+    } else if (bmi >= 25 && bmi < 29.9) {
+        console.log("น้ำหนักเกิน");
+    } else {
+        console.log("อ้วน");
+    }
+}
+
+
+calculateBMI(85, 1.75); 
+
+// ฟังก์ชันทักทายตามอายุ//
+
+function greetByAge(name, age) {
+    if (age < 13) {
+        console.log("สวัสดี " + name + " คุณยังเด็กมาก!");
+    } else if (age >= 13 && age <= 19) {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยรุ่น!");
+    } else if (age >= 20 && age <= 59) {
+        console.log("สวัสดี " + name + " คุณเป็นผู้ใหญ่แล้ว!");
+    } else {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยผู้สูงอายุ!");
+    }
+}
+
+greetByAge("สมชาย",18);  
+greetByAge("สมหญิง", 25); 
+greetByAge("ลุงพงษ์", 65); 
+
+//ฟังก์ชันตรวจสอบรหัสผ่าน//
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        console.log("รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร");
+    } else {
+        console.log("รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร");
+    }
+}
+
+
+checkPassword("password123"); 
+checkPassword("short"); ]
 ```
 [รูปผลการทดลองที่ 2.4.2]
+![Screenshot 2025-02-16 232113](https://github.com/user-attachments/assets/023376ab-7c84-466f-9df6-cd6c4a09e86d)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
