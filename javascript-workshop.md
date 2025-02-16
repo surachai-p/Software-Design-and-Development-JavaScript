@@ -600,8 +600,60 @@ process(function() {
 ### บันทึกผลการทดลอง 2.4.1
 ```html
 [บันทึกโค้ด ที่นี่]
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);
+    return bmi.toFixed(2);
+}
+// ทดสอบใช้งาน
+console.log("BMI:", calculateBMI(70, 1.75));
+
+function greetUser(name, age) {
+    let message = "";
+
+    if (age < 18) {
+        message = "สวัสดีครับ " + name;
+    } else if (age < 20) {
+        message = "สวัสดีครับผม " + name;
+    } else {
+        message = "สวัสดี คุณ " + name;
+    }
+
+    console.log(message);
+}
+
+// ทดสอบใช้งาน
+greetUser("กาย", 12);
+greetUser("นิว", 21);
+greetUser("ตะวัน", 35);
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        return "รหัสผ่านแข็งแรง";
+    } else {
+        return "รหัสผ่านสั้นเกินไป";
+    }
+}
+
+// ทดสอบใช้งาน
+console.log(checkPassword("00000"));
+console.log(checkPassword("mypassword000"));
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 [รูปผลการทดลองที่ 2.4.1]
+![image](https://github.com/user-attachments/assets/b1e836c5-ccc4-47a0-9c2e-e005f987e5f8)
+
 
 
 
