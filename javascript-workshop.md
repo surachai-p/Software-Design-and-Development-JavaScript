@@ -249,9 +249,40 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="sob.js"></script>
+</body>
+</html>
+
 ```
-[รูปผลการทดลองที่ 2.2]
+```js
+//คะแนนเฉลี่ย3วิชา
+let x = 35;
+let y = 40;
+let z = 50;
+
+let product = x*y*z/3;
+console.log(product);
+
+//คำนวณสินค้ารวม
+let iphon = 50000; //ราคา iphon
+let car = 1000000; //ราคารถยนต์
+
+let iphonwithVTA = iphon+(iphon*0.07);
+let carwithVTA = car+(car*0.07);
+let sum = iphonwithVTA+carwithVTA;
+console.log(sum);
+```
+
+![Uploading image.png…]()
+
 
 ### 2.3 การควบคุมการทำงาน
 
