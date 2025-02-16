@@ -1005,8 +1005,153 @@ const checkPassword = password =>
 ### บันทึกผลการทดลอง 3.2.2
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required onchange="updatePrice()">
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard" data-price="3000">ห้องมาตรฐาน (3,000 บาท/คืน)</option>
+                <option value="deluxe" data-price="4900">ห้องดีลักซ์ (4,900 บาท/คืน)</option>
+                <option value="suite" data-price="6900">ห้องสวีท (6,900 บาท/คืน)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <div>
+            <strong>ราคาต่อคืน: <span id="roomPrice">-</span> บาท</strong>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script>
+        function updatePrice() {
+            const roomSelect = document.getElementById("roomtype");
+            const priceDisplay = document.getElementById("roomPrice");
+            const selectedOption = roomSelect.options[roomSelect.selectedIndex];
+            
+            if (selectedOption.value) {
+                priceDisplay.textContent = selectedOption.getAttribute("data-price");
+            } else {
+                priceDisplay.textContent = "-";
+            }
+        }
+    </script>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 3.2.2]
+![image](https://github.com/user-attachments/assets/d460aa58-5fa4-4597-85f8-873999d9b41c)
+
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -1112,8 +1257,187 @@ const checkPassword = password =>
 ### บันทึกผลการทดลอง 3.2.3
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #eef2f3;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .summary {
+            display: none;
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required pattern="\d{10}">
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required onchange="updatePrice(); adjustGuests();">
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard" data-price="3000" data-max-guests="2">ห้องมาตรฐาน (3,000 บาท/คืน)</option>
+                <option value="deluxe" data-price="4900" data-max-guests="3">ห้องดีลักซ์ (4,900 บาท/คืน)</option>
+                <option value="suite" data-price="6900" data-max-guests="4">ห้องสวีท (6,900 บาท/คืน)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <div>
+            <strong>ราคาต่อคืน: <span id="roomPrice">-</span> บาท</strong>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <div class="summary" id="summary">
+        <h2>สรุปรายละเอียดการจอง</h2>
+        <p><strong>ชื่อ-นามสกุล:</strong> <span id="sumName"></span></p>
+        <p><strong>อีเมล:</strong> <span id="sumEmail"></span></p>
+        <p><strong>เบอร์โทรศัพท์:</strong> <span id="sumPhone"></span></p>
+        <p><strong>วันที่เช็คอิน:</strong> <span id="sumCheckin"></span></p>
+        <p><strong>วันที่เช็คเอาท์:</strong> <span id="sumCheckout"></span></p>
+        <p><strong>ประเภทห้อง:</strong> <span id="sumRoom"></span></p>
+        <p><strong>จำนวนผู้เข้าพัก:</strong> <span id="sumGuests"></span></p>
+    </div>
+
+    <script>
+        function updatePrice() {
+            const roomSelect = document.getElementById("roomtype");
+            const priceDisplay = document.getElementById("roomPrice");
+            const selectedOption = roomSelect.options[roomSelect.selectedIndex];
+            
+            if (selectedOption.value) {
+                priceDisplay.textContent = selectedOption.getAttribute("data-price");
+            } else {
+                priceDisplay.textContent = "-";
+            }
+        }
+
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("sumName").textContent = document.getElementById("fullname").value;
+            document.getElementById("sumEmail").textContent = document.getElementById("email").value;
+            document.getElementById("sumPhone").textContent = document.getElementById("phone").value;
+            document.getElementById("sumCheckin").textContent = document.getElementById("checkin").value;
+            document.getElementById("sumCheckout").textContent = document.getElementById("checkout").value;
+            document.getElementById("sumRoom").textContent = document.getElementById("roomtype").options[document.getElementById("roomtype").selectedIndex].text;
+            document.getElementById("sumGuests").textContent = document.getElementById("guests").value;
+            document.getElementById("summary").style.display = "block";
+        });
+    </script>
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 3.2.3]
+![image](https://github.com/user-attachments/assets/299e2def-94f5-47c9-a732-a727619e9076)
+![image](https://github.com/user-attachments/assets/8f98dd81-022c-4b03-9aa4-759df69ec044)
+
+
 
 
 ## คำแนะนำเพิ่มเติม
