@@ -674,9 +674,61 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="lab07.js"></script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 2.4.2]
+```js
+function calculateBMI(w, h) { //w = น้ำหนัก  h=ส่วนสูง
+    let bmi = w/(h**2);
+    return bmi; 
+} 
+let w = 55;
+let h = 1.63;
+let bmi = calculateBMI(w,h);
+console.log("ค่า BMI คือ: " + bmi.toFixed(2));    
+
+
+function greetUser(name,age){
+    let greeting = 'สวัสดีจ้า';
+
+    if (name,age <= 12){
+        greeting += "เด็กน้อยน่ารัก";
+    }else if (name,age > 12 && age <= 25 ){
+        greeting += "วัยรุ่นแล้วเย้";
+    }else {
+        greeting += "วัยผู้ใหญ่"
+
+    }
+    console.log(greeting);
+    
+}
+greetUser("แป้ง", 10);   // ทักทายเด็ก
+greetUser("นูรีน", 18);  // ทักทายวัยรุ่น
+greetUser("นัท", 30);     // ทักทายผู้ใหญ่
+
+function checkPassword(password){
+        if (password.length >= 8) {
+            console.log("รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า 8 ตัว");
+        } else {
+            console.log("กรุณาตั้งรหัสผ่านให้ยาวมากกว่า 8 ตัว");
+        }
+    }
+    
+    checkPassword("Nirapada");  // รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า
+    checkPassword("Pang1188");  // รหัสผ่านมีความยาว 8 ตัวหรือมากกว่า
+    checkPassword("short");     // กรณีรหัสผ่านสั้นกว่า 8 ตัว
+```
+![image](https://github.com/user-attachments/assets/36f07615-5355-40f0-95c7-f40bc97c89bd)
+
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
