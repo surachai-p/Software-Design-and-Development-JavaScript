@@ -296,9 +296,32 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[// โปรแกรมคำนวณคะแนนเฉลี่ยจาก 3 วิชา
+let subject1 = 85;  // คะแนนวิชา 1
+let subject2 = 90;  // คะแนนวิชา 2
+let subject3 = 78;  // คะแนนวิชา 3
+
+// คำนวณคะแนนเฉลี่ย
+let averageScore = (subject1 + subject2 + subject3) / 3;
+
+// แสดงผลคะแนนเฉลี่ย
+console.log("คะแนนเฉลี่ยของนักศึกษา: " + averageScore);
+
+// โปรแกรมคำนวณราคาสินค้าที่รวม VAT 7%
+let productName = "สมาร์ทโฟน";
+let productPrice = 15000;  // ราคาสินค้า
+
+// คำนวณราคาสินค้าที่รวม VAT 7%
+let vatRate = 0.07;  // อัตรา VAT
+let priceWithVAT = productPrice + (productPrice * vatRate);
+
+// แสดงผลการคำนวณ
+console.log("ชื่อสินค้า: " + productName);
+console.log("ราคาสินค้า (ก่อน VAT): " + productPrice + " บาท");
+console.log("ราคาสินค้าที่รวม VAT 7%: " + priceWithVAT + " บาท");]
 ```
 [รูปผลการทดลองที่ 2.2]
+![Screenshot 2025-02-16 224358](https://github.com/user-attachments/assets/3ff3c1c9-9967-4e00-aac6-f67f6ae79274)
 
 ### 2.3 การควบคุมการทำงาน
 
