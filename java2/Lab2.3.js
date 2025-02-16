@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showMultiplicationTable3();
 });
 
-// ตรวจสอบเลขคู่หรือเลขคี่
+
 function checkEvenOdd() {
     let num = parseInt(document.getElementById("numberInput").value);
 
@@ -17,7 +17,7 @@ function checkEvenOdd() {
     document.getElementById("resultCheck").innerText = `ตัวเลข ${num} ${result}`;
 }
 
-// แสดงตารางสูตรคูณแม่ 2 ด้วย for loop
+
 function showMultiplicationTable2() {
     let output = "";
     for (let i = 1; i <= 12; i++) {
@@ -26,7 +26,7 @@ function showMultiplicationTable2() {
     document.getElementById("multiplicationTable2").innerText = output;
 }
 
-// แสดงตารางสูตรคูณแม่ 3 ด้วย while loop
+
 function showMultiplicationTable3() {
     let output = "";
     let i = 1;
