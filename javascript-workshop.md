@@ -77,8 +77,59 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 ### บันทึกผลการทดลอง 
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+
+    <!-- ปุ่มที่ 1: Inline JavaScript -->
+    <button onclick="alert('Patcharapol Klinon')">ปุ่มที่ 1</button>
+
+   
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    
+    <input type="text" id="inputText" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showtext()">แสดงข้อความ</button>
+
+   
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            let today = new Date().toLocaleDateString('th-TH', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+            alert('วันนี้คือ: ' + today);
+        };
+
+        function showtext(){
+            var text = document.getElementById("inputText").value;
+            alert('ข้อความที่กรอก: ' + text);
+        }
+    </script>
+
+    <
+    <script src="script.js"></script>
+
+
+</body>
+</html>
+
 ```
 [รูปผลการทดลองที่ 1]
+![image](https://github.com/user-attachments/assets/c4df0f78-4c40-4994-b3fb-78f4d4ca8f4e)
+![image](https://github.com/user-attachments/assets/d1838d92-7459-4ed8-b688-5072c864a023)
+![image](https://github.com/user-attachments/assets/aefde42e-32e6-49a2-b87d-407e28052cc6)
+![image](https://github.com/user-attachments/assets/c7fb3a73-cd7a-40b7-8563-1529db3deb90)
+
+
+
+
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
