@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การใช้งาน JavaScript เบื้องต้น</title>
+    <script>
+        function showDate() {
+            alert("วันที่ปัจจุบัน: " + new Date().toLocaleDateString());
+        }
+    </script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h2>แบบฝึกปฏิบัติที่ 1: การใช้งาน JavaScript เบื้องต้น</h2>
+    
+    
+    <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">แสดงชื่อนักศึกษา</button>
+    
+    
+    <button onclick="showDate()">แสดงวันที่ปัจจุบัน</button>
+    
+    >
+    <button id="showTimeBtn">แสดงเวลาปัจจุบัน</button>
+    
+    <br><br>
+    
+    
+    <input type="text" id="textInput" placeholder="กรอกข้อความที่นี่">
+    <button onclick="showText()">แสดงข้อความ</button>
+    <p id="outputText"></p>
+    
+</body>
+</html>

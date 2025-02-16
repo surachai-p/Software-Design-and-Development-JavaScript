@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมคำนวณคะแนนเฉลี่ย</title>
+</head>
+<body>
+    <h1>โปรแกรมคำนวณคะแนนเฉลี่ย</h1>
+
+    <label for="subject1">คะแนนวิชา 1:</label>
+    <input type="number" id="subject1" required><br><br>
+
+    <label for="subject2">คะแนนวิชา 2:</label>
+    <input type="number" id="subject2" required><br><br>
+
+    <label for="subject3">คะแนนวิชา 3:</label>
+    <input type="number" id="subject3" required><br><br>
+
+    <button onclick="calculateAverage()">คำนวณคะแนนเฉลี่ย</button>
+
+    <h2>ผลลัพธ์</h2>
+    <p id="result"></p>
+
+    <script>
+        function calculateAverage() {
+            let subject1 = parseFloat(document.getElementById("subject1").value);
+            let subject2 = parseFloat(document.getElementById("subject2").value);
+            let subject3 = parseFloat(document.getElementById("subject3").value);
+
+            if (!isNaN(subject1) && !isNaN(subject2) && !isNaN(subject3)) {
+                let averageScore = (subject1 + subject2 + subject3) / 3;
+                document.getElementById("result").innerHTML = "คะแนนเฉลี่ย: " + averageScore.toFixed(2);
+            } else {
+                document.getElementById("result").innerHTML = "กรุณากรอกคะแนนทุกวิชา";
+            }
+        }
+    </script>
+</body>
+</html>
