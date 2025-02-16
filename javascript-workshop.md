@@ -171,22 +171,31 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-const studentID = "67030134"; 
-let studentName = "ปรียาภรณ์ นาคสมบูรณ์"; 
-let midtermScore = 85; 
-let finalScore = 90;
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลนักศึกษา</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h2>ข้อมูลนักศึกษา</h2>
+    <p><strong>รหัสนักศึกษา:</strong> <span id="studentID"></span></p>
+    <p><strong>ชื่อ:</strong> <span id="studentName"></span></p>
+    <p><strong>สาขาวิชา:</strong> <span id="major"></span></p>
+    <p><strong>เกรดเฉลี่ย:</strong> <span id="gpa"></span></p>
 
-// ประกาศ Object สำหรับเก็บข้อมูลนักศึกษา
-let student = {
-    id: "67030134",
-    name: "ปรียาภรณ์ นาคสมบูรณ์",
-    major: "เทคโนโลยีคอมพิวเตอร์",
-    gpa: 3.85
-};
-
-console.log(student);
+    <h2>คะแนนสอบ</h2>
+    <p><strong>คะแนนสอบกลางภาค:</strong> <span id="midtermScore"></span></p>
+    <p><strong>คะแนนสอบปลายภาค:</strong> <span id="finalScore"></span></p>
+    <p><strong>คะแนนรวม:</strong> <span id="totalScore"></span></p>
+    <p><strong>คะแนนเฉลี่ย:</strong> <span id="averageScore"></span></p>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 2.1]
+![image](https://github.com/user-attachments/assets/cc128027-9ba9-451a-9f34-d3c02eac8405)
+
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -238,9 +247,33 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การคำนวณคะแนนเฉลี่ย & VAT</title>
+    <script defer src="script.js"></script> <!-- เชื่อมกับไฟล์ JavaScript -->
+</head>
+<body>
+    <h2>คำนวณคะแนนเฉลี่ย</h2>
+    <label>คะแนนวิชา 1: <input type="number" id="subject1" value="85"></label><br>
+    <label>คะแนนวิชา 2: <input type="number" id="subject2" value="90"></label><br>
+    <label>คะแนนวิชา 3: <input type="number" id="subject3" value="80"></label><br>
+    <button onclick="calculateAverage()">คำนวณคะแนนเฉลี่ย</button>
+    <p id="averageResult"></p>
+
+    <h2>คำนวณราคาสินค้ารวม VAT 7%</h2>
+    <label>ชื่อสินค้า: <input type="text" id="productName" value="โน๊ตบุ๊ค"></label><br>
+    <label>ราคาสินค้า: <input type="number" id="productPrice" value="20000"></label><br>
+    <button onclick="calculateVAT()">คำนวณราคารวม VAT</button>
+    <p id="vatResult"></p>
+</body>
+</html>
+
 ```
-[รูปผลการทดลองที่ 2.2]
+![image](https://github.com/user-attachments/assets/0d61b381-faf5-4887-832e-61b9ee6992b7)
+
 
 ### 2.3 การควบคุมการทำงาน
 
