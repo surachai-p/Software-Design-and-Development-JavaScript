@@ -281,7 +281,8 @@ let sum = iphonwithVTA+carwithVTA;
 console.log(sum);
 ```
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/b4a75fe6-82f0-431f-8b45-35d33e178b4b)
+
 
 
 ### 2.3 การควบคุมการทำงาน
