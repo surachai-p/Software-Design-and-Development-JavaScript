@@ -1435,7 +1435,10 @@ const checkPassword = password =>
 ```
 [รูปผลการทดลองที่ 3.2.3]
 ![image](https://github.com/user-attachments/assets/299e2def-94f5-47c9-a732-a727619e9076)
-![image](https://github.com/user-attachments/assets/8f98dd81-022c-4b03-9aa4-759df69ec044)
+![image](https://github.com/user-attachments/assets/17c5ffcc-ca2f-4f87-b6ec-6f04d76c0d57)
+
+
+
 
 
 
