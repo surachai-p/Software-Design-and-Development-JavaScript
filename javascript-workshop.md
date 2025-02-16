@@ -798,9 +798,91 @@ console.log(checkPassword("short"));
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>คำนวณค่า BMI (ดัชนีมวลกาย)</h1>
+    <div>
+        <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+        <input type="text" id="weight" placeholder="กรุณากรอกน้ำหนัก" required>
+    </div>
+    <div>
+        <label for="height">ส่วนสูง (เมตร):</label>
+        <input type="text" id="height" placeholder="กรุณากรอกส่วนสูง" required>
+    </div>
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+
+    <div class="result" id="result"></div>
+
+    <script src="sob.js"></script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 3.1]
+```js
+const calculateBMI = () => {
+    // รับค่าจาก input
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
+    
+    // ตรวจสอบว่าเป็นค่าตัวเลขที่ถูกต้องและไม่เป็นศูนย์หรือติดลบ
+    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        document.getElementById("result").innerText = "กรุณากรอกข้อมูลที่ถูกต้อง";
+        return;
+    }
+    
+    // คำนวณค่า BMI
+    const bmi = weight / (height * height);
+    let resultText = "";
+
+    // แสดงผลลัพธ์ตามค่า BMI
+    if (bmi < 18.5) {
+        resultText = "คุณผอม";
+    } else if (bmi >= 18.5 && bmi < 25) {
+        resultText = "คุณสมส่วน";
+    } else {
+        resultText = "คุณอ้วน";
+    }
+
+    // แสดงผลลัพธ์ในส่วนที่กำหนด
+    document.getElementById("result").innerText = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)} (${resultText})`;
+}
+```
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bf6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+}
+```
+
+![image](https://github.com/user-attachments/assets/6e61baca-030c-43a4-b8ea-2c3deaa4294c)
+
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
