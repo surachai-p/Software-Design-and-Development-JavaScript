@@ -452,9 +452,57 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[// ตรวจสอบเลขคู่/เลขคี่//
+let number = 7;  // กำหนดตัวเลข
+
+if (number % 2 === 0) {
+    console.log(number + " เป็นเลขคู่");
+} else {
+    console.log(number + " เป็นเลขคี่");
+}
+
+//แสดงตารางสูตรคูณแม่ 2 (ใช้ for loop)//
+
+console.log("ตารางสูตรคูณแม่ 2:");
+for (let i = 1; i <= 12; i++) {
+    console.log("2 x " + i + " = " + (2 * i));
+}
+
+//แสดงตารางสูตรคูณแม่ 3 (ใช้ while loop)//
+
+console.log("ตารางสูตรคูณแม่ 3:");
+let j = 1;
+while (j <= 12) {
+    console.log("3 x " + j + " = " + (3 * j));
+    j++;
+}
+
+//โปรแกรมนับถอยหลังจาก 10 ถึง 1//
+
+console.log("นับถอยหลังจาก 10 ถึง 1:");
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+}
+
+//โปรแกรมตรวจสอบช่วงวัยตามอายุ/
+// /
+let age = 90;  // กำหนดอายุ
+
+if (age >= 0 && age <= 12) {
+    console.log("วัยเด็ก");
+} else if (age >= 13 && age <= 19) {
+    console.log("วัยรุ่น");
+} else if (age >= 20 && age <= 59) {
+    console.log("วัยผู้ใหญ่");
+} else if (age >= 60) {
+    console.log("วัยผู้สูงอายุ");
+} else {
+    console.log("อายุไม่ถูกต้อง");
+}]
 ```
 [รูปผลการทดลองที่ 2.3]
+![Screenshot 2025-02-16 225346](https://github.com/user-attachments/assets/0c40ed38-2d56-482c-9db3-e22ec169dde6)
+![Screenshot 2025-02-16 225420](https://github.com/user-attachments/assets/3deb4a12-356c-494a-83ab-987cab8dcb54)
 
 ### 2.4 Functions และ Arrow Functions
 
