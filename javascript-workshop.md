@@ -78,8 +78,95 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>ทดลอง JavaScript</title>
+
+</head>
+
+<body>
+
+    <!-- Inline JavaScript -->
+
+    <button onclick="alert('ชื่อของคุณคือ: จณิศตา ดีศรี')">ปุ่มที่ 1</button>
+
+
+
+    <!-- Internal JavaScript -->
+
+    <button id="btn2">ปุ่มที่ 2</button>
+
+
+
+    <!-- External JavaScript -->
+
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+
+
+    <br><br>
+
+
+
+    <!-- กล่องข้อความและปุ่มสำหรับแสดงผล -->
+
+    <input type="text" id="textInput" placeholder="กรอกข้อความที่นี่">
+
+    <button onclick="showText()">แสดงข้อความ</button>
+
+    <p id="outputText"></p>
+
+
+
+    <!-- Internal JavaScript -->
+
+    <script>
+
+        // ปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+
+        document.getElementById('btn2').onclick = function() {
+
+            let today = new Date();
+
+            alert('วันที่ปัจจุบันคือ: ' + today.toLocaleDateString('th-TH'));
+
+        };
+
+
+
+        // ฟังก์ชันแสดงข้อความจาก input
+
+        function showText() {
+
+            let text = document.getElementById('textInput').value;
+
+            document.getElementById('outputText').innerText = 'ข้อความที่คุณป้อน: ' + text;
+
+        }
+
+    </script>
+
+
+
+    <!-- External JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
 [รูปผลการทดลองที่ 1]
-  
+  ![Screenshot 2025-02-11 160214](https://github.com/user-attachments/assets/8b1654c5-e4d6-4079-a615-ff633979f0f1)
+  ![Screenshot 2025-02-11 160232](https://github.com/user-attachments/assets/15bf89f0-a8f3-45ed-a4a3-747c20fc7380)
+
+
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
 
@@ -135,9 +222,35 @@ let person = {
 ### บันทึกผลการทดลอง 2.1
 ```html
 [บันทึกโค้ด ที่นี่]
+let studentId = "167030038";      
+let studentName = "จณิศตา";     
+let midtermScore = 80;        
+let finalScore = 90;           
+
+const studentInfo = {
+    id: studentId,             
+    name: studentName,        
+    major: "ครุศาสตร์",  
+    gpa: 3.5                  
+};
+
+
+studentName = "จณิศตา"; 
+
+
+console.log(studentInfo);
+console.log("รหัสนักศึกษา: " + studentInfo.id);
+console.log("ชื่อ: " + studentInfo.name);
+console.log("สาขาวิชา: " + studentInfo.major);
+console.log("เกรดเฉลี่ย: " + studentInfo.gpa);
+
+
+let totalScore = midtermScore + finalScore;
+console.log("คะแนนรวม: " + totalScore);
 ```
 [รูปผลการทดลองที่ 2.1]
 
+![Screenshot 2025-02-16 223312](https://github.com/user-attachments/assets/abf55b70-6f7b-4e1e-93f7-0a5cc4783fca)
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
 
@@ -188,9 +301,32 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[// โปรแกรมคำนวณคะแนนเฉลี่ยจาก 3 วิชา
+let subject1 = 85;  // คะแนนวิชา 1
+let subject2 = 90;  // คะแนนวิชา 2
+let subject3 = 78;  // คะแนนวิชา 3
+
+// คำนวณคะแนนเฉลี่ย
+let averageScore = (subject1 + subject2 + subject3) / 3;
+
+// แสดงผลคะแนนเฉลี่ย
+console.log("คะแนนเฉลี่ยของนักศึกษา: " + averageScore);
+
+// โปรแกรมคำนวณราคาสินค้าที่รวม VAT 7%
+let productName = "สมาร์ทโฟน";
+let productPrice = 15000;  // ราคาสินค้า
+
+// คำนวณราคาสินค้าที่รวม VAT 7%
+let vatRate = 0.07;  // อัตรา VAT
+let priceWithVAT = productPrice + (productPrice * vatRate);
+
+// แสดงผลการคำนวณ
+console.log("ชื่อสินค้า: " + productName);
+console.log("ราคาสินค้า (ก่อน VAT): " + productPrice + " บาท");
+console.log("ราคาสินค้าที่รวม VAT 7%: " + priceWithVAT + " บาท");]
 ```
 [รูปผลการทดลองที่ 2.2]
+![Screenshot 2025-02-16 224358](https://github.com/user-attachments/assets/3ff3c1c9-9967-4e00-aac6-f67f6ae79274)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -321,9 +457,57 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[// ตรวจสอบเลขคู่/เลขคี่//
+let number = 7;  // กำหนดตัวเลข
+
+if (number % 2 === 0) {
+    console.log(number + " เป็นเลขคู่");
+} else {
+    console.log(number + " เป็นเลขคี่");
+}
+
+//แสดงตารางสูตรคูณแม่ 2 (ใช้ for loop)//
+
+console.log("ตารางสูตรคูณแม่ 2:");
+for (let i = 1; i <= 12; i++) {
+    console.log("2 x " + i + " = " + (2 * i));
+}
+
+//แสดงตารางสูตรคูณแม่ 3 (ใช้ while loop)//
+
+console.log("ตารางสูตรคูณแม่ 3:");
+let j = 1;
+while (j <= 12) {
+    console.log("3 x " + j + " = " + (3 * j));
+    j++;
+}
+
+//โปรแกรมนับถอยหลังจาก 10 ถึง 1//
+
+console.log("นับถอยหลังจาก 10 ถึง 1:");
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+}
+
+//โปรแกรมตรวจสอบช่วงวัยตามอายุ/
+// /
+let age = 90;  // กำหนดอายุ
+
+if (age >= 0 && age <= 12) {
+    console.log("วัยเด็ก");
+} else if (age >= 13 && age <= 19) {
+    console.log("วัยรุ่น");
+} else if (age >= 20 && age <= 59) {
+    console.log("วัยผู้ใหญ่");
+} else if (age >= 60) {
+    console.log("วัยผู้สูงอายุ");
+} else {
+    console.log("อายุไม่ถูกต้อง");
+}]
 ```
 [รูปผลการทดลองที่ 2.3]
+![Screenshot 2025-02-16 225346](https://github.com/user-attachments/assets/0c40ed38-2d56-482c-9db3-e22ec169dde6)
+![Screenshot 2025-02-16 225420](https://github.com/user-attachments/assets/3deb4a12-356c-494a-83ab-987cab8dcb54)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -435,10 +619,65 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[//ฟังก์ชันคำนวณค่า BMI//
+
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);  // คำนวณ BMI = น้ำหนัก / (ส่วนสูง * ส่วนสูง)
+    
+    // แสดงผลลัพธ์ BMI
+    console.log("ค่า BMI: " + bmi.toFixed(2));  // ปัดค่าให้เหลือ 2 ตำแหน่งทศนิยม
+    
+    if (bmi < 18.5) {
+        console.log("น้ำหนักน้อยเกินไป");
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        console.log("น้ำหนักปกติ");
+    } else if (bmi >= 25 && bmi < 29.9) {
+        console.log("น้ำหนักเกิน");
+    } else {
+        console.log("อ้วน");
+    }
+}
+
+
+calculateBMI(70, 1.75);  // น้ำหนัก 70 กก., ส่วนสูง 1.75 เมตร
+
+//ฟังก์ชันทักทายตามอายุ//
+
+function greetByAge(name, age) {
+    if (age < 13) {
+        console.log("สวัสดี " + name + " คุณยังเด็กมาก!");
+    } else if (age >= 13 && age <= 19) {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยรุ่น!");
+    } else if (age >= 20 && age <= 59) {
+        console.log("สวัสดี " + name + " คุณเป็นผู้ใหญ่แล้ว!");
+    } else {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยผู้สูงอายุ!");
+    }
+}
+
+
+greetByAge("น้าชาย", 50);  
+greetByAge("สมหญิง", 25); 
+greetByAge("ลุงพงษ์",80); 
+
+//ฟังก์ชันตรวจสอบรหัสผ่าน//
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        console.log("รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร");
+    } else {
+        console.log("รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร");
+    }
+}
+
+
+checkPassword("password123"); // รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร
+checkPassword("short"); // รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร
+]
 ```
 [รูปผลการทดลองที่ 2.4.1]
 
+![Screenshot 2025-02-16 230123](https://github.com/user-attachments/assets/a627d690-4d3f-4c70-9559-423beb821a5b)
 
 
 #### 2.4.2 Arrow Function
@@ -478,9 +717,63 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[// ฟังก์ชันคำนวณค่า BMI (ดัชนีมวลกาย)//
+
+function calculateBMI(weight, height) {
+    // คำนวณค่า BMI
+    let bmi = weight / (height * height);
+    
+    // แสดงค่า BMI และสถานะน้ำหนัก
+    console.log("ค่า BMI: " + bmi.toFixed(2));  // ปัดค่าทศนิยม 2 ตำแหน่ง
+    
+    if (bmi < 18.5) {
+        console.log("น้ำหนักน้อยเกินไป");
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        console.log("น้ำหนักปกติ");
+    } else if (bmi >= 25 && bmi < 29.9) {
+        console.log("น้ำหนักเกิน");
+    } else {
+        console.log("อ้วน");
+    }
+}
+
+
+calculateBMI(85, 1.75); 
+
+// ฟังก์ชันทักทายตามอายุ//
+
+function greetByAge(name, age) {
+    if (age < 13) {
+        console.log("สวัสดี " + name + " คุณยังเด็กมาก!");
+    } else if (age >= 13 && age <= 19) {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยรุ่น!");
+    } else if (age >= 20 && age <= 59) {
+        console.log("สวัสดี " + name + " คุณเป็นผู้ใหญ่แล้ว!");
+    } else {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยผู้สูงอายุ!");
+    }
+}
+
+greetByAge("สมชาย",18);  
+greetByAge("สมหญิง", 25); 
+greetByAge("ลุงพงษ์", 65); 
+
+//ฟังก์ชันตรวจสอบรหัสผ่าน//
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        console.log("รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร");
+    } else {
+        console.log("รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร");
+    }
+}
+
+
+checkPassword("password123"); 
+checkPassword("short"); ]
 ```
 [รูปผลการทดลองที่ 2.4.2]
+![Screenshot 2025-02-16 232113](https://github.com/user-attachments/assets/023376ab-7c84-466f-9df6-cd6c4a09e86d)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -550,7 +843,107 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>คำนวณค่า BMI</title>
+
+</head>
+
+<body>
+
+    <h2>คำนวณค่า BMI (ดัชนีมวลกาย)</h2>
+
+
+
+    <label for="weight">น้ำหนัก (kg): </label>
+
+    <input type="number" id="weight" placeholder="กรอกน้ำหนัก" required>
+
+    <br><br>
+
+
+
+    <label for="height">ส่วนสูง (cm): </label>
+
+    <input type="number" id="height" placeholder="กรอกส่วนสูง" required>
+
+    <br><br>
+
+
+
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+
+
+
+    <h3>ผลลัพธ์:</h3>
+
+    <p id="result"></p>
+
+
+
+    <script>
+
+        // Arrow Function คำนวณ BMI
+
+        const calculateBMI = () => {
+
+            let weight = parseFloat(document.getElementById("weight").value);
+
+            let height = parseFloat(document.getElementById("height").value) / 100; // แปลงเป็นเมตร
+
+
+
+            if (isNaN(weight) || isNaN(height) || height <= 0 || weight <= 0) {
+
+                document.getElementById("result").innerHTML = "กรุณากรอกค่าน้ำหนักและส่วนสูงให้ถูกต้อง!";
+
+                return;
+
+            }
+
+
+
+            let bmi = weight / (height * height);
+
+            let status = "";
+
+
+
+            if (bmi < 18.5) {
+
+                status = "ผอม";
+
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+
+                status = "สมส่วน";
+
+            } else {
+
+                status = "อ้วน";
+
+            }
+
+
+
+            document.getElementById("result").innerHTML = `ค่าดัชนีมวลกาย (BMI): ${bmi.toFixed(2)} <br> สถานะ: ${status}`;
+
+        };
+
+    </script>
+
+</body>
+
+</html>
 [รูปผลการทดลองที่ 3.1]
+![image](https://github.com/user-attachments/assets/4fe7e219-e801-434c-9553-807874546d12)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -712,8 +1105,128 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ```html
 [บันทึกโค้ด ที่นี่]
 ```
+<!DOCTYPE html>
+
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ระบบจองห้องพักออนไลน์</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+
+    
+
+    <form id="bookingForm">
+
+        <div>
+
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+
+            <input type="text" id="fullname" name="fullname" required>
+
+        </div>
+
+
+
+        <div>
+
+            <label for="email">อีเมล:</label>
+
+            <input type="email" id="email" name="email" required>
+
+        </div>
+
+
+
+        <div>
+
+            <label for="phone">เบอร์โทรศัพท์:</label>
+
+            <input type="tel" id="phone" name="phone" required>
+
+        </div>
+
+
+
+        <div>
+
+            <label for="checkin">วันที่เช็คอิน:</label>
+
+            <input type="date" id="checkin" name="checkin" required>
+
+        </div>
+
+
+
+        <div>
+
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+
+            <input type="date" id="checkout" name="checkout" required>
+
+        </div>
+
+
+
+        <div>
+
+            <label for="roomtype">ประเภทห้องพัก:</label>
+
+            <select id="roomtype" name="roomtype" required>
+
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+
+                <option value="standard">ห้องมาตรฐาน</option>
+
+                <option value="deluxe">ห้องดีลักซ์</option>
+
+                <option value="suite">ห้องสวีท</option>
+
+            </select>
+
+        </div>
+
+
+
+        <div>
+
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+
+        </div>
+
+
+
+        <button type="submit">จองห้องพัก</button>
+
+    </form>
+
+
+
+    <p id="confirmation"></p>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
 [รูปผลการทดลองที่ 3.2.2]
 
+![Screenshot 2025-02-11 165107](https://github.com/user-attachments/assets/fda00be0-9921-4449-aff3-6c21961b17c9)
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
 
