@@ -465,7 +465,7 @@ if (arg >= 12 && arg <= 20) {  // แก้เงื่อนไขใน if
 }
 ```
 ![image](https://github.com/user-attachments/assets/6c35d475-0a9a-4942-a8fe-982fa590d4e5)
-
+![image](https://github.com/user-attachments/assets/b26f62b3-b1b0-4c86-84f7-590a0de4ff59)
 
 ### 2.4 Functions และ Arrow Functions
 
