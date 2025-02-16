@@ -272,8 +272,48 @@ number /= 2;          // เท่ากับ number = number / 2
 ### บันทึกผลการทดลอง 2.2
 ```html
 [บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let math = 17
+        let English = 13
+        let physic = 6
+
+        let caculate = math + English + physic;
+        let caculate_a = caculate / 3
+
+        
+        
+        console.log(caculate_a); // 11.66
+    </script>
+    <script>
+        
+        
+        let productname = "CPU";
+        let productprice = 220
+
+        let vat = productprice * 0.07
+        let total = productprice + vat
+
+        console.log("Product :" + productname);
+        console.log("Productprice :" + productprice +"Bath");
+        console.log("VAT 7% :" + vat.toFixed(2) + "Bath");
+        console.log("SumpriecVAT 7% :" + total.toFixed(2) + "Bath");
+    </script>
+   
+</body>
+</html>]
 ```
 [รูปผลการทดลองที่ 2.2]
+![image](https://github.com/user-attachments/assets/ce326620-e105-4d7f-a3e7-38f214fbf68a)
+
 
 ### 2.3 การควบคุมการทำงาน
 
