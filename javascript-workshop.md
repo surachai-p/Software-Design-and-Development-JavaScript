@@ -445,8 +445,49 @@ for (let i = 1; i <= 5; i++) {
 ### บันทึกผลการทดลอง 2.3
 ```html
 [บันทึกโค้ด ที่นี่]
+let number = 7;
+if (number % 2 === 0) {
+    console.log(`${number} เป็นเลขคู่`);
+} else {
+    console.log(`${number} เป็นเลขคี่`);
+}
+
+
+console.log("\nสูตรคูณแม่ 2:");
+for (let i = 1; i <= 12; i++) {
+    console.log(`2 x ${i} = ${2 * i}`);
+}
+
+
+console.log("\nสูตรคูณแม่ 3:");
+let j = 1;
+while (j <= 12) {
+    console.log(`3 x ${j} = ${3 * j}`);
+    j++;
+}
+
+
+console.log("\nนับถอยหลังจาก 10 ถึง 1:");
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+}
+
+
+let age = 25; 
+
+console.log("\nช่วงวัยของบุคคล:");
+if (age >= 0 && age <= 12) {
+    console.log(`${age} ปี เป็นวัยเด็ก`);
+} else if (age >= 13 && age <= 25) {
+    console.log(`${age} ปี เป็นวัยรุ่น`);
+} else {
+    console.log(`${age} ปี เป็นวัยผู้ใหญ่`);
+}
+
 ```
 [รูปผลการทดลองที่ 2.3]
+![image](https://github.com/user-attachments/assets/530380c8-a349-4550-b106-454fc8b11805)
+
 
 ### 2.4 Functions และ Arrow Functions
 
