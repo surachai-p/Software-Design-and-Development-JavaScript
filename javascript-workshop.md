@@ -414,9 +414,58 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="Lab05.js"></script>
+</body>
+</html>
 ```
-[รูปผลการทดลองที่ 2.3]
+
+```js
+let number = 1;
+if (number % 2 == 0){
+console.log(number+ "เลขคู่");
+}
+else{
+    console.log(number + "เป็นเลขคี่");
+}
+let table1 = 2;
+console.log("สูตรคูณแม่" + table1);
+for(let i = 1; i <= 12; i++){
+    console.log("2 x" +  i  +  "="  + (2 * i));
+}
+
+let table2 = 3;
+console.log("สูตรคูณแม่" + table2);
+let z = 1;
+while (z <= 12 ){
+    console.log("3 x" +  z  +  "="  + (3 * z));
+    z++;
+}
+
+console.log("นับถอยหลัง 10 ถึง 1");
+for(let i = 10; i >= 1; i--){
+    console.log(i);
+}
+
+console.log("คำนวณวัย");
+let arg = 19;
+if (arg >= 12 && arg <= 20) {  // แก้เงื่อนไขใน if
+    console.log("วัยรุ่น");
+}else if (arg > 20) {
+    console.log("วัยผู้ใหญ่");
+}else{
+    console.log("วัยเด็ก");
+}
+```
+![image](https://github.com/user-attachments/assets/6c35d475-0a9a-4942-a8fe-982fa590d4e5)
+
 
 ### 2.4 Functions และ Arrow Functions
 
