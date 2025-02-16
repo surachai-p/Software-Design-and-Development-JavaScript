@@ -614,10 +614,65 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[//ฟังก์ชันคำนวณค่า BMI//
+
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);  // คำนวณ BMI = น้ำหนัก / (ส่วนสูง * ส่วนสูง)
+    
+    // แสดงผลลัพธ์ BMI
+    console.log("ค่า BMI: " + bmi.toFixed(2));  // ปัดค่าให้เหลือ 2 ตำแหน่งทศนิยม
+    
+    if (bmi < 18.5) {
+        console.log("น้ำหนักน้อยเกินไป");
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        console.log("น้ำหนักปกติ");
+    } else if (bmi >= 25 && bmi < 29.9) {
+        console.log("น้ำหนักเกิน");
+    } else {
+        console.log("อ้วน");
+    }
+}
+
+
+calculateBMI(70, 1.75);  // น้ำหนัก 70 กก., ส่วนสูง 1.75 เมตร
+
+//ฟังก์ชันทักทายตามอายุ//
+
+function greetByAge(name, age) {
+    if (age < 13) {
+        console.log("สวัสดี " + name + " คุณยังเด็กมาก!");
+    } else if (age >= 13 && age <= 19) {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยรุ่น!");
+    } else if (age >= 20 && age <= 59) {
+        console.log("สวัสดี " + name + " คุณเป็นผู้ใหญ่แล้ว!");
+    } else {
+        console.log("สวัสดี " + name + " คุณอยู่ในวัยผู้สูงอายุ!");
+    }
+}
+
+
+greetByAge("น้าชาย", 50);  
+greetByAge("สมหญิง", 25); 
+greetByAge("ลุงพงษ์",80); 
+
+//ฟังก์ชันตรวจสอบรหัสผ่าน//
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        console.log("รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร");
+    } else {
+        console.log("รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร");
+    }
+}
+
+
+checkPassword("password123"); // รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร
+checkPassword("short"); // รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร
+]
 ```
 [รูปผลการทดลองที่ 2.4.1]
 
+![Screenshot 2025-02-16 230123](https://github.com/user-attachments/assets/a627d690-4d3f-4c70-9559-423beb821a5b)
 
 
 #### 2.4.2 Arrow Function
