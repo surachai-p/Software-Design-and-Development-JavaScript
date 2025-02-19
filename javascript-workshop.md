@@ -30,7 +30,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 
 สร้างไฟล์ `index.html`:
 ```html
-<!DOCTYPE html>
+
 <html lang="th">
 <head>
     <meta charset="UTF-8">
