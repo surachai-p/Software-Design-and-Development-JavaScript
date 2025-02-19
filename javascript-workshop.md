@@ -742,9 +742,42 @@ console.log(isPasswordValid("wanfahmaii13"));
 
 ### บันทึกผลการทดลอง 3.1
 ```html
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI (ดัชนีมวลกาย)r</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>คำนวณค่า BMI (ดัชนีมวลกาย)</h1>
+
+
+    <form id="bmiForm">
+        <label for="weight">น้ำหนัก(กิโลกรัม):</label>
+        <input type="number" id="weight"><br><br>
+
+        <label for="height">ส่วนสูง(เซนติเมตร):</label>
+        <input type="number" id="height" step="0.01"><br><br>
+
+        <button type="submit">คำนวณค่า BMI (ดัชนีมวลกาย)</button>
+    </form>
+
+    <div class="result">
+        <h3>ค่า BMI: <span id="bmiResult"></span></h3>
+        <h3>สถานะ: <span id="bmiCategory"></span></h3>
+    </div>
+
+    <script src="script6.js"></script>
+</body>
+</html>
 [บันทึกโค้ด ที่นี่]
 ```
 [รูปผลการทดลองที่ 3.1]
+![image](https://github.com/user-attachments/assets/fc34ee87-5c90-4f30-9f20-5b5831daf7b3)
+
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
