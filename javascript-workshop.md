@@ -569,9 +569,42 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
+function calculateBMI(weight, height) {
+    let bmi = weight / (height ** 2);
+    return bmi.toFixed(2);
+}
+
+console.log("BMI:", calculateBMI(52, 1.53));
+
+function greetUser(name, age) {
+    let message = `Hello, ${name}! `;
+
+    if (age < 12) {
+        message += "You're a child. Have fun!";
+    } else if (age < 20) {
+        message += "You're a teenager. Enjoy your life";
+    } else if (age < 60) {
+        message += "You're an adult. Work hard and take care!";
+    } else {
+        message += "You're a senior. Stay happy!";
+    }
+
+    return message;
+}
+
+console.log(greetUser("อาทิตยา", 18));
+
+function isPasswordValid(password) {
+    return password.length > 8;
+}
+
+console.log(isPasswordValid("28273"));
+console.log(isPasswordValid("123456789"));
 [บันทึกโค้ด ที่นี่]
 ```
 [รูปผลการทดลองที่ 2.4.1]
+![image](https://github.com/user-attachments/assets/24cddfee-0a09-4f7d-a966-bce6cccd862a)
+
 
 
 
