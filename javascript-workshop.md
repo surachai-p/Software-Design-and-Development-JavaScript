@@ -30,7 +30,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 
 สร้างไฟล์ `index.html`:
 ```html
-[<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -38,47 +38,32 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 </head>
 <body>
     <!-- Inline JavaScript -->
-    <button onclick="alert('Pattarapon panyakrua')">ปุ่มที่ 1</button>
+    <button onclick="alert('คลิกปุ่มที่ 1!')">ปุ่มที่ 1</button>
 
     <!-- ทดสอบ Internal JavaScript -->
     <button id="btn2">ปุ่มที่ 2</button>
-    <script>
-        alert('Teeravee Chamnandee 67030305');
-    </script>
 
-    
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
 
     <!-- Internal JavaScript -->
     <script>
         document.getElementById('btn2').onclick = function() {
-            alert('Teeravee Chamnandee 67030305!');
+            alert('คลิกปุ่มที่ 2!');
         };
-        function showtext(){
-            var text = document.getElementById("inputText").value;
-            alert('ข้อความที่กรอก ' + text);
-
-        }
     </script>
 
-    
-    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
-    <input type="text" id="inputText" placeholder="พิมพ์ข้อความที่นี่">
-    <button onclick="showtext()">แสดงข้อความ</button>
-
- 
+    <!-- External JavaScript -->
+  <!-- ต้องสร้างไฟล์ script.js มีโค้ดโปรแกรมในไฟล์ดังนี้
+   function hello3(){
+    alert('คลิกปุ่มที่ 3!');
+    }
+ -->
     <script src="script.js"></script>
 </body>
-</html>]
-
-![Screenshot 2025-02-20 011743](https://github.com/user-attachments/assets/10611db4-645d-416f-b538-4026cfc05f57)
-
-![Screenshot 2025-02-20 011813](https://github.com/user-attachments/assets/f4ec1b2e-1f4b-426f-b612-464676f70874)
-
-
-
-
-
+</html>
 ```
+
 
 ### แบบฝึกปฏิบัติที่ 1: การใช้งาน JavaScript เบื้องต้น
 
@@ -132,12 +117,12 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 </body>
 </html>]
 
-![Screenshot 2025-02-20 011743](https://github.com/user-attachments/assets/10611db4-645d-416f-b538-4026cfc05f57)
 
-![Screenshot 2025-02-20 011813](https://github.com/user-attachments/assets/f4ec1b2e-1f4b-426f-b612-464676f70874)
 ]
 ```
-[รูปผลการทดลองที่ 1]
+[![Screenshot 2025-02-20 011743](https://github.com/user-attachments/assets/10611db4-645d-416f-b538-4026cfc05f57)
+
+![Screenshot 2025-02-20 011813](https://github.com/user-attachments/assets/f4ec1b2e-1f4b-426f-b612-464676f70874)]
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -223,11 +208,11 @@ let person = {
     
 </body>
 </html>]
-![Screenshot 2025-02-20 013558](https://github.com/user-attachments/assets/2276074c-4226-40c8-b4f6-58aed7961a04)
+
 
 
 ```
-[รูปผลการทดลองที่ 2.1]
+[![Screenshot 2025-02-20 013558](https://github.com/user-attachments/assets/2276074c-4226-40c8-b4f6-58aed7961a04)]
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -317,9 +302,9 @@ number /= 2;          // เท่ากับ number = number / 2
    
 </body>
 </html>]]
-```![Screenshot 2025-02-20 003859](https://github.com/user-attachments/assets/ec0c391f-35da-486a-82ce-2951a2c1b64b)
+```
 
-[รูปผลการทดลองที่ 2.2]
+[![Screenshot 2025-02-20 003859](https://github.com/user-attachments/assets/ec0c391f-35da-486a-82ce-2951a2c1b64b)]
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -489,10 +474,9 @@ if (age >= 0 && age <= 12) {
     console.log(`อายุ ${age} ปี เป็นวัยผู้ใหญ่`);
 }
 ]
-![Screenshot 2025-02-20 005447](https://github.com/user-attachments/assets/286bb9ff-a7c1-4e25-8972-ed2f1d2c074d)
 
 ```
-[รูปผลการทดลองที่ 2.3]
+[![Screenshot 2025-02-20 005447](https://github.com/user-attachments/assets/286bb9ff-a7c1-4e25-8972-ed2f1d2c074d)]
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -642,10 +626,9 @@ function checkPassword(password) {
 console.log(checkPassword("00000"));
 console.log(checkPassword("mypassword000"));
 ]
-![Screenshot 2025-02-20 005955](https://github.com/user-attachments/assets/4b862fd7-268c-4d4b-a005-23e5b6cf09dd)
 
 ```
-[รูปผลการทดลองที่ 2.4.1]
+[![Screenshot 2025-02-20 005955](https://github.com/user-attachments/assets/4b862fd7-268c-4d4b-a005-23e5b6cf09dd)]
 
 
 
@@ -709,10 +692,9 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
     console.log(checkPassword("mypassword000"));
 ]
 
-![Screenshot 2025-02-20 010241](https://github.com/user-attachments/assets/86019919-3dc3-4ae3-8915-57272d014416)
 
 ```
-[รูปผลการทดลองที่ 2.4.2]
+[![Screenshot 2025-02-20 010241](https://github.com/user-attachments/assets/86019919-3dc3-4ae3-8915-57272d014416)]
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -834,11 +816,10 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
     </script>
 </body>
 </html>]
-![Screenshot 2025-02-20 010756](https://github.com/user-attachments/assets/0dd6c289-f0f7-4085-8720-f0c62d2250d6)
 
 
 ```
-[รูปผลการทดลองที่ 3.1]
+[![Screenshot 2025-02-20 010756](https://github.com/user-attachments/assets/0dd6c289-f0f7-4085-8720-f0c62d2250d6)]
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -1141,7 +1122,8 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 </body>
 </html>]
 ```
-[รูปผลการทดลองที่ 3.2.2]
+[![Screenshot 2025-02-20 011039](https://github.com/user-attachments/assets/9a45ecea-9429-46ba-8335-1634fef73f0e)
+]
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -1460,7 +1442,8 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 </body>
 </html>]]
 ```
-[รูปผลการทดลองที่ 3.2.3]
+[![Screenshot 2025-02-20 011039](https://github.com/user-attachments/assets/5fb0f70f-1665-4fe4-8264-eefa8005afab)
+]
 
 
 ## คำแนะนำเพิ่มเติม
