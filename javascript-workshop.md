@@ -76,9 +76,54 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
+!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    
+    <button onclick="alert('ชื่อนักศึกษา: นางสาวอาทิตยา ผิวขำ')">ปุ่มที่ 1</button>
+
+    <button id="btn2">ปุ่มที่ 2</button>
+
+     <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('19/02/2025');
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+   
+    <input id="txt1" placeholder="กรอกข้อความที่นี่">
+    <button id="showTextBtn">แสดงข้อความ</button>
+
+   
+    <p id="outputText"></p>
+
+    <script>
+        document.getElementById('showTextBtn').onclick = function() {
+            let inputText = document.getElementById('txt1').value;
+            alert(inputText);
+        };
+    </script>
+</body>
+</html>
 [บันทึกโค้ด ที่นี่]
 ```
 [รูปผลการทดลองที่ 1]
+![image](https://github.com/user-attachments/assets/15e63401-5c81-466d-aca3-73aa2a5991ed)
+![image](https://github.com/user-attachments/assets/d33bc8d2-0b65-45ff-99ac-36477d444438)
+![image](https://github.com/user-attachments/assets/08aa5ce9-343f-4b28-8386-d794a40ae6a3)
+![image](https://github.com/user-attachments/assets/a0b8521f-6f07-4264-b45a-58409d2c22d7)
+
+
+
+
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
