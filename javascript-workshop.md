@@ -261,9 +261,35 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
+let subject1 = 30;
+let subject2 = 35;
+let subject3 = 50;
+
+
+let averageScore = (subject1 + subject2 + subject3) / 3;
+
+
+console.log("คะแนนเฉลี่ย:", averageScore.toFixed(2));
+
+// Product
+let productName = "IPhon 13";
+let price = 16000; // Price
+
+// VAT
+let vat = price * 0.07;
+let totalPrice = price + vat;
+
+// Result
+console.log("สินค้า:", productName);
+console.log("ราคาสินค้า:", price, "THB");
+console.log("VAT 7%:", vat.toFixed(2), "THB");
+console.log("ราคารวม VAT:", totalPrice.toFixed(2), "THB");
+
 [บันทึกโค้ด ที่นี่]
 ```
 [รูปผลการทดลองที่ 2.2]
+![image](https://github.com/user-attachments/assets/a289573d-35f8-4588-8109-ebbbaf495b3d)
+
 
 ### 2.3 การควบคุมการทำงาน
 
