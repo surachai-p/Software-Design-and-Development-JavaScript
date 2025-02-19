@@ -92,7 +92,50 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Pattarapon panyakrua')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+    <script>
+        alert('Teeravee Chamnandee 67030305');
+    </script>
+
+    
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('Teeravee Chamnandee 67030305!');
+        };
+        function showtext(){
+            var text = document.getElementById("inputText").value;
+            alert('ข้อความที่กรอก ' + text);
+
+        }
+    </script>
+
+    
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+    <input type="text" id="inputText" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showtext()">แสดงข้อความ</button>
+
+ 
+    <script src="script.js"></script>
+</body>
+</html>]
+
+![Screenshot 2025-02-20 011743](https://github.com/user-attachments/assets/10611db4-645d-416f-b538-4026cfc05f57)
+
+![Screenshot 2025-02-20 011813](https://github.com/user-attachments/assets/f4ec1b2e-1f4b-426f-b612-464676f70874)
+]
 ```
 [รูปผลการทดลองที่ 1]
   
@@ -150,7 +193,39 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ID = "67030305";
+        let name = "teeravee";
+        const midtermscores = 60;
+        const finalscore = 35;
+
+        let student ={
+            ID: 67030305,
+            name: "teeravee",
+            major:"เทคโนโลยีคอมพิวเตอร์",
+            grade: 3.00
+            }
+    
+        console.log(ID); 
+        console.log(name); 
+        console.log(midtermscores); 
+        console.log(finalscore); 
+        console.log(student); 
+    </script>
+    
+</body>
+</html>]
+![Screenshot 2025-02-20 013558](https://github.com/user-attachments/assets/2276074c-4226-40c8-b4f6-58aed7961a04)
+
+
 ```
 [รูปผลการทดลองที่ 2.1]
 
