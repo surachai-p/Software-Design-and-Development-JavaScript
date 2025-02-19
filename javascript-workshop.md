@@ -645,9 +645,36 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
+const calculateBMI = (weight, height) => Math.round((weight / (height * height)) * 100) / 100;
+console.log(calculateBMI(53, 1.75));
+
+
+const greetUser = (name, age) => {
+    let message = `Hello, ${name}! `;
+    if (age < 12) {
+        message += "You're a child!";
+    } else if (age < 20) {
+        message += "You're a teenager!";
+    } else if (age < 60) {
+        message += "You're an adult!";
+    } else {
+        message += "You're a senior!";
+    }
+    return message;
+};
+
+console.log(greetUser("อาทิตยา", 18));
+
+
+const isPasswordValid = password => password.length > 8;
+
+console.log(isPasswordValid("123456789"));
+console.log(isPasswordValid("wanfahmaii13"));
 [บันทึกโค้ด ที่นี่]
 ```
 [รูปผลการทดลองที่ 2.4.2]
+![image](https://github.com/user-attachments/assets/6fd51975-d797-4e26-909a-f028192b5cdf)
+
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
