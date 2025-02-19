@@ -420,9 +420,44 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
+let number = 13;
+if (number % 2 === 0) {
+    console.log(number + " เป็นเลขคู่");
+} else {
+    console.log(number + " เป็นเลขคี่");
+}
+
+for (let i = 1; i <= 12; i++) {
+    console.log("2 * " + i + " = " + (2 * i));
+}
+
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+}
+let age = 30;
+
+if (age >= 0 && age <= 12) {
+    console.log("วัยเด็ก");
+} else if (age >= 13 && age <= 18) {
+    console.log("วัยรุ่น");
+} else if (age >= 19 && age <= 60) {
+    console.log("วัยผู้ใหญ่");
+} else if (age > 60) {
+    console.log("วัยชรา");
+} else {
+    console.log("อายุไม่ถูกต้อง");
+}
 [บันทึกโค้ด ที่นี่]
 ```
 [รูปผลการทดลองที่ 2.3]
+![image](https://github.com/user-attachments/assets/fb800690-b349-4249-9470-f4f339d9489b)
+![image](https://github.com/user-attachments/assets/1bd2b45a-607f-4dd4-9082-435460b79696)
+![image](https://github.com/user-attachments/assets/e0b3df11-b1a5-4ccf-a97b-3c007cd0b948)
+![image](https://github.com/user-attachments/assets/a3cb3479-ac4a-405d-84dc-c816118458d3)
+
+
+
+
 
 ### 2.4 Functions และ Arrow Functions
 
