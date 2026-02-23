@@ -76,10 +76,65 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+     <div class="f1">
+      <form action="กรอกชื่อนักศึกษา">
+          <label for="name">กรอกชื่อ:</label>
+          <input type="text" id="studentName" >
+          <button id="btn1" type="button" onclick="showAlert1()">ปุ่มที่ 1</button>
+          </div>
+    <!-- ทดสอบ Internal JavaScript -->
+     <div class="f2">
+      <form action="กรอกวันที่">
+          <label for="name">กรอกวันที่:</label>
+          <input type="text" id="dateInput" >
+          <button id="btn2" type="button">ปุ่มที่ 2</button>
+          </div>
+
+    <!-- ทดสอบ External JavaScript -->
+      <div class="f3">
+      <form action="เวลา">
+          <label for="name">กรอกเวลา:</label>
+          <input type="text" id="timeInput" >
+          <button id="btn3" type="button" onclick="hello3()">ปุ่มที่ 3</button>
+          </div>
+
+    <!-- Internal JavaScript -->
+    <script>
+        function showAlert1() {
+            var name = document.getElementById('studentName').value;
+            alert('ชื่อนักศึกษาที่คุณกรอกคือ: ' + name);
+        }
+        document.getElementById('btn2').onclick = function() {
+            var inputData = document.getElementById('dateInput');
+            var text = inputData.value;
+            alert('วันที่คุณกรอกคือ: ' + text);
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```js
+function hello3() {
+    var time = document.getElementById('timeInput').value;
+    alert('เวลาที่คุณกรอกคือ: ' + time);
+}
+
+
+    
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![alt text](image.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -135,10 +190,25 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+const id = '68030063'  
+const name = 'Chitsanupat'
+const midterm = 98
+const final = 100
+
+
+const student = {
+    id: '68030063',
+    name: 'Chitsanupat Wayusuwanwit',
+    major: 'Computer Technology',
+    gpa: 3.93
+
+}
+
+console.log(student)
+
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![alt text](image-1.png)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -189,11 +259,24 @@ number /= 2;          // เท่ากับ number = number / 2
 2. เขียนโปรแกรม กำหนดชื่อสินค้า ราคาสินค้า คำนวณราคาสินค้าที่รวม VAT 7% แล้วแสดงผลการคำนวณ
 
 ### บันทึกผลการทดลอง 2.2
-```html
-[บันทึกโค้ด ที่นี่]
+```
+function calculateAverage(Comnetwork, softwareDev1, digitalSystem) {
+    return (Comnetwork + softwareDev1 + digitalSystem) / 3;
+}
+
+let average = calculateAverage(85, 98, 90);
+console.log("ค่าเฉลี่ยคะแนน3 วิชารวมกัน:", average)
+
+function calVat7(price, Product) {
+    let vat = price * 0.07;
+    console.log("ซื้อสินค้า:", Product, "ราคา:", price, "ภาษี:", vat);
+}
+
+let vat = calVat7(100, "Computer");
+
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![alt text](image-2.png)
 
 ### 2.3 การควบคุมการทำงาน
 
