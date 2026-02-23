@@ -407,10 +407,65 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+/*
+1. กำหนดตัวเลข และตรวจสอบว่าตัวเลขที่กำหนดเป็นเลขคู่หรือเลขคี่
+2. สร้าง loop แบบ for แสดงตารางสูตรคูณ แม่ 2 และ loop แบบ while แสดงสูตรคูณ แม่ 3
+3. เขียนโปรแกรมนับถอยหลังจาก 10 ถึง 1
+4. เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่) 
+*/
+
+function check_odd_or(num) {
+        if (num % 2 == 0) {
+            console.log(num, "เป็นเลขคู่");
+        } else {
+            console.log(num, "เป็นเลขคี่");
+        }
+}
+
+Call3 = check_odd_or(5)
+Call3 = check_odd_or(2)
+
+function multiplication_table() {
+    console.log("ตารางสูตรคูณ แม่ 2");
+    for (let i = 1; i <= 10; i++) {
+        console.log("2 x", i, "=", 2 * i);
+    }
+
+    console.log("ตารางสูตรคูณ แม่ 3");
+    let j = 1;
+    while (j <= 10) {
+        console.log("3 x", j, "=", 3 * j);
+        j++;
+    }
+}
+
+let Call1 = multiplication_table()
+
+
+function Ten_to_one() {
+    for (let i = 10; i >= 1; i--) {
+    console.log("รอบที่", i);
+}
+}
+
+let Call = Ten_to_one()
+
+function checkAge(age) {
+    if (age < 15 ) {
+        console.log("คุณเป็นเด็ก")
+    } else if (age >=16 && age < 20 ) {
+        console.log('คุณเป็นวัยรุ่น')
+    } else {
+        console.log('คุณเป็นผู้ใหญ่')
+    }
+
+    
+}
+
+let Call2 = checkAge(20)
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![alt text](image-4.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -522,10 +577,31 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+function calBMI(weight, height) {
+    let bmi = weight / (height * height);
+    console.log("ค่า BMI ของคุณคือ:", bmi.toFixed(2));
+}
+
+function greeting(name, age) {
+    if (age < 13) {
+        console.log("สวัสดี " + name + " เด็กน้อย");
+    } else if (age < 20) {
+        console.log("สวัสดี " + name + " เด็กหนุ่ม");
+    } else {
+        console.log("สวัสดี " + name + " ผู้ใหญ่");
+    }
+}
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        console.log("รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร");
+    } else {
+        console.log("รหัสผ่านมีความยาวไม่ถึง 8 ตัวอักษร");
+    }
+}
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+![alt text](image-3.png)
 
 
 
@@ -800,10 +876,22 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+const CalBMI = (w, h) => console.log("BMI =", w / (h * h)) || w / (h * h);
+CalBMI(70, 1.75);
+
+const greet = (name, age) =>
+  console.log(`สวัสดีคุณ ${name} ` + (age < 15 ? "คยังเป็นเด็ก" : age >= 16 && age < 20 ? "เป็นวัยรุ่น" : "เป็นผู้ใหญ่"));
+greet("chitsanupat", 25);
+
+const checkPassword = (password) =>
+  console.log(
+    `รหัสผ่านของคุณ ${password} ` + (password.length > 8 ? "ปลอดภัย" : "ไม่ปลอดภัย")
+  );
+checkPassword("mysecretpassword");
+checkPassword("short");
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.2](images/image.png)
+![alt text](image-5.png)
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
