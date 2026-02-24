@@ -576,7 +576,7 @@ process(function() {
 </html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](image/result-lab2.4.png)
+![รูปผลการทดลองที่ 2.4.1](image/result-lab2.4.1.png)
 
 
 
@@ -617,10 +617,47 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองที่ 2.4.2 Arrow Function</title>
+</head>
+<body>
+
+    <h2>แบบทดสอบ 2.4.2 Arrow Function</h2>
+
+    <!-- ข้อ 1 BMI -->
+    <h3>1. คำนวณ BMI</h3>
+    น้ำหนัก (กก.): <input type="number" id="weight"><br><br>
+    ส่วนสูง (เมตร): <input type="number" step="0.01" id="height"><br><br>
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+
+    <hr>
+
+    <!-- ข้อ 2 ทักทาย -->
+    <h3>2. ทักทายตามอายุ</h3>
+    ชื่อ: <input type="text" id="name"><br><br>
+    อายุ: <input type="number" id="age"><br><br>
+    <button onclick="greetPerson()">แสดงคำทักทาย</button>
+
+    <hr>
+
+    <!-- ข้อ 3 ตรวจสอบรหัสผ่าน -->
+    <h3>3. ตรวจสอบรหัสผ่าน</h3>
+    รหัสผ่าน: <input type="password" id="password"><br><br>
+    <button onclick="checkPassword()">ตรวจสอบรหัสผ่าน</button>
+
+    <hr>
+    <div id="result"></div>
+
+    <script src="lab2_4.2.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.2](images/image.png)
+![รูปผลการทดลองที่ 2.4.2](image/result-lab2.4.2.png)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
