@@ -192,10 +192,28 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองที่ 2.1 ตัวแปรและ Object</title>
+</head>
+<body>
+
+    <h2>การทดลองที่ 2.1 การประกาศตัวแปร</h2>
+
+    <button onclick="showVariables()">แสดงข้อมูลตัวแปร</button>
+    <button onclick="showStudent()">แสดงข้อมูลนักศึกษา (Object)</button>
+
+    <p id="result"></p>
+
+    <script src="lab2_1.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![รูปผลการทดลองที่ 2.1](image/result-lab2.png)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
