@@ -553,10 +553,30 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองที่ 2.4 Functions</title>
+</head>
+<body>
+
+    <h2>แบบทดสอบที่ 2.4 Functions</h2>
+
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+    <button onclick="greetPerson()">ทักทายตามอายุ</button>
+    <button onclick="checkPassword()">ตรวจสอบรหัสผ่าน</button>
+
+    <hr>
+    <div id="result"></div>
+
+    <script src="lab2_4.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+![รูปผลการทดลองที่ 2.4.1](image/result-lab2.4.png)
 
 
 
