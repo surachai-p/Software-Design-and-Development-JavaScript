@@ -725,10 +725,34 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองที่ 3.1 คำนวณ BMI</title>
+</head>
+<body>
+
+    <h2>แบบทดสอบ 3.1 คำนวณค่า BMI</h2>
+
+    น้ำหนัก (กิโลกรัม):
+    <input type="number" id="weight"><br><br>
+
+    ส่วนสูง (เมตร):
+    <input type="number" step="0.01" id="height"><br><br>
+
+    <button onclick="calculateBMI()">คำนวณ</button>
+
+    <hr>
+    <div id="result"></div>
+
+    <script src="lab3_1.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.1](images/image.png)
+![รูปผลการทดลองที่ 3.1](image/result-lab3.1.png)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
