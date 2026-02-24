@@ -417,10 +417,31 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>การทดลองที่ 2.3 การควบคุมการทำงาน</title>
+</head>
+<body>
+
+    <h2>แบบทดสอบที่ 2.3</h2>
+
+    <button onclick="checkEvenOdd()">ตรวจสอบเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">แสดงตารางสูตรคูณ</button>
+    <button onclick="countDown()">นับถอยหลัง 10 ถึง 1</button>
+    <button onclick="checkAgeGroup()">ตรวจสอบช่วงวัย</button>
+
+    <hr>
+    <div id="result"></div>
+
+    <script src="lab2_3.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3](image/result-lab2.3.png)
 
 ### 2.4 Functions และ Arrow Functions
 
