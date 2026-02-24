@@ -28,7 +28,7 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 
 ### การทดลองที่ 1.1 : สร้างไฟล์ HTML และทดลองใช้ JavaScript ทั้ง 3 แบบ
 
-สร้างไฟล์ `index.html`:
+สร้างไฟล์ `c`:
 ```html
 <!DOCTYPE html>
 <html lang="th">
@@ -76,10 +76,67 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึก JavaScript เบื้องต้น</title>
+</head>
+<body>
+
+    <h2>แบบฝึกปฏิบัติที่ 1</h2>
+
+    <!-- ปุ่มที่ 1 : Inline JavaScript -->
+    <button onclick="alert('ชื่อ: สุธีมนต์ วงศ์พระราม')">
+        ปุ่มที่ 1 แสดงชื่อ
+    </button>
+
+    <br><br>
+
+    <!-- ปุ่มที่ 2 : Internal JavaScript -->
+    <button id="24-02-2024">
+        ปุ่มที่ 2 แสดงวันที่ปัจจุบัน
+    </button>
+
+    <br><br>
+
+    <!-- ปุ่มที่ 3 : External JavaScript -->
+    <button onclick="showTime()">
+        ปุ่มที่ 3 แสดงเวลาปัจจุบัน
+    </button>
+
+    <hr>
+
+    <h3>แสดงข้อความจาก Textbox</h3>
+
+    <input type="text" id="myText" placeholder="กรอกข้อความที่นี่">
+    <button onclick="showMessage()">แสดงข้อความ</button>
+
+    <p id="result"></p>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // ปุ่มที่ 2 แสดงวันที่ปัจจุบัน
+        document.getElementById("btnDate").onclick = function() {
+            const today = new Date();
+            alert("วันที่ปัจจุบันคือ: " + today.toLocaleDateString());
+        };
+
+        // ฟังก์ชันแสดงข้อความจาก Textbox
+        function showMessage() {
+            const text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML = "ข้อความที่คุณพิมพ์: " + text;
+        }
+    </script>
+
+    <!-- เรียกใช้ไฟล์ External -->
+    <script src="script.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1](image/result-lab1.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
