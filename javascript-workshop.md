@@ -76,10 +76,50 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('นาย วันชนะ ไชยลังกา')">ปุ่มที่ 1</button>
+
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('25/2/2569');
+        };
+    </script>
+    <h3>ใส่ข้อความ</h3>
+
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+
+    <button onclick="showMessage();">
+        แสดงข้อความ
+    </button>
+
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+```javascript
+function hello3(){
+    alert('22:00 น.');
+    }
+
+function showMessage() {
+            let text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML =
+                "ข้อความที่คุณพิมพ์: " + text;
+        }
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+!![alt text](image.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -134,8 +174,31 @@ let person = {
 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา  ประกอบด้วยข้อมูล รหัสนักศึกษา, ชื่อ, สาขาวิชา, เกรดเฉลี่ย
 
 ### บันทึกผลการทดลอง 2.1
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+//const and let
+const studentId = "68030267";
+let studentName = "นาย วันชนะ ไชยลังกา";
+let midtermScore = 35;   
+let finalScore = 45;     
+
+console.log("รหัสนักศึกษา:", studentId);
+console.log("ชื่อ:", studentName);
+console.log("คะแนนกลางภาค:", midtermScore);
+console.log("คะแนนปลายภาค:", finalScore);
+
+//Object 
+let student = {
+    studentId: "68030267",
+    name: "นาย วันชนะ ไชยลังกา",
+    major: "เทคโนโลยีคอมพิวเตอร์",
+    gpa: 2.00
+};
+
+console.log("ข้อมูลนักศึกษา");
+console.log("รหัส:", student.studentId);
+console.log("ชื่อ:", student.name);
+console.log("สาขาวิชา:", student.major);
+console.log("เกรดเฉลี่ย:", student.gpa);
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.1](images/image.png)
