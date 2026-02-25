@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <h2>โปรแกรมคำนวณ BMI</h2>
+
+    น้ำหนัก (kg):
+    <input type="number" id="weight" step="0.01" min="0.01" required<br><br>
+
+
+    ส่วนสูง (m):
+    <input type="number" id="height" step="0.01" min="0.01" required<br><br>
+
+    <button onclick="calculate()">คำนวณ BMI</button>
+
+    <p id="result"></p>
+
+    <script>
+        const calculateBMI = (weight, height) => 
+            weight / (height * height);
+
+        const getCategory = bmi => {
+            if (bmi < 18.5) return "ผอม";
+            else if (bmi < 25) return "สมส่วน";
+            else return "อ้วน";
+        };
+
+        const calculate = () => {
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+
+            if (!weight || !height) {
+                document.getElementById("result").innerHTML = "กรุณากรอกข้อมูลให้ครบ";
+                return;
+            }
+
+            const bmi = calculateBMI(weight, height);
+            const category = getCategory(bmi);
+
+            document.getElementById("result").innerHTML =
+                "ค่า BMI ของคุณ = <b>" + bmi.toFixed(2) + "</b><br>" +
+                "อยู่ในเกณฑ์: <b>" + category + "</b>";
+        };
+    </script>
+
+</body>
+</html>
