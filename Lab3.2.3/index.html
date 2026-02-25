@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์ - Lab 3.2.3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ส่วนที่ 3.2.2: CSS ปรับแต่งความสวยงาม */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f5f6fa;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏨 แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" placeholder="ตัวเลข 10 หลัก" required>
+        </div>
+
+        <div style="display: flex; gap: 15px;">
+            <div class="form-group" style="flex: 1;">
+                <label for="checkin">วันที่เช็คอิน:</label>
+                <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="checkout">วันที่เช็คเอาท์:</label>
+                <input type="date" id="checkout" name="checkout" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน (พักได้สูงสุด 2 ท่าน)</option>
+                <option value="deluxe">ห้องดีลักซ์ (พักได้สูงสุด 3 ท่าน)</option>
+                <option value="suite">ห้องสวีท (พักได้สูงสุด 4 ท่าน)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+            <div id="guestHint" class="hint">เลือกประเภทห้องเพื่อดูจำนวนผู้พักสูงสุด</div>
+        </div>
+
+        <button type="submit">ยืนยันการจองห้องพัก</button>
+    </form>
+
+    
+    <script>
+        // ฟังก์ชันหลักในการจัดการ Submit ฟอร์ม
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // ป้องกันหน้าเว็บรีโหลด
+            
+            // 1. ตรวจสอบความถูกต้องของวันที่
+            const checkinValue = document.getElementById('checkin').value;
+            const checkoutValue = document.getElementById('checkout').value;
+            
+            const checkin = new Date(checkinValue);
+            const checkout = new Date(checkoutValue);
+            const today = new Date();
+            today.setHours(0,0,0,0); // รีเซ็ตเวลาเพื่อเปรียบเทียบแค่วันที่
+            
+            if (checkin < today) {
+                alert('⚠️ กรุณาเลือกวันเช็คอินตั้งแต่วันนี้เป็นต้นไป');
+                return;
+            }
+            
+            if (checkout <= checkin) {
+                alert('⚠️ วันเช็คเอาท์ต้องมาหลังวันเช็คอินอย่างน้อย 1 วัน');
+                return;
+            }
+            
+            // 2. ตรวจสอบรูปแบบเบอร์โทรศัพท์ (10 หลัก)
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('⚠️ กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (ตัวเลข 10 หลัก)');
+                return;
+            }
+            
+            // 3. คำนวณจำนวนวันที่พัก
+            const timeDiff = checkout - checkin;
+            const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            
+            // 4. ดึงข้อมูลสรุป
+            const roomtypeSelect = document.getElementById('roomtype');
+            const roomtypeText = roomtypeSelect.options[roomtypeSelect.selectedIndex].text;
+            
+            const summary = `
+📝 สรุปรายละเอียดการจอง:
+--------------------------------------
+👤 ชื่อผู้จอง: ${document.getElementById('fullname').value}
+🏨 ประเภทห้อง: ${roomtypeText}
+📅 วันที่เข้าพัก: ${checkin.toLocaleDateString('th-TH')}
+📅 วันที่ออก: ${checkout.toLocaleDateString('th-TH')}
+🌙 จำนวนวันที่พัก: ${days} คืน
+👥 จำนวนผู้เข้าพัก: ${document.getElementById('guests').value} ท่าน
+--------------------------------------
+            `;
+            
+            // 5. ยืนยันข้อมูล
+            if (confirm(summary + '\nยืนยันการจองห้องพักหรือไม่?')) {
+                alert('✅ จองห้องพักเรียบร้อยแล้ว! ขอบคุณที่ใช้บริการ');
+                this.reset(); // ล้างข้อมูลในฟอร์ม
+                document.getElementById('guestHint').textContent = "เลือกประเภทห้องเพื่อดูจำนวนผู้พักสูงสุด";
+            }
+        });
+
+        // ฟังก์ชัน Real-time: ปรับวันเช็คเอาท์ขั้นต่ำตามวันเช็คอิน
+        document.getElementById('checkin').addEventListener('change', function() {
+            document.getElementById('checkout').min = this.value;
+        });
+
+        // ฟังก์ชัน Real-time: จำกัดจำนวนผู้พักตามประเภทห้อง
+        document.getElementById('roomtype').addEventListener('change', function() {
+            const guestsInput = document.getElementById('guests');
+            const hint = document.getElementById('guestHint');
+            
+            let maxG = 4;
+            if (this.value === 'standard') maxG = 2;
+            else if (this.value === 'deluxe') maxG = 3;
+            else if (this.value === 'suite') maxG = 4;
+            
+            guestsInput.max = maxG;
+            hint.textContent = `ห้องประเภทนี้ พักได้สูงสุด ${maxG} ท่าน`;
+            
+            if (parseInt(guestsInput.value) > maxG) {
+                guestsInput.value = maxG;
+            }
+        });
+    </script>
+</body>
+</html>

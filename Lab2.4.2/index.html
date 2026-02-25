@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.4.2 - Arrow Function Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0984e3;
+            --secondary: #6c5ce7;
+            --bg: #dfe6e9;
+        }
+        body { font-family: 'Sarabun', sans-serif; background: var(--bg); padding: 20px; }
+        .app-container { max-width: 600px; margin: 0 auto; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        h2 { color: var(--primary); font-size: 1.2rem; margin-top: 0; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 10px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 8px; outline: none; }
+        input:focus { border-color: var(--secondary); }
+        button { padding: 10px 20px; background: var(--secondary); color: white; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #5649c1; }
+        .result { padding: 12px; background: #f9f9f9; border-radius: 8px; min-height: 20px; font-weight: bold; color: #2d3436; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <h1 style="text-align: center;">Arrow Function Laboratory</h1>
+
+        <div class="card">
+            <h2>1. คำนวณ BMI (Shorthand Arrow)</h2>
+            <div class="input-group">
+                <input type="number" id="weight" placeholder="น้ำหนัก (kg)">
+                <input type="number" id="height" placeholder="ส่วนสูง (cm)">
+            </div>
+            <button onclick="handleBMI()">คำนวณ BMI</button>
+            <div id="res-bmi" class="result"></div>
+        </div>
+
+        <div class="card">
+            <h2>2. ระบบทักทาย (Logic Arrow)</h2>
+            <div class="input-group">
+                <input type="text" id="guestName" placeholder="ระบุชื่อ">
+                <input type="number" id="guestAge" placeholder="ระบุอายุ">
+            </div>
+            <button onclick="handleGreet()">สร้างคำทักทาย</button>
+            <div id="res-greet" class="result"></div>
+        </div>
+
+        <div class="card">
+            <h2>3. ตรวจสอบรหัสผ่าน (Boolean Arrow)</h2>
+            <div class="input-group">
+                <input type="password" id="passInput" placeholder="กรอกรหัสผ่าน">
+            </div>
+            <button onclick="handlePass()">ตรวจสอบ</button>
+            <div id="res-pass" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================
+           เฉลยแบบทดสอบที่ 2.4.2 (Arrow Functions)
+           ========================================== */
+
+        // ข้อ 1: Arrow Function แบบบรรทัดเดียว (Implicit Return)
+        const calcBMI = (w, h) => (w / (h / 100) ** 2).toFixed(2);
+
+        // ข้อ 2: Arrow Function แบบมีเงื่อนไข (Block Body)
+        const getGreeting = (name, age) => {
+            if (age <= 12) return `สวัสดีจ๊ะ น้อง${name} 🍭`;
+            if (age <= 20) return `สวัสดีวัยรุ่น ${name} ⚡`;
+            return `สวัสดีครับคุณ ${name} 💼`;
+        };
+
+        // ข้อ 3: Arrow Function ตรวจสอบเงื่อนไข (Returns Boolean)
+        const isSecure = (pass) => pass.length >= 8;
+
+
+        /* ==========================================
+           ส่วนของฟังก์ชันเชื่อมโยงหน้าเว็บ (UI Handlers)
+           ========================================== */
+
+        const handleBMI = () => {
+            const w = document.getElementById('weight').value;
+            const h = document.getElementById('height').value;
+            if (w && h) {
+                document.getElementById('res-bmi').textContent = `ค่า BMI ของคุณคือ: ${calcBMI(w, h)}`;
+            } else {
+                alert("กรุณากรอกข้อมูลให้ครบ");
+            }
+        };
+
+        const handleGreet = () => {
+            const name = document.getElementById('guestName').value;
+            const age = document.getElementById('guestAge').value;
+            if (name && age) {
+                document.getElementById('res-greet').textContent = getGreeting(name, age);
+            }
+        };
+
+        const handlePass = () => {
+            const pass = document.getElementById('passInput').value;
+            const resultBox = document.getElementById('res-pass');
+            if (isSecure(pass)) {
+                resultBox.textContent = "✅ รหัสผ่านปลอดภัย";
+                resultBox.style.color = "#00b894";
+            } else {
+                resultBox.textContent = "❌ รหัสผ่านต้องมี 8 ตัวอักษรขึ้นไป";
+                resultBox.style.color = "#d63031";
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.3 - Control Structures</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f5f6fa;
+        }
+        body { font-family: 'Sarabun', sans-serif; background: var(--bg); padding: 20px; color: var(--primary); }
+        .wrapper { max-width: 800px; margin: 0 auto; }
+        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h2 { color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        .result-box { background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent); white-space: pre-line; line-height: 1.6; }
+        .tag { display: inline-block; padding: 2px 8px; background: #e1f5fe; color: #0288d1; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1>บันทึกผลการทดลอง 2.3</h1>
+
+        <div class="card">
+            <h2>1. ตรวจสอบเลขคู่-คี่</h2>
+            <span class="tag">Logic: If-Else + Modulo</span>
+            <div id="res1" class="result-box"></div>
+        </div>
+
+        <div class="card">
+            <h2>2. ตารางสูตรคูณ</h2>
+            <span class="tag">Logic: For Loop & While Loop</span>
+            <div style="display: flex; gap: 20px;">
+                <div id="res2a" class="result-box" style="flex: 1;"></div>
+                <div id="res2b" class="result-box" style="flex: 1;"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>3. นับถอยหลัง (10 - 1)</h2>
+            <span class="tag">Logic: Reverse For Loop</span>
+            <div id="res3" class="result-box"></div>
+        </div>
+
+        <div class="card">
+            <h2>4. ตรวจสอบช่วงวัย</h2>
+            <span class="tag">Logic: Else If Staircase</span>
+            <div id="res4" class="result-box"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- ข้อที่ 1: ตรวจสอบเลขคู่หรือเลขคี่ ---
+        let numToCheck = 27;
+        let res1 = (numToCheck % 2 === 0) ? `${numToCheck} คือ เลขคู่` : `${numToCheck} คือ เลขคี่`;
+        document.getElementById('res1').textContent = res1;
+
+        // --- ข้อที่ 2: สูตรคูณแม่ 2 (for) และ แม่ 3 (while) ---
+        // แม่ 2
+        let table2 = "แม่ 2 (for):\n";
+        for (let i = 1; i <= 12; i++) {
+            table2 += `2 x ${i} = ${2 * i}\n`;
+        }
+        document.getElementById('res2a').textContent = table2;
+
+        // แม่ 3
+        let table3 = "แม่ 3 (while):\n";
+        let j = 1;
+        while (j <= 12) {
+            table3 += `3 x ${j} = ${3 * j}\n`;
+            j++;
+        }
+        document.getElementById('res2b').textContent = table3;
+
+        // --- ข้อที่ 3: นับถอยหลัง 10 ถึง 1 ---
+        let countdown = "";
+        for (let i = 10; i >= 1; i--) {
+            countdown += i + (i > 1 ? ", " : " 🚀 Blast Off!");
+        }
+        document.getElementById('res3').textContent = countdown;
+
+        // --- ข้อที่ 4: ตรวจสอบช่วงวัยตามอายุ ---
+        let age = 16;
+        let ageGroup = "";
+        if (age <= 12) {
+            ageGroup = `อายุ ${age} ปี: วัยเด็ก`;
+        } else if (age <= 20) {
+            ageGroup = `อายุ ${age} ปี: วัยรุ่น`;
+        } else if (age <= 60) {
+            ageGroup = `อายุ ${age} ปี: วัยผู้ใหญ่`;
+        } else {
+            ageGroup = `อายุ ${age} ปี: วัยสูงอายุ`;
+        }
+        document.getElementById('res4').textContent = ageGroup;
+        
+        // แสดงผลใน Console ด้วย
+        console.log("Lab 2.3 Complete!");
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.2 - Mathematical Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4834d4;
+            --secondary-color: #686de0;
+            --success-color: #27ae60;
+            --bg-color: #f0f2f5;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2d3436;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .label { color: #636e72; }
+        .value { font-weight: bold; color: #2d3436; }
+
+        .total-highlight {
+            background: #f1f2f6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-label { font-weight: bold; }
+        .total-value { 
+            font-size: 1.4rem; 
+            color: var(--success-color); 
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #b2bec3;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>JS Operations Laboratory</h1>
+            <p>บันทึกการคำนวณพื้นฐานทางคณิตศาสตร์</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">🎓 ระบบสรุปผลคะแนน</div>
+                <div id="grade-display"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">🧾 ใบเสร็จชำระเงิน</div>
+                <div id="invoice-display"></div>
+            </div>
+        </div>
+
+        <div class="footer">แสดงผลลัพธ์ผ่าน DOM Manipulation และ Console</div>
+    </div>
+
+    <script>
+        // ==========================================
+        // ข้อที่ 1: การคำนวณคะแนนเฉลี่ย 3 วิชา
+        // ==========================================
+        let math = 85;
+        let science = 72;
+        let english = 90;
+
+        // สูตร: (ผลรวมทุกวิชา) / จำนวนวิชา
+        let average = (math + science + english) / 3;
+
+        const gradeDisplay = document.getElementById('grade-display');
+        gradeDisplay.innerHTML = `
+            <div class="result-item"><span class="label">คณิตศาสตร์</span><span class="value">${math}</span></div>
+            <div class="result-item"><span class="label">วิทยาศาสตร์</span><span class="value">${science}</span></div>
+            <div class="result-item"><span class="label">ภาษาอังกฤษ</span><span class="value">${english}</span></div>
+            <div class="total-highlight">
+                <span class="total-label">คะแนนเฉลี่ย</span>
+                <span class="total-value">${average.toFixed(2)}</span>
+            </div>
+        `;
+
+        // ==========================================
+        // ข้อที่ 2: การคำนวณราคาสินค้ารวม VAT 7%
+        // ==========================================
+        const product = "Wireless Mouse";
+        let price = 1250;
+        const VAT_PERCENT = 0.07;
+
+        let vat = price * VAT_PERCENT;
+        let grandTotal = price + vat;
+
+        const invoiceDisplay = document.getElementById('invoice-display');
+        invoiceDisplay.innerHTML = `
+            <div class="result-item"><span class="label">สินค้า</span><span class="value">${product}</span></div>
+            <div class="result-item"><span class="label">ราคาปกติ</span><span class="value">฿${price.toLocaleString()}</span></div>
+            <div class="result-item"><span class="label">ภาษี (7%)</span><span class="value">฿${vat.toFixed(2)}</span></div>
+            <div class="total-highlight">
+                <span class="total-label">ยอดสุทธิ</span>
+                <span class="total-value">฿${grandTotal.toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+            </div>
+        `;
+
+        // แสดงผลใน Console เพื่อยืนยันการทำงาน
+        console.log("--- Lab 2.2 Calculation Results ---");
+        console.log("Average Score:", average.toFixed(2));
+        console.log("Total with VAT:", grandTotal);
+    </script>
+</body>
+</html>
