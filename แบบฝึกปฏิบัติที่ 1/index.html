@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บันทึกผลการทดลองที่ 1</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 2; }
+        button { margin: 5px; cursor: pointer; }
+        .section { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h3>ข้อที่ 1: ปุ่ม 3 รูปแบบ</h3>
+        <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">ปุ่มที่ 1 (Inline)</button>
+
+        <button id="dateBtn">ปุ่มที่ 2 (Internal)</button>
+
+        <button onclick="showTime()">ปุ่มที่ 3 (External)</button>
+    </div>
+
+    <div class="section">
+        <h3>ข้อที่ 2: ระบบรับข้อความ</h3>
+        <input type="text" id="myInput" placeholder="กรอกข้อความที่นี่...">
+        <button onclick="showInputText()">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        // จัดการปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('dateBtn').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบันคือ: ' + today.toLocaleDateString());
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

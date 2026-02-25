@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.2: การคำนวณพื้นฐาน</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f0f2f5; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+        h2 { color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 10px; }
+        .result-box { background: #fff3e0; padding: 15px; border-radius: 5px; margin-top: 10px; border-left: 5px solid #ff9800; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>บันทึกผลการทดลองที่ 2.2</h2>
+        <p>ตรวจสอบผลการคำนวณได้ที่แท็บ <strong>Console (F12)</strong></p>
+        
+        <div class="result-box">
+            <strong>โจทย์ 1:</strong> คำนวณค่าเฉลี่ย 3 วิชา<br>
+            <strong>โจทย์ 2:</strong> คำนวณราคาสินค้า + VAT 7%
+        </div>
+    </div>
+
+    <script>
+        // --- 1. คำนวณคะแนนเฉลี่ย 3 วิชา ---
+        let mathScore = 85;
+        let scienceScore = 78;
+        let englishScore = 92;
+
+        let average = (mathScore + scienceScore + englishScore) / 3;
+
+        console.log("--- ข้อที่ 1: คำนวณคะแนนเฉลี่ย ---");
+        console.log("คะแนนวิชาคณิตศาสตร์:", mathScore);
+        console.log("คะแนนวิชาวิทยาศาสตร์:", scienceScore);
+        console.log("คะแนนวิชาภาษาอังกฤษ:", englishScore);
+        console.log("คะแนนเฉลี่ยรวม:", average.toFixed(2)); // ใช้ .toFixed(2) เพื่อแสดงทศนิยม 2 ตำแหน่ง
+
+
+        // --- 2. คำนวณราคาสินค้ารวม VAT 7% ---
+        const productName = "คีย์บอร์ดไร้สาย";
+        let productPrice = 1500;
+        const VAT_RATE = 0.07; // หรือ 7/100
+
+        let vatAmount = productPrice * VAT_RATE;
+        let totalPrice = productPrice + vatAmount;
+
+        console.log("--- ข้อที่ 2: คำนวณราคาสินค้า + VAT ---");
+        console.log("ชื่อสินค้า:", productName);
+        console.log("ราคาก่อน VAT:", productPrice, "บาท");
+        console.log("ภาษีมูลค่าเพิ่ม (7%):", vatAmount, "บาท");
+        console.log("ราคาสุทธิที่ต้องจ่าย:", totalPrice, "บาท");
+
+    </script>
+</body>
+</html>

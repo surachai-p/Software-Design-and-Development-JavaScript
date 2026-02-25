@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์ - การทดลองที่ 3.2</title>
+    <style>
+        /* 1. ตั้งค่าพื้นฐานและฟอนต์ */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f0f2f5; /* สีพื้นหลังแบบนุ่มนวล */
+            color: #333;
+        }
+
+        /* 2. ปรับแต่งหัวข้อ */
+        h1 {
+            color: #1a2a6c;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 3. ปรับแต่งส่วนของฟอร์ม (Container) */
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px; /* เพิ่มความโค้งมน */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* เพิ่มเงาให้ดูมีมิติ */
+            border-top: 5px solid #2980b9; /* เพิ่มแถบสีด้านบน */
+        }
+
+        /* 4. จัดระยะห่างแต่ละช่อง */
+        div {
+            margin-bottom: 20px;
+        }
+
+        /* 5. ปรับแต่ง Label */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* 6. ปรับแต่งช่องกรอกข้อมูลและ Select */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: all 0.3s ease; /* เพิ่ม Transition เพื่อความลื่นไหล */
+            font-size: 14px;
+        }
+
+        /* 7. เอฟเฟกต์เมื่อคลิกที่ช่องกรอก (Focus) */
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52,152,219,0.3);
+            background-color: #f7fbff;
+        }
+
+        /* 8. ปรับแต่งปุ่มกด */
+        button {
+            background: linear-gradient(135deg, #2980b9, #3498db); /* ไล่เฉดสีปุ่ม */
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        /* 9. เอฟเฟกต์เมื่อเอาเมาส์วางบนปุ่ม (Hover) */
+        button:hover {
+            transform: translateY(-2px); /* ปุ่มลอยขึ้นเล็กน้อย */
+            box-shadow: 0 5px 15px rgba(52,152,219,0.4);
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        /* 10. เมื่อกดปุ่ม (Active) */
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* 11. Responsive สำหรับมือถือ */
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            form {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm" onsubmit="event.preventDefault(); alert('ส่งข้อมูลการจองเรียบร้อยแล้ว!');">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="ตัวอย่าง: สมชาย ใจดี" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" placeholder="08x-xxx-xxxx" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน (Standard)</option>
+                <option value="deluxe">ห้องดีลักซ์ (Deluxe)</option>
+                <option value="suite">ห้องสวีท (Suite)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="1" required>
+        </div>
+
+        <button type="submit">ยืนยันการจองห้องพัก</button>
+    </form>
+
+</body>
+</html>

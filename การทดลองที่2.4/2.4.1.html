@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.4.1: Regular Functions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: auto;
+        }
+        h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .info-box {
+            background: #e8f4fd;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        .code-display {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+        strong { color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกผลการทดลองที่ 2.4.1 (Regular Functions)</h2>
+        
+        <p>การทดลองนี้เป็นการสร้างฟังก์ชันแบบปกติ (Regular Function) เพื่อแก้โจทย์ 3 ข้อ</p>
+
+        <div class="info-box">
+            <strong>วิธีตรวจสอบ:</strong> เปิด <strong>Console (F12)</strong> เพื่อดูผลการประมวลผลและการเรียกใช้งานฟังก์ชันทั้งหมด
+        </div>
+
+        <h3>สรุปผลการเขียนฟังก์ชัน:</h3>
+        <ul>
+            <li><strong>BMI:</strong> คำนวณโดยใช้ <code>weight / (height/100)^2</code></li>
+            <li><strong>Greeting:</strong> ใช้ <code>if-else</code> แยกช่วงอายุ</li>
+            <li><strong>Password:</strong> ใช้ <code>.length</code> ตรวจสอบเงื่อนไข</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log("%c--- เริ่มการทดสอบ 2.4.1 ---", "color: blue; font-weight: bold;");
+
+        // 1. Function คำนวณค่า BMI
+        function calculateBMI(weight, heightCm) {
+            let heightM = heightCm / 100;
+            let bmi = weight / (heightM * heightM);
+            return bmi.toFixed(2); // คืนค่าทศนิยม 2 ตำแหน่ง
+        }
+
+        let resultBMI = calculateBMI(65, 170);
+        console.log("1. ค่า BMI (น้ำหนัก 65, สูง 170): " + resultBMI);
+
+
+        // 2. Function ทักทายตามอายุ
+        function greetUser(name, age) {
+            if (age <= 12) {
+                return "สวัสดีจ๊ะ น้อง " + name + " (วัยเด็ก)";
+            } else if (age <= 20) {
+                return "สวัสดีจ้ะ คุณ " + name + " (วัยรุ่น)";
+            } else {
+                return "สวัสดีครับ/ค่ะ คุณ " + name + " (วัยผู้ใหญ่)";
+            }
+        }
+
+        console.log("2. การทักทาย: " + greetUser("ประภาภรณ์", 21));
+
+
+        // 3. Function ตรวจสอบรหัสผ่าน
+        function isPasswordValid(password) {
+            if (password.length > 8) {
+                return "รหัสผ่าน '" + password + "' : ปลอดภัย (ผ่าน)";
+            } else {
+                return "รหัสผ่าน '" + password + "' : สั้นเกินไป (ไม่ผ่าน)";
+            }
+        }
+
+        console.log("3. ผลตรวจสอบรหัสผ่าน 1: " + isPasswordValid("123456"));
+        console.log("3. ผลตรวจสอบรหัสผ่าน 2: " + isPasswordValid("AdminPrapaporn2026"));
+
+    </script>
+
+</body>
+</html>
