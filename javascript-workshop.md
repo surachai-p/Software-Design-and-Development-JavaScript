@@ -76,10 +76,53 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('ชื่อนักศึกษา: ธนกฤต พรรณเผือก')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- ช่องกรอกข้อความและปุ่มแสดงผล -->
+    <br><br>
+    <input type="text" id="studentInput" placeholder="พิมพ์ข้อความที่นี่">
+    <button id="btnShowInput">แสดงข้อความ</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        };
+
+        document.getElementById('btnShowInput').onclick = function() {
+            const txt = document.getElementById('studentInput').value;
+            alert(txt);
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>]
+```
+```
+// External JavaScript: function for ปุ่มที่ 3
+function hello3() {
+    const now = new Date();
+    alert('เวลาปัจจุบัน: ' + now.toLocaleTimeString('th-TH'));
+}
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1](![alt text](images/image.png))
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -135,7 +178,65 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('ชื่อนักศึกษา: ธนกฤต พรรณเผือก')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- ช่องกรอกข้อความและปุ่มแสดงผล -->
+    <br><br>
+    <input type="text" id="studentInput" placeholder="พิมพ์ข้อความที่นี่">
+    <button id="btnShowInput">แสดงข้อความ</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        };
+
+        document.getElementById('btnShowInput').onclick = function() {
+            const txt = document.getElementById('studentInput').value;
+            alert(txt);
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>]
+```
+```
+const studentId = '68030109';
+const studentName = 'ธนกฤต พรรณเผือก';
+let midtermScore = 78; 
+let finalScore = 86; 
+
+const student = {
+    id: studentId,
+    name: studentName,
+    major: 'โทคโนโลยีคอมพิวเตอร์',
+    average: (midtermScore + finalScore) / 2
+};
+
+console.log('Student variables:', { studentId, studentName, midtermScore, finalScore });
+console.log('Student object:', student);
+
+function hello3() {
+    const now = new Date();
+    alert('เวลาปัจจุบัน: ' + now.toLocaleTimeString('th-TH'));
+}
+
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.1](images/image.png)
@@ -190,10 +291,96 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('ชื่อนักศึกษา: ธนกฤต พรรณเผือก')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- ช่องกรอกข้อความและปุ่มแสดงผล -->
+    <br><br>
+    <input type="text" id="studentInput" placeholder="พิมพ์ข้อความที่นี่">
+    <button id="btnShowInput">แสดงข้อความ</button>
+
+    <!-- แบบทดสอบ 2.2: การคำนวณพื้นฐาน -->
+    <hr>
+    <h3>แบบทดสอบ 2.2: การคำนวณพื้นฐาน</h3>
+    <div>
+        <strong>คำนวณคะแนนเฉลี่ย (3 วิชา)</strong><br>
+        <label>คะแนนวิชา 1: <input type="number" id="score1" value="0"></label>
+        <label>คะแนนวิชา 2: <input type="number" id="score2" value="0"></label>
+        <label>คะแนนวิชา 3: <input type="number" id="score3" value="0"></label>
+        <button id="btnAvg">คำนวณเฉลี่ย</button>
+        <span id="avgResult"></span>
+    </div>
+    <br>
+    <div>
+        <strong>คำนวณราคาสินค้ารวม VAT 7%</strong><br>
+        <label>ชื่อสินค้า: <input type="text" id="productName" placeholder="ชื่อสินค้า"></label>
+        <label>ราคาสินค้า: <input type="number" id="productPrice" step="0.01" value="0"></label>
+        <button id="btnVat">คำนวณ VAT</button>
+        <span id="vatResult"></span>
+    </div>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        };
+
+        document.getElementById('btnShowInput').onclick = function() {
+            const txt = document.getElementById('studentInput').value;
+            alert(txt);
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>]
+```
+```html
+[// กำหนดค่าตัวแปรเริ่มต้น
+let x = 10;
+let y = 5;
+
+// การดำเนินการพื้นฐาน
+let sum = x + y;      // บวก: 10 + 5 = 15
+let diff = x - y;     // ลบ: 10 - 5 = 5
+let product = x * y;  // คูณ: 10 * 5 = 50
+let quotient = x / y; // หาร: 10 / 5 = 2
+let remainder = x % y; // หารเอาเศษ: 10 % 5 = 0 (หาร 5 ลงตัว)
+
+// การเพิ่ม/ลดค่าทีละ 1
+let counter = 1;
+counter++;            // เพิ่มค่าทีละ 1: counter = 2
+counter--;            // ลดค่าทีละ 1: counter = 1
+
+// การยกกำลัง
+let squared = x ** 2;  // 10 ยกกำลัง 2 = 100
+let cubed = x ** 3;    // 10 ยกกำลัง 3 = 1000
+
+// การใช้ตัวดำเนินการร่วมกับการกำหนดค่า
+let number = 5;
+number += 3;          // เท่ากับ number = number + 3
+number -= 2;          // เท่ากับ number = number - 2
+number *= 4;          // เท่ากับ number = number * 4
+number /= 2;          // เท่ากับ number = number / 2
+
+]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![รูปผลการทดลองที่ 2.2]![alt text](images/image3.png)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -324,10 +511,118 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แบบฝึกหัด 2.3 - การควบคุมการทำงาน</title>
+  <style>body{font-family:Segoe UI,Arial,sans-serif;padding:16px}label{display:inline-block;width:160px}</style>
+</head>
+<body>
+  <section>
+    <h2>1) ตรวจเลขคู่/คี่</h2>
+    <label>กรอกตัวเลข:</label>
+    <input id="evenInput" type="number" value="0">
+    <button id="btnEven">ตรวจคู่/คี่</button>
+    <div id="evenResult" style="margin-top:8px;color:#222"></div>
+  </section>
+
+  <section>
+    <h2>2) ตารางสูตรคูณ</h2>
+    <button id="btnMult2">แสดงแม่ 2 (for)</button>
+    <button id="btnMult3">แสดงแม่ 3 (while)</button>
+    <pre id="multResult" style="background:#f5f5f5;padding:8px;border-radius:4px"></pre>
+  </section>
+
+  <section>
+    <h2>3) นับถอยหลัง</h2>
+    <button id="btnCountdown">นับถอยหลัง 10 → 1</button>
+    <div id="countdownResult" style="margin-top:8px"></div>
+  </section>
+
+  <section>
+    <h2>4) ตรวจช่วงวัย</h2>
+    <label>กรอกอายุ:</label>
+    <input id="ageInput" type="number" value="0">
+    <button id="btnCheckAge">ตรวจช่วงวัย</button>
+    <div id="ageResult" style="margin-top:8px;color:#222"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+]
+```
+```html
+[// script.js (เฉพาะแบบฝึกหัด 2.3)
+
+// ตรวจเลขคู่หรือเลขคี่
+function isEvenOrOdd(n) {
+  if (typeof n !== 'number' || !Number.isFinite(n)) return 'ไม่ใช่ตัวเลขที่ถูกต้อง';
+  return (n % 2 === 0) ? 'เลขคู่' : 'เลขคี่';
+}
+
+function handleEvenOdd() {
+  const el = document.getElementById('evenInput');
+  const n = parseInt(el.value, 10);
+  const res = isNaN(n) ? 'กรุณากรอกตัวเลข' : isEvenOrOdd(n);
+  document.getElementById('evenResult').textContent = res;
+}
+
+// ตารางสูตรคูณ แม่ 2 (for)
+function showMult2() {
+  let out = '';
+  for (let i = 1; i <= 12; i++) {
+    out += `2 x ${i} = ${2 * i}\n`;
+  }
+  document.getElementById('multResult').textContent = out;
+}
+
+// ตารางสูตรคูณ แม่ 3 (while)
+function showMult3While() {
+  let out = '';
+  let i = 1;
+  while (i <= 12) {
+    out += `3 x ${i} = ${3 * i}\n`;
+    i++;
+  }
+  document.getElementById('multResult').textContent = out;
+}
+
+// นับถอยหลังจาก 10 ถึง 1
+function countdown10to1() {
+  const parts = [];
+  for (let k = 10; k >= 1; k--) parts.push(k);
+  document.getElementById('countdownResult').textContent = parts.join(' → ');
+}
+
+// ตรวจช่วงวัยตามอายุ
+function checkAgeRange(age) {
+  if (typeof age !== 'number' || age < 0) return 'อายุไม่ถูกต้อง';
+  if (age <= 12) return 'วัยเด็ก';
+  if (age <= 17) return 'วัยรุ่น';
+  if (age <= 59) return 'วัยผู้ใหญ่';
+  return 'วัยสูงอายุ';
+}
+
+function handleCheckAge() {
+  const n = parseInt(document.getElementById('ageInput').value, 10);
+  const res = isNaN(n) ? 'กรุณากรอกอายุ' : checkAgeRange(n);
+  document.getElementById('ageResult').textContent = res;
+}
+
+// ผูกปุ่มเมื่อ DOM โหลดแล้ว
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btnEven').addEventListener('click', handleEvenOdd);
+  document.getElementById('btnMult2').addEventListener('click', showMult2);
+  document.getElementById('btnMult3').addEventListener('click', showMult3While);
+  document.getElementById('btnCountdown').addEventListener('click', countdown10to1);
+  document.getElementById('btnCheckAge').addEventListener('click', handleCheckAge);
+});
+]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3]![alt text](images/image-1.png)
 
 ### 2.4 Functions และ Arrow Functions
 
