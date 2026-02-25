@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์ - JS Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>จองห้องพัก</h1>
+    <form id="bookingForm">
+        <div><label>ชื่อ-นามสกุล:</label><input type="text" id="fullname" required></div>
+        <div><label>เบอร์โทรศัพท์:</label><input type="tel" id="phone" placeholder="0XXXXXXXXX" required></div>
+        <div><label>วันที่เช็คอิน:</label><input type="date" id="checkin" required></div>
+        <div><label>วันที่เช็คเอาท์:</label><input type="date" id="checkout" required></div>
+        <div>
+            <label>ประเภทห้องพัก:</label>
+            <select id="roomtype" required>
+                <option value="standard">ห้องมาตรฐาน (พักได้ 2)</option>
+                <option value="deluxe">ห้องดีลักซ์ (พักได้ 3)</option>
+                <option value="suite">ห้องสวีท (พักได้ 4)</option>
+            </select>
+        </div>
+        <div><label>จำนวนผู้เข้าพัก:</label><input type="number" id="guests" min="1" max="2" value="1" required></div>
+        <button type="submit">ยืนยันการจอง</button>
+    </form>
+
+    <script>
+        // ใส่ Script ที่คุณให้มาด้านบนในส่วนนี้ เพื่อให้ทำงานร่วมกับ Form
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const checkin = new Date(document.getElementById('checkin').value);
+            const checkout = new Date(document.getElementById('checkout').value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (checkin < today) { alert('กรุณาเลือกวันเช็คอินที่ยังไม่ผ่านมา'); return; }
+            if (checkout <= checkin) { alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน'); return; }
+
+            const phone = document.getElementById('phone').value;
+            if (!/^[0-9]{10}$/.test(phone)) { alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลัก)'); return; }
+
+            const days = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+            const roomtype = document.getElementById('roomtype');
+            const summary = `สรุปการจอง:\n- ชื่อ: ${document.getElementById('fullname').value}\n- ประเภท: ${roomtype.options[roomtype.selectedIndex].text}\n- ระยะเวลา: ${days} วัน`;
+
+            if (confirm(summary + '\n\nยืนยันการจอง?')) {
+                alert('จองเรียบร้อยแล้ว!');
+                this.reset();
+            }
+        });
+
+        document.getElementById('checkin').addEventListener('change', function () {
+            document.getElementById('checkout').min = this.value;
+        });
+
+        document.getElementById('roomtype').addEventListener('change', function () {
+            const guestsInput = document.getElementById('guests');
+            const maxMap = { 'standard': 2, 'deluxe': 3, 'suite': 4 };
+            guestsInput.max = maxMap[this.value];
+            if (parseInt(guestsInput.value) > guestsInput.max) guestsInput.value = guestsInput.max;
+        });
+    </script>
+</body>
+
+</html>

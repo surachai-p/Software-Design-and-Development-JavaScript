@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.4.1: Functions</title>
+    <style>
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .task {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            background: #f9f9f9;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .hint {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>เฉลยแบบทดสอบที่ 2.4.1: Functions</h2>
+        <p>กด <strong>F12</strong> แล้วเลือกแท็บ <strong>Console</strong> เพื่อดูการทำงานของฟังก์ชัน</p>
+
+        <div class="task">
+            <strong>ข้อ 1:</strong> คำนวณค่า BMI จากน้ำหนัก (kg) และส่วนสูง (m)
+        </div>
+
+        <div class="task">
+            <strong>ข้อ 2:</strong> ฟังก์ชันทักทายที่เหมาะสมตามช่วงอายุ
+        </div>
+
+        <div class="task">
+            <strong>ข้อ 3:</strong> ตรวจสอบความยาวรหัสผ่าน (ต้องมากกว่า 8 ตัวอักษร)
+        </div>
+    </div>
+
+    <script>
+        console.log("%c--- เริ่มการทดสอบ Functions ---", "color: blue; font-weight: bold; font-size: 14px;");
+
+        // --- ข้อ 1: Function คำนวณค่า BMI ---
+        // สูตร: BMI = น้ำหนัก (kg) / (ส่วนสูง (m) * ส่วนสูง (m))
+        function calculateBMI(weight, height) {
+            let bmi = weight / (height * height);
+            return bmi.toFixed(2); // คืนค่าเป็นทศนิยม 2 ตำแหน่ง
+        }
+
+        let myBMI = calculateBMI(70, 1.75);
+        console.log("1. ผลการคำนวณ BMI:", myBMI);
+
+
+        // --- ข้อ 2: Function รับชื่อและอายุ แล้วแสดงข้อความทักทาย ---
+        function greetByAge(name, age) {
+            let message = "";
+            if (age < 15) {
+                message = `สวัสดีจ๊ะ น้อง${name}`;
+            } else if (age < 30) {
+                message = `สวัสดีครับ/ค่ะ คุณ${name}`;
+            } else {
+                message = `สวัสดีครับ/ค่ะ ท่าน${name}`;
+            }
+            console.log("2. ข้อความทักทาย:", message);
+        }
+
+        greetByAge("ก้อง", 12);
+        greetByAge("สมชาย", 25);
+
+
+        // --- ข้อ 3: Function ตรวจสอบรหัสผ่านว่ายาวกว่า 8 ตัวอักษรหรือไม่ ---
+        function checkPassword(password) {
+            if (password.length > 8) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        let pass1 = "123456";
+        let pass2 = "securePassword123";
+
+        console.log(`3. ตรวจสอบรหัสผ่าน "${pass1}":`, checkPassword(pass1) ? "ผ่าน ✅" : "สั้นเกินไป ❌");
+        console.log(`3. ตรวจสอบรหัสผ่าน "${pass2}":`, checkPassword(pass2) ? "ผ่าน ✅" : "สั้นเกินไป ❌");
+
+        console.log("%c--- จบการทำงาน ---", "color: blue; font-weight: bold;");
+    </script>
+
+</body>
+
+</html>

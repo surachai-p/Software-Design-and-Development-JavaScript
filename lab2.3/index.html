@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.3: การควบคุมการทำงาน</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #007bff;
+            background: #e7f3ff;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>เฉลยแบบทดสอบที่ 2.3</h2>
+        <p><em>*ตรวจสอบผลลัพธ์ได้ที่ Console (กด F12 > Tab Console)</em></p>
+
+        <div class="section">
+            <strong>ข้อ 1:</strong> ตรวจสอบเลขคู่หรือเลขคี่
+        </div>
+
+        <div class="section">
+            <strong>ข้อ 2:</strong> สูตรคูณแม่ 2 (for) และ แม่ 3 (while)
+        </div>
+
+        <div class="section">
+            <strong>ข้อ 3:</strong> นับถอยหลัง 10 ถึง 1
+        </div>
+
+        <div class="section">
+            <strong>ข้อ 4:</strong> ตรวจสอบช่วงวัยตามอายุ
+        </div>
+    </div>
+
+    <script>
+        console.log("--- เริ่มการทำงานของโปรแกรม ---");
+
+        // --- ข้อ 1: กำหนดตัวเลข และตรวจสอบว่าเป็นเลขคู่หรือเลขคี่ ---
+        console.log("\n1. ตรวจสอบเลขคู่/คี่:");
+        let number = 15; // เปลี่ยนตัวเลขตรงนี้เพื่อทดสอบ
+        if (number % 2 === 0) {
+            console.log(number + " คือ เลขคู่");
+        } else {
+            console.log(number + " คือ เลขคี่");
+        }
+
+
+        // --- ข้อ 2: สร้าง loop แบบ for แสดงแม่ 2 และ while แสดงแม่ 3 ---
+        console.log("\n2. ตารางสูตรคูณ:");
+
+        console.log("สูตรคูณแม่ 2 (for loop):");
+        for (let i = 1; i <= 12; i++) {
+            console.log(`2 x ${i} = ${2 * i}`);
+        }
+
+        console.log("สูตรคูณแม่ 3 (while loop):");
+        let j = 1;
+        while (j <= 12) {
+            console.log(`3 x ${j} = ${3 * j}`);
+            j++;
+        }
+
+
+        // --- ข้อ 3: เขียนโปรแกรมนับถอยหลัง 10 ถึง 1 ---
+        console.log("\n3. นับถอยหลัง 10 ถึง 1:");
+        for (let count = 10; count >= 1; count--) {
+            console.log("นับถอยหลัง:", count);
+        }
+
+
+        // --- ข้อ 4: กำหนดอายุ และตรวจสอบช่วงวัย (เด็ก, วัยรุ่น, ผู้ใหญ่) ---
+        console.log("\n4. ตรวจสอบช่วงวัย:");
+        let myAge = 25; // ลองเปลี่ยนอายุที่นี่
+
+        if (myAge >= 0 && myAge <= 12) {
+            console.log("ช่วงวัย: วัยเด็ก");
+        } else if (myAge >= 13 && myAge <= 19) {
+            console.log("ช่วงวัย: วัยรุ่น");
+        } else if (myAge >= 20) {
+            console.log("ช่วงวัย: วัยผู้ใหญ่");
+        } else {
+            console.log("ระบุอายุไม่ถูกต้อง");
+        }
+
+        console.log("\n--- สิ้นสุดการทำงาน ---");
+    </script>
+
+</body>
+
+</html>

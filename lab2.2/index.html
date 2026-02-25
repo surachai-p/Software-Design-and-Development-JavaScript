@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.2: การคำนวณพื้นฐาน</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        .result-box {
+            background: #e7f3ff;
+            padding: 10px;
+            border-left: 5px solid #2196F3;
+            margin-top: 10px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 15px 0;
+        }
+
+        b {
+            color: #d35400;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>แบบทดสอบที่ 2.2</h1>
+
+        <div class="section">
+            <h2>ข้อที่ 1: คำนวณค่าเฉลี่ย 3 วิชา</h2>
+            <div id="score-output" class="result-box">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>ข้อที่ 2: คำนวณราคาสินค้ารวม VAT 7%</h2>
+            <div id="vat-output" class="result-box">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- ข้อที่ 1: คำนวณค่าเฉลี่ยคะแนน ---
+        let score1 = 85;
+        let score2 = 72;
+        let score3 = 94;
+        let average = (score1 + score2 + score3) / 3;
+
+        // แสดงผลข้อ 1
+        document.getElementById("score-output").innerHTML = `
+        วิชาที่ 1: ${score1} คะแนน <br>
+        วิชาที่ 2: ${score2} คะแนน <br>
+        วิชาที่ 3: ${score3} คะแนน <br>
+        <hr>
+        <b>ค่าเฉลี่ยคือ: ${average.toFixed(2)} คะแนน</b>
+    `;
+
+        // --- ข้อที่ 2: คำนวณราคาสินค้า + VAT 7% ---
+        let productName = "ลำโพงบลูทูธ";
+        let price = 2500;
+        let vatRate = 0.07;
+        let vatAmount = price * vatRate;
+        let totalPrice = price + vatAmount;
+
+        // แสดงผลข้อ 2
+        document.getElementById("vat-output").innerHTML = `
+        ชื่อสินค้า: <b>${productName}</b> <br>
+        ราคาสินค้า: ${price.toLocaleString()} บาท <br>
+        ภาษี (VAT 7%): ${vatAmount.toFixed(2)} บาท <br>
+        <hr>
+        <b>ราคาสุทธิที่ต้องชำระ: ${totalPrice.toLocaleString()} บาท</b>
+    `;
+    </script>
+
+</body>
+
+</html>
