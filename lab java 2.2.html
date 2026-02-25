@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Java 2.2 </title>
+    <style>
+        body { font-family: 'Tahoma', sans-serif; padding: 30px; line-height: 1.8; }
+        input { padding: 5px; margin: 5px 0; width: 100px; }
+        button { padding: 8px 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        .result-text { margin-top: 15px; font-weight: bold; color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+    <h2>1. คำนวณคะแนนเฉลี่ย</h2>
+    วิทย์: <input type="number" id="sciIn" value=""> 
+    คณิต: <input type="number" id="mathIn" value=""> 
+    อังกฤษ: <input type="number" id="engIn" value="">
+    <br>
+    <button onclick="calculateScores()">คำนวณคะแนน</button>
+    <div id="subjectScore" class="result-text"></div>
+
+    <hr>
+
+    <h2>2. คำนวณราคาสินค้า (VAT 7%)</h2>
+    ชื่อสินค้า: <input type="text" id="pNameIn" value="" style="width: 150px;"> <br>
+    ราคาสินค้า: <input type="number" id="pPriceIn" value=""> บาท
+    <br>
+    <button onclick="calculateProduct()">คำนวณราคาสุทธิ</button>
+    <div id="product" class="result-text"></div>
+
+    <script src="lab java 2.2.js"></script>
+</body>
+</html>
