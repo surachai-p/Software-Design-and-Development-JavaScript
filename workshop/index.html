@@ -19,6 +19,26 @@
     <input type="text" id="studentInput" placeholder="พิมพ์ข้อความที่นี่">
     <button id="btnShowInput">แสดงข้อความ</button>
 
+    <!-- แบบทดสอบ 2.2: การคำนวณพื้นฐาน -->
+    <hr>
+    <h3>แบบทดสอบ 2.2: การคำนวณพื้นฐาน</h3>
+    <div>
+        <strong>คำนวณคะแนนเฉลี่ย (3 วิชา)</strong><br>
+        <label>คะแนนวิชา 1: <input type="number" id="score1" value="0"></label>
+        <label>คะแนนวิชา 2: <input type="number" id="score2" value="0"></label>
+        <label>คะแนนวิชา 3: <input type="number" id="score3" value="0"></label>
+        <button id="btnAvg">คำนวณเฉลี่ย</button>
+        <span id="avgResult"></span>
+    </div>
+    <br>
+    <div>
+        <strong>คำนวณราคาสินค้ารวม VAT 7%</strong><br>
+        <label>ชื่อสินค้า: <input type="text" id="productName" placeholder="ชื่อสินค้า"></label>
+        <label>ราคาสินค้า: <input type="number" id="productPrice" step="0.01" value="0"></label>
+        <button id="btnVat">คำนวณ VAT</button>
+        <span id="vatResult"></span>
+    </div>
+
     <!-- Internal JavaScript -->
     <script>
         document.getElementById('btn2').onclick = function() {
