@@ -1,47 +1,190 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <div id="output"></div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบจองห้องพักออนไลน์</title>
 
-    <script>
-        
-        let score1 = 80;
-        let score2 = 75;
-        let score3 = 90;
+<style>
+body {
+    font-family: 'Sarabun', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+}
 
-        let totalScore = score1 + score2 + score3;
-        let average = totalScore / 3;
+h1 {
+    text-align: center;
+}
 
-       
-        let productName = "คีย์บอร์ด";
-        let productPrice = 1200;
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-        let vat = productPrice * 0.07;
-        let netPrice = productPrice + vat;
+div {
+    margin-bottom: 15px;
+}
 
-        const output = document.getElementById("output");
+label {
+    font-weight: bold;
+}
 
-        output.innerHTML = `
-            <h2>ข้อที่ 1: คำนวณคะแนนเฉลี่ย</h2>
-            <p>คะแนนวิชา 1: ${score1}</p>
-            <p>คะแนนวิชา 2: ${score2}</p>
-            <p>คะแนนวิชา 3: ${score3}</p>
-            <p><strong>คะแนนรวม:</strong> ${totalScore}</p>
-            <p><strong>คะแนนเฉลี่ย:</strong> ${average.toFixed(2)}</p>
+input, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
 
-            <hr>
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-            <h2>ข้อที่ 2: คำนวณราคาสินค้ารวม VAT 7%</h2>
-            <p>ชื่อสินค้า: ${productName}</p>
-            <p>ราคาสินค้า: ${productPrice} บาท</p>
-            <p>VAT 7%: ${vat.toFixed(2)} บาท</p>
-            <p><strong>ราคาสุทธิ: ${netPrice.toFixed(2)} บาท</strong></p>
-        `;
+button:hover {
+    background: #1abc9c;
+}
+</style>
+</head>
 
-        
-        console.log("คะแนนเฉลี่ย:", average);
-        console.log("ราคาสุทธิ:", netPrice);
-    </script>
+<body>
+
+<h1>แบบฟอร์มจองห้องพัก</h1>
+
+<form id="bookingForm">
+
+<div>
+<label>ชื่อ-นามสกุล:</label>
+<input type="text" id="fullname" required>
+</div>
+
+<div>
+<label>อีเมล:</label>
+<input type="email" id="email" required>
+</div>
+
+<div>
+<label>เบอร์โทรศัพท์:</label>
+<input type="tel" id="phone" required>
+</div>
+
+<div>
+<label>วันที่เช็คอิน:</label>
+<input type="date" id="checkin" required>
+</div>
+
+<div>
+<label>วันที่เช็คเอาท์:</label>
+<input type="date" id="checkout" required>
+</div>
+
+<div>
+<label>ประเภทห้องพัก:</label>
+<select id="roomtype" required>
+<option value="">กรุณาเลือกประเภทห้องพัก</option>
+<option value="standard">ห้องมาตรฐาน</option>
+<option value="deluxe">ห้องดีลักซ์</option>
+<option value="suite">ห้องสวีท</option>
+</select>
+</div>
+
+<div>
+<label>จำนวนผู้เข้าพัก:</label>
+<input type="number" id="guests" min="1" max="4" required>
+</div>
+
+<button type="submit">จองห้องพัก</button>
+
+</form>
+
+<script>
+
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const checkin = new Date(document.getElementById('checkin').value);
+    const checkout = new Date(document.getElementById('checkout').value);
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    if (checkin < today) {
+        alert('กรุณาเลือกวันเช็คอินที่ยังไม่ผ่านมา');
+        return;
+    }
+
+    if (checkout <= checkin) {
+        alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+        return;
+    }
+
+    
+    const phone = document.getElementById('phone').value;
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if (!phoneRegex.test(phone)) {
+        alert('กรุณากรอกเบอร์โทรศัพท์ 10 หลัก');
+        return;
+    }
+
+    
+    const days = Math.ceil((checkout - checkin) / (1000*60*60*24));
+
+    const roomtype = document.getElementById('roomtype');
+    const roomtypeText = roomtype.options[roomtype.selectedIndex].text;
+
+    const summary = `
+สรุปการจอง
+ชื่อ: ${document.getElementById('fullname').value}
+ประเภทห้อง: ${roomtypeText}
+เข้าพัก: ${checkin.toLocaleDateString('th-TH')}
+ออก: ${checkout.toLocaleDateString('th-TH')}
+จำนวนวัน: ${days} วัน
+จำนวนผู้เข้าพัก: ${document.getElementById('guests').value} ท่าน
+`;
+
+    if (confirm(summary + "\n\nยืนยันการจองหรือไม่?")) {
+        alert("จองห้องพักเรียบร้อยแล้ว");
+        this.reset();
+    }
+
+});
+
+
+document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+});
+
+
+document.getElementById('roomtype').addEventListener('change', function() {
+
+    const guestsInput = document.getElementById('guests');
+
+    if (this.value === 'standard') {
+        guestsInput.max = 2;
+    } else if (this.value === 'deluxe') {
+        guestsInput.max = 3;
+    } else if (this.value === 'suite') {
+        guestsInput.max = 4;
+    }
+
+    if (guestsInput.value > guestsInput.max) {
+        guestsInput.value = guestsInput.max;
+    }
+
+});
+
+</script>
+
 </body>
 </html>
