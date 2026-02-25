@@ -76,10 +76,70 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+
+<h2>JavaScript</h2>
+
+<button onclick="alert('ศศิธร รอบคอบพรมราช')">
+Name
+</button>
+
+<br><br>
+
+<button id="btn2">
+Date
+</button>
+
+<br><br>
+
+<button onclick="showTime()">
+Time
+</button>
+
+<br><br>
+
+<input type="text" id="text1">
+
+<button onclick="showText()">
+แสดงข้อความ
+</button>
+
+<p id="result"></p>
+
+
+<script>
+
+document.getElementById("btn2").onclick=function(){
+
+alert(new Date());
+
+}
+
+function showText(){
+
+let text=document.getElementById("text1").value;
+
+document.getElementById("result").innerHTML=text;
+
+}
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
 [บันทึกโค้ด ที่นี่]
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 1](images/image.png)
+<img width="1157" height="590" alt="image" src="https://github.com/user-attachments/assets/37099ac8-2e76-4567-8a76-d71cd994079b" />
+
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -136,9 +196,53 @@ let person = {
 ### บันทึกผลการทดลอง 2.1
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<div class="card">
+    <h2>ข้อมูลนักศึกษา</h2>
+    <p id="sid"></p>
+    <p id="sname"></p>
+    <p id="smajor"></p>
+    <p id="sgpa"></p>
+    <p id="sscore"></p>
+</div>
+
+<script>
+
+let ID="68030275";
+let name="ศศิธร รอบคอบพรหมราช";
+let midterm=75;
+let final=90;
+
+const student={
+    id:"68030275",
+    name:"ศศิธร รอบคอบพรหมราช",
+    major:"Computer Technology",
+    gpa:3.7
+};
+
+let total = midterm + final;
+
+document.getElementById("sid").innerHTML = "รหัส: " + student.id;
+document.getElementById("sname").innerHTML = "ชื่อ: " + student.name;
+document.getElementById("smajor").innerHTML = "สาขา: " + student.major;
+document.getElementById("sgpa").innerHTML = "GPA: " + student.gpa;
+document.getElementById("sscore").innerHTML = "คะแนนรวม: " + total;
+
+</script>
+
+</body>
+</html>
+
+};
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.1](images/image.png)
+
+
+
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -191,9 +295,48 @@ number /= 2;          // เท่ากับ number = number / 2
 ### บันทึกผลการทดลอง 2.2
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ 2.2</title>
+</head>
+<body>
+
+<script>
+
+let thai = 80;
+let math = 75;
+let english = 85;
+
+let average = (thai + math + english) / 3;
+
+document.write("คะแนนวิชาภาษาไทย: " + thai + "<br>");
+document.write("คะแนนวิชาคณิตศาสตร์: " + math + "<br>");
+document.write("คะแนนวิชาภาษาอังกฤษ: " + english + "<br>");
+document.write("คะแนนเฉลี่ย: " + average.toFixed(2) + "<br><br>");
+
+
+let productName = "รองเท้าแตะ";
+let price = 1590;
+let vat = price * 0.07;
+let totalPrice = price + vat;
+
+document.write("ชื่อสินค้า: " + productName + "<br>");
+document.write("ราคา: " + price + " บาท<br>");
+document.write("VAT 7%: " + vat.toFixed(2) + " บาท<br>");
+document.write("ราคารวม VAT: " + totalPrice.toFixed(2) + " บาท");
+
+</script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.2](images/image.png)
+<img width="418" height="358" alt="image" src="https://github.com/user-attachments/assets/974df177-2292-45be-8cd6-7f0d2e967a6b" />
+
+
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -325,9 +468,68 @@ for (let i = 1; i <= 5; i++) {
 ### บันทึกผลการทดลอง 2.3
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ 2.3</title>
+</head>
+<body>
+
+<script>
+
+let number = 54;
+
+if (number % 2 === 0) {
+    document.write(number + " เป็นเลขคู่<br>");
+} else {
+    document.write(number + " เป็นเลขคี่<br>");
+}
+
+document.write("<br>สูตรคูณแม่ 2<br>");
+
+for (let i = 1; i <= 12; i++) {
+    document.write("2 x " + i + " = " + (2 * i) + "<br>");
+}
+
+document.write("<br>สูตรคูณแม่ 3<br>");
+
+let j = 1;
+
+while (j <= 12) {
+    document.write("3 x " + j + " = " + (3 * j) + "<br>");
+    j++;
+}
+
+document.write("<br>");
+
+for (let i = 10; i >= 1; i--) {
+    document.write(i + "<br>");
+}
+
+document.write("0<br><br>");
+
+let age = 18;
+
+if (age <= 12) {
+    document.write("วัยเด็ก");
+}
+else if (age <= 19) {
+    document.write("วัยรุ่น");
+}
+else {
+    document.write("วัยผู้ใหญ่");
+}
+
+</script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.3](images/image.png)
+<img width="468" height="1355" alt="image" src="https://github.com/user-attachments/assets/5f7a22c0-7d74-4bc7-a123-78067b183148" />
+
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -439,10 +641,60 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[บันทึกโค้ด ที่นี่
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ 2.4.1</title>
+</head>
+<body>
+
+<script>
+
+function calculateBMI(weight, height) {
+    return weight / (height * height);
+}
+
+let bmi = calculateBMI(60, 1.65);
+document.write("ค่า BMI = " + bmi.toFixed(2) + "<br><br>");
+
+
+function greet(name, age) {
+    if (age <= 12) {
+        document.write("สวัสดี " + name + " คุณอยู่ในวัยเด็ก<br><br>");
+    }
+    else if (age <= 19) {
+        document.write("สวัสดี " + name + " คุณอยู่ในวัยรุ่น<br><br>");
+    }
+    else {
+        document.write("สวัสดี " + name + " คุณอยู่ในวัยผู้ใหญ่<br><br>");
+    }
+}
+
+greet("ศศิธร", 19);
+
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        document.write("รหัสผ่านถูกต้อง<br>");
+    }
+    else {
+        document.write("รหัสผ่านต้องมากกว่า 8 ตัวอักษร<br>");
+    }
+}
+
+checkPassword("123456789");
+
+
+</script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.4.1](images/image.png)
+<img width="517" height="287" alt="image" src="https://github.com/user-attachments/assets/85ed54c0-db8a-49e0-9ce9-f136b3651ea3" />
 
 
 
@@ -484,9 +736,59 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### บันทึกผลการทดลอง 2.4.2
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ 2.4.1</title>
+</head>
+<body>
+
+<script>
+
+function calculateBMI(weight, height) {
+    return weight / (height * height);
+}
+
+let bmi = calculateBMI(60, 1.65);
+document.write("ค่า BMI = " + bmi.toFixed(2) + "<br><br>");
+
+
+function greet(name, age) {
+    if (age <= 12) {
+        document.write("สวัสดี " + name + " คุณอยู่ในวัยเด็ก<br><br>");
+    }
+    else if (age <= 19) {
+        document.write("สวัสดี " + name + " คุณอยู่ในวัยรุ่น<br><br>");
+    }
+    else {
+        document.write("สวัสดี " + name + " คุณอยู่ในวัยผู้ใหญ่<br><br>");
+    }
+}
+
+greet("ศศิธร", 19);
+
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        document.write("รหัสผ่านถูกต้อง<br>");
+    }
+    else {
+        document.write("รหัสผ่านต้องมากกว่า 8 ตัวอักษร<br>");
+    }
+}
+
+checkPassword("123456789");
+
+
+</script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.4.2](images/image.png)
+<img width="480" height="280" alt="image" src="https://github.com/user-attachments/assets/eb845caa-3f96-4aa7-8fd5-8b5db406ff1b" />
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -554,10 +856,62 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[บันทึกโค้ด ที่นี่
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BMI Calculator</title>
+</head>
+<body>
+
+<h2>คำนวณค่า BMI</h2>
+
+น้ำหนัก (กิโลกรัม)
+<input type="number" id="weight"><br><br>
+
+ส่วนสูง (เมตร)
+<input type="number" id="height" step="0.01"><br><br>
+
+<button onclick="calculateBMI()">คำนวณ BMI</button>
+
+<p id="result"></p>
+
+<script>
+
+let calculateBMI = () => {
+
+    let weight = document.getElementById("weight").value;
+    let height = document.getElementById("height").value;
+
+    let bmi = weight / (height * height);
+
+    let status = "";
+
+    if (bmi < 18.5) {
+        status = "ผอม";
+    }
+    else if (bmi <= 22.9) {
+        status = "สมส่วน";
+    }
+    else {
+        status = "อ้วน";
+    }
+
+    document.getElementById("result").innerHTML =
+        "ค่า BMI = " + bmi.toFixed(2) + " อยู่ในเกณฑ์ : " + status;
+
+}
+
+</script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.1](images/image.png)
+![รูปผลการทดลองที่ 3.1](images/image.png
+<img width="598" height="366" alt="image" src="https://github.com/user-attachments/assets/24af97f0-657c-4ca8-9ad4-25a8129e772f" />
+
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -718,9 +1072,105 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### บันทึกผลการทดลอง 3.2.2
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+
+    <style>
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e0f7fa;
+        }
+
+        h1 {
+            color: #00695c;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        label {
+            font-weight: bold;
+            color: #004d40;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>แบบฟอร์มจองห้องพัก</h1>
+
+<form>
+
+<label>ชื่อ-นามสกุล:</label>
+<input type="text">
+
+<label>อีเมล:</label>
+<input type="email">
+
+<label>เบอร์โทรศัพท์:</label>
+<input type="tel">
+
+<label>วันที่เช็คอิน:</label>
+<input type="date">
+
+<label>วันที่เช็คเอาท์:</label>
+<input type="date">
+
+<label>ประเภทห้องพัก:</label>
+<select>
+<option>ห้องมาตรฐาน</option>
+<option>ห้องดีลักซ์</option>
+<option>ห้องสวีท</option>
+</select>
+
+<label>จำนวนผู้เข้าพัก:</label>
+<input type="number">
+
+<button>จองห้องพัก</button>
+
+</form>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 3.2.2](images/image.png)
+<img width="2875" height="1099" alt="image" src="https://github.com/user-attachments/assets/69e14a04-77dc-4eb1-8a41-da7fe440c7b1" />
+
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -826,9 +1276,140 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### บันทึกผลการทดลอง 3.2.3
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบจองห้องพักออนไลน์</title>
+
+<style>
+
+body {
+    font-family: Sarabun;
+    max-width: 600px;
+    margin: auto;
+}
+
+form {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+button {
+    background-color: green;
+    color: white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>แบบฟอร์มจองห้องพัก</h1>
+
+<form id="bookingForm">
+
+ชื่อ-นามสกุล:
+<input type="text" id="fullname" required><br><br>
+
+อีเมล:
+<input type="email" id="email" required><br><br>
+
+เบอร์โทร:
+<input type="tel" id="phone" required><br><br>
+
+วันที่เช็คอิน:
+<input type="date" id="checkin" required><br><br>
+
+วันที่เช็คเอาท์:
+<input type="date" id="checkout" required><br><br>
+
+ประเภทห้อง:
+<select id="roomtype" required>
+
+<option value="standard">ห้องมาตรฐาน</option>
+
+<option value="deluxe">ห้องดีลักซ์</option>
+
+<option value="suite">ห้องสวีท</option>
+
+</select><br><br>
+
+จำนวนผู้เข้าพัก:
+<input type="number" id="guests" required><br><br>
+
+<button type="submit">จองห้องพัก</button>
+
+</form>
+
+
+<script>
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+
+e.preventDefault();
+
+const checkin = new Date(document.getElementById('checkin').value);
+
+const checkout = new Date(document.getElementById('checkout').value);
+
+if (checkout <= checkin) {
+
+alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+
+return;
+
+}
+
+const phone = document.getElementById('phone').value;
+
+if (phone.length != 10) {
+
+alert('กรอกเบอร์โทร 10 หลัก');
+
+return;
+
+}
+
+const days = (checkout - checkin) / (1000*60*60*24);
+
+alert('จำนวนวันที่พัก = ' + days + ' วัน');
+
+this.reset();
+
+});
+
+
+document.getElementById('checkin').addEventListener('change', function() {
+
+document.getElementById('checkout').min = this.value;
+
+});
+
+
+document.getElementById('roomtype').addEventListener('change', function() {
+
+let guests = document.getElementById('guests');
+
+if (this.value == 'standard') guests.max = 2;
+
+else if (this.value == 'deluxe') guests.max = 3;
+
+else guests.max = 4;
+
+});
+
+</script>
+
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 3.2.3](images/image.png)
+<img width="2241" height="729" alt="image" src="https://github.com/user-attachments/assets/043fd75f-a903-4248-bb59-3412381f7a6e" />
 
 
 ## คำแนะนำเพิ่มเติม
