@@ -76,10 +76,59 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">25 กุมภาพันธ์ 2566ต</button>
+
+        <button onclick="showTime()">19.30 น.</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 19.30.46.png>))
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -135,10 +184,68 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+    <hr>
+<h2>การทดลองที่ 2.1: ตัวแปรและ Object</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![รูปผลการทดลองที่ 2.1](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 19.51.52.png>))
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
