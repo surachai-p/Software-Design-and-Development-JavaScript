@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <div id="output"></div>
+
+    <script>
+        
+        let score1 = 80;
+        let score2 = 75;
+        let score3 = 90;
+
+        let totalScore = score1 + score2 + score3;
+        let average = totalScore / 3;
+
+       
+        let productName = "คีย์บอร์ด";
+        let productPrice = 1200;
+
+        let vat = productPrice * 0.07;
+        let netPrice = productPrice + vat;
+
+        const output = document.getElementById("output");
+
+        output.innerHTML = `
+            <h2>ข้อที่ 1: คำนวณคะแนนเฉลี่ย</h2>
+            <p>คะแนนวิชา 1: ${score1}</p>
+            <p>คะแนนวิชา 2: ${score2}</p>
+            <p>คะแนนวิชา 3: ${score3}</p>
+            <p><strong>คะแนนรวม:</strong> ${totalScore}</p>
+            <p><strong>คะแนนเฉลี่ย:</strong> ${average.toFixed(2)}</p>
+
+            <hr>
+
+            <h2>ข้อที่ 2: คำนวณราคาสินค้ารวม VAT 7%</h2>
+            <p>ชื่อสินค้า: ${productName}</p>
+            <p>ราคาสินค้า: ${productPrice} บาท</p>
+            <p>VAT 7%: ${vat.toFixed(2)} บาท</p>
+            <p><strong>ราคาสุทธิ: ${netPrice.toFixed(2)} บาท</strong></p>
+        `;
+
+        
+        console.log("คะแนนเฉลี่ย:", average);
+        console.log("ราคาสุทธิ:", netPrice);
+    </script>
+</body>
+</html>

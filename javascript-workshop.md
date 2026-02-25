@@ -77,9 +77,70 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 ### บันทึกผลการทดลอง 
 ```html
 [บันทึกโค้ด ที่นี่]
+```<!DOCTYPE html>
+<html lang="th">
+
+    <button onclick="alert('Thitikan Prasit')">
+        ปุ่มที่ 1
+    </button>
+
+    <br><br>
+
+  <button id="btnDate">
+        ปุ่มที่ 2 
+    </button>
+
+    <br><br>
+
+    <button onclick="showTime()">
+        ปุ่มที่ 3 
+    </button>
+
+    <hr>
+
+    <h3>แสดงข้อความจากช่องกรอกข้อมูล</h3>
+
+    
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+
+    
+    <button id="btnShow">
+        แสดงข้อความ
+    </button>
+
+    <p id="result"></p>
+
+  
+    <script>
+        
+        document.getElementById("btnDate").onclick = function() {
+            let today = new Date();
+            alert("วันที่ปัจจุบัน: " + today.toLocaleDateString());
+        };
+
+        
+        document.getElementById("btnShow").onclick = function() {
+            let message = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML = 
+                "ข้อความที่คุณพิมพ์คือ: " + message;
+        };
+    </script>
+
+   
+    <script src="script.js"></script>
+
+</body>
+</html>
+
 ```
+ 
+
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 1](images/image.png)
+![alt text](1.PNG)
+![alt text](1.1.PNG)
+![alt text](1.2.PNG)
+![alt text](1.3.PNG)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -136,9 +197,53 @@ let person = {
 ### บันทึกผลการทดลอง 2.1
 ```html
 [บันทึกโค้ด ที่นี่]
+```<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+
+    <div id="output"></div>
+
+    <script>
+       
+        const studentId = "68030072";
+        const studentName = "ฐิติกานต์ ประสิทธิ์";
+
+        let midtermScore = 75;
+        let finalScore = 82;
+
+        midtermScore = 78;
+
+        const student = {
+            studentId: studentId,
+            name: studentName,
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 3.45
+        };
+
+       
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = `
+            <p><strong>รหัสนักศึกษา:</strong> ${studentId}</p>
+            <p><strong>ชื่อ:</strong> ${studentName}</p>
+            <p><strong>คะแนนกลางภาค:</strong> ${midtermScore}</p>
+            <p><strong>คะแนนปลายภาค:</strong> ${finalScore}</p>
+            <hr>
+            <h3>ข้อมูลจาก Object</h3>
+            <p><strong>สาขาวิชา:</strong> ${student.major}</p>
+            <p><strong>เกรดเฉลี่ย:</strong> ${student.gpa}</p>
+        `;
+
+        
+        console.log("ข้อมูลนักศึกษา:", student);
+    </script>
+</body>
+</html>
 ```
+
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.1](images/image.png)
+![alt text](2.1.PNG)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
