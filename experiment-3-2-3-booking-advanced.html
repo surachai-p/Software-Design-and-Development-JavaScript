@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การทดลองที่ 3.2.3 - ฟอร์มจองห้องพัก (Advanced)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #667eea;
+            border-radius: 6px;
+        }
+        
+        .form-section-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        /* เปลี่ยนขอบ input เมื่อ focus (ผู้ใช้คลิกเข้า) */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+            background-color: #fff9f9;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        /* เปลี่ยนสีปุ่มเมื่อ hover (นำเมาส์ไปวาง) */
+        .btn-submit:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-submit:active {
+            background-color: #4554b8;
+            transform: translateY(0);
+        }
+        
+        .btn-reset {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        
+        .btn-reset:hover {
+            background-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+        
+        .btn-reset:active {
+            background-color: #c0c0c0;
+        }
+        
+        .summary-box {
+            display: none;
+            background-color: #f0f4ff;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+            white-space: pre-line;
+            font-size: 15px;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        .summary-box.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .error-message {
+            display: none;
+            background-color: #ffe0e0;
+            border: 2px solid #ff6b6b;
+            color: #cc0000;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏨 ฟอร์มจองห้องพัก</h1>
+        <p class="subtitle">การทดลองที่ 3.2.3 - การเพิ่มฟังก์ชัน JavaScript</p>
+        
+        <form id="bookingForm">
+            <!-- ส่วนที่ 1: ข้อมูลผู้จอง -->
+            <div class="form-section">
+                <div class="form-section-title">📋 ข้อมูลผู้จอง</div>
+                
+                <div class="form-group">
+                    <label for="fullname">ชื่อ-นามสกุล:</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="กรุณากรอกชื่อ-นามสกุล" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">อีเมล:</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">เบอร์โทรศัพท์:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="0812345678" maxlength="10" required>
+                </div>
+            </div>
+            
+            <!-- ส่วนที่ 2: ข้อมูลการพัก -->
+            <div class="form-section">
+                <div class="form-section-title">📅 ข้อมูลการพัก</div>
+                
+                <div class="form-group">
+                    <label for="checkin">วันที่เข้าพัก:</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkout">วันที่ออกพัก:</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="roomtype">ประเภทห้องพัก:</label>
+                    <select id="roomtype" name="roomtype" required>
+                        <option value="">-- เลือกประเภทห้อง --</option>
+                        <option value="standard">ห้องมาตรฐาน (Standard) - 2 ท่าน</option>
+                        <option value="deluxe">ห้องดีลักซ์ (Deluxe) - 3 ท่าน</option>
+                        <option value="suite">ห้องสูท (Suite) - 4 ท่าน</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">จำนวนผู้เข้าพัก:</label>
+                    <input type="number" id="guests" name="guests" min="1" max="2" value="1" required>
+                </div>
+            </div>
+            
+            <!-- ส่วนที่ 3: ข้อมูลเพิ่มเติม -->
+            <div class="form-section">
+                <div class="form-section-title">💬 ข้อมูลเพิ่มเติม</div>
+                
+                <div class="form-group">
+                    <label for="notes">หมายเหตุ/ขอความช่วยเหลือพิเศษ:</label>
+                    <textarea id="notes" name="notes" placeholder="กรุณาระบุความต้องการเพิ่มเติม (ถ้ามี)"></textarea>
+                </div>
+            </div>
+            
+            <!-- ข้อความแสดงผลลัพธ์ -->
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage">✓ จองห้องพักเรียบร้อยแล้ว!</div>
+            
+            <!-- สรุปการจอง -->
+            <div class="summary-box" id="summaryBox"></div>
+            
+            <!-- ปุ่มส่งและรีเซ็ต -->
+            <div class="button-group">
+                <button type="submit" class="btn-submit">ยืนยันการจอง</button>
+                <button type="reset" class="btn-reset">ล้างข้อมูล</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // =====================================================
+        // ทำการต่อเนื่อง: ฟังก์ชันการทำงานของฟอร์มจองห้องพัก
+        // =====================================================
+        
+        // รับเอลิเมนต์ที่จำเป็น
+        const bookingForm = document.getElementById('bookingForm');
+        const checkinInput = document.getElementById('checkin');
+        const checkoutInput = document.getElementById('checkout');
+        const roomtypeSelect = document.getElementById('roomtype');
+        const guestsInput = document.getElementById('guests');
+        const phoneInput = document.getElementById('phone');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const summaryBox = document.getElementById('summaryBox');
+        
+        // =====================================================
+        // ฟังก์ชันที่ 1: ตั้งค่าวันที่ขั้นต่ำ (ไม่ให้เลือกวันที่ผ่านมา)
+        // =====================================================
+        function setMinDate() {
+            const today = new Date();
+            const minDate = today.toISOString().split('T')[0];
+            checkinInput.min = minDate;
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 2: ตรวจสอบเบอร์โทรศัพท์
+        // =====================================================
+        function validatePhone(phone) {
+            // ตรวจสอบว่าเบอร์โทรต้องมี 10 หลัก และเป็นตัวเลข
+            const phoneRegex = /^[0-9]{10}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 3: ตรวจสอบวันที่
+        // =====================================================
+        function validateDates(checkinDate, checkoutDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // ตรวจสอบว่าวันเข้าพักต้องไม่เป็นวันที่ผ่านไป
+            if (checkinDate < today) {
+                return {
+                    valid: false,
+                    message: 'โปรดเลือกวันเข้าพักที่ยังไม่ผ่านมา'
+                };
+            }
+            
+            // ตรวจสอบว่าวันออกพักต้องมาหลังวันเข้าพัก
+            if (checkoutDate <= checkinDate) {
+                return {
+                    valid: false,
+                    message: 'วันที่ออกพักต้องมาหลังวันที่เข้าพัก'
+                };
+            }
+            
+            return { valid: true };
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 4: คำนวณจำนวนวันที่พัก
+        // =====================================================
+        function calculateStayDays(checkinDate, checkoutDate) {
+            // คำนวณจากมิลลิวินาทีที่ต่างกันระหว่างสองวัน
+            const oneDay = 24 * 60 * 60 * 1000;
+            const daysDifference = Math.ceil((checkoutDate - checkinDate) / oneDay);
+            return daysDifference;
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 5: ตั้งจำนวนผู้เข้าพักสูงสุดตามประเภทห้อง
+        // =====================================================
+        function setMaxGuests(roomType) {
+            // กำหนดจำนวนผู้เข้าพักสูงสุดตามประเภทห้อง
+            const maxGuestsPerRoom = {
+                'standard': 2,
+                'deluxe': 3,
+                'suite': 4
+            };
+            
+            const maxGuests = maxGuestsPerRoom[roomType] || 1;
+            guestsInput.max = maxGuests;
+            
+            // ถ้าจำนวนผู้เข้าพักปัจจุบันมากกว่าสูงสุด ให้ปรับให้เป็นค่าสูงสุด
+            if (parseInt(guestsInput.value) > maxGuests) {
+                guestsInput.value = maxGuests;
+            }
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 6: แปลงวันที่เป็นรูปแบบภาษาไทย
+        // =====================================================
+        function formatDateThai(dateString) {
+            const date = new Date(dateString);
+            const thaiMonths = [
+                'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน',
+                'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม',
+                'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+            ];
+            
+            const day = date.getDate();
+            const month = thaiMonths[date.getMonth()];
+            const year = date.getFullYear() + 543; // แปลงเป็นปีพุทธศักราช
+            
+            return `${day} ${month} ${year}`;
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 7: ล้างข้อความผลลัพธ์
+        // =====================================================
+        function clearMessages() {
+            errorMessage.textContent = '';
+            errorMessage.classList.remove('show');
+            successMessage.classList.remove('show');
+            summaryBox.textContent = '';
+            summaryBox.classList.remove('show');
+        }
+        
+        // =====================================================
+        // ฟังก์ชันที่ 8: ตรวจสอบและแสดงสรุปการจอง
+        // =====================================================
+        bookingForm.addEventListener('submit', function(event) {
+            // ยกเลิกการส่งฟอร์มปกติ
+            event.preventDefault();
+            
+            // ล้างข้อความเก่า
+            clearMessages();
+            
+            // รับค่าจากอินพุท
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = phoneInput.value.trim();
+            const roomtype = roomtypeSelect.value;
+            const guests = guestsInput.value;
+            const notes = document.getElementById('notes').value.trim();
+            
+            // ตรวจสอบว่ากรอกข้อมูลครบทั้งหมด
+            if (!fullname || !email || !phone || !roomtype || !guests) {
+                errorMessage.textContent = '❌ กรุณากรอกข้อมูลให้ครบทุกช่อง';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // ตรวจสอบเบอร์โทรศัพท์
+            if (!validatePhone(phone)) {
+                errorMessage.textContent = '❌ เบอร์โทรศัพท์ไม่ถูกต้อง (ต้องเป็น 10 หลัก)';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // แปลงค่าวันที่เป็น Date object
+            const checkinDate = new Date(checkinInput.value);
+            const checkoutDate = new Date(checkoutInput.value);
+            
+            // ตรวจสอบวันที่
+            const dateValidation = validateDates(checkinDate, checkoutDate);
+            if (!dateValidation.valid) {
+                errorMessage.textContent = '❌ ' + dateValidation.message;
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // คำนวณจำนวนวันที่พัก
+            const stayDays = calculateStayDays(checkinDate, checkoutDate);
+            
+            // ดึงชื่อประเภทห้อง
+            const roomtypeText = roomtypeSelect.options[roomtypeSelect.selectedIndex].text;
+            
+            // สร้างสรุปการจอง
+            const summary = `📋 สรุปการจองห้องพัก:
+
+👤 ชื่อผู้จอง: ${fullname}
+📧 อีเมล: ${email}
+📱 โทรศัพท์: ${phone}
+🏠 ประเภทห้อง: ${roomtypeText}
+📅 วันที่เข้าพัก: ${formatDateThai(checkinInput.value)}
+📅 วันที่ออกพัก: ${formatDateThai(checkoutInput.value)}
+🌙 จำนวนวันที่พัก: ${stayDays} วัน
+👥 จำนวนผู้เข้าพัก: ${guests} ท่าน
+${notes ? `📝 หมายเหตุ: ${notes}` : ''}`;
+            
+            // แสดงสรุปการจอง
+            summaryBox.textContent = summary;
+            summaryBox.classList.add('show');
+            
+            // ถามยืนยันการจอง
+            if (confirm(summary + '\n\n✅ ยืนยันการจองห้องพักหรือไม่?')) {
+                // ถ้ายืนยัน ให้แสดงข้อความสำเร็จ
+                successMessage.classList.add('show');
+                
+                // ล้างฟอร์มหลังจากส่ง 2 วินาที
+                setTimeout(() => {
+                    bookingForm.reset();
+                    clearMessages();
+                }, 2000);
+            }
+        });
+        
+        // =====================================================
+        // ฟังก์ชันที่ 9: ตั้งค่าเบื้องต้นเมื่อหน้าเพจโหลด
+        // =====================================================
+        window.addEventListener('DOMContentLoaded', function() {
+            // ตั้งค่าวันที่ขั้นต่ำ
+            setMinDate();
+            
+            // ตั้งจำนวนผู้เข้าพักสูงสุดเริ่มต้น
+            setMaxGuests('standard');
+        });
+        
+        // =====================================================
+        // ฟังก์ชันที่ 10: ฟังการเปลี่ยนแปลงประเภทห้อง
+        // =====================================================
+        roomtypeSelect.addEventListener('change', function() {
+            // เมื่อผู้ใช้เปลี่ยนประเภทห้อง ให้ปรับจำนวนผู้เข้าพักสูงสุด
+            setMaxGuests(this.value);
+        });
+        
+        // =====================================================
+        // ฟังก์ชันที่ 11: ตั้งค่าวันออกพักขั้นต่ำ
+        // =====================================================
+        checkinInput.addEventListener('change', function() {
+            // ตั้งว่าวันออกพักต้องมากกว่าวันเข้าพัก
+            checkoutInput.min = this.value;
+            
+            // ล้างค่าวันออกพักถ้าน้อยกว่าวันเข้าพัก
+            if (checkoutInput.value && checkoutInput.value <= this.value) {
+                checkoutInput.value = '';
+            }
+        });
+        
+        // =====================================================
+        // ฟังก์ชันที่ 12: ความยาวสูงสุดของเบอร์โทร
+        // =====================================================
+        phoneInput.addEventListener('input', function() {
+            // ตัดค่าที่เกิน 10 หลัก
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+    </script>
+</body>
+</html>
