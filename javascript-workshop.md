@@ -76,10 +76,42 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="alert('hello')"> click</button>
+    <button onclick="anawin()">click</button>
+    <button onclick="anawins()"> teacher Dream</button>
+    <h1> แสดงข้อความ ที่กด</h1>
+    <h1 id="dream"></h1>
+
+
+    <script src="app.js">
+       function anawin(){
+       alert("hello")
+       }
+    </script>
+</body>
+</html>
 [บันทึกโค้ด ที่นี่]
-```
+``` 
+function anawins(){
+    alert("teacher anawin")
+}
+let n = prompt("กรอกข้อความลงในช่องนี้เลย ")
+document.getElementById("dream").innerHTML = n
+
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -103,7 +135,8 @@ JavaScript มีวิธีการประกาศตัวแปร 3 แ
 // ประกาศตัวแปรแบบ let - สามารถเปลี่ยนแปลงค่าได้ในภายหลัง
 let name = "สมชาย";     // String เก็บข้อความ
 let age = 25;           // Number เก็บตัวเลข
-let isStudent = true;   // Boolean เก็บค่าจริง/เท็จ
+let isStudent = true;
+   // Boolean เก็บค่าจริง/เท็จ
 
 // ประกาศตัวแปรแบบ const - ไม่สามารถเปลี่ยนแปลงค่าได้หลังจากประกาศ
 const PI = 3.14;            // ค่าคงที่ทางคณิตศาสตร์
@@ -134,12 +167,49 @@ let person = {
 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา  ประกอบด้วยข้อมูล รหัสนักศึกษา, ชื่อ, สาขาวิชา, เกรดเฉลี่ย
 
 ### บันทึกผลการทดลอง 2.1
+
 ```html
+
+let name = "Anawin";     
+let age = 19;  
+let studentID = 68030311;   
+let  major = "computertechnology"  ;   
+let gpa = 2.87; 
+let student = true;   
+
+
+const names = 2.12;           
+const Mans = 8;     
+
+name = "Boonchuay";   
+age = 20;          
+
+
+
+let donshow;           
+let value = null;          
+
+
+let fruits = ["แอปเปิ้ล", "กล้วย", "ส้ม"];
+
+
+let person = {
+    studentID:68030311,
+    name: "awawin",
+    age: 19,
+    major: "computertechnology",
+    apa:2.87,
+    student: true
+};
+document.getElementById("show").innerHTML = person
+console.log(person)
+
+
+
 [บันทึกโค้ด ที่นี่]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
-
+![alt text](image-4.png)
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
 
@@ -190,10 +260,37 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
+let noname = 85
+let notname = 70
+let donname = 60
+
+let totalname = noname + notname+ donname
+let toend = totalname / 3
+
+console.log(noname)
+console.log(notname)
+console.log(donname)
+console.log(toend)
+
+
+let product = "หูฟัง"
+let price = 1000
+let vat = 0.7
+
+let toprice = price * vat
+let proprice = price / toprice
+
+console.log(price)
+console.log(vat)
+console.log(proprice)
+/*
+
+
 [บันทึกโค้ด ที่นี่]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
 
 ### 2.3 การควบคุมการทำงาน
 
