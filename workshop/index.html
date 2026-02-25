@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('ชื่อนักศึกษา: ธนกฤต พรรณเผือก')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- ช่องกรอกข้อความและปุ่มแสดงผล -->
+    <br><br>
+    <input type="text" id="studentInput" placeholder="พิมพ์ข้อความที่นี่">
+    <button id="btnShowInput">แสดงข้อความ</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        };
+
+        document.getElementById('btnShowInput').onclick = function() {
+            const txt = document.getElementById('studentInput').value;
+            alert(txt);
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
