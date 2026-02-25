@@ -2,39 +2,21 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>แบบฝึกหัด 2.3 - การควบคุมการทำงาน</title>
-  <style>body{font-family:Segoe UI,Arial,sans-serif;padding:16px}label{display:inline-block;width:160px}</style>
+  <title>แบบฝึกหัด 2.4 - Functions</title>
+  <style>body{font-family:Segoe UI,Arial,sans-serif;padding:16px}label{display:inline-block;width:120px;margin-right:6px}</style>
 </head>
 <body>
   <section>
-    <h2>1) ตรวจเลขคู่/คี่</h2>
-    <label>กรอกตัวเลข:</label>
-    <input id="evenInput" type="number" value="0">
-    <button id="btnEven">ตรวจคู่/คี่</button>
-    <div id="evenResult" style="margin-top:8px;color:#222"></div>
-  </section>
-
-  <section>
-    <h2>2) ตารางสูตรคูณ</h2>
-    <button id="btnMult2">แสดงแม่ 2 (for)</button>
-    <button id="btnMult3">แสดงแม่ 3 (while)</button>
-    <pre id="multResult" style="background:#f5f5f5;padding:8px;border-radius:4px"></pre>
-  </section>
-
-  <section>
-    <h2>3) นับถอยหลัง</h2>
-    <button id="btnCountdown">นับถอยหลัง 10 → 1</button>
-    <div id="countdownResult" style="margin-top:8px"></div>
-  </section>
-
-  <section>
-    <h2>4) ตรวจช่วงวัย</h2>
-    <label>กรอกอายุ:</label>
-    <input id="ageInput" type="number" value="0">
-    <button id="btnCheckAge">ตรวจช่วงวัย</button>
-    <div id="ageResult" style="margin-top:8px;color:#222"></div>
+    <h2>คำนวณ BMI (Arrow Function)</h2>
+    <label>น้ำหนัก (kg):</label>
+    <input id="bmiWeight31" type="number" step="0.1" value="70">
+    <label>ส่วนสูง (m):</label>
+    <input id="bmiHeight31" type="number" step="0.01" value="1.75">
+    <button id="btnBmi31">คำนวณ BMI</button>
+    <div id="bmiResult31" style="margin-top:8px;color:#222;font-weight:bold"></div>
   </section>
 
   <script src="script.js"></script>
 </body>
+
 </html>

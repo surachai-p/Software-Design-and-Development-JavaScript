@@ -1,65 +1,23 @@
-// script.js (เฉพาะแบบฝึกหัด 2.3)
+const calculateBMI31 = (weight, height) => {
+  if (height <= 0 || weight <= 0) return { bmi: null, category: 'ข้อมูลไม่ถูกต้อง' };
+  const bmi = weight / (height * height);
+  let category = '';
+  if (bmi < 18.5) category = 'ผอม';
+  else if (bmi < 24.9) category = 'สมส่วน';
+  else category = 'อ้วน';
+  return { bmi: parseFloat(bmi.toFixed(2)), category };
+};
 
-// ตรวจเลขคู่หรือเลขคี่
-function isEvenOrOdd(n) {
-  if (typeof n !== 'number' || !Number.isFinite(n)) return 'ไม่ใช่ตัวเลขที่ถูกต้อง';
-  return (n % 2 === 0) ? 'เลขคู่' : 'เลขคี่';
-}
+const displayBMI31 = () => {
+  const w = parseFloat(document.getElementById('bmiWeight31').value) || 0;
+  const h = parseFloat(document.getElementById('bmiHeight31').value) || 0;
+  const result = calculateBMI31(w, h);
+  const msg = result.bmi === null ? result.category : `BMI = ${result.bmi} (${result.category})`;
+  document.getElementById('bmiResult31').textContent = msg;
+  console.log('BMI 3.1:', { weight: w, height: h, ...result });
+};
 
-function handleEvenOdd() {
-  const el = document.getElementById('evenInput');
-  const n = parseInt(el.value, 10);
-  const res = isNaN(n) ? 'กรุณากรอกตัวเลข' : isEvenOrOdd(n);
-  document.getElementById('evenResult').textContent = res;
-}
-
-// ตารางสูตรคูณ แม่ 2 (for)
-function showMult2() {
-  let out = '';
-  for (let i = 1; i <= 12; i++) {
-    out += `2 x ${i} = ${2 * i}\n`;
-  }
-  document.getElementById('multResult').textContent = out;
-}
-
-// ตารางสูตรคูณ แม่ 3 (while)
-function showMult3While() {
-  let out = '';
-  let i = 1;
-  while (i <= 12) {
-    out += `3 x ${i} = ${3 * i}\n`;
-    i++;
-  }
-  document.getElementById('multResult').textContent = out;
-}
-
-// นับถอยหลังจาก 10 ถึง 1
-function countdown10to1() {
-  const parts = [];
-  for (let k = 10; k >= 1; k--) parts.push(k);
-  document.getElementById('countdownResult').textContent = parts.join(' → ');
-}
-
-// ตรวจช่วงวัยตามอายุ
-function checkAgeRange(age) {
-  if (typeof age !== 'number' || age < 0) return 'อายุไม่ถูกต้อง';
-  if (age <= 12) return 'วัยเด็ก';
-  if (age <= 17) return 'วัยรุ่น';
-  if (age <= 59) return 'วัยผู้ใหญ่';
-  return 'วัยสูงอายุ';
-}
-
-function handleCheckAge() {
-  const n = parseInt(document.getElementById('ageInput').value, 10);
-  const res = isNaN(n) ? 'กรุณากรอกอายุ' : checkAgeRange(n);
-  document.getElementById('ageResult').textContent = res;
-}
-
-// ผูกปุ่มเมื่อ DOM โหลดแล้ว
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btnEven').addEventListener('click', handleEvenOdd);
-  document.getElementById('btnMult2').addEventListener('click', showMult2);
-  document.getElementById('btnMult3').addEventListener('click', showMult3While);
-  document.getElementById('btnCountdown').addEventListener('click', countdown10to1);
-  document.getElementById('btnCheckAge').addEventListener('click', handleCheckAge);
+  const btnBmi31 = document.getElementById('btnBmi31');
+  if (btnBmi31) btnBmi31.addEventListener('click', displayBMI31);
 });
