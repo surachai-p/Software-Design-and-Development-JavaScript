@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>การทดลองที่ 1</title>
+</head>
+<body>
+    <h1>การทดลองที่ 1</h1>
+    
+    <h2>ปุ่ม 3 ปุ่ม:</h2>
+    
+    <!-- ปุ่มที่ 1 ใช้ Inline JavaScript -->
+    <button onclick="alert('ชื่อนักศึกษา: ณภัทร สิงห์ตุ้ย')">ปุ่มที่ 1 - Inline JS</button>
+    
+    <!-- ปุ่มที่ 2 ใช้ Internal JavaScript -->
+    <button onclick="showCurrentDate()">ปุ่มที่ 2 - Internal JS</button>
+    
+    <!-- ปุ่มที่ 3 ใช้ External JavaScript -->
+    <button onclick="showCurrentTime()">ปุ่มที่ 3 - External JS</button>
+    
+    <h2>Input และปุ่ม:</h2>
+    
+    <input type="text" id="textInput" placeholder="ป้อนข้อความ">
+    <button onclick="displayInput()">แสดงข้อความ</button>
+    
+    <!-- Internal JavaScript -->
+    <script>
+        function showCurrentDate() {
+            var today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        }
+        
+        function displayInput() {
+            var inputValue = document.getElementById('textInput').value;
+            alert('ข้อความที่ป้อน: ' + inputValue);
+        }
+    </script>
+    
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

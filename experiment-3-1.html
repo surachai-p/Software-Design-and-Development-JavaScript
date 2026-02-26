@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การทดลองที่ 3.1 - คำนวณ BMI</title>
+</head>
+<body>
+    <h1>การทดลองที่ 3.1 - เครื่องคำนวณ BMI</h1>
+    
+    <div>
+        <label>น้ำหนัก (กิโลกรัม):</label>
+        <input type="number" id="weight" placeholder="ใส่น้ำหนัก">
+    </div>
+
+    <div>
+        <label>ส่วนสูง (เมตร):</label>
+        <input type="number" id="height" placeholder="ใส่ส่วนสูง" step="0.01">
+    </div>
+
+    <button onclick="calculateAndShowBMI()">คำนวณ BMI</button>
+
+    <h2>ผลลัพธ์:</h2>
+    <div id="result"></div>
+
+    <script>
+        // Arrow Function คำนวณ BMI
+        const calculateBMI = (weight, height) => {
+            return weight / (height * height);
+        };
+
+        // ฟังก์ชันหลัก
+        function calculateAndShowBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value);
+
+            if (weight <= 0 || height <= 0) {
+                document.getElementById("result").innerHTML = "กรุณาใส่ค่าที่ถูกต้อง";
+                return;
+            }
+
+            let bmi = calculateBMI(weight, height);
+            let status = "";
+
+            if (bmi < 18.5) {
+                status = "ผอม";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                status = "สมส่วน";
+            } else {
+                status = "อ้วน";
+            }
+
+            let resultText = "BMI: " + bmi.toFixed(2) + " - " + status;
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>
