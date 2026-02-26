@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 2.4.2</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>คำนวณ BMI</h2>
+        <input type="number" id="weight" placeholder="น้ำหนัก (kg)">
+        <input type="number" id="height" placeholder="ส่วนสูง (cm)">
+        <button onclick="handleBMI()">คำนวณแบบ</button>
+        <div id="bmiResult" class="result-box">ผลลัพธ์จะแสดงที่นี่</div>
+    </div>
+
+    <div class="card">
+        <h2>ข้อความทักทายที่เหมาะสม</h2>
+        <input type="text" id="userName" placeholder="ชื่อ">
+        <input type="number" id="userAge" placeholder="อายุ">
+        <button onclick="handleGreet()">คำทักทาย</button>
+        <div id="greetResult" class="result-box">ผลลัพธ์จะแสดงที่นี่</div>
+    </div>
+
+    <div class="card">
+        <h2>ตรวจสอบรหัสผ่าน</h2>
+        <input type="password" id="password" placeholder="ใส่รหัสผ่าน">
+        <button onclick="handlePass()">ตรวจสอบรหัสผ่าน</button>
+        <div id="passResult" class="result-box">ผลลัพธ์จะแสดงที่นี่</div>
+    </div>
+</div>
+
+<script src="lab2.4.2.js"></script>
+</body>
+</html>

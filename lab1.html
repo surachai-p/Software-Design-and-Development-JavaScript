@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('ชื่อนักศึกษา: ชญานิศ ธีรเวโรจน์')">ปุ่มที่ 1</button>
+
+    <button id="btnDate">ปุ่มที่ 2</button>
+
+    <button onclick="showTime()" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <script>
+        document.getElementById('btnDate').onclick = function() {
+            const now = new Date();
+            const dateString = now.toLocaleDateString();
+            alert('วันที่ปัจจุบันคือ: ' + dateString);
+        };
+    </script>
+
+    <section>
+        <h2>กล่องข้อความและการแสดงผล</h2>
+        <input type="text" id="userText" placeholder="พิมพ์ข้อความที่นี่...">
+        <button onclick="showInputText()">แสดงข้อความ</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 2.2</title>
+</head>
+<body>
+    <div class="result-box">
+        <p class="code-label">คำนวณค่าเฉลี่ยคะแนน 3 วิชา</p>
+        <div id="quiz1"></div>
+    </div>
+
+    <div class="result-box">
+        <p class="code-label">คำนวณราคาสินค้า + VAT 7%</p>
+        <div id="quiz2"></div>
+    </div>
+
+    <script>
+        let math = 75;
+        let science = 93;
+        let english = 78;
+        let average = (math + science + english) / 3;
+
+        document.getElementById("quiz1").innerHTML = 
+            "คะแนนวิชา: คณิตศาสตร์ (" + math + "), วิทยาศาสตร์ (" + science + "), อังกฤษ (" + english + ")<br>" +
+            "<strong>ค่าเฉลี่ยคือ: " + average.toFixed(2) + " คะแนน</strong>";
+
+        let productName = "LOGITECH G102 LIGHTSYNC";
+        let price = 690;
+        let vatRate = 0.07;
+        let vatAmount = price * vatRate;
+        let totalPrice = price + vatAmount;
+
+        document.getElementById("quiz2").innerHTML = 
+            "ชื่อสินค้า: " + productName + "<br>" +
+            "ราคาก่อนภาษี: " + price + " บาท<br>" +
+            "ภาษีมูลค่าเพิ่ม (7%): " + vatAmount.toFixed(2) + " บาท<br>" +
+            "<strong>ราคาสุทธิที่ต้องจ่าย: " + totalPrice.toFixed(2) + " บาท</strong>";
+    </script>
+
+</body>
+</html>

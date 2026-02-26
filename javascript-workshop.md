@@ -76,10 +76,39 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('ชื่อนักศึกษา: ชญานิศ ธีรเวโรจน์')">ปุ่มที่ 1</button>
+
+    <button id="btnDate">ปุ่มที่ 2</button>
+
+    <button onclick="showTime()" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <script>
+        document.getElementById('btnDate').onclick = function() {
+            const now = new Date();
+            const dateString = now.toLocaleDateString();
+            alert('วันที่ปัจจุบันคือ: ' + dateString);
+        };
+    </script>
+
+    <section>
+        <h2>ส่วนที่ 2: กล่องข้อความและการแสดงผล</h2>
+        <input type="text" id="userText" placeholder="พิมพ์ข้อความที่นี่...">
+        <button onclick="showInputText()">แสดงข้อความ</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1](images/image1.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -135,10 +164,50 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบ 2.1</title>
+</head>
+<body>
+
+<div class="card">
+    <div class="data-display" id="output">
+</div>
+
+<script>
+    let studentId = "68030349";
+    let studentName = "น.ส.ชญานิศ ธีรเวโรจน์";
+    let midtermScore = 25;
+    let finalScore = 38;
+    let studentProfile = {
+        id: studentId,
+        name: studentName,
+        major: "เทคโนโลยีคอมพิวเตอร์",
+        gpa: 3.14
+    };
+
+    midtermScore = 27; // เปลี่ยนจาก 25 เป็น 27
+
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = `
+        <p><strong>รหัสนักศึกษา:</strong> ${studentProfile.id}</p>
+        <p><strong>ชื่อนักศึกษา:</strong> ${studentProfile.name}</p>
+        <p><strong>สาขาวิชา:</strong> ${studentProfile.major}</p>
+        <p><strong>คะแนนกลางภาค:</strong> ${midtermScore} คะแนน</p>
+        <p><strong>คะแนนปลายภาค:</strong> ${finalScore} คะแนน</p>
+        <p><strong>คะแนนรวม:</strong> ${midtermScore + finalScore} คะแนน</p>
+        <p><strong>เกรดเฉลี่ย (GPA):</strong> ${studentProfile.gpa}</p>
+    `;
+    console.log("ชนิดข้อมูลของ studentProfile:", typeof studentProfile);
+    console.log("ข้อมูลใน Object:", studentProfile);
+</script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![รูปผลการทดลองที่ 2.1](images/image2.png)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -190,10 +259,50 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 2.2</title>
+</head>
+<body>
+    <div class="result-box">
+        <p class="code-label">คำนวณค่าเฉลี่ยคะแนน 3 วิชา</p>
+        <div id="quiz1"></div>
+    </div>
+
+    <div class="result-box">
+        <p class="code-label">คำนวณราคาสินค้า + VAT 7%</p>
+        <div id="quiz2"></div>
+    </div>
+
+    <script>
+        let math = 75;
+        let science = 93;
+        let english = 78;
+        let average = (math + science + english) / 3;
+
+        document.getElementById("quiz1").innerHTML = 
+            "คะแนนวิชา: คณิตศาสตร์ (" + math + "), วิทยาศาสตร์ (" + science + "), อังกฤษ (" + english + ")<br>" +
+            "<strong>ค่าเฉลี่ยคือ: " + average.toFixed(2) + " คะแนน</strong>";
+
+        let productName = "LOGITECH G102 LIGHTSYNC";
+        let price = 690;
+        let vatRate = 0.07;
+        let vatAmount = price * vatRate;
+        let totalPrice = price + vatAmount;
+
+        document.getElementById("quiz2").innerHTML = 
+            "ชื่อสินค้า: " + productName + "<br>" +
+            "ราคาก่อนภาษี: " + price + " บาท<br>" +
+            "ภาษีมูลค่าเพิ่ม (7%): " + vatAmount.toFixed(2) + " บาท<br>" +
+            "<strong>ราคาสุทธิที่ต้องจ่าย: " + totalPrice.toFixed(2) + " บาท</strong>";
+    </script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![รูปผลการทดลองที่ 2.2](images/image3.png)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -324,10 +433,41 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 2.3</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h3>ตรวจสอบเลขคู่/คี่</h3>
+        <div id="oddEvenResult" class="result-box"></div>
+    </div>
+
+    <div class="card">
+        <h3>ตารางสูตรคูณ แม่ 2 และ แม่ 3</h3>
+        <div id="multiplicationResult" class="result-box"></div>
+    </div>
+
+    <div class="card">
+        <h3>นับถอยหลัง 10 ถึง 1</h3>
+        <div id="countdownResult" class="result-box"></div>
+    </div>
+
+    <div class="card">
+        <h3>ตรวจสอบช่วงวัย</h3>
+        <div id="ageGroupResult" class="result-box"></div>
+    </div>
+</div>
+
+<script src="lab2.3.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3](images/image4.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -439,10 +579,42 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 2.4.1</title>
+</head>
+<body>
+   
+ <div class="section">
+        <h1>คำนวณ BMI</h1>
+        <input type="number" id="w" placeholder="น้ำหนัก (kg)">
+        <input type="number" id="h" placeholder="ส่วนสูง (cm)">
+        <button onclick="handleBMI()">คำนวณแบบปกติ</button>
+        <div id="bmiRes" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>ข้อความทักทายที่เหมาะสม</h2>
+        <input type="text" id="uName" placeholder="ชื่อ">
+        <input type="number" id="uAge" placeholder="อายุ">
+        <button onclick="handleGreet()">คำทักทาย</button>
+        <div id="greetRes" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>ตรวจสอบรหัสผ่าน</h2>
+        <input type="password" id="uPass" placeholder="รหัสผ่าน">
+        <button onclick="handlePass()">ตรวจสอบรหัสผ่าน</button>
+        <div id="passRes" class="result"></div>
+    </div>
+
+    <script src="lab2.4.1.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+![รูปผลการทดลองที่ 2.4.1](images/image5.png)
 
 
 
@@ -483,10 +655,44 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 2.4.2</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>คำนวณ BMI</h2>
+        <input type="number" id="weight" placeholder="น้ำหนัก (kg)">
+        <input type="number" id="height" placeholder="ส่วนสูง (cm)">
+        <button onclick="handleBMI()">คำนวณแบบ</button>
+        <div id="bmiResult" class="result-box">ผลลัพธ์จะแสดงที่นี่</div>
+    </div>
+
+    <div class="card">
+        <h2>ข้อความทักทายที่เหมาะสม</h2>
+        <input type="text" id="userName" placeholder="ชื่อ">
+        <input type="number" id="userAge" placeholder="อายุ">
+        <button onclick="handleGreet()">คำทักทาย</button>
+        <div id="greetResult" class="result-box">ผลลัพธ์จะแสดงที่นี่</div>
+    </div>
+
+    <div class="card">
+        <h2>ตรวจสอบรหัสผ่าน</h2>
+        <input type="password" id="password" placeholder="ใส่รหัสผ่าน">
+        <button onclick="handlePass()">ตรวจสอบรหัสผ่าน</button>
+        <div id="passResult" class="result-box">ผลลัพธ์จะแสดงที่นี่</div>
+    </div>
+</div>
+
+<script src="lab2.4.2.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.2](images/image.png)
+![รูปผลการทดลองที่ 2.4.2](images/image6.png)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -554,10 +760,40 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <title>บันทึกการทดลอง 3.1</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>โปรแกรมคำนวณค่า BMI</h2>
+        
+        <div class="input-group">
+            <label>น้ำหนัก (kg):</label>
+            <input type="number" id="weight" placeholder="ระบุน้ำหนัก">
+        </div>
+
+        <div class="input-group">
+            <label>ส่วนสูง (cm):</label>
+            <input type="number" id="height" placeholder="ระบุส่วนสูง">
+        </div>
+
+        <button id="btnCompute">คำนวณผลลัพธ์</button>
+
+        <div class="result-box">
+            <p id="bmi_value">ค่า BMI: -</p>
+            <p id="bmi_status">เกณฑ์: -</p>
+        </div>
+    </div>
+
+    <script src="lab3.1.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.1](images/image.png)
+![รูปผลการทดลองที่ 3.1](images/image7.png)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -717,10 +953,65 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.2](images/image.png)
+![รูปผลการทดลองที่ 3.2.2](images/image8.png)
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -825,10 +1116,66 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+    <script src="lab3.2.2.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.3](images/image.png)
+![รูปผลการทดลองที่ 3.2.3](images/image9.png)
 
 
 ## คำแนะนำเพิ่มเติม

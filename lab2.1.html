@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบ 2.1</title>
+</head>
+<body>
+
+<div class="card">
+    <div class="data-display" id="output">
+</div>
+
+<script>
+    let studentId = "68030349";
+    let studentName = "น.ส.ชญานิศ ธีรเวโรจน์";
+    let midtermScore = 25;
+    let finalScore = 38;
+    let studentProfile = {
+        id: studentId,
+        name: studentName,
+        major: "เทคโนโลยีคอมพิวเตอร์",
+        gpa: 3.14
+    };
+
+    midtermScore = 27; // เปลี่ยนจาก 25 เป็น 27
+
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = `
+        <p><strong>รหัสนักศึกษา:</strong> ${studentProfile.id}</p>
+        <p><strong>ชื่อนักศึกษา:</strong> ${studentProfile.name}</p>
+        <p><strong>สาขาวิชา:</strong> ${studentProfile.major}</p>
+        <p><strong>คะแนนกลางภาค:</strong> ${midtermScore} คะแนน</p>
+        <p><strong>คะแนนปลายภาค:</strong> ${finalScore} คะแนน</p>
+        <p><strong>คะแนนรวม:</strong> ${midtermScore + finalScore} คะแนน</p>
+        <p><strong>เกรดเฉลี่ย (GPA):</strong> ${studentProfile.gpa}</p>
+    `;
+    console.log("ชนิดข้อมูลของ studentProfile:", typeof studentProfile);
+    console.log("ข้อมูลใน Object:", studentProfile);
+</script>
+</body>
+</html>
