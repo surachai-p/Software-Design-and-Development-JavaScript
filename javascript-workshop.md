@@ -76,10 +76,59 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">25 กุมภาพันธ์ 2566ต</button>
+
+        <button onclick="showTime()">19.30 น.</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 19.30.46.png>))
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -135,10 +184,69 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+    <hr>
+<h2>การทดลองที่ 2.1: ตัวแปรและ Object</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![รูปผลการทดลองที่ 2.1](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 19.51.52.png>)
+![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.03.11.png>))
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -190,10 +298,80 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+    <hr>
+<h2>คะแนนสอบและเกรดเฉลี่ย</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+</body>
+</html>
+
+<hr>
+<h2>คะแนนเฉลี่ยและราคาสินค้า</h2>
+<div class="section">
+    <button onclick="calculateAverage()">1. คะแนนเฉลี่ย (3 วิชา)</button>
+    <button onclick="calculateVat()">2. ราคาสินค้า + VAT 7%</button>
+    
+    <div id="calc-display" style="margin-top: 15px; padding: 15px; background: #e8f4fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+        ผลการคำนวณจะแสดงที่นี่...
+    </div>
+</div>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![รูปผลการทดลองที่ 2.2](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.02.56.png>)
+![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.03.02.png>))
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -324,10 +502,96 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+    <hr>
+<h2>คะแนนสอบและเกรดเฉลี่ย</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+</body>
+</html>
+
+<hr>
+<h2>คะแนนเฉลี่ยและราคาสินค้า</h2>
+<div class="section">
+    <button onclick="calculateAverage()">1. คะแนนเฉลี่ย (3 วิชา)</button>
+    <button onclick="calculateVat()">2. ราคาสินค้า + VAT 7%</button>
+    
+    <div id="calc-display" style="margin-top: 15px; padding: 15px; background: #e8f4fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+        ผลการคำนวณจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>การควบคุมการทำงาน</h2>
+<div class="section">
+    <button onclick="checkEvenOdd()">1. ตรวจสอบเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">2. ตารางสูตรคูณ แม่ 2 และ 3</button>
+    <button onclick="countDown()">3. นับถอยหลัง 10-1</button>
+    <button onclick="checkAgeRange()">4. ตรวจสอบช่วงวัย</button>
+    
+    <div id="logic-display" style="margin-top: 15px; padding: 15px; background: #fff3e0; border-left: 5px solid #ff9800; border-radius: 5px; white-space: pre-line;">
+        ผลการรันคำสั่งจะแสดงที่นี่...
+    </div>
+</div>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.15.32.png>)
+![
+    ![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.15.54.png>)
+](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.15.43.png>)
+![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.16.00.png>))
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -439,10 +703,117 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+    <hr>
+<h2>คะแนนสอบและเกรดเฉลี่ย</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+</body>
+</html>
+
+<hr>
+<h2>คะแนนเฉลี่ยและราคาสินค้า</h2>
+<div class="section">
+    <button onclick="calculateAverage()">1. คะแนนเฉลี่ย (3 วิชา)</button>
+    <button onclick="calculateVat()">2. ราคาสินค้า + VAT 7%</button>
+    
+    <div id="calc-display" style="margin-top: 15px; padding: 15px; background: #e8f4fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+        ผลการคำนวณจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>การควบคุมการทำงาน</h2>
+<div class="section">
+    <button onclick="checkEvenOdd()">1. ตรวจสอบเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">2. ตารางสูตรคูณ แม่ 2 และ 3</button>
+    <button onclick="countDown()">3. นับถอยหลัง 10-1</button>
+    <button onclick="checkAgeRange()">4. ตรวจสอบช่วงวัย</button>
+    
+    <div id="logic-display" style="margin-top: 15px; padding: 15px; background: #fff3e0; border-left: 5px solid #ff9800; border-radius: 5px; white-space: pre-line;">
+        ผลการรันคำสั่งจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย)</h2>
+<div class="section">
+    <p><strong>1. ค่า BMI:</strong> 
+        <input type="number" id="weight" placeholder="น้ำหนัก (kg)" style="width: 100px;">
+        <input type="number" id="height" placeholder="ส่วนสูง (cm)" style="width: 100px;">
+        <button onclick="displayBMI()">คำนวณ BMI</button>
+    </p>
+
+    <p><strong>2. ทักทายตามช่วงวัย:</strong> 
+        <input type="text" id="guestName" placeholder="ชื่อ" style="width: 100px;">
+        <input type="number" id="guestAge" placeholder="อายุ" style="width: 60px;">
+        <button onclick="displayGreeting()">ส่งคำทักทาย</button>
+    </p>
+
+    <p><strong>3. ตรวจสอบรหัสผ่าน:</strong> 
+        <input type="password" id="passInput" placeholder="กรอกรหัสผ่าน">
+        <button onclick="displayPassCheck()">ตรวจสอบ</button>
+    </p>
+    
+    <div id="func-display" style="margin-top: 15px; padding: 15px; background: #f1f8e9; border-left: 5px solid #4caf50; border-radius: 5px;">
+        ผลการเรียกใช้ Function จะแสดงที่นี่...
+    </div>
+</div>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+![รูปผลการทดลองที่ 2.4.1](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.27.08.png>))
 
 
 
@@ -483,10 +854,129 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+    <hr>
+<h2>คะแนนสอบและเกรดเฉลี่ย</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+
+<hr>
+<h2>คะแนนเฉลี่ยและราคาสินค้า</h2>
+<div class="section">
+    <button onclick="calculateAverage()">1. คะแนนเฉลี่ย (3 วิชา)</button>
+    <button onclick="calculateVat()">2. ราคาสินค้า + VAT 7%</button>
+    
+    <div id="calc-display" style="margin-top: 15px; padding: 15px; background: #e8f4fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+        ผลการคำนวณจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>การควบคุมการทำงาน</h2>
+<div class="section">
+    <button onclick="checkEvenOdd()">1. ตรวจสอบเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">2. ตารางสูตรคูณ แม่ 2 และ 3</button>
+    <button onclick="countDown()">3. นับถอยหลัง 10-1</button>
+    <button onclick="checkAgeRange()">4. ตรวจสอบช่วงวัย</button>
+    
+    <div id="logic-display" style="margin-top: 15px; padding: 15px; background: #fff3e0; border-left: 5px solid #ff9800; border-radius: 5px; white-space: pre-line;">
+        ผลการรันคำสั่งจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย)</h2>
+<div class="section">
+    <p><strong>1. ค่า BMI:</strong> 
+        <input type="number" id="weight" placeholder="น้ำหนัก (kg)" style="width: 100px;">
+        <input type="number" id="height" placeholder="ส่วนสูง (cm)" style="width: 100px;">
+        <button onclick="displayBMI()">คำนวณ BMI</button>
+    </p>
+
+    <p><strong>2. ทักทายตามช่วงวัย:</strong> 
+        <input type="text" id="guestName" placeholder="ชื่อ" style="width: 100px;">
+        <input type="number" id="guestAge" placeholder="อายุ" style="width: 60px;">
+        <button onclick="displayGreeting()">ส่งคำทักทาย</button>
+    </p>
+
+    <p><strong>3. ตรวจสอบรหัสผ่าน:</strong> 
+        <input type="password" id="passInput" placeholder="กรอกรหัสผ่าน">
+        <button onclick="displayPassCheck()">ตรวจสอบ</button>
+    </p>
+    
+    <div id="func-display" style="margin-top: 15px; padding: 15px; background: #f1f8e9; border-left: 5px solid #4caf50; border-radius: 5px;">
+        ผลการเรียกใช้ Function จะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย) (Arrow)</h2>
+<div class="section">
+    <button onclick="displayArrowBMI()">1. ค่า BMI (ดัชนีมวลกาย) (Arrow)</button>
+    <button onclick="displayArrowGreeting()">2. Greeting (Arrow)</button>
+    <button onclick="displayArrowPass()">3. Password Check (Arrow)</button>
+    
+    <div id="arrow-display" style="margin-top: 15px; padding: 15px; background: #fffde7; border-left: 5px solid #fbc02d; border-radius: 5px;">
+        ผลการรัน Arrow Function จะแสดงที่นี่...
+    </div>
+</div>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.2](images/image.png)
+![รูปผลการทดลองที่ 2.4.2](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.36.41.png>))
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -554,10 +1044,147 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.1
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <hr>
+<h2>คะแนนสอบและเกรดเฉลี่ย</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+
+<hr>
+<h2>คะแนนเฉลี่ยและราคาสินค้า</h2>
+<div class="section">
+    <button onclick="calculateAverage()">1. คะแนนเฉลี่ย (3 วิชา)</button>
+    <button onclick="calculateVat()">2. ราคาสินค้า + VAT 7%</button>
+    
+    <div id="calc-display" style="margin-top: 15px; padding: 15px; background: #e8f4fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+        ผลการคำนวณจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>การควบคุมการทำงาน</h2>
+<div class="section">
+    <button onclick="checkEvenOdd()">1. ตรวจสอบเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">2. ตารางสูตรคูณ แม่ 2 และ 3</button>
+    <button onclick="countDown()">3. นับถอยหลัง 10-1</button>
+    <button onclick="checkAgeRange()">4. ตรวจสอบช่วงวัย</button>
+    
+    <div id="logic-display" style="margin-top: 15px; padding: 15px; background: #fff3e0; border-left: 5px solid #ff9800; border-radius: 5px; white-space: pre-line;">
+        ผลการรันคำสั่งจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย)</h2>
+<div class="section">
+    <p><strong>1. ค่า BMI:</strong> 
+        <input type="number" id="weight" placeholder="น้ำหนัก (kg)" style="width: 100px;">
+        <input type="number" id="height" placeholder="ส่วนสูง (cm)" style="width: 100px;">
+        <button onclick="displayBMI()">คำนวณ BMI</button>
+    </p>
+
+    <p><strong>2. ทักทายตามช่วงวัย:</strong> 
+        <input type="text" id="guestName" placeholder="ชื่อ" style="width: 100px;">
+        <input type="number" id="guestAge" placeholder="อายุ" style="width: 60px;">
+        <button onclick="displayGreeting()">ส่งคำทักทาย</button>
+    </p>
+
+    <p><strong>3. ตรวจสอบรหัสผ่าน:</strong> 
+        <input type="password" id="passInput" placeholder="กรอกรหัสผ่าน">
+        <button onclick="displayPassCheck()">ตรวจสอบ</button>
+    </p>
+    
+    <div id="func-display" style="margin-top: 15px; padding: 15px; background: #f1f8e9; border-left: 5px solid #4caf50; border-radius: 5px;">
+        ผลการเรียกใช้ Function จะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย) (Arrow)</h2>
+<div class="section">
+    <button onclick="displayArrowBMI()">1. ค่า BMI (ดัชนีมวลกาย) (Arrow)</button>
+    <button onclick="displayArrowGreeting()">2. Greeting (Arrow)</button>
+    <button onclick="displayArrowPass()">3. Password Check (Arrow)</button>
+    
+    <div id="arrow-display" style="margin-top: 15px; padding: 15px; background: #fffde7; border-left: 5px solid #fbc02d; border-radius: 5px;">
+        ผลการรัน Arrow Function จะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย)</h2>
+<div class="section" style="background-color: #f0f7ff; padding: 20px; border-radius: 10px;">
+    <p>
+        น้ำหนัก (กก.): <input type="number" id="weight_input" placeholder="ตัวอย่าง: 65"> 
+    </p>
+    <p>
+        ส่วนสูง (ซม.): <input type="number" id="height_input" placeholder="ตัวอย่าง: 170">
+    </p>
+    
+    <button onclick="processBMI()">คำนวณและวิเคราะห์ผล</button>
+    
+    <div style="margin-top: 20px; font-size: 1.2em;">
+        <p id="bmi_result" style="font-weight: bold; color: #007bff;"></p>
+        <p id="bmi_status" style="font-weight: bold;"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.1](images/image.png)
+![รูปผลการทดลองที่ 3.1](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.47.00.png>))
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -717,10 +1344,301 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลของนักศึกษา</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        input { padding: 8px; width: 250px; }
+    </style>
+</head>
+<body>
+
+    <h2>ข้อมูลของนักศึกษา</h2>
+    <div class="section">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวนภัสสร คำปัน')">นางสาวนภัสสร คำปัน</button>
+
+        <button id="btn-date">แสดงวันที่</button>
+
+        <button onclick="showTime()">แสดงเวลา</button>
+    </div>
+
+    <h2>Search</h2>
+    <div class="section">
+        <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่...">
+        <button id="btn-show-text">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        document.getElementById('btn-date').onclick = function() {
+            const today = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบันคือ: ' + today);
+        };
+
+        document.getElementById('btn-show-text').onclick = function() {
+            const textValue = document.getElementById('userInput').value;
+            if(textValue === "") {
+                alert('กรุณากรอกข้อความก่อนครับ');
+            } else {
+                alert('คุณกรอกว่า: ' + textValue);
+            }
+        };
+    </script>
+
+    <hr>
+<h2>คะแนนสอบและเกรดเฉลี่ย</h2>
+<div class="section">
+    <button onclick="showStudentData()">1. คะแนนสอบ</button>
+    <button onclick="showObjectData()">2. เกรดเฉลี่ย</button>
+    <div id="display-area" style="margin-top: 15px; padding: 10px; background: #f4f4f4; border-radius: 5px; min-height: 50px;">
+        รอการคลิกปุ่ม...
+    </div>
+</div>
+
+<hr>
+<h2>คะแนนเฉลี่ยและราคาสินค้า</h2>
+<div class="section">
+    <button onclick="calculateAverage()">1. คะแนนเฉลี่ย (3 วิชา)</button>
+    <button onclick="calculateVat()">2. ราคาสินค้า + VAT 7%</button>
+    
+    <div id="calc-display" style="margin-top: 15px; padding: 15px; background: #e8f4fd; border-left: 5px solid #2196F3; border-radius: 5px;">
+        ผลการคำนวณจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>การควบคุมการทำงาน</h2>
+<div class="section">
+    <button onclick="checkEvenOdd()">1. ตรวจสอบเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">2. ตารางสูตรคูณ แม่ 2 และ 3</button>
+    <button onclick="countDown()">3. นับถอยหลัง 10-1</button>
+    <button onclick="checkAgeRange()">4. ตรวจสอบช่วงวัย</button>
+    
+    <div id="logic-display" style="margin-top: 15px; padding: 15px; background: #fff3e0; border-left: 5px solid #ff9800; border-radius: 5px; white-space: pre-line;">
+        ผลการรันคำสั่งจะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย)</h2>
+<div class="section">
+    <p><strong>1. ค่า BMI:</strong> 
+        <input type="number" id="weight" placeholder="น้ำหนัก (kg)" style="width: 100px;">
+        <input type="number" id="height" placeholder="ส่วนสูง (cm)" style="width: 100px;">
+        <button onclick="displayBMI()">คำนวณ BMI</button>
+    </p>
+
+    <p><strong>2. ทักทายตามช่วงวัย:</strong> 
+        <input type="text" id="guestName" placeholder="ชื่อ" style="width: 100px;">
+        <input type="number" id="guestAge" placeholder="อายุ" style="width: 60px;">
+        <button onclick="displayGreeting()">ส่งคำทักทาย</button>
+    </p>
+
+    <p><strong>3. ตรวจสอบรหัสผ่าน:</strong> 
+        <input type="password" id="passInput" placeholder="กรอกรหัสผ่าน">
+        <button onclick="displayPassCheck()">ตรวจสอบ</button>
+    </p>
+    
+    <div id="func-display" style="margin-top: 15px; padding: 15px; background: #f1f8e9; border-left: 5px solid #4caf50; border-radius: 5px;">
+        ผลการเรียกใช้ Function จะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย) (Arrow)</h2>
+<div class="section">
+    <button onclick="displayArrowBMI()">1. ค่า BMI (ดัชนีมวลกาย) (Arrow)</button>
+    <button onclick="displayArrowGreeting()">2. Greeting (Arrow)</button>
+    <button onclick="displayArrowPass()">3. Password Check (Arrow)</button>
+    
+    <div id="arrow-display" style="margin-top: 15px; padding: 15px; background: #fffde7; border-left: 5px solid #fbc02d; border-radius: 5px;">
+        ผลการรัน Arrow Function จะแสดงที่นี่...
+    </div>
+</div>
+
+<hr>
+<h2>ค่า BMI (ดัชนีมวลกาย)</h2>
+<div class="section" style="background-color: #f0f7ff; padding: 20px; border-radius: 10px;">
+    <p>
+        น้ำหนัก (กก.): <input type="number" id="weight_input" placeholder="ตัวอย่าง: 65"> 
+    </p>
+    <p>
+        ส่วนสูง (ซม.): <input type="number" id="height_input" placeholder="ตัวอย่าง: 170">
+    </p>
+    
+    <button onclick="processBMI()">คำนวณและวิเคราะห์ผล</button>
+    
+    <div style="margin-top: 20px; font-size: 1.2em;">
+        <p id="bmi_result" style="font-weight: bold; color: #007bff;"></p>
+        <p id="bmi_status" style="font-weight: bold;"></p>
+    </div>
+</div>
+
+<hr>
+<div class="booking-container">
+    <h1>ระบบจองห้องพักออนไลน์</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="นายสมชาย ใจดี" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" placeholder="08x-xxx-xxxx" required>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <div style="flex: 1;">
+                <label for="checkin">วันที่เช็คอิน:</label>
+                <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div style="flex: 1;">
+                <label for="checkout">วันที่เช็คเอาท์:</label>
+                <input type="date" id="checkout" name="checkout" required>
+            </div>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน (1,200.-)</option>
+                <option value="deluxe">ห้องดีลักซ์ (2,500.-)</option>
+                <option value="suite">ห้องสวีท (5,000.-)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="1" required>
+        </div>
+
+        <button type="submit" id="submitBooking">ยืนยันการจองห้องพัก</button>
+    </form>
+    
+    <div id="bookingSummary" style="display:none; margin-top: 20px; padding: 15px; background: #e7f3fe; border-radius: 8px; border: 1px solid #bde5fb;">
+        <h3 style="margin-top:0; color: #2980b9;">สรุปการจองของคุณ</h3>
+        <p id="summaryText"></p>
+    </div>
+</div>
+
+<style>
+    /* CSS ตามโจทย์ที่กำหนด */
+    .booking-container {
+        font-family: 'Sarabun', sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 15px;
+    }
+
+    .booking-container h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    #bookingForm {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .booking-container div {
+        margin-bottom: 15px;
+    }
+
+    .booking-container label {
+        display: block;
+        margin-bottom: 8px;
+        color: #34495e;
+        font-weight: bold;
+    }
+
+    .booking-container input, 
+    .booking-container select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
+
+    .booking-container input:focus, 
+    .booking-container select:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 8px rgba(52,152,219,0.3);
+    }
+
+    .booking-container button {
+        background-color: #2980b9;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .booking-container button:hover {
+        background-color: #3498db;
+    }
+
+    @media (max-width: 480px) {
+        .booking-container { padding: 10px; }
+        #bookingForm { padding: 15px; }
+    }
+</style>
+
+<script src="script.js"></script>
+
+<hr>
+<div class="section">
+    <h2>สรุปการทดลองปรับแต่ง CSS</h2>
+    <p>ในการทดลองนี้ได้ปรับแต่ง CSS ของปุ่มและกล่องแสดงผลหลัก (content box) เพื่อให้มีสีและมุมโค้งที่สอดคล้องกัน รวมถึงเปลี่ยนสไตล์ของส่วน booking ให้ดูทันสมัยขึ้น</p>
+    <ul>
+        <li>เปลี่ยนสีปุ่มจากเทาเป็นสีน้ำเงิน (#2980b9) และเพิ่มมุมโค้ง</li>
+        <li>เปลี่ยนพื้นหลังกล่องแสดงผลเป็นสีฟ้าอ่อน และเพิ่มเส้นขอบสีอ่อน</li>
+        <li>เพิ่มการเปลี่ยนสีเมื่อเลื่อนเมาส์ (hover)</li>
+    </ul>
+
+    <p>รูปก่อนและหลังการปรับแต่ง:</p>
+    <div style="display:flex; gap:20px; align-items:center;">
+        <div>
+            <img src="images/experiment-before.svg" alt="before" style="max-width:300px; border:1px solid #ccc; padding:8px; background:#fff;">
+            <p style="text-align:center;">ก่อนปรับแต่ง</p>
+        </div>
+        <div>
+            <img src="images/experiment-after.svg" alt="after" style="max-width:300px; border:1px solid #ccc; padding:8px; background:#fff;">
+            <p style="text-align:center;">หลังปรับแต่ง</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.2](images/image.png)
+![รูปผลการทดลองที่ 3.2.2](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 20.55.55.png>))
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -825,10 +1743,477 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+function showTime() {
+    const now = new Date();
+    alert('เวลาปัจจุบันคือ: ' + now.toLocaleTimeString('th-TH'));
+}
+
+function showStudentData() {
+    const studentId = "68030129";
+    const studentName = "นางสาวนภัสสร คำปัน";
+
+    let midtermScore = 28; // คะแนนกลางภาค
+    let finalScore = 45;   // คะแนนปลายภาค
+
+    const totalScore = midtermScore + finalScore;
+
+    const display = document.getElementById('display-area');
+    if (!display) {
+        alert('ไม่พบพื้นที่แสดงผล (display-area)');
+        return;
+    }
+
+    display.innerHTML = `
+        <strong>ข้อมูลตัวแปร (let / const):</strong><br>
+        รหัส: ${studentId} <br>
+        ชื่อ: ${studentName} <br>
+        คะแนนกลางภาค: ${midtermScore} <br>
+        คะแนนปลายภาค: ${finalScore} <br>
+        <strong>คะแนนรวม:</strong> ${totalScore} คะแนน
+    `;
+}
+
+
+function showObjectData() {
+    const studentProfile = {
+        id: "68030129",
+        name: "นางสาวนภัสสร คำปัน",
+        major: "สาขาวิชา เทคโนโลยีคอมพิวเตอร์",
+        gpa: 3.00
+    };
+
+    const display = document.getElementById('display-area');
+    if (!display) {
+        alert('ไม่พบพื้นที่แสดงผล (display-area)');
+        return;
+    }
+
+    display.innerHTML = `
+        <strong>ข้อมูลจาก Object:</strong><br>
+        รหัส: ${studentProfile.id} <br>
+        ชื่อ: ${studentProfile.name} <br>
+        สาขา: ${studentProfile.major} <br>
+        เกรดเฉลี่ย: ${studentProfile.gpa}
+    `;
+}
+
+function calculateAverage() {
+    const score1 = 78;
+    const score2 = 85;
+    const score3 = 92;
+
+    const average = (score1 + score2 + score3) / 3;
+
+    const display = document.getElementById('calc-display');
+    if (!display) {
+        alert('ไม่พบพื้นที่แสดงผลการคำนวณ (calc-display)');
+        return;
+    }
+
+    display.innerHTML = `
+        <strong>ผลการคำนวณคะแนนเฉลี่ย (3 วิชา):</strong><br>
+        วิชาคณิตศาสตร์: ${score1} <br>
+        วิชาวิทยาศาสตร์: ${score2} <br>
+        วิชาภาษาอังกฤษ: ${score3} <br>
+        <strong>ค่าเฉลี่ย:</strong> ${average.toFixed(2)}
+    `;
+}
+
+function calculateVat() {
+    const productName = 'รองเท้าวิ่ง';
+    const price = 1250.00; // ราคาสินค้า
+    const vatRate = 0.07; // 7%
+
+    const vatAmount = price * vatRate;
+    const totalPrice = price + vatAmount;
+
+    const display = document.getElementById('calc-display');
+    if (!display) {
+        alert('ไม่พบพื้นที่แสดงผลการคำนวณ (calc-display)');
+        return;
+    }
+
+    display.innerHTML = `
+        <strong>ผลการคำนวณราคาสินค้า + VAT 7%:</strong><br>
+        สินค้า: ${productName} <br>
+        ราคาสินค้า: ${price.toFixed(2)} บาท<br>
+        VAT (7%): ${vatAmount.toFixed(2)} บาท<br>
+        <strong>ราคารวม VAT:</strong> ${totalPrice.toFixed(2)} บาท
+    `;
+}
+
+function checkEvenOdd() {
+    const logicDisplay = document.getElementById('logic-display');
+    if (!logicDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (logic-display)');
+        return;
+    }
+
+    let number = 45;
+    let result = "";
+    
+    if (number % 2 === 0) {
+        result = `${number} เป็น "เลขคู่"`;
+    } else {
+        result = `${number} เป็น "เลขคี่"`;
+    }
+    
+    logicDisplay.innerText = "ผลลัพธ์: " + result;
+}
+
+function showMultiplication() {
+    const logicDisplay = document.getElementById('logic-display');
+    if (!logicDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (logic-display)');
+        return;
+    }
+
+    let output = "--- แม่ 2 (for loop) ---\n";
+    for (let i = 1; i <= 12; i++) {
+        output += `2 x ${i} = ${2 * i}\n`;
+    }
+    
+    output += "\n--- แม่ 3 (while loop) ---\n";
+    let j = 1;
+    while (j <= 12) {
+        output += `3 x ${j} = ${3 * j}\n`;
+        j++;
+    }
+    
+    logicDisplay.innerText = output;
+}
+
+function countDown() {
+    const logicDisplay = document.getElementById('logic-display');
+    if (!logicDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (logic-display)');
+        return;
+    }
+
+    let output = "เริ่มการนับถอยหลัง:\n";
+    for (let i = 10; i >= 1; i--) {
+        output += i + (i === 1 ? " !" : ", ");
+    }
+    logicDisplay.innerText = output;
+}
+
+function checkAgeRange() {
+    const logicDisplay = document.getElementById('logic-display');
+    if (!logicDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (logic-display)');
+        return;
+    }
+
+    let age = 20;
+    let range = "";
+
+    if (age >= 0 && age <= 15) {
+        range = "วัยเด็ก";
+    } else if (age >= 16 && age <= 19) {
+        range = "วัยรุ่น";
+    } else if (age >= 20 && age <= 60) {
+        range = "วัยผู้ใหญ่";
+    } else {
+        range = "วัยสูงอายุ";
+    }
+
+    logicDisplay.innerText = `อายุ ${age} ปี จัดอยู่ในกลุ่ม: ${range}`;
+}
+
+
+const funcDisplay = document.getElementById('func-display');
+
+
+function calculateBMI(weight, heightCm) {
+    let heightM = heightCm / 100; 
+    let bmi = weight / (heightM * heightM);
+    return bmi.toFixed(2);
+}
+
+function displayBMI() {
+    if (!funcDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (func-display)');
+        return;
+    }
+
+    const wVal = document.getElementById('weight').value;
+    const hVal = document.getElementById('height').value;
+    const w = parseFloat(wVal);
+    const h = parseFloat(hVal);
+
+    if (!isFinite(w) || !isFinite(h) || w <= 0 || h <= 0) {
+        funcDisplay.innerText = "กรุณากรอกน้ำหนักและส่วนสูงที่ถูกต้อง";
+        return;
+    }
+
+    const result = calculateBMI(w, h);
+    funcDisplay.innerText = `ดัชนีมวลกาย (BMI) ของคุณคือ: ${result}`;
+}
+
+function getGreeting(name, age) {
+    let message = "";
+    const a = Number(age);
+    if (isNaN(a) || a < 0) {
+        return 'อายุไม่ถูกต้อง';
+    }
+
+    if (a < 13) {
+        message = `สวัสดีจ๊ะหนู ${name}`;
+    } else if (a < 20) {
+        message = `สวัสดีวัยรุ่น ${name}!`;
+    } else {
+        message = `สวัสดีคุณ ${name} ยินดีที่ได้พบครับ`;
+    }
+    return message;
+}
+
+function displayGreeting() {
+    if (!funcDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (func-display)');
+        return;
+    }
+
+    const name = document.getElementById('guestName').value.trim();
+    const ageVal = document.getElementById('guestAge').value;
+    const age = parseInt(ageVal, 10);
+
+    if (!name || !isFinite(age) || age < 0) {
+        funcDisplay.innerText = "กรุณากรอกชื่อและอายุให้ครบถ้วน";
+        return;
+    }
+
+    funcDisplay.innerText = getGreeting(name, age);
+}
+
+function isPasswordValid(password) {
+    if (typeof password !== 'string') return false;
+    return password.length > 8;
+}
+
+function displayPassCheck() {
+    if (!funcDisplay) {
+        alert('ไม่พบพื้นที่แสดงผล (func-display)');
+        return;
+    }
+
+    const pass = document.getElementById('passInput').value || '';
+    const isValid = isPasswordValid(pass);
+    
+    if (isValid) {
+        funcDisplay.innerHTML = `<span style="color: green;">✔ รหัสผ่านปลอดภัย (ยาว ${pass.length} ตัวอักษร)</span>`;
+    } else {
+        funcDisplay.innerHTML = `<span style="color: red;">✘ รหัสผ่านสั้นเกินไป (ต้องมากกว่า 8 ตัวอักษร)</span>`;
+    }
+}
+
+
+const arrowDisplay = document.getElementById('arrow-display');
+
+const calculateBMIArrow = (weight, height) => {
+    const w = Number(weight);
+    const h = Number(height);
+    if (!isFinite(w) || !isFinite(h) || w <= 0 || h <= 0) return null;
+    return (w / ((h / 160) ** 2)).toFixed(2);
+};
+
+const displayArrowBMI = () => {
+    if (!arrowDisplay) { alert('ไม่พบพื้นที่แสดงผล (arrow-display)'); return; }
+    const wVal = document.getElementById('weight').value;
+    const hVal = document.getElementById('height').value;
+    const bmi = calculateBMIArrow(wVal, hVal);
+    arrowDisplay.style.color = '';
+    arrowDisplay.innerText = bmi ? `[Arrow] BMI ของคุณคือ: ${bmi}` : 'กรุณากรอกน้ำหนักและส่วนสูงที่ถูกต้อง';
+};
+
+const getGreetingArrow = (name, age) => {
+    const a = Number(age);
+    const n = (name || '').toString().trim();
+    if (!n || !isFinite(a) || a < 0) return 'ข้อมูลไม่ครบถ้วน';
+    return a < 13 ? `หวัดดีเจ้าหนู ${n} (Arrow)`
+         : a < 20 ? `โย่! ว่าไงวัยรุ่น ${n} (Arrow)`
+         : `สวัสดีครับคุณ ${n} (Arrow)`;
+};
+
+const displayArrowGreeting = () => {
+    if (!arrowDisplay) { alert('ไม่พบพื้นที่แสดงผล (arrow-display)'); return; }
+    const name = document.getElementById('guestName').value;
+    const age = document.getElementById('guestAge').value;
+    arrowDisplay.style.color = '';
+    arrowDisplay.innerText = getGreetingArrow(name, age);
+};
+
+
+const isPassValidArrow = pass => typeof pass === 'string' && pass.length > 8;
+
+const displayArrowPass = () => {
+    if (!arrowDisplay) { alert('ไม่พบพื้นที่แสดงผล (arrow-display)'); return; }
+    const pass = document.getElementById('passInput').value || '';
+    const isValid = isPassValidArrow(pass);
+    arrowDisplay.style.color = isValid ? 'green' : 'red';
+    arrowDisplay.innerText = isValid
+        ? `[Arrow] ผ่าน! รหัสยาว ${pass.length} ตัว`
+        : `[Arrow] ไม่ผ่าน! รหัสสั้นเกินไป (ต้องมากกว่า 8 ตัวอักษร)`;
+};
+
+
+
+const calculateBMIValue = (w, h) => {
+    const W = Number(w);
+    const H = Number(h);
+    if (!isFinite(W) || !isFinite(H) || W <= 0 || H <= 0) return null;
+    return Number((W / ((H / 100) ** 2)).toFixed(2));
+};
+
+
+const getBMIStatus = (bmi) => {
+    const b = Number(bmi);
+    if (!isFinite(b)) return { text: "ข้อมูล BMI ไม่ถูกต้อง", color: "#000" };
+    if (b < 18.5) return { text: "ผอมเกินไป", color: "#ffc107" };
+    if (b >= 18.5 && b <= 22.9) return { text: "สมส่วน (สุขภาพดี)", color: "#28a745" };
+    if (b >= 23.0 && b <= 24.9) return { text: "น้ำหนักเกิน", color: "#fd7e14" };
+    return { text: "อ้วน", color: "#dc3545" };
+};
+
+
+const processBMI = () => {
+    const weightVal = document.getElementById('weight_input')?.value;
+    const heightVal = document.getElementById('height_input')?.value;
+    const resultElement = document.getElementById('bmi_result');
+    const statusElement = document.getElementById('bmi_status');
+
+    if (!resultElement || !statusElement) {
+        alert('ไม่พบพื้นที่แสดงผล BMI ในหน้า HTML (bmi_result / bmi_status)');
+        return;
+    }
+
+    const bmi = calculateBMIValue(weightVal, heightVal);
+    if (bmi === null) {
+        resultElement.innerText = 'กรุณากรอกน้ำหนักและส่วนสูงที่ถูกต้อง (มากกว่า 0)';
+        statusElement.innerText = '';
+        statusElement.style.color = '';
+        return;
+    }
+
+    const status = getBMIStatus(bmi);
+    resultElement.innerHTML = `ค่า BMI ของคุณคือ: <strong>${bmi}</strong>`;
+    statusElement.innerHTML = `สถานะ: <strong>${status.text}</strong>`;
+    statusElement.style.color = status.color;
+};
+
+
+(function() {
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingSummary = document.getElementById('bookingSummary');
+    const summaryText = document.getElementById('summaryText');
+
+    if (!bookingForm) return;
+
+    bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const checkinVal = document.getElementById('checkin').value;
+        const checkoutVal = document.getElementById('checkout').value;
+        const roomtypeEl = document.getElementById('roomtype');
+        const roomtype = roomtypeEl ? roomtypeEl.value : '';
+        const guestsInput = document.getElementById('guests');
+        const guests = guestsInput ? parseInt(guestsInput.value, 10) || 1 : 1;
+
+
+        if (!fullname || !email || !phone || !checkinVal || !checkoutVal || !roomtype) {
+            alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+            return;
+        }
+
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(phone)) {
+            alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลัก)');
+            return;
+        }
+
+        const checkin = new Date(checkinVal);
+        const checkout = new Date(checkoutVal);
+        const today = new Date();
+        today.setHours(0,0,0,0); 
+
+        if (isNaN(checkin) || isNaN(checkout)) {
+            alert('วันที่ไม่ถูกต้อง กรุณาเลือกวันที่ให้ถูกต้อง');
+            return;
+        }
+
+        if (checkin < today) {
+            alert('กรุณาเลือกวันเช็คอินที่ยังไม่ผ่านมา');
+            return;
+        }
+
+        if (checkout <= checkin) {
+            alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+            return;
+        }
+
+    
+        const days = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+
+        
+        const roomtypeText = roomtypeEl.options[roomtypeEl.selectedIndex].text;
+
+      
+        const summary = `สรุปการจอง:\n- ชื่อผู้จอง: ${fullname}\n- ประเภทห้อง: ${roomtypeText}\n- วันที่เข้าพัก: ${checkin.toLocaleDateString('th-TH')}\n- วันที่ออก: ${checkout.toLocaleDateString('th-TH')}\n- จำนวนวันที่พัก: ${days} วัน\n- จำนวนผู้เข้าพัก: ${guests} ท่าน`;
+
+        if (confirm(summary + '\n\nยืนยันการจองห้องพัก?')) {
+            if (bookingSummary && summaryText) {
+                summaryText.innerHTML = `
+                    <strong>คุณ ${fullname}</strong> ได้จอง <strong>${roomtypeText}</strong><br>
+                    วันที่: ${checkin.toLocaleDateString('th-TH')} - ${checkout.toLocaleDateString('th-TH')}<br>
+                    จำนวนวันที่พัก: <strong>${days}</strong> คืน<br>
+                    จำนวนผู้เข้าพัก: ${guests}
+                `;
+                bookingSummary.style.display = 'block';
+                bookingSummary.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            alert('จองห้องพักเรียบร้อยแล้ว');
+            bookingForm.reset();
+            document.getElementById('checkout').min = '';
+        }
+    });
+
+    const checkinEl = document.getElementById('checkin');
+    const checkoutEl = document.getElementById('checkout');
+    if (checkinEl && checkoutEl) {
+        checkinEl.addEventListener('change', function() {
+            checkoutEl.min = this.value;
+            if (checkoutEl.value && checkoutEl.value <= this.value) {
+                checkoutEl.value = this.value;
+            }
+        });
+    }
+
+    const roomtypeEl2 = document.getElementById('roomtype');
+    const guestsEl = document.getElementById('guests');
+    if (roomtypeEl2 && guestsEl) {
+        roomtypeEl2.addEventListener('change', function() {
+            if (this.value === 'standard') {
+                guestsEl.max = 2;
+            } else if (this.value === 'deluxe') {
+                guestsEl.max = 3;
+            } else if (this.value === 'suite') {
+                guestsEl.max = 4;
+            } else {
+                guestsEl.max = 4;
+            }
+
+            if (Number(guestsEl.value) > Number(guestsEl.max)) {
+                guestsEl.value = guestsEl.max;
+            }
+        });
+    }
+})();
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.3](images/image.png)
+![รูปผลการทดลองที่ 3.2.3](![alt text](<ภาพถ่ายหน้าจอ 2569-02-25 เวลา 21.04.50.png>))
 
 
 ## คำแนะนำเพิ่มเติม
