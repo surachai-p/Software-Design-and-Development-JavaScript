@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.4.1: Functions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .output {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .output.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+            color: #155724;
+        }
+
+        .output.error {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+            color: #721c24;
+        }
+
+        .output.warning {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+            color: #856404;
+        }
+
+        .bmi-category {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .bmi-underweight {
+            background: #87CEEB;
+        }
+
+        .bmi-normal {
+            background: #90EE90;
+            color: #333;
+        }
+
+        .bmi-overweight {
+            background: #FFD700;
+            color: #333;
+        }
+
+        .bmi-obese {
+            background: #FF6347;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            margin-top: 15px;
+        }
+
+        .reset-btn:hover {
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 แบบทดสอบที่ 2.4.1: Functions</h1>
+
+        <div class="card-grid">
+            <!-- Card 1: BMI Calculator -->
+            <div class="card">
+                <h2>1️⃣ คำนวณ BMI</h2>
+                <div class="form-group">
+                    <label for="weight">น้ำหนัก (kg):</label>
+                    <input type="number" id="weight" placeholder="เช่น 70" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="height">ส่วนสูง (cm):</label>
+                    <input type="number" id="height" placeholder="เช่น 175" step="0.1">
+                </div>
+                <button onclick="testBMI()">คำนวณ BMI</button>
+                <button class="reset-btn" onclick="resetBMI()">เคลียร์</button>
+                <div id="bmiOutput" class="output" style="display: none;"></div>
+            </div>
+
+            <!-- Card 2: Greeting by Age -->
+            <div class="card">
+                <h2>2️⃣ ทักทายตามอายุ</h2>
+                <div class="form-group">
+                    <label for="greetingName">ชื่อ:</label>
+                    <input type="text" id="greetingName" placeholder="เช่น สมชาย">
+                </div>
+                <div class="form-group">
+                    <label for="greetingAge">อายุ (ปี):</label>
+                    <input type="number" id="greetingAge" placeholder="เช่น 25" min="0" max="150">
+                </div>
+                <button onclick="testGreeting()">ทักทาย</button>
+                <button class="reset-btn" onclick="resetGreeting()">เคลียร์</button>
+                <div id="greetingOutput" class="output" style="display: none;"></div>
+            </div>
+
+            <!-- Card 3: Password Validation -->
+            <div class="card">
+                <h2>3️⃣ ตรวจสอบรหัสผ่าน</h2>
+                <div class="form-group">
+                    <label for="password">รหัสผ่าน:</label>
+                    <input type="password" id="password" placeholder="ป้อนรหัสผ่าน">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()">
+                        แสดงรหัสผ่าน
+                    </label>
+                </div>
+                <button onclick="testPassword()">ตรวจสอบรหัสผ่าน</button>
+                <button class="reset-btn" onclick="resetPassword()">เคลียร์</button>
+                <div id="passwordOutput" class="output" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== Functions from lab4-1.js ==========
+
+        // 1. Function คำนวณ BMI (ดัชนีมวลกาย) จากน้ำหนักและส่วนสูง
+        function calculateBMI(weight, height) {
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+            return parseFloat(bmi.toFixed(2));
+        }
+
+        // 2. Function ที่รับชื่อและอายุ แล้วแสดงข้อความทักทายที่เหมาะสมกับอายุ
+        function greetByAge(name, age) {
+            let greeting = '';
+
+            if (age < 6) {
+                greeting = `สวัสดี เด็กน้อย ${name} ครับ`;
+            } else if (age < 13) {
+                greeting = `สวัสดี เด็ก ${name} ครับ`;
+            } else if (age < 18) {
+                greeting = `สวัสดี เยาวชน ${name} ครับ`;
+            } else if (age < 60) {
+                greeting = `สวัสดีค่ะท่าน ${name}`;
+            } else {
+                greeting = `สวัสดีครับ ท่านผู้เฒ่า ${name}`;
+            }
+
+            return greeting;
+        }
+
+        // 3. Function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
+        function validatePassword(password) {
+            return password.length > 8;
+        }
+
+        // ========== UI Functions ==========
+
+        // BMI Test Function
+        function testBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const output = document.getElementById('bmiOutput');
+
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                output.className = 'output error';
+                output.style.display = 'block';
+                output.innerHTML = '❌ กรุณาป้อนน้ำหนักและส่วนสูงที่ถูกต้อง';
+                return;
+            }
+
+            const bmi = calculateBMI(weight, height);
+            let category = '';
+            let categoryClass = '';
+
+            if (bmi < 18.5) {
+                category = 'ผอม';
+                categoryClass = 'bmi-underweight';
+            } else if (bmi < 24.9) {
+                category = 'สมส่วน';
+                categoryClass = 'bmi-normal';
+            } else if (bmi < 29.9) {
+                category = 'อ้วน';
+                categoryClass = 'bmi-overweight';
+            } else {
+                category = 'อ้วนมาก';
+                categoryClass = 'bmi-obese';
+            }
+
+            output.className = 'output success';
+            output.style.display = 'block';
+            output.innerHTML = `
+                <div>
+                    <div><strong>✓ ผลการคำนวณ BMI</strong></div>
+                    <div>น้ำหนัก: ${weight} kg | ส่วนสูง: ${height} cm</div>
+                    <div style="font-size: 1.2em; margin-top: 8px;">
+                        <strong>BMI: ${bmi}</strong>
+                        <span class="bmi-category ${categoryClass}"> ${category}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function resetBMI() {
+            document.getElementById('weight').value = '';
+            document.getElementById('height').value = '';
+            document.getElementById('bmiOutput').style.display = 'none';
+        }
+
+        // Greeting Test Function
+        function testGreeting() {
+            const name = document.getElementById('greetingName').value.trim();
+            const age = parseInt(document.getElementById('greetingAge').value);
+            const output = document.getElementById('greetingOutput');
+
+            if (!name || isNaN(age) || age < 0 || age > 150) {
+                output.className = 'output error';
+                output.style.display = 'block';
+                output.innerHTML = '❌ กรุณาป้อนชื่อและอายุที่ถูกต้อง';
+                return;
+            }
+
+            const greeting = greetByAge(name, age);
+
+            output.className = 'output success';
+            output.style.display = 'block';
+            output.innerHTML = `
+                <div>
+                    <div><strong>✓ ${greeting}</strong></div>
+                    <div style="font-size: 0.9em; margin-top: 8px; color: rgba(0,0,0,0.7);">อายุ: ${age} ปี</div>
+                </div>
+            `;
+        }
+
+        function resetGreeting() {
+            document.getElementById('greetingName').value = '';
+            document.getElementById('greetingAge').value = '';
+            document.getElementById('greetingOutput').style.display = 'none';
+        }
+
+        // Password Test Function
+        function testPassword() {
+            const password = document.getElementById('password').value;
+            const output = document.getElementById('passwordOutput');
+
+            if (password.length === 0) {
+                output.className = 'output error';
+                output.style.display = 'block';
+                output.innerHTML = `
+                    <div>
+                        <div><strong>❌ กรุณาป้อนรหัสผ่าน</strong></div>
+                    </div>
+                `;
+                return;
+            }
+
+            const isValid = validatePassword(password);
+            const strength = password.length;
+
+            if (!isValid) {
+                output.className = 'output error';
+                output.innerHTML = `
+                    <div>
+                        <div><strong>❌ รหัสผ่านไม่ปลอดภัย</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 8px;">ความยาว: ${password.length} ตัวอักษร (ต้องมากกว่า 8)</div>
+                    </div>
+                `;
+            } else if (strength <= 10) {
+                output.className = 'output warning';
+                output.innerHTML = `
+                    <div>
+                        <div><strong>⚠️ รหัสผ่านปลานศนี</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 8px;">ความยาว: ${password.length} ตัวอักษร</div>
+                    </div>
+                `;
+            } else {
+                output.className = 'output success';
+                output.innerHTML = `
+                    <div>
+                        <div><strong>✓ รหัสผ่านปลอดภัย</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 8px;">ความยาว: ${password.length} ตัวอักษร</div>
+                    </div>
+                `;
+            }
+
+            output.style.display = 'block';
+        }
+
+        function resetPassword() {
+            document.getElementById('password').value = '';
+            document.getElementById('showPassword').checked = false;
+            document.getElementById('password').type = 'password';
+            document.getElementById('passwordOutput').style.display = 'none';
+        }
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const showPassword = document.getElementById('showPassword').checked;
+            passwordInput.type = showPassword ? 'text' : 'password';
+        }
+
+        // Allow Enter key to trigger functions
+        document.getElementById('weight')?.addEventListener('keypress', (e) => e.key === 'Enter' && testBMI());
+        document.getElementById('height')?.addEventListener('keypress', (e) => e.key === 'Enter' && testBMI());
+        document.getElementById('greetingName')?.addEventListener('keypress', (e) => e.key === 'Enter' && testGreeting());
+        document.getElementById('greetingAge')?.addEventListener('keypress', (e) => e.key === 'Enter' && testGreeting());
+        document.getElementById('password')?.addEventListener('keypress', (e) => e.key === 'Enter' && testPassword());
+    </script>
+</body>
+</html>

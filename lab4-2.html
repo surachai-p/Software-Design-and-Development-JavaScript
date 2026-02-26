@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.4.2: Arrow Functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test { margin-bottom: 30px; border: 1px solid #ccc; padding: 15px; }
+        label { display: block; margin: 10px 0 5px 0; font-weight: bold; }
+        input { padding: 8px; width: 300px; }
+        button { padding: 8px 15px; margin-right: 10px; cursor: pointer; }
+        .output { margin-top: 10px; color: green; font-weight: bold; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.2: Arrow Functions</h1>
+
+    <!-- Test 1: BMI -->
+    <div class="test">
+        <h2>1. คำนวณ BMI (Arrow Function)</h2>
+        <label>น้ำหนัก (kg):</label>
+        <input type="number" id="weight" placeholder="70">
+        <label>ส่วนสูง (cm):</label>
+        <input type="number" id="height" placeholder="175">
+        <button onclick="testBMI()">คำนวณ</button>
+        <div id="bmiOutput" class="output"></div>
+    </div>
+
+    <!-- Test 2: Greeting -->
+    <div class="test">
+        <h2>2. ทักทายตามอายุ (Arrow Function)</h2>
+        <label>ชื่อ:</label>
+        <input type="text" id="name" placeholder="สมชาย">
+        <label>อายุ (ปี):</label>
+        <input type="number" id="age" placeholder="25">
+        <button onclick="testGreeting()">ทักทาย</button>
+        <div id="greetingOutput" class="output"></div>
+    </div>
+
+    <!-- Test 3: Password -->
+    <div class="test">
+        <h2>3. ตรวจสอบรหัสผ่าน (Arrow Function)</h2>
+        <label>รหัสผ่าน:</label>
+        <input type="password" id="password">
+        <button onclick="testPassword()">ตรวจสอบ</button>
+        <div id="passwordOutput" class="output"></div>
+    </div>
+
+    <script>
+        // 1. Arrow Function คำนวณ BMI
+        const calculateBMI = (weight, height) => {
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+            return parseFloat(bmi.toFixed(2));
+        };
+
+        // 2. Arrow Function ทักทายตามอายุ
+        const greetByAge = (name, age) => {
+            if (age < 6) return `สวัสดี เด็กน้อย ${name} ครับ`;
+            if (age < 13) return `สวัสดี เด็ก ${name} ครับ`;
+            if (age < 18) return `สวัสดี เยาวชน ${name} ครับ`;
+            if (age < 60) return `สวัสดีค่ะท่าน ${name}`;
+            return `สวัสดีครับ ท่านผู้เฒ่า ${name}`;
+        };
+
+        // 3. Arrow Function ตรวจสอบรหัสผ่าน
+        const validatePassword = (password) => password.length > 8;
+
+        // UI Functions
+        function testBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const output = document.getElementById('bmiOutput');
+
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                output.className = 'output error';
+                output.textContent = ' กรุณาป้อนน้ำหนักและส่วนสูงที่ถูกต้อง';
+                return;
+            }
+
+            const bmi = calculateBMI(weight, height);
+            let category = '';
+            if (bmi < 18.5) category = 'ผอม';
+            else if (bmi < 24.9) category = 'สมส่วน';
+            else if (bmi < 29.9) category = 'อ้วน';
+            else category = 'อ้วนมาก';
+
+            output.className = 'output';
+            output.textContent = ` ${bmi} (${category})`;
+        }
+
+        function testGreeting() {
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+            const output = document.getElementById('greetingOutput');
+
+            if (!name || isNaN(age) || age < 0 || age > 150) {
+                output.className = 'output error';
+                output.textContent = ' กรุณาป้อนชื่อและอายุที่ถูกต้อง';
+                return;
+            }
+
+            const greeting = greetByAge(name, age);
+            output.className = 'output';
+            output.textContent = ` ${greeting}`;
+        }
+
+        function testPassword() {
+            const password = document.getElementById('password').value;
+            const output = document.getElementById('passwordOutput');
+
+            if (password.length === 0) {
+                output.className = 'output error';
+                output.textContent = ' กรุณาป้อนรหัสผ่าน';
+                return;
+            }
+
+            const isValid = validatePassword(password);
+            if (!isValid) {
+                output.className = 'output error';
+                output.textContent = ` รหัสผ่านไม่ปลอดภัย (${password.length} ตัวอักษร, ต้องมากกว่า 8)`;
+            } else {
+                output.className = 'output';
+                output.textContent = ` รหัสผ่านปลอดภัย (${password.length} ตัวอักษร)`;
+            }
+        }
+    </script>
+</body>
+</html>
