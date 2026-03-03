@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<body>
+<header>lab2.3</header>
+    <script>
+        let number = 15;
+        if (number % 2 === 0) {
+            console.log(number + " เป็นเลขคู่");
+        } else {
+            console.log(number + " เป็นเลขคี่");
+        }
+        console.log("สูตรคูณแม่ 2");
+        for (let i = 1; i <= 12; i++) {
+            console.log(`2 x ${i} = ${2 * i}`);
+        }
+        console.log("สูตรคูณแม่ 3");
+        let j = 1;
+        while (j <= 12) {
+            console.log(`3 x ${j} = ${3 * j}`);
+            j++;
+        }
+        console.log("นับถอยหลัง");
+        for (let count = 10; count >= 1; count--) {
+            console.log(count);
+        }
+        let age = 20;
+        let stage = "";
+        if (age < 13) {
+            stage = "วัยเด็ก";
+        } else if (age <= 19) {
+            stage = "วัยรุ่น";
+        } else {
+            stage = "วัยผู้ใหญ่";
+        }
+        console.log("อายุ " + age + " ปี คือ " + stage);
+    </script>
+</body>
+</html>

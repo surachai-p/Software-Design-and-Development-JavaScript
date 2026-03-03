@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const calculateBMI = (weight, heightCm) => {
+    const heightM = heightCm / 100;
+    return (weight / (heightM * heightM)).toFixed(2);
+};
+
+const greetByAge = (name, age) => {
+    if (age < 13) return `สวัสดีจ้า น้อง ${name}`;
+    if (age <= 19) return `สวัสดีคุณ ${name} (วัยรุ่น)`;
+    return `สวัสดีคุณ ${name} (วัยผู้ใหญ่)`;
+};
+const isPasswordValid = (password) => password.length > 8;
+
+console.log("BMI:", calculateBMI(111, 183));
+console.log(greetByAge("วรปรัชญ์", 19));
+const myPassword = "password123";
+if (isPasswordValid(myPassword)) {
+    console.log("รหัสผ่านผ่านเกณฑ์");
+} else {
+    console.log("รหัสผ่านไม่ผ่านเกณฑ์");
+}
+    </script>
+</body>
+</html>

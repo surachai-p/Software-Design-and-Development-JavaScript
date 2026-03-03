@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>คำนวน BMI</title>
+</head>
+<body>
+    Enter your Weight(Kg)<input type="text" id="weight">
+    Enter your Height(Cm)<input type="text" id="height">
+    <p id="output_value"></p>
+    <button onclick="showMessage(document.getElementById('weight').value, document.getElementById('height').value)">คลิกที่นี่</button>
+    
+    <script>
+        const calculate = (weight ,heightCm) => {
+            const heightM = heightCm / 100;
+            return weight / (heightM * heightM);
+        }
+        function showMessage(weight, height) {
+            const bmi = calculate(weight, height);
+            document.getElementById('output_value').innerHTML = 'Your BMI is: ' + bmi.toFixed(2);
+        }
+    </script>
+</body>
+</html>

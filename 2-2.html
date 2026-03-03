@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>โปรแกรมคำนวณ</title>
+</head>
+<body>
+
+    <h1>ผลลัพธ์การคำนวณ</h1>
+    <div id="result"></div>
+
+    <script>
+        let score1 = 80;
+        let score2 = 75;
+        let score3 = 90;
+        let average = (score1 + score2 + score3) / 3;
+        let productName = "หูฟัง Bluetooth";
+        let price = 1200;
+        let vat = price * 0.07;
+        let totalPrice = price + vat;
+        const display = document.getElementById('result');
+        display.innerHTML = `
+            <h3>คะแนนเฉลี่ย</h3>
+            <p>คะแนนทั้ง 3 วิชาคือ: ${score1}, ${score2}, ${score3}</p>
+            <p><strong>ค่าเฉลี่ย:</strong> ${average.toFixed(2)}</p>           
+            <hr>           
+            <h3>คำนวณราคาสินค้า (รวม VAT 7%)</h3>
+            <p>ชื่อสินค้า: ${productName}</p>
+            <p>ราคาตั้งต้น: ${price} บาท</p>
+            <p>VAT 7%: ${vat.toFixed(2)} บาท</p>
+            <p><strong>ราคาสุทธิ:</strong> ${totalPrice.toFixed(2)} บาท</p>
+        `;
+        console.log("คะแนนเฉลี่ย:", average);
+        console.log("ราคาสุทธิ:", totalPrice);
+    </script>
+
+</body>
+</html>

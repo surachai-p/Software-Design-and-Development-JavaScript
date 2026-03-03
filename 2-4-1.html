@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function calculateBMI(weight, heightCm) {
+        let heightM = heightCm / 100;
+        let bmi = weight / (heightM * heightM);
+        return bmi.toFixed(2);
+    }
+    function greetByAge(name, age) {
+        if (age < 13) {
+            return `สวัสดีจ้า น้อง ${name}`;
+        } else if (age <= 19) {
+            return `สวัสดีครับ/ค่ะ คุณ ${name} (วัยรุ่น)`;
+        } else {
+            return `สวัสดีครับ/ค่ะ คุณ ${name} (วัยผู้ใหญ่)`;
+        }
+    }
+    function checkPassword(password) {
+        if (password.length > 8) {
+            return "รหัสผ่านถูกต้อง (ยาวกว่า 8 ตัวอักษร)";
+        } else {
+            return "รหัสผ่านไม่ปลอดภัย (ต้องมากกว่า 8 ตัวอักษร)";
+        }
+    }
+    console.log("BMI ของคุณคือ:", calculateBMI(111, 183));
+    console.log(greetByAge("ไร่ขิง", 19));
+    console.log(checkPassword("680302556767"));
+    console.log(checkPassword("1234"));
+</script>
+</body>
+</html>
