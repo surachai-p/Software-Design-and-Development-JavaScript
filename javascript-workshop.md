@@ -76,10 +76,50 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('นาย วันชนะ ไชยลังกา')">ปุ่มที่ 1</button>
+
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('25/2/2569');
+        };
+    </script>
+    <h3>ใส่ข้อความ</h3>
+
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+
+    <button onclick="showMessage();">
+        แสดงข้อความ
+    </button>
+
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+```javascript
+function hello3(){
+    alert('22:00 น.');
+    }
+
+function showMessage() {
+            let text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML =
+                "ข้อความที่คุณพิมพ์: " + text;
+        }
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+!![alt text](image.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -134,11 +174,34 @@ let person = {
 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา  ประกอบด้วยข้อมูล รหัสนักศึกษา, ชื่อ, สาขาวิชา, เกรดเฉลี่ย
 
 ### บันทึกผลการทดลอง 2.1
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+//const and let
+const studentId = "68030267";
+let studentName = "นาย วันชนะ ไชยลังกา";
+let midtermScore = 35;   
+let finalScore = 45;     
+
+console.log("รหัสนักศึกษา:", studentId);
+console.log("ชื่อ:", studentName);
+console.log("คะแนนกลางภาค:", midtermScore);
+console.log("คะแนนปลายภาค:", finalScore);
+
+//Object 
+let student = {
+    studentId: "68030267",
+    name: "นาย วันชนะ ไชยลังกา",
+    major: "เทคโนโลยีคอมพิวเตอร์",
+    gpa: 2.00
+};
+
+console.log("ข้อมูลนักศึกษา");
+console.log("รหัส:", student.studentId);
+console.log("ชื่อ:", student.name);
+console.log("สาขาวิชา:", student.major);
+console.log("เกรดเฉลี่ย:", student.gpa);
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![alt text](image-1.png)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -189,11 +252,36 @@ number /= 2;          // เท่ากับ number = number / 2
 2. เขียนโปรแกรม กำหนดชื่อสินค้า ราคาสินค้า คำนวณราคาสินค้าที่รวม VAT 7% แล้วแสดงผลการคำนวณ
 
 ### บันทึกผลการทดลอง 2.2
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+// กำหนดคะแนน 3 วิชา
+let subject1 = 80;
+let subject2 = 75;
+let subject3 = 90;
+
+let total = subject1 + subject2 + subject3;
+
+let average = total / 3;
+
+console.log("คะแนนวิชาที่ 1:", subject1);
+console.log("คะแนนวิชาที่ 2:", subject2);
+console.log("คะแนนวิชาที่ 3:", subject3);
+console.log("คะแนนรวม:", total);
+console.log("คะแนนเฉลี่ย:", average);
+
+//ข้อมูลสินค้า
+let productName = "คีย์บอร์ด";
+let price = 1000;
+let vat = price * 0.07;
+let totalPrice = price + vat;
+
+console.log("ชื่อสินค้า:", productName);
+console.log("ราคา:", price, "บาท");
+console.log("VAT 7%:", vat, "บาท");
+console.log("ราคารวม VAT:", totalPrice, "บาท");
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+
+![alt text](image-2.png)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -323,11 +411,49 @@ for (let i = 1; i <= 5; i++) {
 4. เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่)
 
 ### บันทึกผลการทดลอง 2.3
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+//if-else
+let number = 7;
+
+if (number % 2 === 0) {
+    console.log(number + " เป็นเลขคู่");
+} else {
+    console.log(number + " เป็นเลขคี่");
+}
+//2
+console.log("สูตรคูณแม่ 2");
+
+for (let i = 1; i <= 12; i++) {
+    console.log("2 x " + i + " = " + (2 * i));
+}
+//3
+console.log("สูตรคูณแม่ 3");
+
+let i = 1;
+while (i <= 12) {
+    console.log("3 x " + i + " = " + (3 * i));
+    i++;
+}
+//1-10
+console.log("นับถอยหลัง");
+
+for (let i = 10; i >= 1; i--) {
+    console.log(i);
+}
+
+//old
+let age = 18;
+
+if (age <= 12) {
+    console.log("วัยเด็ก");
+} else if (age <= 19) {
+    console.log("วัยรุ่น");
+} else {
+    console.log("วัยผู้ใหญ่");
+}
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![alt text](image-4.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -438,11 +564,45 @@ process(function() {
 3. เขียน function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
 
 ### บันทึกผลการทดลอง 2.4.1
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+//BMI
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);
+    return bmi.toFixed(2);   
+}
+
+let resultBMI = calculateBMI(70, 1.75);
+console.log("ค่า BMI =", resultBMI);
+
+function checkPassword(password) {
+    if (password.length > 8) {
+        return "รหัสผ่านปลอดภัย";
+    } else {
+        return "รหัสผ่านสั้นเกินไป";
+    }
+}
+
+//Name-old
+function greetByAge(name, age) {
+    if (age <= 12) {
+        console.log("สวัสดี เด็กชาย/เด็กหญิง " + name);
+    } else if (age <= 19) {
+        console.log("สวัสดีวัยรุ่น " + name);
+    } else {
+        console.log("สวัสดีคุณ " + name);
+    }
+}
+
+
+greetByAge("นายวันชนะ", 18);
+
+// test
+console.log(checkPassword("68030267"));
+console.log(checkPassword("Wanchana267"));
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+
+![alt text](image-5.png)
 
 
 
@@ -482,11 +642,41 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 3. เขียน function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
 
 ### บันทึกผลการทดลอง 2.4.2
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+//bmi
+const calculateBMI = (weight, height) => 
+    (weight / (height * height)).toFixed(2);
+
+//test
+console.log("ค่า BMI =", calculateBMI(70, 1.75));
+
+//Name-old
+const greetByAge = (name, age) => {
+    if (age <= 12) {
+        return "สวัสดี เด็กชาย/เด็กหญิง " + name;
+    } else if (age <= 19) {
+        return "สวัสดีวัยรุ่น " + name;
+    } else {
+        return "สวัสดีคุณ " + name;
+    }
+};
+
+// test
+console.log(greetByAge("นายวันชนะ", 18));
+
+//password
+const checkPassword = password => 
+    password.length > 8 
+        ? "รหัสผ่านปลอดภัย" 
+        : "รหัสผ่านสั้นเกินไป";
+
+// test
+console.log(checkPassword("68030267"));
+console.log(checkPassword("wanchana267"));
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.2](images/image.png)
+
+![alt text](image-6.png)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS

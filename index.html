@@ -1,0 +1,32 @@
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('นาย วันชนะ ไชยลังกา')">ปุ่มที่ 1</button>
+
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('25/2/2569');
+        };
+    </script>
+    <h3>ใส่ข้อความ</h3>
+
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+
+    <button onclick="showMessage();">
+        แสดงข้อความ
+    </button>
+
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+
+    
+</body>
+</html>
