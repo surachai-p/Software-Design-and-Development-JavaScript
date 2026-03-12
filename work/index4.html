@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.3: การควบคุมการทำงาน</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .box { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #28a745; }
+        .grid-container { display: flex; gap: 20px; }
+        .grid-item { flex: 1; background-color: #e9ecef; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h2>ผลลัพธ์แบบทดสอบที่ 2.3: การควบคุมการทำงาน</h2>
+
+    <div class="box">
+        <h3>1. ตรวจสอบเลขคู่หรือเลขคี่</h3>
+        <p id="oddEvenOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>2. ตารางสูตรคูณ</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h4>แม่ 2 (ใช้ for loop)</h4>
+                <p id="mul2Output"></p>
+            </div>
+            <div class="grid-item">
+                <h4>แม่ 3 (ใช้ while loop)</h4>
+                <p id="mul3Output"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3>3. นับถอยหลังจาก 10 ถึง 1</h3>
+        <p id="countdownOutput" style="font-size: 1.2em; font-weight: bold; color: red;"></p>
+    </div>
+
+    <div class="box">
+        <h3>4. ตรวจสอบช่วงวัยตามอายุ</h3>
+        <p id="ageGroupOutput"></p>
+    </div>
+
+    <script>
+        let checkNumber = 15;
+        let resultOddEven = "";
+        
+        if (checkNumber % 2 === 0) {
+            resultOddEven = "ตัวเลข " + checkNumber + " เป็น <strong>เลขคู่</strong>";
+        } else {
+            resultOddEven = "ตัวเลข " + checkNumber + " เป็น <strong>เลขคี่</strong>";
+        }
+        document.getElementById("oddEvenOutput").innerHTML = resultOddEven;
+
+        let mul2Text = "";
+        for (let i = 1; i <= 12; i++) {
+            mul2Text += "2 x " + i + " = " + (2 * i) + "<br>";
+        }
+        document.getElementById("mul2Output").innerHTML = mul2Text;
+
+        let mul3Text = "";
+        let j = 1;
+        while (j <= 12) {
+            mul3Text += "3 x " + j + " = " + (3 * j) + "<br>";
+            j++;
+        }
+        document.getElementById("mul3Output").innerHTML = mul3Text;
+
+        let countdownText = "";
+        for (let k = 10; k >= 1; k--) {
+            countdownText += k + " ";
+        }
+        document.getElementById("countdownOutput").innerHTML = countdownText;
+
+        let personAge = 18;
+        let ageResult = "";
+        
+        if (personAge >= 0 && personAge <= 12) {
+            ageResult = "อายุ " + personAge + " ปี อยู่ในช่วง: <strong>วัยเด็ก</strong>";
+        } else if (personAge >= 13 && personAge <= 19) {
+            ageResult = "อายุ " + personAge + " ปี อยู่ในช่วง: <strong>วัยรุ่น</strong>";
+        } else if (personAge >= 20) {
+            ageResult = "อายุ " + personAge + " ปี อยู่ในช่วง: <strong>วัยผู้ใหญ่</strong>";
+        } else {
+            ageResult = "ระบุอายุไม่ถูกต้อง";
+        }
+        
+        document.getElementById("ageGroupOutput").innerHTML = ageResult;
+    </script>
+</body>
+</html>

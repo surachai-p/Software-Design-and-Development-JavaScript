@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบ 3.1: คำนวณ BMI</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { background-color: #f8f9fa; padding: 20px; border-radius: 8px; max-width: 400px; }
+        input { margin-bottom: 10px; padding: 5px; width: 90%; }
+        button { padding: 8px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #output_value { margin-top: 15px; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>โปรแกรมคำนวณ BMI</h2>
+        
+        <label for="weight">น้ำหนัก (กิโลกรัม):</label><br>
+        <input type="number" id="weight" placeholder="เช่น 65"><br>
+
+        <label for="height">ส่วนสูง (เซนติเมตร):</label><br>
+        <input type="number" id="height" placeholder="เช่น 170"><br>
+
+        <button onclick="checkBMI()">คำนวณ BMI</button>
+        
+        <p id="output_value"></p>
+    </div>
+
+    <script>
+        const checkBMI = () => {
+            let weight = parseFloat(document.getElementById('weight').value);
+            let heightCm = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(heightCm)) {
+                document.getElementById('output_value').innerHTML = "<span style='color: red;'>กรุณากรอกน้ำหนักและส่วนสูงให้ถูกต้อง</span>";
+                return;
+            }
+
+            let heightM = heightCm / 100;
+            let bmi = weight / (heightM ** 2);
+            
+            let resultText = "";
+            if (bmi < 18.5) {
+                resultText = "ผอม";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                resultText = "สมส่วน";
+            } else {
+                resultText = "อ้วน";
+            }
+
+            document.getElementById('output_value').innerHTML = 
+                `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)} <br>อยู่ในเกณฑ์: <span style="color: blue;">${resultText}</span>`;
+        };
+    </script>
+
+</body>
+</html>

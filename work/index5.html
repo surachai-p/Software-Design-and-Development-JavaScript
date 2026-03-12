@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.4.1: Functions</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .box { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #ffc107; }
+        code { background-color: #e9ecef; padding: 2px 5px; border-radius: 3px; color: #d63384; }
+    </style>
+</head>
+<body>
+    <h2>ผลลัพธ์แบบทดสอบที่ 2.4.1: Functions</h2>
+
+    <div class="box">
+        <h3>1. ฟังก์ชันคำนวณค่า BMI</h3>
+        <p id="bmiOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>2. ฟังก์ชันทักทายตามช่วงวัย</h3>
+        <p id="greetOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>3. ฟังก์ชันตรวจสอบรหัสผ่าน</h3>
+        <p id="passwordOutput"></p>
+    </div>
+
+    <script>
+        function calculateBMI(weightKg, heightCm) {
+            let heightM = heightCm / 100;
+            let bmi = weightKg / (heightM ** 2);
+            return bmi.toFixed(2);
+        }
+
+        let myWeight = 65;
+        let myHeight = 170;
+        let myBMI = calculateBMI(myWeight, myHeight);
+        document.getElementById("bmiOutput").innerHTML = 
+            `น้ำหนัก ${myWeight} กก. ส่วนสูง ${myHeight} ซม. <br> <strong>ค่า BMI ของคุณคือ: ${myBMI}</strong>`;
+
+        function greetByAge(name, age) {
+            let greeting = "";
+            if (age <= 12) {
+                greeting = "สวัสดีจ้ะ " + name;
+            } else if (age <= 19) {
+                greeting = "ไงวัยรุ่น " + name + " สบายดีไหม?";
+            } else {
+                greeting = "สวัสดีครับ/ค่ะ คุณ " + name;
+            }
+            return greeting;
+        }
+
+        let person1 = greetByAge("ด.ช. บังเซียง", 10);
+        let person2 = greetByAge("สมศรี", 25);
+        document.getElementById("greetOutput").innerHTML = 
+            `${person1} <br> ${person2}`;
+
+        const isPasswordValid = (password) => {
+            return password.length > 8;
+        };
+
+        let pass1 = "12345";
+        let pass2 = "mySecretPass123";
+
+        let result1 = isPasswordValid(pass1) ? "ผ่าน" : "ไม่ผ่าน (สั้นเกินไป)";
+        let result2 = isPasswordValid(pass2) ? "ผ่าน" : "ไม่ผ่าน (สั้นเกินไป)";
+
+        document.getElementById("passwordOutput").innerHTML = 
+            `รหัสผ่าน <code>${pass1}</code> : ${result1} <br>
+             รหัสผ่าน <code>${pass2}</code> : ${result2}`;
+    </script>
+</body>
+</html>

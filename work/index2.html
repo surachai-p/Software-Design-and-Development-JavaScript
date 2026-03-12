@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.1: การประกาศตัวแปร</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { background-color: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h2>ผลลัพธ์แบบทดสอบที่ 2.1: การประกาศตัวแปร</h2>
+
+    <div class="box">
+        <h3>1. ข้อมูลจากตัวแปรเดี่ยว</h3>
+        <p id="varOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>2. ข้อมูลจาก Object</h3>
+        <p id="objOutput"></p>
+    </div>
+
+    <script>
+        const studentId = "68030116";      
+        let studentName = "ธนภัทร ดิสโร";   
+        let midtermScore = 99.0;            
+        let finalScore = 99.0;              
+
+        let text1 = "รหัส: " + studentId + "<br>" +
+                    "ชื่อ: " + studentName + "<br>" +
+                    "คะแนนกลางภาค: " + midtermScore + "<br>" +
+                    "คะแนนปลายภาค: " + finalScore + "<br>" +
+                    "รวมคะแนนทั้งหมด: " + (midtermScore + finalScore);
+        
+        document.getElementById("varOutput").innerHTML = text1;
+
+        const studentProfile = {
+            id: "68030116",
+            name: "ธนภัทร ดิสโร",
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 4.00
+        };
+
+        let text2 = "รหัสนักศึกษา: " + studentProfile.id + "<br>" +
+                    "ชื่อ-นามสกุล: " + studentProfile.name + "<br>" +
+                    "สาขาวิชา: " + studentProfile.major + "<br>" +
+                    "เกรดเฉลี่ย: " + studentProfile.gpa;
+
+        document.getElementById("objOutput").innerHTML = text2;
+
+        console.log("ข้อมูล Object ของนักศึกษา:", studentProfile);
+    </script>
+</body>
+</html>

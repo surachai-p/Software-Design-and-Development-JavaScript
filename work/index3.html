@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.2: การคำนวณพื้นฐาน</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .box { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #007bff; }
+    </style>
+</head>
+<body>
+    <h2>ผลลัพธ์แบบทดสอบที่ 2.2: การคำนวณพื้นฐาน</h2>
+
+    <div class="box">
+        <h3>1. คำนวณคะแนนเฉลี่ย 3 วิชา</h3>
+        <p id="avgOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>2. คำนวณราคาสินค้ารวม VAT 7%</h3>
+        <p id="vatOutput"></p>
+    </div>
+
+    <script>
+        
+        let mathScore = 85;
+        let scienceScore = 78;
+        let englishScore = 90;
+
+        let totalScore = mathScore + scienceScore + englishScore;
+        
+        let averageScore = totalScore / 3;
+
+        let html1 = "คะแนนวิชาคณิตศาสตร์: " + mathScore + "<br>" +
+                    "คะแนนวิชาวิทยาศาสตร์: " + scienceScore + "<br>" +
+                    "คะแนนวิชาภาษาอังกฤษ: " + englishScore + "<br>" +
+                    "ผลรวมคะแนน: " + totalScore + "<br>" +
+                    "<strong>คะแนนเฉลี่ยคือ: " + averageScore.toFixed(2) + " คะแนน</strong>";
+        
+        document.getElementById("avgOutput").innerHTML = html1;
+
+        let productName = "หูฟังไร้สาย (Bluetooth)";
+        let productPrice = 1500; 
+        
+        let vatAmount = productPrice * (7 / 100);
+        
+        let totalPrice = productPrice + vatAmount; 
+        
+        let html2 = "ชื่อสินค้า: " + productName + "<br>" +
+                    "ราคาสินค้า (ยังไม่รวม VAT): " + productPrice + " บาท<br>" +
+                    "ภาษีมูลค่าเพิ่ม (VAT 7%): " + vatAmount + " บาท<br>" +
+                    "<strong>ราคาสุทธิ (รวม VAT แล้ว): " + totalPrice + " บาท</strong>";
+
+        document.getElementById("vatOutput").innerHTML = html2;
+    </script>
+</body>
+</html>

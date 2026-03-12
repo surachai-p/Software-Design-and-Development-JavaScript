@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึกปฏิบัติที่ 1: การใช้งาน JavaScript เบื้องต้น</title>
+</head>
+<body>
+    <h2>แบบฝึกปฏิบัติที่ 1</h2>
+
+    <button onclick="alert('ชื่อนักศึกษา: ใจดี เรียนเก่ง')">ปุ่มที่ 1 (Inline)</button>
+
+    <button id="btnDate">ปุ่มที่ 2 (Internal)</button>
+
+    <button id="btnTime" onclick="showTime()">ปุ่มที่ 3 (External)</button>
+
+    <hr>
+
+    <h3>ทดสอบการดึงข้อมูลจากกล่องข้อความ</h3>
+    <label for="myInput">กรอกข้อความที่นี่: </label>
+    <input type="text" id="myInput" placeholder="พิมพ์อะไรบางอย่าง...">
+    <button id="btnShowText">แสดงข้อความ</button>
+    
+    <p id="displayText" style="color: blue; font-weight: bold;"></p>
+
+    <script>
+        document.getElementById('btnDate').onclick = function() {
+            let currentDate = new Date().toLocaleDateString('th-TH');
+            alert('วันที่ปัจจุบัน: ' + currentDate);
+        };
+
+        document.getElementById('btnShowText').onclick = function() {
+            let textValue = document.getElementById('myInput').value;
+            
+            if(textValue === "") {
+                alert("กรุณากรอกข้อความก่อนกดปุ่มครับ!");
+            } else {
+                document.getElementById('displayText').innerText = "ข้อความที่คุณกรอกคือ: " + textValue;
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

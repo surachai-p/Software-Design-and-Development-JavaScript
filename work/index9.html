@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    
+    <style>
+        body {
+            font-family: 'Sarabun', Tahoma, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            form { padding: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์ (10 หลัก):</label>
+            <input type="tel" id="phone" name="phone" required placeholder="08xxxxxxxx">
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน (พักได้สูงสุด 2 ท่าน)</option>
+                <option value="deluxe">ห้องดีลักซ์ (พักได้สูงสุด 3 ท่าน)</option>
+                <option value="suite">ห้องสวีท (พักได้สูงสุด 4 ท่าน)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('bookingForm');
+        const checkinInput = document.getElementById('checkin');
+        const checkoutInput = document.getElementById('checkout');
+        const phoneInput = document.getElementById('phone');
+        const roomtypeSelect = document.getElementById('roomtype');
+        const guestsInput = document.getElementById('guests');
+
+        const today = new Date().toISOString().split('T')[0];
+        checkinInput.min = today;
+
+        checkinInput.addEventListener('change', () => {
+            if (checkinInput.value) {
+                let checkinDate = new Date(checkinInput.value);
+                checkinDate.setDate(checkinDate.getDate() + 1);
+                let minCheckout = checkinDate.toISOString().split('T')[0];
+                
+                checkoutInput.min = minCheckout;
+                
+                if (checkoutInput.value && checkoutInput.value <= checkinInput.value) {
+                    checkoutInput.value = minCheckout;
+                }
+            }
+        });
+
+        roomtypeSelect.addEventListener('change', () => {
+            let maxGuests = 4;
+            
+            if (roomtypeSelect.value === 'standard') {
+                maxGuests = 2;
+            } else if (roomtypeSelect.value === 'deluxe') {
+                maxGuests = 3;
+            } else if (roomtypeSelect.value === 'suite') {
+                maxGuests = 4;
+            }
+
+            guestsInput.max = maxGuests;
+            guestsInput.placeholder = `สูงสุด ${maxGuests} ท่าน`;
+
+            if (guestsInput.value > maxGuests) {
+                guestsInput.value = maxGuests;
+                alert(`ห้องพักประเภทนี้รองรับได้สูงสุด ${maxGuests} ท่านครับ`);
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phoneInput.value)) {
+                alert('❌ กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (ตัวเลข 10 หลัก ติดกัน)');
+                phoneInput.focus();
+                return;
+            }
+
+            const roomText = roomtypeSelect.options[roomtypeSelect.selectedIndex].text;
+            const fullname = document.getElementById('fullname').value;
+
+            const summary = `📝 สรุปรายละเอียดการจองห้องพัก:\n
+            - ชื่อผู้จอง: ${fullname}
+            - เบอร์โทรติดต่อ: ${phoneInput.value}
+            - วันที่เข้าพัก: ${checkinInput.value}
+            - วันที่ออก: ${checkoutInput.value}
+            - ประเภทห้อง: ${roomText}
+            - จำนวนผู้เข้าพัก: ${guestsInput.value} ท่าน\n
+            ต้องการยืนยันการจองนี้ใช่หรือไม่?`;
+
+            if (confirm(summary)) {
+                alert('✅ จองห้องพักสำเร็จ! ขอบคุณที่ใช้บริการครับ');
+                form.reset();
+                
+                checkoutInput.min = '';
+                guestsInput.max = 4;
+                guestsInput.placeholder = '';
+            }
+        });
+    </script>
+</body>
+</html>

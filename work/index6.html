@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.4.2: Arrow Functions</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .box { background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #17a2b8; }
+        code { background-color: #e9ecef; padding: 2px 5px; border-radius: 3px; color: #d63384; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>ผลลัพธ์แบบทดสอบที่ 2.4.2: Arrow Functions</h2>
+
+    <div class="box">
+        <h3>1. Arrow Function คำนวณค่า BMI</h3>
+        <p id="bmiOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>2. Arrow Function ทักทายตามช่วงวัย</h3>
+        <p id="greetOutput"></p>
+    </div>
+
+    <div class="box">
+        <h3>3. Arrow Function ตรวจสอบรหัสผ่าน</h3>
+        <p id="passwordOutput"></p>
+    </div>
+
+    <script>
+        const calculateBMI = (weightKg, heightCm) => {
+            let heightM = heightCm / 100;
+            return (weightKg / (heightM ** 2)).toFixed(2);
+        };
+
+        let myBMI = calculateBMI(70, 175);
+        document.getElementById("bmiOutput").innerHTML = 
+            `น้ำหนัก 70 กก. ส่วนสูง 175 ซม. <br> <strong>ค่า BMI คือ: ${myBMI}</strong>`;
+
+        const greetByAge = (name, age) => {
+            if (age <= 12) return `สวัสดี ${name}`;
+            if (age <= 19) return `ไงวัยรุ่น ${name} สบายดีไหม?`;
+            return `สวัสดีครับ/ค่ะ คุณ ${name}`;
+        };
+
+        document.getElementById("greetOutput").innerHTML = 
+            `${greetByAge("น้องจอย", 11)} <br> ${greetByAge("พี่เอก", 28)}`;
+
+        const isPasswordValid = password => password.length > 8;
+
+        let pass1 = "admin";
+        let pass2 = "superSecret99";
+
+        document.getElementById("passwordOutput").innerHTML = 
+            `รหัสผ่าน <code>${pass1}</code> : ${isPasswordValid(pass1) ? "✅ ผ่าน" : "❌ สั้นเกินไป"} <br>
+             รหัสผ่าน <code>${pass2}</code> : ${isPasswordValid(pass2) ? "✅ ผ่าน" : "❌ สั้นเกินไป"}`;
+    </script>
+</body>
+</html>
