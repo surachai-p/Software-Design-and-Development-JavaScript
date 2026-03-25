@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+
+    <style>
+        .button-group {
+            display: flex;   /* เรียงแนวนอน */
+            gap: 5px;        /* เว้นระยะเล็กน้อย */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ทดลอง JavaScript</h2>
+
+    <div class="button-group">
+        <button onclick="alert('ชื่อนักศึกษา: นางสาวญาดา แกล้วกล้า');">
+            ปุ่มที่ 1
+        </button>
+
+        <button id="btn2">
+            ปุ่มที่ 2
+        </button>
+
+        <button onclick="showTime();">
+            ปุ่มที่ 3
+        </button>
+    </div>
+
+    <hr>
+
+    <h3>ทดลองรับค่าจาก Textbox</h3>
+
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showText();">แสดงข้อความ</button>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("btn2").onclick = function() {
+            let today = new Date();
+            alert("วันที่ปัจจุบัน: " + today.toLocaleDateString());
+        };
+
+        function showText() {
+            let text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML = "ข้อความที่คุณพิมพ์: " + text;
+        }
+        </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

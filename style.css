@@ -1,0 +1,91 @@
+/* นำเข้าฟอนต์ Sarabun จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    max-width: 600px;
+    margin: 40px auto; /* เว้นระยะจากขอบบนและจัดกึ่งกลาง */
+    padding: 20px;
+    background-color: #f0f2f5; /* สีพื้นหลังแบบเทาอ่อนสบายตา */
+    color: #333;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px; /* ขอบมน */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* เงาฟุ้งๆ ให้ดูมีมิติ */
+}
+
+div {
+    margin-bottom: 20px; /* เว้นระยะห่างระหว่างแต่ละช่องกรอก */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34495e;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px;
+    box-sizing: border-box; /* ป้องกัน Input ล้นขอบ */
+    font-family: 'Sarabun', sans-serif;
+    font-size: 15px;
+    transition: all 0.3s ease; /* เพิ่มความสมูทตอนเปลี่ยนสี */
+}
+
+/* เอฟเฟกต์ตอนคลิกที่ช่องกรอก (Focus) */
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+}
+
+button {
+    background: linear-gradient(135deg, #1a4df3, #1a4df3); /* ไล่เฉดสีปุ่ม */
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.3s;
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ปุ่ม (Hover) */
+button:hover {
+    background: linear-gradient(135deg, #1a4df3, #1a4df3);
+    transform: translateY(-2px); /* ปุ่มลอยขึ้นนิดนึง */
+}
+
+/* เอฟเฟกต์ตอนกดปุ่ม (Active) */
+button:active {
+    transform: translateY(0);
+}
+
+/* รองรับหน้าจอมือถือ */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+        margin: 10px auto;
+    }
+    form {
+        padding: 20px;
+    }
+}
