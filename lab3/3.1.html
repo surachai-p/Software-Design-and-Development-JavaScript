@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>โปรแกรมรับค่า BMI </h1>
+
+    <form id="bookingForm">
+        <div>
+            <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+            <input type="number" id="weight" name="weight" required>
+        </div>
+        <div>
+            <label for="height">ส่วนสูง (เซนติเมตร):</label>
+            <input type="number" id="height" name="height" required>
+        </div>
+        <button type="submit">คำนวณ BMI</button>
+    </form>
+
+    <script>
+
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
+
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value) / 100; // แปลงเป็นเมตร
+
+            if (isNaN(weight) || isNaN(height) || height <= 0) {
+                alert("กรุณากรอกข้อมูลที่ถูกต้อง");
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            alert("ค่าดัชนีมวลกาย (BMI) ของคุณคือ: " + bmi.toFixed(2));
+        });
+    </script>
+</body>
+</html>
