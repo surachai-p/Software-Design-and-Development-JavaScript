@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>lab java 1</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('นางสาวปทิตญา ภูกิจคุณาเดชากร')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('วันที่ปัจจุบัน : ' + new Date().toLocaleDateString());
+        };
+    </script>
+
+    <hr> <h3>แสดงข้อความในช่อง</h3>
+<input type="text" id="userInput" placeholder="พิมพ์ข้อความที่นี่...">
+<button id="display">แสดงข้อความ</button>
+<p id="resultText" style="color: blue; font-weight: bold;"></p>
+
+    <script src="lab java 1.js"></script>
+</body>
+</html>

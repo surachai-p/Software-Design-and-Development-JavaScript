@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Java 2.3</title>
+    <style>
+        body { font-family: 'Tahoma', sans-serif; padding: 20px; line-height: 1.6; }
+        input { padding: 5px; margin-bottom: 10px; width: 80px; }
+        button { padding: 5px 15px; cursor: pointer;color :white; background-color: #e67e22; border: none; border-radius: 4px; }
+        h2 { color: #2c3e50; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .result-text { margin: 10px 0; font-weight: bold; color: #e67e22; }
+    </style>
+</head>
+<body>
+
+    <h2>1. ตรวจสอบเลขคู่หรือเลขคี่</h2>
+    ใส่ตัวเลข: <input type="number" id="numInput" value="">
+    <button onclick="checkEvenOdd()">ตรวจสอบ</button>
+    <p id="evenOdd" class="result-text"></p>
+
+    <h2>2. สูตรคูณแม่ 2 และ แม่ 3</h2>
+    <div style="display: flex; gap: 50px;">
+        <div id="Multitwo"></div>
+        <div id="Multithree"></div>
+    </div>
+
+    <h2>3. นับถอยหลังจาก 10 ถึง 1</h2>
+    <p id="countDownResult" class="result-text"></p>
+
+    <h2>4. ตรวจสอบช่วงอายุ</h2>
+    ระบุอายุ: <input type="number" id="ageInput" value="">
+    <button onclick="checkAgeGroup()">เช็คช่วงวัย</button>
+    <p id="age" class="result-text"></p>
+
+    <script src="lab java 2.3.js"></script>
+</body>
+</html>
