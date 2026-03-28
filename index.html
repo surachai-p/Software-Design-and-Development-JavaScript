@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Lab 1</title>
+</head>
+<body>
+
+<h2>การทดลอง JavaScript</h2>
+
+<!-- ปุ่มที่ 1 Inline -->
+<button onclick="alert('ชื่อ: ณัฐพล')">ปุ่มที่ 1 แสดงชื่อ</button>
+
+<br><br>
+
+<!-- ปุ่มที่ 2 Internal -->
+<button id="btnDate">ปุ่มที่ 2 แสดงวันที่</button>
+
+<br><br>
+
+<!-- ปุ่มที่ 3 External -->
+<button onclick="showTime()">ปุ่มที่ 3 แสดงเวลา</button>
+
+<hr>
+
+<h3>ทดสอบรับค่าข้อความ</h3>
+
+<input type="text" id="textbox" placeholder="พิมพ์ข้อความ">
+<button onclick="showText()">แสดงข้อความ</button>
+
+<p id="result"></p>
+
+<!-- Internal Script -->
+<script>
+document.getElementById("btnDate").onclick = function(){
+    const today = new Date();
+    alert("วันที่วันนี้: " + today.toLocaleDateString('th-TH'));
+}
+
+function showText(){
+    let text = document.getElementById("textbox").value;
+    document.getElementById("result").innerHTML = text;
+}
+</script>
+
+<!-- External Script -->
+<script src="script.js"></script>
+
+</body>
+</html>

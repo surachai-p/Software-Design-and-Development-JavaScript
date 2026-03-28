@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAB 3 JavaScript</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1{
+    text-align: center;
+}
+
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input, select, button{
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+button{
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #2980b9;
+}
+
+#result{
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+
+<h1>LAB 3</h1>
+
+<!-- ===================== -->
+<!-- LAB 3.1 BMI -->
+<!-- ===================== -->
+
+<h2>คำนวณ BMI</h2>
+
+<input type="number" id="weight" value="53">
+<input type="number" id="height" value="1.73">
+<button onclick="calculateBMI()">คำนวณ</button>
+
+<p id="result"></p>
+
+<hr>
+
+<!-- ===================== -->
+<!-- LAB 3.2 ฟอร์มจองห้อง -->
+<!-- ===================== -->
+
+<h2>จองห้องพัก</h2>
+
+<form id="bookingForm">
+<input type="text" id="fullname" value="ณัฐพล พงษ์จินดาวัฒน์" required>
+<input type="email" id="email" value="Natthapol.pongjin@gmail.com" required>
+<input type="tel" id="phone" value="0954081135" required>
+
+<label>เช็คอิน</label>
+<input type="date" id="checkin" value="2026-02-25" required>
+
+<label>เช็คเอาท์</label>
+<input type="date" id="checkout" value="2026-02-26" required>
+
+<select id="roomtype" required>
+<option value="standard" selected>Standard</option>
+<option value="deluxe">Deluxe</option>
+<option value="suite">Suite</option>
+</select>
+
+<input type="number" id="guests" value="2" min="1" max="4" required>
+
+<button type="submit">จองห้องพัก</button>
+</form>
+
+
+<script>
+
+// =====================
+// LAB 3.1 BMI (Arrow Function)
+// =====================
+
+const calculateBMI = () => {
+    let weight = parseFloat(document.getElementById("weight").value);
+    let height = parseFloat(document.getElementById("height").value);
+
+    let bmi = weight / (height * height);
+    let status = "";
+
+    if(bmi < 18.5){
+        status = "ผอม";
+    }else if(bmi < 25){
+        status = "สมส่วน";
+    }else{
+        status = "อ้วน";
+    }
+
+    document.getElementById("result").innerHTML =
+        "ค่า BMI = " + bmi.toFixed(2) + " (" + status + ")";
+};
+
+
+// =====================
+// LAB 3.2 จองห้องพัก
+// =====================
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const phone = document.getElementById("phone").value;
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if(!phoneRegex.test(phone)){
+        alert("กรุณากรอกเบอร์โทรให้ถูกต้อง (10 หลัก)");
+        return;
+    }
+
+    const checkin = new Date(document.getElementById("checkin").value);
+    const checkout = new Date(document.getElementById("checkout").value);
+
+    if(checkout <= checkin){
+        alert("วันเช็คเอาท์ต้องมากกว่าวันเช็คอิน");
+        return;
+    }
+
+    alert("จองห้องพักเรียบร้อยแล้ว");
+    this.reset();
+});
+
+</script>
+
+</body>
+</html>
