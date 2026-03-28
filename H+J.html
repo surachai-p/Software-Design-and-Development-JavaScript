@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ข้อมูลนักศึกษา</title>
+</head>
+<body>
+
+<h2>ข้อมูลนักศึกษา</h2>
+<p id="output"></p>
+
+<script>
+    // =========================
+    // ตัวแปรเก็บข้อมูลพื้นฐาน
+    // =========================
+    const studentId = "68030084";
+    const studentName = "ณัชพล อ่อนบาง";
+    const midtermScore = 80;
+    const finalScore = 88;
+
+    // =========================
+    // Object นักศึกษา
+    // =========================
+    const student = {
+        id: studentId,
+        name: studentName,
+        major: "Information Technology",
+        gpa: 3.45
+    };
+
+    // =========================
+    // แสดงผลใน Console
+    // =========================
+    console.log(student);
+
+    // =========================
+    // แสดงผลบนหน้าเว็บ
+    // =========================
+    document.getElementById("output").innerHTML =
+        "รหัสนักศึกษา: " + student.id + "<br>" +
+        "ชื่อ: " + student.name + "<br>" +
+        "คะแนนกลางภาค: " + midtermScore + "<br>" +
+        "คะแนนปลายภาค: " + finalScore + "<br><br>" +
+        "สาขาวิชา: " + student.major + "<br>" +
+        "เกรดเฉลี่ย (GPA): " + student.gpa;
+</script>
+
+</body>
+</html>

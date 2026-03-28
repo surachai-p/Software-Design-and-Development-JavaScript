@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+
+    <h2>ทดลอง JavaScript 3 แบบ</h2>
+
+    <!-- ปุ่มที่ 1: Inline JavaScript -->
+    <button onclick="alert('ชื่อ: ณัชพล')">
+        ปุ่มที่ 1 (แสดงชื่อ)
+    </button>
+
+    <br><br>
+
+    <!-- ปุ่มที่ 2: Internal JavaScript -->
+    <button id="btn2">
+        ปุ่มที่ 2 (แสดงวันที่)
+    </button>
+
+    <br><br>
+
+    <!-- ปุ่มที่ 3: External JavaScript -->
+    <button onclick="showTime()">
+        ปุ่มที่ 3 (แสดงเวลา)
+    </button>
+
+    <hr>
+
+    <h3>แสดงข้อความจากช่องกรอก</h3>
+
+    <!-- กล่องข้อความ -->
+    <input type="text" id="textbox" placeholder="พิมพ์ข้อความที่นี่">
+
+    <!-- ปุ่มแสดงข้อความ -->
+    <button onclick="showText()">แสดงข้อความ</button>
+
+    <!-- พื้นที่แสดงผล -->
+    <p id="result"></p>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // ปุ่มที่ 2 แสดงวันที่
+        document.getElementById('btn2').onclick = function () {
+            const today = new Date();
+            alert("วันที่วันนี้: " + today.toLocaleDateString());
+        };
+
+        // แสดงข้อความจาก textbox
+        function showText() {
+            const text = document.getElementById('textbox').value;
+            document.getElementById('result').innerText = "คุณพิมพ์: " + text;
+        }
+    </script>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

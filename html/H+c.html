@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบจองห้องพักออนไลน์</title>
+
+<style>
+body {
+    font-family: 'Sarabun', sans-serif;
+    max-width: 600px;
+    margin: 0 auto; /* จัดกึ่งกลาง */
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* เพิ่มมิติ */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block; /* จัด layout */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%; /* เต็มความกว้าง */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+/* focus effect */
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52,152,219,0.4);
+}
+
+/* ปุ่ม */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* hover effect */
+button:hover {
+    background: #3498db;
+}
+
+/* Responsive มือถือ */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>แบบฟอร์มจองห้องพัก</h1>
+
+<form>
+    <div class="form-group">
+        <label>ชื่อ-นามสกุล</label>
+        <input type="text" placeholder="กรอกชื่อ" required>
+    </div>
+
+    <div class="form-group">
+        <label>อีเมล</label>
+        <input type="email" placeholder="example@email.com" required>
+    </div>
+
+    <div class="form-group">
+        <label>เบอร์โทรศัพท์</label>
+        <input type="tel" required>
+    </div>
+
+    <div class="form-group">
+        <label>วันที่เช็คอิน</label>
+        <input type="date" required>
+    </div>
+
+    <div class="form-group">
+        <label>วันที่เช็คเอาท์</label>
+        <input type="date" required>
+    </div>
+
+    <div class="form-group">
+        <label>ประเภทห้องพัก</label>
+        <select required>
+            <option value="">-- เลือกห้อง --</option>
+            <option>ห้องมาตรฐาน</option>
+            <option>ห้องดีลักซ์</option>
+            <option>ห้องสวีท</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>จำนวนผู้เข้าพัก</label>
+        <input type="number" min="1" max="4" required>
+    </div>
+
+    <button type="submit">จองห้องพัก</button>
+</form>
+
+</body>
+</html>

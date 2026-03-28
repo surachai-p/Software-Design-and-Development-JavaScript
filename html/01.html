@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานผลการทดลอง JavaScript</title>
+
+    <style>
+        body {
+            font-family: Sarabun, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            background: #f4f6f8;
+            line-height: 1.8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 25px;
+        }
+
+        .box {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #00ff9c;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+
+        .img-placeholder {
+            border: 2px dashed #bbb;
+            padding: 18px;
+            text-align: center;
+            color: #777;
+            margin-top: 15px;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .summary {
+            background: #e8f4ff;
+            border-left: 6px solid #3498db;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<h1>รายงานผลการทดลองปรับแต่ง JavaScript</h1>
+
+<div class="box">
+    <h2>1. ตรวจสอบวันที่เช็คอินและเช็คเอาท์</h2>
+    <p>
+        ได้เพิ่มโค้ด JavaScript เพื่อตรวจสอบว่าวันที่เช็คอินต้องไม่เป็นวันที่ผ่านมาแล้ว
+        และวันที่เช็คเอาท์ต้องมาหลังวันเช็คอิน โดยใช้ Date() ในการเปรียบเทียบค่าเวลา
+    </p>
+
+<pre><code>
+const checkin = new Date(document.getElementById('checkin').value);
+const checkout = new Date(document.getElementById('checkout').value);
+const today = new Date();
+
+if (checkin < today) {
+    alert('ห้ามเลือกวันย้อนหลัง');
+    return;
+}
+
+if (checkout <= checkin) {
+    alert('วันออกต้องหลังวันเข้า');
+    return;
+}
+</code></pre>
+
+</div>
+
+<div class="box">
+    <h2>2. ตรวจสอบเบอร์โทรศัพท์</h2>
+    <p>
+        ใช้ Regular Expression เพื่อตรวจสอบว่าเบอร์โทรศัพท์ต้องเป็นตัวเลข 10 หลักเท่านั้น
+    </p>
+
+<pre><code>
+const phone = document.getElementById('phone').value;
+const phoneRegex = /^[0-9]{10}$/;
+
+if (!phoneRegex.test(phone)) {
+    alert('เบอร์โทรต้องเป็นตัวเลข 10 หลัก');
+    return;
+}
+</code></pre>
+
+   
+
+<div class="box">
+    <h2>3. แสดงสรุปการจองก่อนยืนยัน</h2>
+    <p>
+        เพิ่มการใช้ confirm() เพื่อให้ผู้ใช้ตรวจสอบข้อมูลก่อนกดยืนยันการจอง
+    </p>
+
+<pre><code>
+const summary = `
+ชื่อ: ${fullname}
+ห้อง: ${roomtype}
+จำนวนวัน: ${days} วัน
+`;
+
+if (confirm(summary + '\nยืนยันการจอง?')) {
+    alert('จองสำเร็จ');
+}
+</code></pre>
+
+<div class="box">
+    <h2>4. รีเซ็ตฟอร์มหลังจองสำเร็จ</h2>
+    <p>
+        ใช้คำสั่ง reset() เพื่อคืนค่าฟอร์มกลับสู่ค่าเริ่มต้นหลังจองสำเร็จ
+    </p>
+
+<pre><code>
+document.getElementById('bookingForm').reset();
+</code></pre>
+
+
+<div class="box">
+    <h2>5. การตรวจสอบแบบ Real-time</h2>
+    <p>
+        เพิ่ม EventListener เพื่อตรวจสอบข้อมูลทันทีเมื่อมีการเปลี่ยนค่า เช่น
+        การกำหนดวันเช็คเอาท์ขั้นต่ำ และการจำกัดจำนวนผู้เข้าพักตามประเภทห้อง
+    </p>
+
+<pre><code>
+document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+});
+</code></pre>
+
+
+<div class="box summary">
+    <h2>สรุปผลการทดลอง</h2>
+    <p>
+        จากการทดลองปรับแต่ง JavaScript ในแต่ละส่วน พบว่าระบบสามารถตรวจสอบความถูกต้องของข้อมูลได้อย่างมีประสิทธิภาพ
+        ลดข้อผิดพลาดจากการกรอกข้อมูล และเพิ่มความสะดวกในการใช้งานผ่านการตรวจสอบแบบ Real-time
+        รวมถึงการแสดงสรุปก่อนยืนยัน ทำให้หน้าเว็บมีความสมบูรณ์ ถูกต้อง และเป็นมิตรต่อผู้ใช้งานมากยิ่งขึ้น
+    </p>
+</div>
+
+<footer>
+    รายงานวิชาเขียนโปรแกรมเว็บ | จัดทำเพื่อการศึกษา
+</footer>
+
+</body>
+</html>

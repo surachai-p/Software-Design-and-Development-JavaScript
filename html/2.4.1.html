@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึก Function</title>
+</head>
+<body>
+
+<h2>ผลลัพธ์ Function</h2>
+<div id="output"></div>
+
+<script>
+let result = "";
+
+// ===============================
+// 1. Function คำนวณ BMI
+// ===============================
+function calculateBMI(weight, height) {
+    return weight / (height * height);
+}
+
+let bmi = calculateBMI(54, 1.75);
+result += "<b>BMI:</b> " + bmi.toFixed(2) + "<br>";
+
+
+// ===============================
+// 2. Function ทักทายตามอายุ
+// ===============================
+function greetByAge(name, age) {
+    if (age <= 12) {
+        return "สวัสดีเด็กน้อย " + name;
+    } else if (age <= 18) {
+        return "สวัสดีวัยรุ่น " + name;
+    } else {
+        return "สวัสดีคุณ " + name;
+    }
+}
+
+result += greetByAge("นัท", 16) + "<br>";
+
+
+// ===============================
+// 3. Function ตรวจสอบรหัสผ่าน
+// ===============================
+function checkPassword(password) {
+    if (password.length > 8) {
+        return "รหัสผ่านปลอดภัย";
+    } else {
+        return "รหัสผ่านสั้นเกินไป";
+    }
+}
+
+result += checkPassword("12345678") + "<br>";
+result += checkPassword("mypassword123");
+
+
+// แสดงผล
+document.getElementById("output").innerHTML = result;
+</script>
+
+</body>
+</html>
