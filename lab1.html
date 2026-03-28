@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+	<meta charset="utf-8">
+	<title>Lab 2 - ตัวแปรและ Object นักศึกษา</title>
+</head>
+<body>
+	<h2>ข้อมูลนักศึกษา (แสดงบนหน้าเว็บ)</h2>
+
+	<div id="studentCard" style="max-width:600px;border:1px solid #ddd;padding:12px;border-radius:6px;">
+		<!-- ข้อมูลจะถูกเติมด้วย JavaScript -->
+	</div>
+
+	<script>
+		// 1) ตัวแปรเก็บข้อมูลใช้ let หรือ const
+		const studentId = '68030223'; // รหัสนักศึกษา (ไม่เปลี่ยนแปลง)
+		let studentName = 'ภัคธร ศรีบุ่งง้าว'; // ชื่อนักศึกษา (สามารถเปลี่ยนได้)
+		let midtermScore = 78; // คะแนนสอบกลางภาค
+		let finalScore = 85;   // คะแนนสอบปลายภาค
+
+		// 2) สร้าง Object สำหรับเก็บข้อมูลนักศึกษา
+		const student = {
+			id: studentId,
+			name: studentName,
+			major: 'เทคโนโลยีคอมพิวเตอร์',
+			gpa: 3.93
+		};
+
+		// คำนวณคะแนนเฉลี่ย
+		const averageScore = ((midtermScore + finalScore) / 2).toFixed(2);
+
+		// แสดงผลบนหน้าเว็บ
+		const card = document.getElementById('studentCard');
+		card.innerHTML = `
+			<div><strong>รหัสนักศึกษา:</strong> ${student.id}</div>
+			<div><strong>ชื่อนักศึกษา:</strong> ${student.name}</div>
+			<div><strong>สาขาวิชา:</strong> ${student.major}</div>
+			<div><strong>เกรดเฉลี่ย (GPA):</strong> ${student.gpa}</div>
+			<hr />
+			<div><strong>คะแนนกลางภาค:</strong> ${midtermScore}</div>
+			<div><strong>คะแนนปลายภาค:</strong> ${finalScore}</div>
+			<div><strong>คะแนนเฉลี่ย:</strong> ${averageScore}</div>
+		`;
+
+		// ยังคงแสดงใน console เพื่อการดีบัก
+		console.log('student object:', student);
+	</script>
+</body>
+</html>

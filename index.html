@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        /* Layout: center page and constrain width */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto; /* จัดกึ่งกลาง */
+
+            padding: 20px;            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Form card: centered, block layout, box-shadow for depth */
+        form {
+            display: block;       /* ให้เป็น block element */
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;       /* จัดกึ่งกลาง */
+            background-color: white;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(16,24,40,0.06); /* เพิ่มมิติ */
+            transition: box-shadow .18s ease, transform .12s ease;
+        }
+        form:hover{ box-shadow: 0 14px 36px rgba(16,24,40,0.10); transform: translateY(-2px); }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #34495e;
+            font-weight: 700;
+        }
+
+        /* Inputs and selects: full width, block layout */
+        input, select, textarea {
+            display: block; /* บังคับให้เป็นบล็อก */
+            width: 100%;    /* กินความกว้างทั้งหมด */
+            padding: 10px;
+            border: 1px solid #e0e6ee;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: box-shadow .12s ease, border-color .12s ease, transform .08s ease;
+        }
+
+        /* Hover / focus effects */
+        input:hover, select:hover, textarea:hover {
+            border-color: #c6d9ff;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2b8cff;
+            box-shadow: 0 8px 24px rgba(43,140,255,0.12);
+            transform: translateY(-1px);
+        }
+
+        /* Button: full width with hover/focus shadow */
+        button {
+            display: block;
+            width: 100%;
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            transition: box-shadow .14s ease, transform .08s ease, filter .08s ease;
+        }
+
+        button:hover {
+            background-color: #2f86d1;
+            box-shadow: 0 12px 30px rgba(47,134,209,0.16);
+            transform: translateY(-2px);
+        }
+        button:focus { outline: none; box-shadow: 0 12px 30px rgba(43,140,255,0.18); }
+
+        /* Responsive: smaller paddings on mobile */
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            form { padding: 14px; border-radius: 8px; }
+            input, select, textarea { padding: 10px; }
+            button { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script>
+    // Initialize elements and constants
+    const form = document.getElementById('bookingForm');
+    const elFullname = document.getElementById('fullname');
+    const elEmail = document.getElementById('email');
+    const elPhone = document.getElementById('phone');
+    const elCheckin = document.getElementById('checkin');
+    const elCheckout = document.getElementById('checkout');
+    const elRoomtype = document.getElementById('roomtype');
+    const elGuests = document.getElementById('guests');
+
+    // วันนี้ (ตั้งเวลา 0:00:00 สำหรับการเปรียบเทียบ)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayISO = today.toISOString().split('T')[0];
+
+    // แมปประเภทห้องกับจำนวนผู้เข้าพักสูงสุด
+    const roomMaxGuests = {
+        'standard': 2,
+        'deluxe': 3,
+        'suite': 4
+    };
+
+    // ====== INITIALIZATION ======
+    
+    // ตั้งค่าวันเช็คอินขั้นต่ำเป็นวันนี้
+    elCheckin.min = todayISO;
+
+    // ====== REAL-TIME VALIDATION LISTENERS ======
+
+    // ตรวจสอบวันเช็คอิน Real-time
+    elCheckin.addEventListener('change', function() {
+        const checkinDate = new Date(this.value);
+        checkinDate.setHours(0, 0, 0, 0);
+
+        // ตรวจสอบว่าวันเช็คอินไม่เป็นวันที่ผ่านมาแล้ว
+        if (this.value && checkinDate < today) {
+            this.value = '';
+            alert('⚠️ วันเช็คอินต้องไม่เป็นวันที่ผ่านมาแล้ว');
+            return;
+        }
+
+        // อัปเดต checkout.min ให้มีค่ามากกว่า checkin
+        if (this.value) {
+            const nextDay = new Date(checkinDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            const nextDayISO = nextDay.toISOString().split('T')[0];
+            elCheckout.min = nextDayISO;
+
+            // ถ้า checkout น้อยกว่า checkin ให้ล้างค่า checkout
+            if (elCheckout.value && elCheckout.value < nextDayISO) {
+                elCheckout.value = '';
+            }
+        }
+    });
+
+    // ตรวจสอบวันเช็คเอาท์ Real-time
+    elCheckout.addEventListener('change', function() {
+        if (!elCheckin.value || !this.value) return;
+
+        const checkinDate = new Date(elCheckin.value);
+        const checkoutDate = new Date(this.value);
+
+        // ตรวจสอบว่าเช็คเอาท์มาหลังเช็คอิน
+        if (checkoutDate <= checkinDate) {
+            this.value = '';
+            alert('⚠️ วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+        }
+    });
+
+    // ตรวจสอบเบอร์โทร Real-time
+    elPhone.addEventListener('change', function() {
+        const phone = this.value.trim();
+        if (phone && !/^[0-9]{10}$/.test(phone)) {
+            alert('⚠️ เบอร์โทรต้องมี 10 หลัก');
+            this.value = '';
+        }
+    });
+
+    // ปรับจำนวนผู้เข้าพักตามประเภทห้อง
+    elRoomtype.addEventListener('change', function() {
+        const maxGuests = roomMaxGuests[this.value] || 4;
+        elGuests.max = maxGuests;
+
+        // ถ้าจำนวนผู้เข้าพักมากกว่าสูงสุด ให้ปรับลดลง
+        if (parseInt(elGuests.value) > maxGuests) {
+            elGuests.value = maxGuests;
+        }
+    });
+
+    // ====== HELPER FUNCTIONS ======
+
+    // แสดงข้อความแจ้งเตือนแบบ Toast
+    function showToast(message, duration = 2200) {
+        const toast = document.createElement('div');
+        toast.textContent = message;
+        Object.assign(toast.style, {
+            position: 'fixed',
+            bottom: '18px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: '#333',
+            color: '#fff',
+            padding: '12px 18px',
+            borderRadius: '6px',
+            zIndex: '9999',
+            fontSize: '14px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+        });
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), duration);
+    }
+
+    // แสดง Modal confirm
+    function showConfirmModal(title, message) {
+        return new Promise(resolve => {
+            const overlay = document.createElement('div');
+            Object.assign(overlay.style, {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0,0,0,0.5)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: '9999'
+            });
+
+            const modal = document.createElement('div');
+            Object.assign(modal.style, {
+                background: '#fff',
+                padding: '20px',
+                borderRadius: '8px',
+                maxWidth: '550px',
+                width: '90%',
+                boxSizing: 'border-box',
+                fontFamily: 'inherit',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.15)'
+            });
+
+            // Title
+            const titleEl = document.createElement('h3');
+            titleEl.textContent = title;
+            Object.assign(titleEl.style, {
+                margin: '0 0 12px 0',
+                color: '#2c3e50',
+                fontSize: '18px'
+            });
+
+            // Message
+            const messageEl = document.createElement('div');
+            messageEl.textContent = message;
+            Object.assign(messageEl.style, {
+                whiteSpace: 'pre-wrap',
+                margin: '0 0 20px 0',
+                lineHeight: '1.6',
+                color: '#34495e',
+                fontSize: '14px'
+            });
+
+            // Buttons
+            const buttonContainer = document.createElement('div');
+            Object.assign(buttonContainer.style, {
+                display: 'flex',
+                gap: '8px',
+                justifyContent: 'flex-end'
+            });
+
+            const cancelBtn = document.createElement('button');
+            cancelBtn.textContent = 'ยกเลิก';
+            Object.assign(cancelBtn.style, {
+                background: '#ef4444',
+                color: '#fff',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: '600'
+            });
+
+            const confirmBtn = document.createElement('button');
+            confirmBtn.textContent = 'ยืนยัน';
+            Object.assign(confirmBtn.style, {
+                background: '#16a34a',
+                color: '#fff',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: '600'
+            });
+
+            cancelBtn.addEventListener('click', () => {
+                overlay.remove();
+                resolve(false);
+            });
+
+            confirmBtn.addEventListener('click', () => {
+                overlay.remove();
+                resolve(true);
+            });
+
+            buttonContainer.appendChild(cancelBtn);
+            buttonContainer.appendChild(confirmBtn);
+            modal.appendChild(titleEl);
+            modal.appendChild(messageEl);
+            modal.appendChild(buttonContainer);
+            overlay.appendChild(modal);
+            document.body.appendChild(overlay);
+        });
+    }
+
+    // ====== FORM SUBMISSION ======
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // 1. ตรวจสอบความถูกต้องครั้งแรกด้วย HTML5 Validation
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        // 2. ตรวจสอบวันเช็คอิน
+        const checkinStr = elCheckin.value;
+        const checkinDate = new Date(checkinStr);
+        checkinDate.setHours(0, 0, 0, 0);
+
+        if (!checkinStr || checkinDate < today) {
+            elCheckin.setCustomValidity('วันเช็คอินต้องไม่เป็นวันที่ผ่านมาแล้ว');
+            elCheckin.reportValidity();
+            elCheckin.setCustomValidity('');
+            return;
+        }
+
+        // 3. ตรวจสอบวันเช็คเอาท์
+        const checkoutStr = elCheckout.value;
+        const checkoutDate = new Date(checkoutStr);
+        checkoutDate.setHours(0, 0, 0, 0);
+
+        if (!checkoutStr || checkoutDate <= checkinDate) {
+            elCheckout.setCustomValidity('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+            elCheckout.reportValidity();
+            elCheckout.setCustomValidity('');
+            return;
+        }
+
+        // 4. ตรวจสอบเบอร์โทรศัพท์
+        const phone = elPhone.value.trim();
+        if (!/^[0-9]{10}$/.test(phone)) {
+            elPhone.setCustomValidity('เบอร์โทรต้องมี 10 หลัก (เลขอารบิกเท่านั้น)');
+            elPhone.reportValidity();
+            elPhone.setCustomValidity('');
+            return;
+        }
+
+        // 5. คำนวณจำนวนวันพัก
+        const daysStay = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+
+        // 6. เตรียมข้อมูลสรุปการจอง
+        const roomText = elRoomtype.options[elRoomtype.selectedIndex].text;
+        const summary = `ชื่อ-นามสกุล: ${elFullname.value}
+อีเมล: ${elEmail.value}
+เบอร์โทรศัพท์: ${phone}
+ประเภทห้องพัก: ${roomText}
+วันที่เช็คอิน: ${checkinDate.toLocaleDateString('th-TH')}
+วันที่เช็คเอาท์: ${checkoutDate.toLocaleDateString('th-TH')}
+จำนวนวันพัก: ${daysStay} วัน
+จำนวนผู้เข้าพัก: ${elGuests.value} ท่าน`;
+
+        // 7. แสดง Modal สรุปการจอง
+        const confirmed = await showConfirmModal('สรุปการจอง', summary);
+
+        if (!confirmed) {
+            showToast('❌ ยกเลิกการจอง');
+            return;
+        }
+
+        // 8. บันทึกข้อมูลการจอง (ใน localStorage เพื่อการบันทึก)
+        try {
+            const bookingData = {
+                fullname: elFullname.value,
+                email: elEmail.value,
+                phone: phone,
+                room: elRoomtype.value,
+                checkin: checkinStr,
+                checkout: checkoutStr,
+                daysStay: daysStay,
+                guests: parseInt(elGuests.value),
+                timestamp: new Date().toISOString()
+            };
+            
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            bookings.unshift(bookingData);
+            localStorage.setItem('bookings', JSON.stringify(bookings.slice(0, 20)));
+        } catch(err) {
+            console.warn('ไม่สามารถบันทึกข้อมูลในระบบ:', err);
+        }
+
+        // 9. แสดงข้อความสำเร็จ
+        showToast('✅ จองห้องพักเรียบร้อยแล้ว');
+
+        // 10. รีเซ็ตฟอร์ม
+        form.reset();
+        elCheckin.min = todayISO;
+        elCheckout.min = '';
+        elGuests.max = 4;
+    });
+    </script>
+
+</script>
+</body>
+</html>

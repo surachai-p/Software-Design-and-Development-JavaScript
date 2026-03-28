@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- ปุ่มที่ 1: Inline JavaScript — แสดงชื่อนักศึกษา -->
+    <button onclick="alert('ชื่อนักศึกษา: ภัคธร ศรีบุ่งง้าว')">ปุ่มที่ 1</button>
+
+    <!-- ปุ่มที่ 2: Internal JavaScript — แสดงวันที่ปัจจุบัน -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ปุ่มที่ 3: External JavaScript — แสดงเวลาปัจจุบัน -->
+    <button id="btn3" onclick="showCurrentTime();">ปุ่มที่ 3</button>
+
+    <!-- กล่องข้อความและปุ่มสำหรับแสดงผล -->
+    <div style="margin-top:16px;">
+        <input type="text" id="inputText" placeholder="พิมพ์ข้อความที่นี่" />
+        <button id="showTextBtn">แสดงข้อความ</button>
+    </div>
+
+    <div id="displayArea" style="margin-top:12px;color:green;font-weight:bold;"></div>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // ปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('btn2').onclick = function() {
+            const today = new Date();
+            // แสดงวันที่ในรูปแบบ locale
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString());
+        };
+
+        // ปุ่มสำหรับแสดงข้อความจากกล่องข้อความ
+        document.getElementById('showTextBtn').onclick = function() {
+            const txt = document.getElementById('inputText').value;
+            const out = document.getElementById('displayArea');
+            if (txt.trim() === '') {
+                out.textContent = 'คุณยังไม่ได้พิมพ์ข้อความ';
+            } else {
+                out.textContent = 'ข้อความ: ' + txt;
+            }
+        };
+
+        // ฟังก์ชันแสดงเวลาปัจจุบัน (เดิมอยู่ใน script.js) — ตอนนี้เป็น Internal JS
+        function showCurrentTime() {
+            const now = new Date();
+            alert('เวลาปัจจุบัน: ' + now.toLocaleTimeString());
+        }
+        window.showCurrentTime = showCurrentTime;
+    </script>
+
+</body>
+</html>

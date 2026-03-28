@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>Lab 3 - ค่าเฉลี่ยและ VAT</title>
+  <style>body{font-family:Arial;padding:16px} .box{max-width:600px;border:1px solid #ddd;padding:12px;border-radius:6px;margin-bottom:12px}</style>
+</head>
+<body>
+  <h2>1) คำนวณคะแนนเฉลี่ยจาก 3 วิชา</h2>
+  <div class="box" id="avgBox">
+    <div>คะแนนวิชา A: <span id="scoreA">80</span></div>
+    <div>คะแนนวิชา B: <span id="scoreB">75</span></div>
+    <div>คะแนนวิชา C: <span id="scoreC">90</span></div>
+    <button id="calcAvg">คำนวณค่าเฉลี่ย</button>
+    <div style="margin-top:8px">ผลลัพธ์: <span id="avgResult">-</span></div>
+  </div>
+
+  <h2>2) คำนวณราคาสินค้ารวม VAT 7%</h2>
+  <div class="box" id="vatBox">
+    <div>ชื่อสินค้า: <input id="prodName" value="สมุด" /></div>
+    <div>ราคาสินค้า (บาท): <input id="prodPrice" value="120" /></div>
+    <button id="calcVat">คำนวณรวม VAT 7%</button>
+    <div style="margin-top:8px">ผลลัพธ์: <span id="vatResult">-</span></div>
+  </div>
+
+  <script>
+    // 1) คำนวณค่าเฉลี่ยจาก 3 วิชา
+    const scoreA = 80;
+    const scoreB = 75;
+    const scoreC = 90;
+
+    document.getElementById('scoreA').textContent = scoreA;
+    document.getElementById('scoreB').textContent = scoreB;
+    document.getElementById('scoreC').textContent = scoreC;
+
+    document.getElementById('calcAvg').onclick = function() {
+      const avg = ((scoreA + scoreB + scoreC) / 3).toFixed(2);
+      document.getElementById('avgResult').textContent = avg;
+      console.log('Average:', avg);
+    };
+
+    // 2) คำนวณราคาสินค้ารวม VAT 7%
+    document.getElementById('calcVat').onclick = function() {
+      const name = document.getElementById('prodName').value;
+      const price = parseFloat(document.getElementById('prodPrice').value) || 0;
+      const vatRate = 0.07;
+      const total = (price * (1 + vatRate)).toFixed(2);
+      document.getElementById('vatResult').textContent = `${name} — ราคาสุทธิ: ${total} บาท (รวม VAT 7%)`;
+      console.log('Product:', name, 'Price:', price, 'Total:', total);
+    };
+  </script>
+</body>
+</html>

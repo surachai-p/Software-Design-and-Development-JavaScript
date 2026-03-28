@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:16px}
+    .card{max-width:480px;border:1px solid #ddd;padding:12px;border-radius:6px}
+    label{display:inline-block;width:110px}
+    input{padding:6px;margin-bottom:8px}
+    .result{margin-top:10px;font-weight:bold}
+  </style>
+</head>
+<body>
+  <h2>คำนวณค่า BMI (Arrow function)</h2>
+  <div class="card">
+    <div><label>น้ำหนัก (กก.)</label><input id="weight" type="number" value="65" /></div>
+    <div><label>ส่วนสูง (ซม.)</label><input id="height" type="number" value="170" /></div>
+    <button id="calc">คำนวณ BMI</button>
+    <div class="result" id="output">ผลลัพธ์: -</div>
+  </div>
+
+  <script>
+    // Arrow function for BMI calculation
+    const calculateBMI = (weightKg, heightCm) => {
+      const h = heightCm / 100;
+      if (!h || h <= 0) return null;
+      return weightKg / (h * h);
+    };
+
+    // Arrow function for category: ผอม / สมส่วน / อ้วน
+    const bmiCategory = bmi => {
+      if (bmi === null) return 'ข้อมูลไม่ถูกต้อง';
+      if (bmi < 18.5) return 'ผอม';
+      if (bmi < 25) return 'สมส่วน';
+      return 'อ้วน';
+    };
+
+    document.getElementById('calc').addEventListener('click', () => {
+      const w = parseFloat(document.getElementById('weight').value) || 0;
+      const h = parseFloat(document.getElementById('height').value) || 0;
+      const bmi = calculateBMI(w, h);
+      const out = document.getElementById('output');
+      if (bmi === null) {
+        out.textContent = 'ผลลัพธ์: กรุณาใส่ความสูงที่ถูกต้อง';
+        return;
+      }
+      const bmiRounded = bmi.toFixed(2);
+      out.textContent = `ผลลัพธ์: BMI = ${bmiRounded} → ${bmiCategory(bmi)}`;
+    });
+  </script>
+</body>
+</html>

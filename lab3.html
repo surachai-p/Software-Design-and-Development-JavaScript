@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:16px}
+    .box{max-width:640px;border:1px solid #ddd;padding:12px;border-radius:6px;margin-bottom:14px}
+    .row{margin:6px 0}
+    input[type="number"]{width:120px}
+  </style>
+</head>
+<body>
+  <h2>1) ตรวจเลขคู่/คี่</h2>
+  <div class="box">
+    <div class="row">กำหนดตัวเลข: <input id="parityInput" type="number" value="7" /></div>
+    <button id="parityBtn">ตรวจคู่/คี่</button>
+    <div class="row">ผลลัพธ์: <span id="parityResult">-</span></div>
+  </div>
+
+  <h2>2) ตารางสูตรคูณ</h2>
+  <div class="box">
+    <div class="row"><button id="mul2Btn">แสดงสูตรคูณแม่ 2 (for)</button></div>
+    <div id="mul2Area" class="row"></div>
+    <hr />
+    <div class="row"><button id="mul3Btn">แสดงสูตรคูณแม่ 3 (while)</button></div>
+    <div id="mul3Area" class="row"></div>
+  </div>
+
+  <h2>3) นับถอยหลังจาก 10 ถึง 1</h2>
+  <div class="box">
+    <button id="countdownBtn">เริ่มนับถอยหลัง</button>
+    <div class="row">ผลลัพธ์: <span id="countdownArea">-</span></div>
+  </div>
+
+  <h2>4) ตรวจช่วงวัยตามอายุ</h2>
+  <div class="box">
+    <div class="row">กำหนดอายุ: <input id="ageInput" type="number" value="20" /></div>
+    <button id="ageBtn">ตรวจช่วงวัย</button>
+    <div class="row">ผลลัพธ์: <span id="ageResult">-</span></div>
+  </div>
+
+  <script>
+    // 1) ตรวจเลขคู่/คี่
+    document.getElementById('parityBtn').onclick = function() {
+      const v = parseInt(document.getElementById('parityInput').value, 10);
+      const out = document.getElementById('parityResult');
+      if (Number.isNaN(v)) { out.textContent = 'ค่าที่ใส่ไม่ใช่ตัวเลข'; return; }
+      out.textContent = (v % 2 === 0) ? `${v} เป็นเลขคู่` : `${v} เป็นเลขคี่`;
+    };
+
+    // 2) ตารางสูตรคูณ แม่ 2 (for)
+    document.getElementById('mul2Btn').onclick = function() {
+      const area = document.getElementById('mul2Area');
+      let html = '<pre>';
+      for (let i = 1; i <= 10; i++) {
+        html += `2 x ${i} = ${2 * i}\n`;
+      }
+      html += '</pre>';
+      area.innerHTML = html;
+    };
+
+    // 2b) ตารางสูตรคูณ แม่ 3 (while)
+    document.getElementById('mul3Btn').onclick = function() {
+      const area = document.getElementById('mul3Area');
+      let i = 1;
+      let html = '<pre>';
+      while (i <= 10) {
+        html += `3 x ${i} = ${3 * i}\n`;
+        i++;
+      }
+      html += '</pre>';
+      area.innerHTML = html;
+    };
+
+    // 3) นับถอยหลังจาก 10 ถึง 1
+    document.getElementById('countdownBtn').onclick = function() {
+      const out = document.getElementById('countdownArea');
+      const parts = [];
+      for (let i = 10; i >= 1; i--) parts.push(i);
+      out.textContent = parts.join(' , ');
+    };
+
+    // 4) ตรวจช่วงวัยตามอายุ
+    document.getElementById('ageBtn').onclick = function() {
+      const age = parseInt(document.getElementById('ageInput').value, 10);
+      const out = document.getElementById('ageResult');
+      if (Number.isNaN(age) || age < 0) { out.textContent = 'กรุณาใส่อายุตัวเลขบวก'; return; }
+      let stage = '';
+      if (age <= 12) stage = 'วัยเด็ก';
+      else if (age <= 19) stage = 'วัยรุ่น';
+      else stage = 'วัยผู้ใหญ่';
+      out.textContent = `อายุ ${age} ปี → ${stage}`;
+    };
+  </script>
+</body>
+</html>

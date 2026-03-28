@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+	<meta charset="utf-8">
+	<style>body{font-family:Arial;padding:16px} .box{max-width:640px;border:1px solid #ddd;padding:12px;border-radius:6px;margin-bottom:14px} input{padding:4px}</style>
+</head>
+<body>
+	<h2>Arrow Functions</h2>
+
+	<div class="box">
+		<h3>1) BMI (Arrow function)</h3>
+		น้ำหนัก (กก.): <input id="w" type="number" value="70" />
+		ความสูง (ซม.): <input id="h" type="number" value="170" />
+		<button id="bmiBtn">คำนวณ BMI</button>
+		<div>ผลลัพธ์: <span id="bmiOut">-</span></div>
+	</div>
+
+	<div class="box">
+		<h3>2) ทักทาย (Arrow function)</h3>
+		ชื่อ: <input id="nameInput" value="สมชาย" />
+		อายุ: <input id="ageInput" type="number" value="25" />
+		<button id="greetBtn">ทักทาย</button>
+		<div>ผลลัพธ์: <span id="greetOut">-</span></div>
+	</div>
+
+	<div class="box">
+		<h3>3) ตรวจรหัสผ่าน (Arrow function)</h3>
+		รหัสผ่าน: <input id="pwdInput" type="password" value="pass12345" />
+		<button id="pwdBtn">ตรวจสอบ</button>
+		<div>ผลลัพธ์: <span id="pwdOut">-</span></div>
+	</div>
+
+	<script>
+		// 1) BMI as arrow function: returns BMI number (2 decimals) or null
+		const calculateBMI = (weightKg, heightCm) => {
+			const h = heightCm / 100;
+			if (!h || h <= 0) return null;
+			return parseFloat((weightKg / (h * h)).toFixed(2));
+		};
+
+		const bmiCategory = bmi => {
+			if (bmi === null) return 'ข้อมูลความสูงไม่ถูกต้อง';
+			if (bmi < 18.5) return 'น้ำหนักน้อย / ผอม';
+			if (bmi < 25) return 'ปกติ (สุขภาพดี)';
+			if (bmi < 30) return 'น้ำหนักเกิน';
+			return 'อ้วน';
+		};
+
+		document.getElementById('bmiBtn').onclick = () => {
+			const w = parseFloat(document.getElementById('w').value) || 0;
+			const h = parseFloat(document.getElementById('h').value) || 0;
+			const bmi = calculateBMI(w, h);
+			document.getElementById('bmiOut').textContent = bmi === null ? 'ความสูงไม่ถูกต้อง' : `${bmi} → ${bmiCategory(bmi)}`;
+		};
+
+		// 2) Greeting as arrow function
+		const greetByNameAge = (name, age) => {
+			const n = (name || 'ผู้ใช้').trim();
+			if (Number.isNaN(age) || age < 0) return `สวัสดี ${n} (อายุไม่ถูกต้อง)`;
+			let stage = '';
+			if (age <= 12) stage = 'วัยเด็ก';
+			else if (age <= 19) stage = 'วัยรุ่น';
+			else if (age <= 59) stage = 'วัยผู้ใหญ่';
+			else stage = 'วัยสูงอายุ';
+			return `สวัสดีคุณ ${n} — คุณอยู่ในช่วง${stage}`;
+		};
+
+		document.getElementById('greetBtn').onclick = () => {
+			const n = document.getElementById('nameInput').value;
+			const a = parseInt(document.getElementById('ageInput').value, 10);
+			document.getElementById('greetOut').textContent = greetByNameAge(n, a);
+		};
+
+		// 3) Password length check as arrow function
+		const isPasswordLong = pwd => (typeof pwd === 'string' && pwd.length > 8);
+
+		document.getElementById('pwdBtn').onclick = () => {
+			const p = document.getElementById('pwdInput').value || '';
+			const ok = isPasswordLong(p);
+			document.getElementById('pwdOut').textContent = ok ? 'ยอมรับ: รหัสผ่านยาวกว่า 8 ตัวอักษร' : 'ปฏิเสธ: ต้องยาวกว่า 8 ตัวอักษร';
+		};
+	</script>
+</body>
+</html>
