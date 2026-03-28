@@ -76,10 +76,49 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บันทึกผลการทดลองที่ 1</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 2; }
+        button { margin: 5px; cursor: pointer; }
+        .section { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h3>ข้อที่ 1: ปุ่ม 3 รูปแบบ</h3>
+        <button onclick="alert('ชื่อนักศึกษา: สมชาย ใจดี')">ปุ่มที่ 1 (Inline)</button>
+
+        <button id="dateBtn">ปุ่มที่ 2 (Internal)</button>
+
+        <button onclick="showTime()">ปุ่มที่ 3 (External)</button>
+    </div>
+
+    <div class="section">
+        <h3>ข้อที่ 2: ระบบรับข้อความ</h3>
+        <input type="text" id="myInput" placeholder="กรอกข้อความที่นี่...">
+        <button onclick="showInputText()">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        // จัดการปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('dateBtn').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบันคือ: ' + today.toLocaleDateString());
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![รูปผลการทดลองที่ 1](\แบบฝึกปฏิบัติที่ 1\1.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -135,10 +174,87 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.1: การประกาศตัวแปร</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .info { background: #e8f4fd; padding: 15px; border-left: 5px solid #3498db; margin-top: 20px; }
+        code { background: #eee; padding: 2px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกผลการทดลองที่ 2.1</h2>
+        <p>การทดลองนี้เน้นการประกาศตัวแปรและ Object ใน JavaScript</p>
+        
+        <div class="info">
+            <strong>วิธีดูผลลัพธ์:</strong> <br>
+            1. คลิกขวาบนหน้าจอ เลือก <strong>"ตรวจสอบ" (Inspect)</strong> <br>
+            2. คลิกที่แท็บ <strong>"คอนโซล" (Console)</strong> เพื่อดูค่าตัวแปรที่ประกาศไว้
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+            * ข้อมูลรหัสนักศึกษาและชื่อถูกประกาศด้วย <code>const</code> <br>
+            * ข้อมูลคะแนนถูกประกาศด้วย <code>let</code>
+        </p>
+    </div>
+
+    <script>
+        // --- ส่วนที่ 1: การประกาศตัวแปรรายตัว ---
+        const studentId = "68030159";       // รหัสนักศึกษา (ไม่เปลี่ยนค่า)
+        const studentName = "ประภาภรณ์ ภูผาลี";    // ชื่อนักศึกษา (ไม่เปลี่ยนค่า)
+        let midtermScore = 28;             // คะแนนกลางภาค (อาจมีการแก้ไข)
+        let finalScore = 35;               // คะแนนปลายภาค (อาจมีการแก้ไข)
+
+        // แสดงผลส่วนที่ 1 ใน Console
+        console.log("--- ข้อมูลตัวแปรพื้นฐาน ---");
+        console.log("รหัส:", studentId);
+        console.log("ชื่อ:", studentName);
+        console.log("คะแนนรวม:", midtermScore + finalScore);
+
+
+        // --- ส่วนที่ 2: การสร้าง Object สำหรับเก็บข้อมูลนักศึกษา ---
+        const studentProfile = {
+            id: "68030159",
+            name: "ประภาภรณ์ ภูผาลี",
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 3.75
+        };
+
+        // แสดงผลส่วนที่ 2 ใน Console
+        console.log("--- ข้อมูลใน Object ---");
+        console.log("ชื่อนักศึกษา (จาก Object):", studentProfile.name);
+        console.log("สาขาวิชา:", studentProfile.major);
+        console.log("เกรดเฉลี่ย:", studentProfile.gpa);
+
+        // ตัวอย่างการแสดงผล Object ทั้งหมดในรูปแบบตาราง
+        console.table(studentProfile);
+    </script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![รูปผลการทดลองที่ 2.1](\การทดลองที่2.1\2.1.png)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -190,10 +306,65 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.2: การคำนวณพื้นฐาน</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f0f2f5; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+        h2 { color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 10px; }
+        .result-box { background: #fff3e0; padding: 15px; border-radius: 5px; margin-top: 10px; border-left: 5px solid #ff9800; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>บันทึกผลการทดลองที่ 2.2</h2>
+        <p>ตรวจสอบผลการคำนวณได้ที่แท็บ <strong>Console (F12)</strong></p>
+        
+        <div class="result-box">
+            <strong>โจทย์ 1:</strong> คำนวณค่าเฉลี่ย 3 วิชา<br>
+            <strong>โจทย์ 2:</strong> คำนวณราคาสินค้า + VAT 7%
+        </div>
+    </div>
+
+    <script>
+        // --- 1. คำนวณคะแนนเฉลี่ย 3 วิชา ---
+        let mathScore = 85;
+        let scienceScore = 78;
+        let englishScore = 92;
+
+        let average = (mathScore + scienceScore + englishScore) / 3;
+
+        console.log("--- ข้อที่ 1: คำนวณคะแนนเฉลี่ย ---");
+        console.log("คะแนนวิชาคณิตศาสตร์:", mathScore);
+        console.log("คะแนนวิชาวิทยาศาสตร์:", scienceScore);
+        console.log("คะแนนวิชาภาษาอังกฤษ:", englishScore);
+        console.log("คะแนนเฉลี่ยรวม:", average.toFixed(2)); // ใช้ .toFixed(2) เพื่อแสดงทศนิยม 2 ตำแหน่ง
+
+
+        // --- 2. คำนวณราคาสินค้ารวม VAT 7% ---
+        const productName = "คีย์บอร์ดไร้สาย";
+        let productPrice = 1500;
+        const VAT_RATE = 0.07; // หรือ 7/100
+
+        let vatAmount = productPrice * VAT_RATE;
+        let totalPrice = productPrice + vatAmount;
+
+        console.log("--- ข้อที่ 2: คำนวณราคาสินค้า + VAT ---");
+        console.log("ชื่อสินค้า:", productName);
+        console.log("ราคาก่อน VAT:", productPrice, "บาท");
+        console.log("ภาษีมูลค่าเพิ่ม (7%):", vatAmount, "บาท");
+        console.log("ราคาสุทธิที่ต้องจ่าย:", totalPrice, "บาท");
+
+    </script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![รูปผลการทดลองที่ 2.2](การทดลองที่2.2/2.2.png)
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -324,10 +495,84 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.3: การควบคุมการทำงาน</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #fdfdfd; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; margin: auto; border-top: 5px solid #2ecc71; }
+        h2 { color: #27ae60; }
+        .note { font-size: 0.9em; color: #666; background: #f9f9f9; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>บันทึกผลการทดลองที่ 2.3</h2>
+        <p>การใช้ Conditionals และ Loops ใน JavaScript</p>
+        <div class="note">
+            เปิด <strong>Console (F12)</strong> เพื่อดูผลการรันโปรแกรมทั้ง 4 ข้อครับ
+        </div>
+    </div>
+
+    <script>
+        // --- 1. ตรวจสอบเลขคู่ หรือ เลขคี่ ---
+        console.log("--- ข้อที่ 1: ตรวจสอบเลขคู่/คี่ ---");
+        let number = 15; // เปลี่ยนตัวเลขตรงนี้เพื่อทดสอบ
+        if (number % 2 === 0) {
+            console.log(number + " คือ เลขคู่");
+        } else {
+            console.log(number + " คือ เลขคี่");
+        }
+
+
+        // --- 2. ตารางสูตรคูณ (For และ While) ---
+        console.log("\n--- ข้อที่ 2: ตารางสูตรคูณ ---");
+        
+        console.log("สูตรคูณแม่ 2 (ใช้ for):");
+        for (let i = 1; i <= 12; i++) {
+            console.log("2 x " + i + " = " + (2 * i));
+        }
+
+        console.log("สูตรคูณแม่ 3 (ใช้ while):");
+        let j = 1;
+        while (j <= 12) {
+            console.log("3 x " + j + " = " + (3 * j));
+            j++;
+        }
+
+
+        // --- 3. โปรแกรมนับถอยหลัง 10 ถึง 1 ---
+        console.log("\n--- ข้อที่ 3: นับถอยหลัง ---");
+        for (let k = 10; k >= 1; k--) {
+            console.log("นับถอยหลัง:", k);
+        }
+
+
+        // --- 4. ตรวจสอบช่วงวัยตามอายุ ---
+        console.log("\n--- ข้อที่ 4: ตรวจสอบช่วงวัย ---");
+        let myAge = 21; // เปลี่ยนอายุตรงนี้เพื่อทดสอบ
+        
+        if (myAge < 0) {
+            console.log("อายุไม่ถูกต้อง");
+        } else if (myAge <= 12) {
+            console.log("อายุ " + myAge + " ปี: วัยเด็ก");
+        } else if (myAge <= 20) {
+            console.log("อายุ " + myAge + " ปี: วัยรุ่น");
+        } else if (myAge <= 60) {
+            console.log("อายุ " + myAge + " ปี: วัยผู้ใหญ่");
+        } else {
+            console.log("อายุ " + myAge + " ปี: วัยสูงอายุ");
+        }
+
+    </script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3](\การทดลองที่2.3\2.3.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -439,10 +684,112 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.4.1: Regular Functions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: auto;
+        }
+        h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .info-box {
+            background: #e8f4fd;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        .code-display {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+        strong { color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกผลการทดลองที่ 2.4.1 (Regular Functions)</h2>
+        
+        <p>การทดลองนี้เป็นการสร้างฟังก์ชันแบบปกติ (Regular Function) เพื่อแก้โจทย์ 3 ข้อ</p>
+
+        <div class="info-box">
+            <strong>วิธีตรวจสอบ:</strong> เปิด <strong>Console (F12)</strong> เพื่อดูผลการประมวลผลและการเรียกใช้งานฟังก์ชันทั้งหมด
+        </div>
+
+        <h3>สรุปผลการเขียนฟังก์ชัน:</h3>
+        <ul>
+            <li><strong>BMI:</strong> คำนวณโดยใช้ <code>weight / (height/100)^2</code></li>
+            <li><strong>Greeting:</strong> ใช้ <code>if-else</code> แยกช่วงอายุ</li>
+            <li><strong>Password:</strong> ใช้ <code>.length</code> ตรวจสอบเงื่อนไข</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log("%c--- เริ่มการทดสอบ 2.4.1 ---", "color: blue; font-weight: bold;");
+
+        // 1. Function คำนวณค่า BMI
+        function calculateBMI(weight, heightCm) {
+            let heightM = heightCm / 100;
+            let bmi = weight / (heightM * heightM);
+            return bmi.toFixed(2); // คืนค่าทศนิยม 2 ตำแหน่ง
+        }
+
+        let resultBMI = calculateBMI(65, 170);
+        console.log("1. ค่า BMI (น้ำหนัก 65, สูง 170): " + resultBMI);
+
+
+        // 2. Function ทักทายตามอายุ
+        function greetUser(name, age) {
+            if (age <= 12) {
+                return "สวัสดีจ๊ะ น้อง " + name + " (วัยเด็ก)";
+            } else if (age <= 20) {
+                return "สวัสดีจ้ะ คุณ " + name + " (วัยรุ่น)";
+            } else {
+                return "สวัสดีครับ/ค่ะ คุณ " + name + " (วัยผู้ใหญ่)";
+            }
+        }
+
+        console.log("2. การทักทาย: " + greetUser("ประภาภรณ์", 21));
+
+
+        // 3. Function ตรวจสอบรหัสผ่าน
+        function isPasswordValid(password) {
+            if (password.length > 8) {
+                return "รหัสผ่าน '" + password + "' : ปลอดภัย (ผ่าน)";
+            } else {
+                return "รหัสผ่าน '" + password + "' : สั้นเกินไป (ไม่ผ่าน)";
+            }
+        }
+
+        console.log("3. ผลตรวจสอบรหัสผ่าน 1: " + isPasswordValid("123456"));
+        console.log("3. ผลตรวจสอบรหัสผ่าน 2: " + isPasswordValid("AdminPrapaporn2026"));
+
+    </script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
+![รูปผลการทดลองที่ 2.4.1](\2.4\2.4.1.png)
 
 
 
@@ -483,10 +830,84 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.4.2: Arrow Functions</title>
+    <style>
+        body {
+            font-family: 'ChulaCharas', sans-serif; /* หรือใช้ sans-serif ปกติ */
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 { color: #2c3e50; border-bottom: 3px solid #f39c12; padding-bottom: 10px; }
+        .result-info {
+            background-color: #eef2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        code { color: #d63384; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>บันทึกผลการทดลองที่ 2.4.2 (Arrow Function)</h2>
+    
+    <div class="result-info">
+        <strong>คำแนะนำ:</strong> ผลลัพธ์ของฟังก์ชันทั้ง 3 ข้อ จะถูกแสดงอยู่ในหน้าต่าง 
+        <code>Console</code> (กด <strong>F12</strong> หรือ <strong>Inspect > Console</strong>)
+    </div>
+
+    <h3>โจทย์ที่ทำ:</h3>
+    <ol>
+        <li>คำนวณค่า BMI (Arrow Function แบบย่อ)</li>
+        <li>ทักทายตามช่วงวัย (Arrow Function + Template Literals)</li>
+        <li>ตรวจสอบความยาวรหัสผ่าน (Arrow Function แบบ Boolean)</li>
+    </ol>
+</div>
+
+<script>
+    const calculateBMI = (weight, height) => (weight / ((height / 100) ** 2)).toFixed(2);
+
+    console.log("--- ข้อที่ 1: คำนวณ BMI ---");
+    console.log("น้ำหนัก 65 กก. ส่วนสูง 170 ซม. BMI คือ:", calculateBMI(65, 170));
+
+    const greetByAge = (name, age) => {
+        if (age <= 12) return `สวัสดีจ๊ะ น้อง ${name}`;
+        if (age <= 22) return `สวัสดีจ้ะ คุณ ${name}`;
+        return `สวัสดีครับ/ค่ะ ท่าน ${name}`;
+    };
+
+    console.log("\n--- ข้อที่ 2: ทักทายตามช่วงวัย ---");
+    console.log(greetByAge("ประภาภรณ์", 21));
+
+    const isPasswordValid = (password) => password.length > 8;
+
+    console.log("\n--- ข้อที่ 3: ตรวจสอบรหัสผ่าน ---");
+    console.log("รหัส '12345' ผ่านไหม?:", isPasswordValid("12345"));
+    console.log("รหัส 'Prapaporn2026' ผ่านไหม?:", isPasswordValid("Prapaporn2026"));
+
+</script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.2](images/image.png)
+![รูปผลการทดลองที่ 2.4.2](\2.4\2.4.2.png)
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
@@ -717,10 +1138,168 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[บันทึกโค้ด ที่นี่<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์ - การทดลองที่ 3.2</title>
+    <style>
+        /* 1. ตั้งค่าพื้นฐานและฟอนต์ */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f0f2f5; /* สีพื้นหลังแบบนุ่มนวล */
+            color: #333;
+        }
+
+        /* 2. ปรับแต่งหัวข้อ */
+        h1 {
+            color: #1a2a6c;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 3. ปรับแต่งส่วนของฟอร์ม (Container) */
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px; /* เพิ่มความโค้งมน */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* เพิ่มเงาให้ดูมีมิติ */
+            border-top: 5px solid #2980b9; /* เพิ่มแถบสีด้านบน */
+        }
+
+        /* 4. จัดระยะห่างแต่ละช่อง */
+        div {
+            margin-bottom: 20px;
+        }
+
+        /* 5. ปรับแต่ง Label */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* 6. ปรับแต่งช่องกรอกข้อมูลและ Select */
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: all 0.3s ease; /* เพิ่ม Transition เพื่อความลื่นไหล */
+            font-size: 14px;
+        }
+
+        /* 7. เอฟเฟกต์เมื่อคลิกที่ช่องกรอก (Focus) */
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52,152,219,0.3);
+            background-color: #f7fbff;
+        }
+
+        /* 8. ปรับแต่งปุ่มกด */
+        button {
+            background: linear-gradient(135deg, #2980b9, #3498db); /* ไล่เฉดสีปุ่ม */
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        /* 9. เอฟเฟกต์เมื่อเอาเมาส์วางบนปุ่ม (Hover) */
+        button:hover {
+            transform: translateY(-2px); /* ปุ่มลอยขึ้นเล็กน้อย */
+            box-shadow: 0 5px 15px rgba(52,152,219,0.4);
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        /* 10. เมื่อกดปุ่ม (Active) */
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* 11. Responsive สำหรับมือถือ */
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            form {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm" onsubmit="event.preventDefault(); alert('ส่งข้อมูลการจองเรียบร้อยแล้ว!');">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="ตัวอย่าง: สมชาย ใจดี" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" placeholder="08x-xxx-xxxx" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน (Standard)</option>
+                <option value="deluxe">ห้องดีลักซ์ (Deluxe)</option>
+                <option value="suite">ห้องสวีท (Suite)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="1" required>
+        </div>
+
+        <button type="submit">ยืนยันการจองห้องพัก</button>
+    </form>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.2](images/image.png)
+![รูปผลการทดลองที่ 3.2.2](\การทดลองที่3.2.2\3.2.2.png)
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -825,10 +1404,195 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 3.2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="ระบุชื่อ-นามสกุล" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" placeholder="ระบุเบอร์โทร 10 หลัก" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน (Standard)</option>
+                <option value="deluxe">ห้องดีลักซ์ (Deluxe)</option>
+                <option value="suite">ห้องสวีท (Suite)</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="1" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+
+    <script>
+        // ส่วนการจัดการเมื่อกดปุ่ม Submit
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // ป้องกันหน้าจอรีโหลด
+            
+            const checkinValue = document.getElementById('checkin').value;
+            const checkoutValue = document.getElementById('checkout').value;
+            const checkin = new Date(checkinValue);
+            const checkout = new Date(checkoutValue);
+            const today = new Date();
+            today.setHours(0,0,0,0); // ตั้งค่าเวลาเป็นศูนย์เพื่อเทียบแต่วันที่
+            
+            // 1. ตรวจสอบวันที่เช็คอิน (ต้องไม่ย้อนหลัง)
+            if (checkin < today) {
+                alert('กรุณาเลือกวันเช็คอินที่ยังไม่ผ่านมา');
+                return;
+            }
+            
+            // 2. ตรวจสอบวันที่เช็คเอาท์ (ต้องหลังวันเช็คอิน)
+            if (checkout <= checkin) {
+                alert('วันเช็คเอาท์ต้องมาหลังวันเช็คอิน');
+                return;
+            }
+            
+            // 3. ตรวจสอบรูปแบบเบอร์โทร (Regex 10 หลัก)
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (เป็นตัวเลข 10 หลัก)');
+                return;
+            }
+            
+            // 4. คำนวณจำนวนวันที่พัก
+            const diffTime = Math.abs(checkout - checkin);
+            const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            // 5. แสดงสรุปการจอง
+            const roomtype = document.getElementById('roomtype');
+            const roomtypeText = roomtype.options[roomtype.selectedIndex].text;
+            
+            const summary = `
+                --- สรุปการจองของคุณ ---
+                ผู้จอง: ${document.getElementById('fullname').value}
+                ห้อง: ${roomtypeText}
+                เช็คอิน: ${checkin.toLocaleDateString('th-TH')}
+                เช็คเอาท์: ${checkout.toLocaleDateString('th-TH')}
+                ระยะเวลา: ${days} วัน
+                ผู้เข้าพัก: ${document.getElementById('guests').value} ท่าน
+            `;
+            
+            if (confirm(summary + '\n\nคุณยืนยันข้อมูลถูกต้องใช่หรือไม่?')) {
+                alert('ระบบได้รับข้อมูลการจองเรียบร้อยแล้ว!');
+                this.reset(); // ล้างข้อมูลในฟอร์ม
+            }
+        });
+
+        // ฟังก์ชัน Real-time: วันที่เช็คเอาท์ขั้นต่ำต้องต่อจากเช็คอิน
+        document.getElementById('checkin').addEventListener('change', function() {
+            document.getElementById('checkout').min = this.value;
+        });
+
+        // ฟังก์ชัน Real-time: ปรับ Limit จำนวนคนตามประเภทห้อง
+        document.getElementById('roomtype').addEventListener('change', function() {
+            const guestsInput = document.getElementById('guests');
+            if (this.value === 'standard') guestsInput.max = 2;
+            else if (this.value === 'deluxe') guestsInput.max = 3;
+            else if (this.value === 'suite') guestsInput.max = 4;
+            
+            if (parseInt(guestsInput.value) > parseInt(guestsInput.max)) {
+                guestsInput.value = guestsInput.max;
+            }
+        });
+    </script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.3](images/image.png)
+![รูปผลการทดลองที่ 3.2.3](\การทดลองที่3.2.3\3.2.3.png)
 
 
 ## คำแนะนำเพิ่มเติม

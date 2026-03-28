@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.4.2: Arrow Functions</title>
+    <style>
+        body {
+            font-family: 'ChulaCharas', sans-serif; /* หรือใช้ sans-serif ปกติ */
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 { color: #2c3e50; border-bottom: 3px solid #f39c12; padding-bottom: 10px; }
+        .result-info {
+            background-color: #eef2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        code { color: #d63384; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>บันทึกผลการทดลองที่ 2.4.2 (Arrow Function)</h2>
+    
+    <div class="result-info">
+        <strong>คำแนะนำ:</strong> ผลลัพธ์ของฟังก์ชันทั้ง 3 ข้อ จะถูกแสดงอยู่ในหน้าต่าง 
+        <code>Console</code> (กด <strong>F12</strong> หรือ <strong>Inspect > Console</strong>)
+    </div>
+
+    <h3>โจทย์ที่ทำ:</h3>
+    <ol>
+        <li>คำนวณค่า BMI (Arrow Function แบบย่อ)</li>
+        <li>ทักทายตามช่วงวัย (Arrow Function + Template Literals)</li>
+        <li>ตรวจสอบความยาวรหัสผ่าน (Arrow Function แบบ Boolean)</li>
+    </ol>
+</div>
+
+<script>
+    const calculateBMI = (weight, height) => (weight / ((height / 100) ** 2)).toFixed(2);
+
+    console.log("--- ข้อที่ 1: คำนวณ BMI ---");
+    console.log("น้ำหนัก 65 กก. ส่วนสูง 170 ซม. BMI คือ:", calculateBMI(65, 170));
+
+    const greetByAge = (name, age) => {
+        if (age <= 12) return `สวัสดีจ๊ะ น้อง ${name}`;
+        if (age <= 22) return `สวัสดีจ้ะ คุณ ${name}`;
+        return `สวัสดีครับ/ค่ะ ท่าน ${name}`;
+    };
+
+    console.log("\n--- ข้อที่ 2: ทักทายตามช่วงวัย ---");
+    console.log(greetByAge("ประภาภรณ์", 21));
+
+    const isPasswordValid = (password) => password.length > 8;
+
+    console.log("\n--- ข้อที่ 3: ตรวจสอบรหัสผ่าน ---");
+    console.log("รหัส '12345' ผ่านไหม?:", isPasswordValid("12345"));
+    console.log("รหัส 'Prapaporn2026' ผ่านไหม?:", isPasswordValid("Prapaporn2026"));
+
+</script>
+
+</body>
+</html>

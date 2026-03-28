@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.1: การประกาศตัวแปร</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .info { background: #e8f4fd; padding: 15px; border-left: 5px solid #3498db; margin-top: 20px; }
+        code { background: #eee; padding: 2px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกผลการทดลองที่ 2.1</h2>
+        <p>การทดลองนี้เน้นการประกาศตัวแปรและ Object ใน JavaScript</p>
+        
+        <div class="info">
+            <strong>วิธีดูผลลัพธ์:</strong> <br>
+            1. คลิกขวาบนหน้าจอ เลือก <strong>"ตรวจสอบ" (Inspect)</strong> <br>
+            2. คลิกที่แท็บ <strong>"คอนโซล" (Console)</strong> เพื่อดูค่าตัวแปรที่ประกาศไว้
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+            * ข้อมูลรหัสนักศึกษาและชื่อถูกประกาศด้วย <code>const</code> <br>
+            * ข้อมูลคะแนนถูกประกาศด้วย <code>let</code>
+        </p>
+    </div>
+
+    <script>
+        // --- ส่วนที่ 1: การประกาศตัวแปรรายตัว ---
+        const studentId = "68030159";       // รหัสนักศึกษา (ไม่เปลี่ยนค่า)
+        const studentName = "ประภาภรณ์ ภูผาลี";    // ชื่อนักศึกษา (ไม่เปลี่ยนค่า)
+        let midtermScore = 28;             // คะแนนกลางภาค (อาจมีการแก้ไข)
+        let finalScore = 35;               // คะแนนปลายภาค (อาจมีการแก้ไข)
+
+        // แสดงผลส่วนที่ 1 ใน Console
+        console.log("--- ข้อมูลตัวแปรพื้นฐาน ---");
+        console.log("รหัส:", studentId);
+        console.log("ชื่อ:", studentName);
+        console.log("คะแนนรวม:", midtermScore + finalScore);
+
+
+        // --- ส่วนที่ 2: การสร้าง Object สำหรับเก็บข้อมูลนักศึกษา ---
+        const studentProfile = {
+            id: "68030159",
+            name: "ประภาภรณ์ ภูผาลี",
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 3.75
+        };
+
+        // แสดงผลส่วนที่ 2 ใน Console
+        console.log("--- ข้อมูลใน Object ---");
+        console.log("ชื่อนักศึกษา (จาก Object):", studentProfile.name);
+        console.log("สาขาวิชา:", studentProfile.major);
+        console.log("เกรดเฉลี่ย:", studentProfile.gpa);
+
+        // ตัวอย่างการแสดงผล Object ทั้งหมดในรูปแบบตาราง
+        console.table(studentProfile);
+    </script>
+
+</body>
+</html>
