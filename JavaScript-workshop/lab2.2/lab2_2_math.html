@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกผลการทดลอง 2.2</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .result-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>บันทึกผลการทดลอง 2.2: การคำนวณพื้นฐาน</h2>
+
+    <div class="result-box">
+        <h3>ข้อ 1: คำนวณคะแนนเฉลี่ย 3 วิชา</h3>
+        <p id="output1"></p>
+    </div>
+
+    <div class="result-box">
+        <h3>ข้อ 2: คำนวณราคาสินค้ารวม VAT 7%</h3>
+        <p id="output2"></p>
+    </div>
+
+    <script>
+        // ==========================================
+        // ข้อ 1: โปรแกรมคำนวณคะแนนเฉลี่ย 3 วิชา
+        // ==========================================
+        let subject1 = 85;  
+        let subject2 = 78;  
+        let subject3 = 92;  
+
+        // คำนวณผลรวมและค่าเฉลี่ย
+        let totalScore = subject1 + subject2 + subject3;
+        let averageScore = totalScore / 3;
+
+        // นำผลลัพธ์ไปแสดงบนหน้าเว็บ
+        let textOutput1 = `
+            คะแนนวิชาที่ 1: ${subject1} คะแนน<br>
+            คะแนนวิชาที่ 2: ${subject2} คะแนน<br>
+            คะแนนวิชาที่ 3: ${subject3} คะแนน<br>
+            <br>
+            คะแนนรวมทั้งหมด: <strong>${totalScore}</strong> คะแนน<br>
+            <span class="highlight">คะแนนเฉลี่ย: ${averageScore.toFixed(2)} คะแนน</span>
+        `;
+        document.getElementById('output1').innerHTML = textOutput1;
+
+        // ==========================================
+        // ข้อ 2: โปรแกรมคำนวณราคาสินค้ารวม VAT 7%
+        // ==========================================
+        let productName = "สมาร์ทโฟน";
+        let productPrice = 15000; 
+        const vatRate = 0.07; 
+
+        // คำนวณ VAT และราคาสุทธิ
+        let vatAmount = productPrice * vatRate;
+        let totalPrice = productPrice + vatAmount;
+
+        // นำผลลัพธ์ไปแสดงบนหน้าเว็บ
+        // ใช้ .toLocaleString() เพื่อใส่ลูกน้ำคั่นหลักพันให้สวยงาม
+        let textOutput2 = `
+            ชื่อสินค้า: <strong>${productName}</strong><br>
+            ราคาเดิม (ยังไม่รวม VAT): ${productPrice.toLocaleString()} บาท<br>
+            ภาษีมูลค่าเพิ่ม (VAT 7%): ${vatAmount.toLocaleString()} บาท<br>
+            <br>
+            <span class="success">ราคาสุทธิที่ต้องชำระ: ${totalPrice.toLocaleString()} บาท</span>
+        `;
+        document.getElementById('output2').innerHTML = textOutput2;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกผลการทดลอง 2.3</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .result-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 0;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 10px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .grid-tables {
+            display: flex;
+            gap: 20px;
+        }
+        .table-box {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกผลการทดลอง 2.3: การควบคุมการทำงาน</h2>
+
+        <div class="result-box">
+            <h3>ข้อ 1: ตรวจสอบเลขคู่หรือเลขคี่ (if...else)</h3>
+            <p id="output1"></p>
+        </div>
+
+        <div class="result-box">
+            <h3>ข้อ 2: ตารางสูตรคูณ (for และ while loop)</h3>
+            <div class="grid-tables" id="output2"></div>
+        </div>
+
+        <div class="result-box">
+            <h3>ข้อ 3: โปรแกรมนับถอยหลัง 10 ถึง 1 (for loop)</h3>
+            <p id="output3"></p>
+        </div>
+
+        <div class="result-box">
+            <h3>ข้อ 4: ตรวจสอบช่วงวัยตามอายุ (if...else if...else)</h3>
+            <p id="output4"></p>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // ข้อ 1: ตรวจสอบเลขคู่หรือเลขคี่
+        // ==========================================
+        let checkNumber = 25; // กำหนดตัวเลขที่ต้องการตรวจสอบ
+        let numberType = "";
+
+        // ใช้เครื่องหมาย % (Modulo) หารเอาเศษ ถ้าหาร 2 ลงตัว (เศษ 0) คือเลขคู่
+        if (checkNumber % 2 === 0) {
+            numberType = "เลขคู่";
+        } else {
+            numberType = "เลขคี่";
+        }
+        document.getElementById('output1').innerHTML = `ตัวเลขที่กำหนดคือ: <strong>${checkNumber}</strong> <br>ผลการตรวจสอบ: <span class="highlight">เป็น${numberType}</span>`;
+
+        // ==========================================
+        // ข้อ 2: ตารางสูตรคูณ แม่ 2 (for) และ แม่ 3 (while)
+        // ==========================================
+        let tableHTML = "";
+
+        // สูตรคูณแม่ 2 ใช้ For Loop
+        tableHTML += `<div class="table-box"><strong>สูตรคูณแม่ 2 (For Loop)</strong><br><br>`;
+        for (let i = 1; i <= 12; i++) {
+            tableHTML += `2 x ${i} = ${2 * i} <br>`;
+        }
+        tableHTML += `</div>`;
+
+        // สูตรคูณแม่ 3 ใช้ While Loop
+        tableHTML += `<div class="table-box"><strong>สูตรคูณแม่ 3 (While Loop)</strong><br><br>`;
+        let j = 1;
+        while (j <= 12) {
+            tableHTML += `3 x ${j} = ${3 * j} <br>`;
+            j++;
+        }
+        tableHTML += `</div>`;
+        
+        document.getElementById('output2').innerHTML = tableHTML;
+
+        // ==========================================
+        // ข้อ 3: นับถอยหลัง 10 ถึง 1
+        // ==========================================
+        let countdownText = "";
+        // กำหนดให้ k เริ่มที่ 10 ทำงานตราบใดที่ k >= 1 และลดค่าทีละ 1 (k--)
+        for (let k = 10; k >= 1; k--) {
+            countdownText += k;
+            if (k > 1) countdownText += " ➔ "; // ใส่ลูกศรคั่นเว้นตัวสุดท้าย
+        }
+        document.getElementById('output3').innerHTML = `<span class="highlight" style="font-size: 1.2rem;">${countdownText}</span>`;
+
+        // ==========================================
+        // ข้อ 4: ตรวจสอบช่วงวัยตามอายุ
+        // ==========================================
+        let personAge = 19; // กำหนดอายุ
+        let ageGroup = "";
+
+        // กำหนดช่วงวัย (เด็ก: 0-12, วัยรุ่น: 13-19, ผู้ใหญ่: 20 ขึ้นไป)
+        if (personAge <= 12) {
+            ageGroup = "วัยเด็ก";
+        } else if (personAge <= 19) {
+            ageGroup = "วัยรุ่น";
+        } else {
+            ageGroup = "วัยผู้ใหญ่";
+        }
+        
+        document.getElementById('output4').innerHTML = `อายุที่กำหนดคือ: <strong>${personAge} ปี</strong> <br>จัดอยู่ในกลุ่ม: <span class="highlight">${ageGroup}</span>`;
+        
+    </script>
+</body>
+</html>

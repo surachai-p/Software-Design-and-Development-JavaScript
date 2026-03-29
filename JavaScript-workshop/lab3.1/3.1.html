@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกผลการทดลอง 3.1: คำนวณ BMI</title>
+    <style>
+        body { 
+            font-family: 'Sarabun', sans-serif; 
+            background-color: #f4f7f6; 
+            padding: 20px; 
+        }
+        .calculator-box { 
+            background-color: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            max-width: 400px; 
+            margin: 0 auto; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        h2 { text-align: center; color: #2c3e50; margin-top: 0; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #34495e; }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            box-sizing: border-box; 
+            border: 2px solid #e0e6ed; 
+            border-radius: 6px; 
+            font-size: 16px;
+        }
+        input:focus { outline: none; border-color: #3498db; }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            background-color: #3498db; 
+            color: white; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #2980b9; }
+        #result { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background-color: #ecf0f1; 
+            border-radius: 6px; 
+            text-align: center; 
+            font-size: 18px; 
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-box">
+        <h2>โปรแกรมคำนวณ BMI</h2>
+        
+        <div class="input-group">
+            <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+            <input type="number" id="weight" placeholder="เช่น 65" step="0.1">
+        </div>
+        
+        <div class="input-group">
+            <label for="height">ส่วนสูง (เซนติเมตร):</label>
+            <input type="number" id="height" placeholder="เช่น 170">
+        </div>
+        
+        <button onclick="calculateBMI()">คำนวณผลลัพธ์</button>
+        
+        <div id="result">ผลลัพธ์จะแสดงที่นี่...</div>
+    </div>
+
+    <script>
+        // ---------------------------------------------------------
+        // สร้างฟังก์ชันคำนวณ BMI ด้วยรูปแบบ Arrow Function (=>)
+        // ---------------------------------------------------------
+        const calculateBMI = () => {
+            // 1. ดึงค่าจากช่อง Input และแปลงเป็นตัวเลข (parseFloat)
+            const weightValue = parseFloat(document.getElementById('weight').value);
+            const heightCmValue = parseFloat(document.getElementById('height').value);
+
+            // 2. ตรวจสอบว่าผู้ใช้กรอกข้อมูลครบถ้วนและถูกต้องหรือไม่ (ดักจับ Error)
+            if (isNaN(weightValue) || isNaN(heightCmValue) || weightValue <= 0 || heightCmValue <= 0) {
+                document.getElementById('result').innerHTML = "<span style='color:#e74c3c;'>กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง</span>";
+                return; // หยุดการทำงานของฟังก์ชัน
+            }
+
+            // 3. แปลงส่วนสูงจากเซนติเมตรเป็นเมตร (สูตร BMI ใช้หน่วยเมตร)
+            const heightMValue = heightCmValue / 100;
+            
+            // 4. คำนวณค่า BMI = น้ำหนัก / (ส่วนสูง ^ 2)
+            const bmi = weightValue / (heightMValue * heightMValue);
+            
+            // 5. ตรวจสอบเงื่อนไข อ้วน ผอม สมส่วน
+            let category = "";
+            let textColor = "";
+
+            if (bmi < 18.5) {
+                category = "ผอม";
+                textColor = "#f39c12"; // สีส้ม
+            } else if (bmi >= 18.5 && bmi < 25) {
+                category = "สมส่วน";
+                textColor = "#27ae60"; // สีเขียว
+            } else {
+                category = "อ้วน";
+                textColor = "#e74c3c"; // สีแดง
+            }
+
+            // 6. ส่งผลลัพธ์กลับไปแสดงผลที่ HTML (DOM Manipulation)
+            document.getElementById('result').innerHTML = `
+                ค่า BMI ของคุณคือ: <strong>${bmi.toFixed(2)}</strong><br>
+                ผลประเมิน: <span style="color:${textColor}; font-weight:bold; font-size: 22px;">${category}</span>
+            `;
+        };
+    </script>
+
+</body>
+</html>

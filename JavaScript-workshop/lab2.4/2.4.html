@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกผลการทดลอง 2.4</title>
+    <style>
+        body { 
+            font-family: 'Sarabun', sans-serif; 
+            padding: 20px; 
+            background-color: #f0f4f8; 
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* แบ่งเป็น 2 คอลัมน์ */
+            gap: 20px;
+        }
+        .result-box { 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-top: 5px solid; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .box-regular { border-color: #3498db; }
+        .box-arrow { border-color: #e67e22; }
+        
+        h2 { text-align: center; grid-column: 1 / -1; color: #2c3e50; }
+        h3 { margin-top: 0; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+        h4 { color: #555; margin-bottom: 5px; }
+        p { margin-top: 0; line-height: 1.5; }
+        .highlight { color: #27ae60; font-weight: bold; }
+        
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; } /* จอเล็กให้เรียงแนวตั้ง */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>บันทึกผลการทดลอง 2.4: Functions & Arrow Functions</h2>
+
+        <div class="result-box box-regular">
+            <h3 style="color: #2980b9;">2.4.1 Regular Functions</h3>
+            <div id="output-regular"></div>
+        </div>
+
+        <div class="result-box box-arrow">
+            <h3 style="color: #d35400;">2.4.2 Arrow Functions</h3>
+            <div id="output-arrow"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 2.4.1 Regular Functions (แบบปกติ)
+        // ==========================================
+
+        // 1. Function คำนวณ BMI
+        function calculateBMI(weight, height) {
+            let bmi = weight / (height * height);
+            return bmi.toFixed(2);
+        }
+
+        // 2. Function ทักทายตามช่วงวัย
+        function greetByAge(name, age) {
+            if (age <= 12) {
+                return "สวัสดีจ้ะ หนูน้อย " + name;
+            } else if (age <= 19) {
+                return "ไงวัยรุ่น " + name + " สบายดีไหม?";
+            } else {
+                return "สวัสดีครับ/ค่ะ คุณ " + name;
+            }
+        }
+
+        // 3. Function ตรวจสอบความยาวรหัสผ่าน
+        function isValidPassword(password) {
+            if (password.length > 8) {
+                return "รหัสผ่านปลอดภัย (ความยาว " + password.length + " ตัวอักษร)";
+            } else {
+                return "รหัสผ่านสั้นเกินไป (ต้องมากกว่า 8 ตัวอักษร)";
+            }
+        }
+
+        // แสดงผล 2.4.1
+        document.getElementById('output-regular').innerHTML = `
+            <h4>1. ทดสอบคำนวณ BMI</h4>
+            <p>น้ำหนัก 65 กก., สูง 1.70 ม.<br>➜ <span class="highlight">BMI: ${calculateBMI(65, 1.70)}</span></p>
+
+            <h4>2. ทดสอบการทักทาย</h4>
+            <p>สมชาย (อายุ 15)<br>➜ <span class="highlight">${greetByAge("สมชาย", 15)}</span></p>
+            <p>สมหญิง (อายุ 25)<br>➜ <span class="highlight">${greetByAge("สมหญิง", 25)}</span></p>
+
+            <h4>3. ทดสอบความยาวรหัสผ่าน</h4>
+            <p>รหัส '12345'<br>➜ <span class="highlight" style="color:#e74c3c">${isValidPassword("12345")}</span></p>
+            <p>รหัส 'mySecurePass123'<br>➜ <span class="highlight">${isValidPassword("mySecurePass123")}</span></p>
+        `;
+
+
+        // ==========================================
+        // 2.4.2 Arrow Functions (แบบย่อ ES6)
+        // ==========================================
+
+        // 1. Arrow Function คำนวณ BMI (แบบบรรทัดเดียว)
+        const calcBMIArrow = (weight, height) => (weight / (height * height)).toFixed(2);
+
+        // 2. Arrow Function ทักทายตามช่วงวัย
+        const greetArrow = (name, age) => {
+            if (age <= 12) return `สวัสดีจ้ะ หนูน้อย ${name}`;
+            if (age <= 19) return `ไงวัยรุ่น ${name} สบายดีไหม?`;
+            return `สวัสดีครับ/ค่ะ คุณ ${name}`;
+        };
+
+        // 3. Arrow Function ตรวจสอบความยาวรหัสผ่าน (ใช้ Ternary Operator แบบย่อ)
+        const checkPassArrow = password => 
+            password.length > 8 ? `รหัสผ่านปลอดภัย (ความยาว ${password.length} ตัวอักษร)` : `รหัสผ่านสั้นเกินไป (ต้องมากกว่า 8 ตัวอักษร)`;
+
+        // แสดงผล 2.4.2
+        document.getElementById('output-arrow').innerHTML = `
+            <h4>1. ทดสอบคำนวณ BMI (Arrow)</h4>
+            <p>น้ำหนัก 70 กก., สูง 1.75 ม.<br>➜ <span class="highlight">BMI: ${calcBMIArrow(70, 1.75)}</span></p>
+
+            <h4>2. ทดสอบการทักทาย (Arrow)</h4>
+            <p>มานะ (อายุ 10)<br>➜ <span class="highlight">${greetArrow("มานะ", 10)}</span></p>
+            <p>มานี (อายุ 22)<br>➜ <span class="highlight">${greetArrow("มานี", 22)}</span></p>
+
+            <h4>3. ทดสอบความยาวรหัสผ่าน (Arrow)</h4>
+            <p>รหัส 'password'<br>➜ <span class="highlight" style="color:#e74c3c">${checkPassArrow("password")}</span></p>
+            <p>รหัส 'helloWorld2026'<br>➜ <span class="highlight">${checkPassArrow("helloWorld2026")}</span></p>
+        `;
+    </script>
+</body>
+</html>

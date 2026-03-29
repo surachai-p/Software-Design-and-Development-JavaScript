@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกปฏิบัติที่ 1: JS เบื้องต้น</title>
+    <style>
+        /* ตกแต่งเล็กน้อยเพื่อให้ดูง่าย */
+        body { font-family: sans-serif; padding: 20px; }
+        .section { margin-bottom: 30px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 8px 15px; margin-right: 10px; cursor: pointer; }
+        input { padding: 8px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="section">
+        <h3>ส่วนที่ 1: การเรียกใช้ JavaScript 3 รูปแบบ</h3>
+        <button onclick="alert('ชื่อนักศึกษา: วีรภัทร')">ปุ่มที่ 1 (Inline)</button>
+
+        <button id="btn-date">ปุ่มที่ 2 (Internal)</button>
+
+        <button onclick="showTime()">ปุ่มที่ 3 (External)</button>
+    </div>
+
+    <div class="section">
+        <h3>ส่วนที่ 2: การรับและแสดงผลข้อความ</h3>
+        <input type="text" id="myInput" placeholder="พิมพ์ข้อความที่นี่...">
+        <button onclick="displayText()">แสดงข้อความ</button>
+        
+        <p id="output_text" style="color: blue; font-weight: bold; mt-3"></p>
+    </div>
+
+    <script>
+        // จัดการปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('btn-date').onclick = function() {
+            let today = new Date();
+            alert('วันที่ปัจจุบัน: ' + today.toLocaleDateString('th-TH'));
+        };
+
+        // ฟังก์ชันสำหรับดึงข้อความจาก Textbox มาแสดงผล
+        function displayText() {
+            let inputText = document.getElementById('myInput').value;
+            
+            // ตรวจสอบว่ามีข้อมูลหรือไม่
+            if(inputText.trim() === "") {
+                alert("กรุณากรอกข้อความก่อนคลิก!");
+            } else {
+                document.getElementById('output_text').innerHTML = "คุณพิมพ์ข้อความว่า: " + inputText;
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

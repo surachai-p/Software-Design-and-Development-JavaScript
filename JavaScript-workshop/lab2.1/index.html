@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ผลการทดลอง 2.1</title>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; padding: 20px; }
+        .result-box { background-color: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <h2>ผลการทดลอง 2.1: การประกาศตัวแปรและ Object</h2>
+    <div class="result-box" id="output"></div>
+
+    <script>
+        // 1. สร้างตัวแปรเก็บข้อมูล
+        // รหัสนักศึกษาและชื่อเป็นข้อมูลที่ไม่ควรเปลี่ยนแปลง จึงใช้ const
+        const studentId = "68030271"; 
+        const studentName = "Weerapat Uamkasem"; 
+        
+        // คะแนนสอบเป็นข้อมูลที่อาจถูกแก้ไขหรือนำไปบวกเพิ่มทีหลัง จึงใช้ let
+        let midtermScore = 38.5; 
+        let finalScore = 42.0;   
+
+        // 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา
+        // ตัวแปรที่เก็บ Object นิยมใช้ const เพื่อป้องกันการเขียนทับโครงสร้างทั้งหมด
+        const studentProfile = {
+            id: "68030271",
+            name: "Weerapat Uamkasem",
+            major: "Computer Technology",
+            gpa: 3.00
+        };
+
+        // --- ส่วนเสริมสำหรับแสดงผลลัพธ์ทางหน้าจอเพื่อให้บันทึกภาพได้ง่าย ---
+        let outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = `
+            <h3>ข้อมูลจากตัวแปร:</h3>
+            <ul>
+                <li>รหัสนักศึกษา: ${studentId}</li>
+                <li>ชื่อนักศึกษา: ${studentName}</li>
+                <li>คะแนนสอบกลางภาค: ${midtermScore}</li>
+                <li>คะแนนสอบปลายภาค: ${finalScore}</li>
+            </ul>
+
+            <h3>ข้อมูลจาก Object:</h3>
+            <ul>
+                <li>รหัสนักศึกษา: ${studentProfile.id}</li>
+                <li>ชื่อ: ${studentProfile.name}</li>
+                <li>สาขาวิชา: ${studentProfile.major}</li>
+                <li>เกรดเฉลี่ย: ${studentProfile.gpa}</li>
+            </ul>
+        `;
+
+        // แสดงผลใน Console ด้วย (สามารถกด F12 ดูได้)
+        console.log("--- ข้อมูลตัวแปร ---");
+        console.log("รหัส:", studentId, "ชื่อ:", studentName, "กลางภาค:", midtermScore, "ปลายภาค:", finalScore);
+        console.log("--- ข้อมูล Object ---");
+        console.log(studentProfile);
+    </script>
+</body>
+</html>
