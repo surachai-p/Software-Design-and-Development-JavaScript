@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Form จองห้องพัก — Validation & Interaction</title>
+  <style>
+    :root{--accent:#667eea;--danger:#e53935;--ok:#43a047}
+    *{box-sizing:border-box}
+    body{font-family:Segoe UI, Tahoma, Arial; background:#f4f6fb; padding:20px}
+    .card{max-width:900px;margin:0 auto;background:#fff;border-radius:10px;padding:22px;box-shadow:0 8px 30px rgba(20,20,40,0.08)}
+    h1{margin:0 0 12px;color:var(--accent)}
+    form .row{display:flex;gap:12px;margin-bottom:12px}
+    form .col{flex:1}
+    label{display:block;font-size:13px;margin-bottom:6px}
+    input[type="text"],input[type="tel"],input[type="date"],select,input[type="number"]{
+      width:100%;padding:10px;border:1px solid #dcdbe5;border-radius:6px;font-size:14px
+    }
+    input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(102,126,234,0.08)}
+    .small{font-size:12px;color:#666;margin-top:6px}
+    .error{color:var(--danger);font-size:13px;margin-top:6px;display:none}
+    .hint{color:#666;font-size:12px}
+    .controls{display:flex;gap:10px;margin-top:14px}
+    button{padding:10px 14px;border-radius:6px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-secondary{background:#fff;border:1px solid #ddd}
+
+    /* Summary modal-like */
+    .summary{display:none;margin-top:18px;padding:14px;border-radius:8px;border:1px solid #e8e8f6;background:#fbfbff}
+    .summary.show{display:block}
+    .summary h3{margin:0 0 8px}
+    .summary p{margin:6px 0;color:#333}
+    .summary .meta{font-family:monospace;color:#444}
+    
+    /* Result / confirmation */
+    .confirmation{display:none;margin-top:14px;padding:12px;border-radius:8px;background:#e8f5e9;color:var(--ok);border:1px solid rgba(67,160,71,0.12)}
+    .confirmation.show{display:block}
+
+    /* Responsive */
+    @media (max-width:720px){
+      form .row{flex-direction:column}
+      .controls{flex-direction:column}
+    }
+
+    /* Testing / explanation area */
+    .testing{margin-top:22px;padding:14px;background:#fff;border-radius:8px;border-left:4px solid var(--accent)}
+    .testing h4{margin:0 0 8px}
+    .testing pre{background:#f7f7fb;padding:10px;border-radius:6px;overflow:auto}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>ฟอร์มจองห้องพัก (Realtime Validation)</h1>
+    <form id="bookingForm" autocomplete="off">
+      <div class="row">
+        <div class="col">
+          <label for="checkin">วันที่เช็คอิน</label>
+          <input type="date" id="checkin" required>
+          <div id="checkinError" class="error">ข้อความผิดพลาด</div>
+          <div class="small hint">เช็คอินต้องไม่เป็นวันที่ในอดีต</div>
+        </div>
+        <div class="col">
+          <label for="checkout">วันที่เช็คเอาท์</label>
+          <input type="date" id="checkout" required>
+          <div id="checkoutError" class="error">ข้อความผิดพลาด</div>
+          <div class="small hint">เช็คเอาท์ต้องหลังวันเช็คอิน</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="phone">เบอร์โทรศัพท์</label>
+          <input type="tel" id="phone" placeholder="0812345678" required>
+          <div id="phoneError" class="error">เบอร์ต้องมี 10 หลัก</div>
+        </div>
+        <div class="col">
+          <label for="room">ประเภทห้อง</label>
+          <select id="room" required>
+            <option value="">-- เลือกประเภทห้อง --</option>
+            <option value="single" data-max="1">Single (1 คน)</option>
+            <option value="double" data-max="2">Double (สูงสุด 2 คน)</option>
+            <option value="family" data-max="4">Family (สูงสุด 4 คน)</option>
+          </select>
+          <div class="small hint">เลือกประเภทห้องเพื่อปรับจำนวนผู้เข้าพักสูงสุด</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="guests">จำนวนผู้เข้าพัก</label>
+          <input type="number" id="guests" value="1" min="1" max="4" required>
+          <div id="guestsHint" class="small hint">ปรับได้ตามประเภทห้อง</div>
+        </div>
+        <div class="col">
+          <label for="name">ชื่อผู้จอง</label>
+          <input type="text" id="name" placeholder="ชื่อ-นามสกุล" required>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button type="button" id="previewBtn" class="btn-secondary">ดูสรุปก่อนยืนยัน</button>
+        <button type="submit" class="btn-primary">ยืนยันการจอง</button>
+      </div>
+    </form>
+
+    <div id="summary" class="summary" aria-live="polite">
+      <h3>สรุปการจอง</h3>
+      <p id="summaryContent">-</p>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button id="confirmBtn" class="btn-primary">ยืนยันและส่ง</button>
+        <button id="editBtn" class="btn-secondary">แก้ไข</button>
+      </div>
+    </div>
+
+    <div id="confirmation" class="confirmation">
+      การจองสำเร็จแล้ว ✓ ระบบรีเซ็ตฟอร์มให้เรียบร้อย
+    </div>
+
+    <div class="testing">
+      <h4>ผลการทดลอง / อธิบายโค้ด</h4>
+      <p>ด้านล่างเป็นคำอธิบายฟังก์ชันหลักที่ทดสอบและผลการเปลี่ยนแปลง</p>
+      <pre id="testLog">รอการทดสอบ...</pre>
+      <p class="small">แนบรูปประกอบการทดลอง: (คุณสามารถใช้ <em>สกรีนช็อต</em> ของหน้าเมื่อแสดง error, summary และ confirmation)</p>
+    </div>
+  </div>
+
+  <script>
+    // Helper: format date (YYYY-MM-DD) -> readable
+    const fmt = d => new Date(d).toLocaleDateString('th-TH');
+
+    // Elements
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const checkinError = document.getElementById('checkinError');
+    const checkoutError = document.getElementById('checkoutError');
+    const phone = document.getElementById('phone');
+    const phoneError = document.getElementById('phoneError');
+    const room = document.getElementById('room');
+    const guests = document.getElementById('guests');
+    const guestsHint = document.getElementById('guestsHint');
+    const nameInput = document.getElementById('name');
+    const previewBtn = document.getElementById('previewBtn');
+    const summary = document.getElementById('summary');
+    const summaryContent = document.getElementById('summaryContent');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const editBtn = document.getElementById('editBtn');
+    const confirmation = document.getElementById('confirmation');
+    const testLog = document.getElementById('testLog');
+    const form = document.getElementById('bookingForm');
+
+    // Set minimum dates: checkin >= today, checkout >= tomorrow
+    const setMinDates = () => {
+      const today = new Date();
+      const y = today.getFullYear();
+      const m = String(today.getMonth()+1).padStart(2,'0');
+      const d = String(today.getDate()).padStart(2,'0');
+      const minCheckin = `${y}-${m}-${d}`;
+      checkin.min = minCheckin;
+
+      // if checkout not set, set min to tomorrow
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate()+1);
+      const ty = tomorrow.getFullYear();
+      const tm = String(tomorrow.getMonth()+1).padStart(2,'0');
+      const td = String(tomorrow.getDate()).padStart(2,'0');
+      const minCheckout = `${ty}-${tm}-${td}`;
+      checkout.min = minCheckout;
+    };
+
+    // Validate checkin date (not in past)
+    const validateCheckin = () => {
+      checkinError.style.display='none';
+      if (!checkin.value) return true;
+      const now = new Date(); now.setHours(0,0,0,0);
+      const ci = new Date(checkin.value);
+      if (ci < now) {
+        checkinError.textContent = 'วันที่เช็คอินต้องไม่เป็นวันที่ผ่านมาแล้ว';
+        checkinError.style.display='block';
+        return false;
+      }
+      // adjust checkout.min to be at least day after checkin
+      const minCo = new Date(ci);
+      minCo.setDate(minCo.getDate()+1);
+      const y = minCo.getFullYear();
+      const m = String(minCo.getMonth()+1).padStart(2,'0');
+      const d = String(minCo.getDate()).padStart(2,'0');
+      checkout.min = `${y}-${m}-${d}`;
+      // if checkout exists but earlier, clear or set error elsewhere
+      return true;
+    };
+
+    // Validate checkout date (must be after checkin)
+    const validateCheckout = () => {
+      checkoutError.style.display='none';
+      if (!checkout.value || !checkin.value) return true;
+      const ci = new Date(checkin.value);
+      const co = new Date(checkout.value);
+      if (co <= ci) {
+        checkoutError.textContent = 'วันที่เช็คเอาท์ต้องมาหลังวันเช็คอิน';
+        checkoutError.style.display='block';
+        return false;
+      }
+      return true;
+    };
+
+    // Phone validation: must be 10 digits (Thai mobile)
+    const validatePhone = () => {
+      phoneError.style.display='none';
+      const v = phone.value.replace(/\D/g,''); // strip non-digits
+      if (v.length !== 10) {
+        phoneError.textContent = 'เบอร์โทรศัพท์ต้องมี 10 หลัก (เฉพาะตัวเลข)';
+        phoneError.style.display='block';
+        return false;
+      }
+      return true;
+    };
+
+    // Update guests max according to room type
+    const updateGuestsLimit = () => {
+      const opt = room.options[room.selectedIndex];
+      const max = parseInt(opt?.dataset?.max || 4,10);
+      guests.max = max;
+      guestsHint.textContent = `สูงสุด ${max} คน (ขึ้นกับประเภทห้อง)`;
+      if (Number(guests.value) > max) guests.value = max;
+    };
+
+    // Build booking summary and show
+    const showSummary = () => {
+      // run validations first
+      const ok1 = validateCheckin();
+      const ok2 = validateCheckout();
+      const ok3 = validatePhone();
+      if (!ok1 || !ok2 || !ok3) {
+        summary.classList.remove('show');
+        testLog.textContent = 'Validation failed — ไม่สามารถสร้างสรุปได้ (ดู error ด้านบน)';
+        return;
+      }
+
+      const data = {
+        name: nameInput.value || '(ไม่ได้ระบุ)',
+        checkin: checkin.value ? fmt(checkin.value) : '(ไม่ได้ระบุ)',
+        checkout: checkout.value ? fmt(checkout.value) : '(ไม่ได้ระบุ)',
+        phone: phone.value,
+        room: room.options[room.selectedIndex]?.text || '(ไม่ได้ระบุ)',
+        guests: guests.value
+      };
+
+      summaryContent.innerHTML = `ผู้จอง: <span class=\"meta\">${data.name}</span>\nวันที่เช็คอิน: <span class=\"meta\">${data.checkin}</span>\nวันที่เช็คเอาท์: <span class=\"meta\">${data.checkout}</span>\nประเภทห้อง: <span class=\"meta\">${data.room}</span>\nจำนวนผู้เข้าพัก: <span class=\"meta\">${data.guests}</span>\nเบอร์โทรศัพท์: <span class=\"meta\">${data.phone}</span>`;
+      summary.classList.add('show');
+      testLog.textContent = 'สร้างสรุปการจองเรียบร้อย — รอการยืนยัน';
+    };
+
+    // Confirm booking: simulate submit, then reset form and show confirmation
+    const confirmBooking = () => {
+      // final validation
+      const ok = validateCheckin() && validateCheckout() && validatePhone();
+      if (!ok) { testLog.textContent='Validation failed on confirm'; return; }
+      // simulate server call (setTimeout)
+      confirmBtn.disabled = true; confirmBtn.textContent='กำลังส่ง...';
+      setTimeout(()=>{
+        confirmBtn.disabled = false; confirmBtn.textContent='ยืนยันและส่ง';
+        summary.classList.remove('show');
+        confirmation.classList.add('show');
+        testLog.textContent = 'การจองสำเร็จ — ฟอร์มจะถูกรีเซ็ต';
+        // reset form
+        form.reset();
+        setMinDates(); // re-apply mins
+        updateGuestsLimit();
+        // hide confirmation after a while
+        setTimeout(()=> confirmation.classList.remove('show'),3000);
+      },900);
+    };
+
+    // Event listeners: real-time checks
+    document.addEventListener('DOMContentLoaded', ()=>{
+      setMinDates();
+      updateGuestsLimit();
+    });
+
+    checkin.addEventListener('change', ()=>{
+      validateCheckin();
+      validateCheckout();
+      // ensure guests limit remains
+      updateGuestsLimit();
+    });
+    checkout.addEventListener('change', ()=>{ validateCheckout(); });
+    phone.addEventListener('input', ()=>{ validatePhone(); });
+    room.addEventListener('change', ()=>{ updateGuestsLimit(); });
+    guests.addEventListener('input', ()=>{
+      const max = Number(guests.max||4);
+      if (Number(guests.value) > max) guests.value = max;
+    });
+
+    previewBtn.addEventListener('click', showSummary);
+    editBtn.addEventListener('click', ()=> summary.classList.remove('show'));
+    confirmBtn.addEventListener('click', confirmBooking);
+
+    // On submit: prevent default and open summary first
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      showSummary();
+    });
+
+    // For testing explanation, populate initial log
+    testLog.textContent = `ทดสอบการทำงาน:\n- ตรวจสอบวันที่เช็คอินไม่ให้เป็นวันที่ผ่านมาแล้ว\n- เมื่อตั้งวันที่เช็คอินแล้ว checkout.min ถูกปรับให้อยู่ถัดไปอย่างน้อยวันถัดมา\n- เบอร์โทรศัพท์ตรวจแบบเรียลไทม์ให้มี 10 หลัก\n- เลือกประเภทห้องจะปรับ max ของจำนวนผู้เข้าพักโดยอัตโนมัติ\n- กด 'ดูสรุปก่อนยืนยัน' เพื่อดูรายละเอียด และกด 'ยืนยันและส่ง' จะรีเซ็ตฟอร์มและแสดงข้อความสำเร็จ\n`;
+  </script>
+</body>
+</html>

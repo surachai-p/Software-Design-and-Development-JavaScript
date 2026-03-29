@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมคำนวณคะแนนและราคา</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .programs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .programs {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .program-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .code-block .keyword {
+            color: #ff79c6;
+        }
+        
+        .code-block .string {
+            color: #f1fa8c;
+        }
+        
+        .code-block .number {
+            color: #bd93f9;
+        }
+        
+        .code-block .comment {
+            color: #6272a4;
+        }
+        
+        .result-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .result-value {
+            color: #667eea;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .output-title {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 โปรแกรมคำนวณคะแนนและราคา</h1>
+        
+        <div class="programs">
+            <!-- โปรแกรมที่ 1: คำนวณคะแนนเฉลี่ย -->
+            <div class="program-card">
+                <div class="program-header">📚 โปรแกรมคำนวณคะแนนเฉลี่ย 3 วิชา</div>
+                <div class="program-content">
+                    <div class="code-block"><pre><span class="comment">// กำหนดคะแนน 3 วิชา</span>
+<span class="keyword">let</span> score1 = 85;  <span class="comment">// วิชาที่ 1</span>
+<span class="keyword">let</span> score2 = 90;  <span class="comment">// วิชาที่ 2</span>
+<span class="keyword">let</span> score3 = 78;  <span class="comment">// วิชาที่ 3</span>
+
+<span class="comment">// หาค่าคะแนนรวม</span>
+<span class="keyword">let</span> totalScore = score1 + score2 + score3;
+<span class="comment">// คำนวณ: 85 + 90 + 78 = 253</span>
+
+<span class="comment">// หาค่าคะแนนเฉลี่ย</span>
+<span class="keyword">let</span> average = totalScore / 3;
+<span class="comment">// คำนวณ: 253 / 3 = 84.33</span></pre></div>
+                    
+                    <div class="output-title">📤 ผลการคำนวณ:</div>
+                    <div class="result-box">
+                        <div class="result-item">
+                            <span class="result-label">คะแนนวิชาที่ 1:</span>
+                            <span class="result-value">85</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">คะแนนวิชาที่ 2:</span>
+                            <span class="result-value">90</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">คะแนนวิชาที่ 3:</span>
+                            <span class="result-value">78</span>
+                        </div>
+                        <div class="result-item" style="border-bottom: 2px solid #667eea; margin-top: 10px; padding-top: 10px;">
+                            <span class="result-label">คะแนนรวม:</span>
+                            <span class="result-value">253</span>
+                        </div>
+                        <div class="result-item" style="color: #42a5f5; font-weight: 700;">
+                            <span class="result-label">คะแนนเฉลี่ย:</span>
+                            <span class="result-value" style="color: #42a5f5; font-size: 16px;">84.33</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- โปรแกรมที่ 2: คำนวณราคารวม VAT -->
+            <div class="program-card">
+                <div class="program-header">💰 โปรแกรมคำนวณราคาสินค้ารวม VAT 7%</div>
+                <div class="program-content">
+                    <div class="code-block"><pre><span class="comment">// กำหนดข้อมูลสินค้า</span>
+<span class="keyword">let</span> productName = <span class="string">"แล็ปท็อป"</span>;
+<span class="keyword">let</span> price = <span class="number">25000</span>;  <span class="comment">// ราคาสินค้า (บาท)</span>
+
+<span class="comment">// คำนวณ VAT 7%</span>
+<span class="keyword">let</span> vat = price * <span class="number">0.07</span>;
+<span class="comment">// คำนวณ: 25000 * 0.07 = 1750</span>
+
+<span class="comment">// คำนวณราคารวม VAT</span>
+<span class="keyword">let</span> totalPrice = price + vat;
+<span class="comment">// คำนวณ: 25000 + 1750 = 26750</span></pre></div>
+                    
+                    <div class="output-title">📤 ผลการคำนวณ:</div>
+                    <div class="result-box">
+                        <div class="result-item">
+                            <span class="result-label">ชื่อสินค้า:</span>
+                            <span class="result-value">แล็ปท็อป</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">ราคาสินค้า:</span>
+                            <span class="result-value">25,000 บาท</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">VAT 7%:</span>
+                            <span class="result-value">1,750 บาท</span>
+                        </div>
+                        <div class="result-item" style="border-bottom: 2px solid #667eea; margin-top: 10px; padding-top: 10px;">
+                            <span class="result-label">ราคารวม:</span>
+                            <span class="result-value">26,750 บาท</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <script>
+        // โปรแกรมจริงสามารถรันได้ที่นี่
+        console.log("=== โปรแกรมที่ 1: คำนวณคะแนนเฉลี่ย ===");
+        let score1 = 85;
+        let score2 = 90;
+        let score3 = 78;
+        let totalScore = score1 + score2 + score3;
+        let average = totalScore / 3;
+        
+        console.log(`คะแนนวิชาที่ 1: ${score1}`);
+        console.log(`คะแนนวิชาที่ 2: ${score2}`);
+        console.log(`คะแนนวิชาที่ 3: ${score3}`);
+        console.log(`คะแนนรวม: ${totalScore}`);
+        console.log(`คะแนนเฉลี่ย: ${average.toFixed(2)}`);
+        
+        console.log("\n=== โปรแกรมที่ 2: คำนวณราคารวม VAT ===");
+        let productName = "แล็ปท็อป";
+        let price = 25000;
+        let vat = price * 0.07;
+        let totalPrice = price + vat;
+        
+        console.log(`ชื่อสินค้า: ${productName}`);
+        console.log(`ราคาสินค้า: ${price.toLocaleString()} บาท`);
+        console.log(`VAT 7%: ${vat.toLocaleString()} บาท`);
+        console.log(`ราคารวม: ${totalPrice.toLocaleString()} บาท`);
+    </script>
+</body>
+</html>

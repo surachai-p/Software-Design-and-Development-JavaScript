@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่า BMI (ดัชนีมวลกาย)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .input-hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-calculate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-calculate:active {
+            transform: translateY(0);
+        }
+        
+        .btn-reset {
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .btn-reset:hover {
+            background: #efefef;
+            border-color: #ccc;
+        }
+        
+        .result-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            display: none;
+        }
+        
+        .result-section.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .bmi-score {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .bmi-status {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .status-underweight {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status-normal {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .status-overweight {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        
+        .status-obese {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .bmi-description {
+            color: #666;
+            font-size: 13px;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .detail-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .detail-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .bmi-categories {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .categories-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-radius: 6px;
+            background: #f9f9f9;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        .category-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .category-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .category-range {
+            color: #999;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            border-left: 4px solid #c62828;
+        }
+        
+        .error.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚖️ คำนวณค่า BMI</h1>
+            <p>ดัชนีมวลกาย (Body Mass Index)</p>
+        </div>
+        
+        <div class="content">
+            <form id="bmiForm">
+                <div class="form-group">
+                    <label for="weight">น้ำหนัก (กิโลกรัม)</label>
+                    <input 
+                        type="number" 
+                        id="weight" 
+                        placeholder="เช่น 65"
+                        step="0.1"
+                        min="0"
+                        required
+                    >
+                    <div class="input-hint">✓ ป้อนน้ำหนักของคุณเป็นกิโลกรัม</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="height">ส่วนสูง (เมตร)</label>
+                    <input 
+                        type="number" 
+                        id="height" 
+                        placeholder="เช่น 1.75"
+                        step="0.01"
+                        min="0"
+                        required
+                    >
+                    <div class="input-hint">✓ ป้อนส่วนสูงของคุณเป็นเมตร</div>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn-calculate">คำนวณ BMI</button>
+                    <button type="reset" class="btn-reset">ล้างข้อมูล</button>
+                </div>
+            </form>
+            
+            <div class="error" id="errorMsg"></div>
+            
+            <div class="result-section" id="resultSection">
+                <div class="result-box">
+                    <div class="bmi-score" id="bmiScore">--</div>
+                    <div class="bmi-status" id="bmiStatus">--</div>
+                    <div class="bmi-description" id="bmiDescription">--</div>
+                </div>
+                
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-label">น้ำหนัก</div>
+                        <div class="detail-value" id="displayWeight">-- kg</div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-label">ส่วนสูง</div>
+                        <div class="detail-value" id="displayHeight">-- m</div>
+                    </div>
+                </div>
+                
+                <div class="bmi-categories">
+                    <div class="categories-title">📊 ช่วง BMI มาตรฐาน</div>
+                    <div class="category-item">
+                        <span class="category-name">💙 ผอม (Underweight)</span>
+                        <span class="category-range">BMI < 18.5</span>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-name">💚 สมส่วน (Normal weight)</span>
+                        <span class="category-range">18.5 - 24.9</span>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-name">💛 เริ่มอ้วน (Overweight)</span>
+                        <span class="category-range">25 - 29.9</span>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-name">❤️ อ้วน (Obese)</span>
+                        <span class="category-range">BMI ≥ 30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ===== Arrow Function คำนวณ BMI =====
+        const calculateBMI = (weight, height) => {
+            return (weight / (height * height)).toFixed(2);
+        };
+        
+        // ===== Arrow Function ตรวจสอบสถานะ =====
+        const getBMIStatus = (bmi) => {
+            if (bmi < 18.5) {
+                return {
+                    status: '💙 ผอม (Underweight)',
+                    description: 'คุณมีน้ำหนักน้อยกว่าเกณฑ์ปกติ ควรเพิ่มน้ำหนักและบริโภคอาหารที่มีคุณค่าทางโภคนักเพื่อสุขภาพที่ดี',
+                    class: 'status-underweight'
+                };
+            } else if (bmi < 25) {
+                return {
+                    status: '💚 สมส่วน (Normal weight)',
+                    description: 'ยินดีด้วย! คุณมีน้ำหนักที่เหมาะสมกับส่วนสูง จงรักษาสุขภาพและออกกำลังกายสม่ำเสมอ',
+                    class: 'status-normal'
+                };
+            } else if (bmi < 30) {
+                return {
+                    status: '💛 เริ่มอ้วน (Overweight)',
+                    description: 'คุณมีแนวโน้มน้ำหนักเกิน ควรออกกำลังกายสม่ำเสมอและปรับเปลี่ยนพฤติกรรมการรับประทานอาหาร',
+                    class: 'status-overweight'
+                };
+            } else {
+                return {
+                    status: '❤️ อ้วน (Obese)',
+                    description: 'คุณมีน้ำหนักเกินกว่าปกติมาก ควรปรึกษาแพทย์และกำหนดแผนการลดน้ำหนัก',
+                    class: 'status-obese'
+                };
+            }
+        };
+        
+        // ===== Event Listener =====
+        const form = document.getElementById('bmiForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const errorMsg = document.getElementById('errorMsg');
+            
+            // ตรวจสอบค่าที่รับได้
+            if (!weight || !height || weight <= 0 || height <= 0) {
+                errorMsg.textContent = '❌ กรุณาป้อนค่าที่ถูกต้อง (น้ำหนักและส่วนสูงต้องมากกว่า 0)';
+                errorMsg.classList.add('show');
+                document.getElementById('resultSection').classList.remove('show');
+                return;
+            }
+            
+            if (height > 3) {
+                errorMsg.textContent = '❌ ส่วนสูงดูเหมือนไม่ถูกต้อง กรุณาป้อนเป็นเมตร (เช่น 1.75)';
+                errorMsg.classList.add('show');
+                document.getElementById('resultSection').classList.remove('show');
+                return;
+            }
+            
+            errorMsg.classList.remove('show');
+            
+            // คำนวณ BMI โดยใช้ Arrow Function
+            const bmi = calculateBMI(weight, height);
+            const statusInfo = getBMIStatus(parseFloat(bmi));
+            
+            // แสดงผลลัพธ์
+            document.getElementById('bmiScore').textContent = bmi;
+            document.getElementById('bmiStatus').textContent = statusInfo.status;
+            document.getElementById('bmiStatus').className = 'bmi-status ' + statusInfo.class;
+            document.getElementById('bmiDescription').textContent = statusInfo.description;
+            document.getElementById('displayWeight').textContent = weight + ' kg';
+            document.getElementById('displayHeight').textContent = height + ' m';
+            
+            // แสดงส่วน result
+            document.getElementById('resultSection').classList.add('show');
+        });
+        
+        // Reset form
+        form.addEventListener('reset', function() {
+            document.getElementById('resultSection').classList.remove('show');
+            document.getElementById('errorMsg').classList.remove('show');
+        });
+    </script>
+</body>
+</html>
