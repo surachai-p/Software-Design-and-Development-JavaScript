@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ 2.2</title>
+<style>
+    body{
+        font-family: Arial;
+        text-align:center;
+        margin-top:40px;
+    }
+    button{
+        padding:10px 18px;
+        margin:10px;
+        font-size:16px;
+        cursor:pointer;
+    }
+    .box{
+        margin-top:20px;
+        font-size:18px;
+        color:darkgreen;
+    }
+</style>
+</head>
+<body>
+
+<h2>การคำนวณพื้นฐาน JavaScript</h2>
+
+<!-- ปุ่มข้อ 1 -->
+<button onclick="calcAverage()">คำนวณค่าเฉลี่ย 3 วิชา</button>
+
+<!-- ปุ่มข้อ 2 -->
+<button onclick="calcVAT()">คำนวณราคาสินค้ารวม VAT</button>
+
+<div id="output" class="box"></div>
+
+
+<script>
+// ======================================
+// ข้อ 1 คำนวณค่าเฉลี่ย 3 วิชา
+// ======================================
+function calcAverage(){
+
+    // กำหนดคะแนน 3 วิชา
+    let score1 = 80;
+    let score2 = 75;
+    let score3 = 90;
+
+    // คำนวณค่าเฉลี่ย
+    let average = (score1 + score2 + score3) / 3;
+
+    // แสดงผล
+    document.getElementById("output").innerHTML =
+        "<b>คะแนนวิชา 1:</b> " + score1 + "<br>" +
+        "<b>คะแนนวิชา 2:</b> " + score2 + "<br>" +
+        "<b>คะแนนวิชา 3:</b> " + score3 + "<br><br>" +
+        "<b>ค่าเฉลี่ย = </b>" + average.toFixed(2);
+}
+
+
+
+// ======================================
+// ข้อ 2 คำนวณราคาสินค้ารวม VAT 7%
+// ======================================
+function calcVAT(){
+
+    // ข้อมูลสินค้า
+    let productName = "เมาส์ไร้สาย";
+    let price = 500;
+
+    // คำนวณ VAT 7%
+    let vat = price * 0.07;
+
+    // ราคาสุทธิ
+    let total = price + vat;
+
+    // แสดงผล
+    document.getElementById("output").innerHTML =
+        "<b>สินค้า:</b> " + productName + "<br>" +
+        "<b>ราคา:</b> " + price + " บาท<br>" +
+        "<b>VAT 7%:</b> " + vat.toFixed(2) + " บาท<br><br>" +
+        "<b>ราคาสุทธิ:</b> " + total.toFixed(2) + " บาท";
+}
+</script>
+
+</body>
+</html>

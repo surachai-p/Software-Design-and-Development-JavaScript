@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ Function</title>
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    margin-top:30px;
+}
+input{
+    padding:8px;
+    margin:5px;
+}
+button{
+    padding:10px 18px;
+    margin:10px;
+    cursor:pointer;
+}
+#output{
+    margin-top:20px;
+    font-size:18px;
+    color:darkgreen;
+}
+</style>
+</head>
+<body>
+
+<h2>แบบทดสอบ 2.4.1 Functions</h2>
+
+<!-- BMI -->
+<h3>คำนวณ BMI</h3>
+<input type="number" id="weight" placeholder="น้ำหนัก (kg)">
+<input type="number" id="height" placeholder="ส่วนสูง (cm)">
+<button onclick="showBMI()">คำนวณ BMI</button>
+
+<hr>
+
+<!-- Greeting -->
+<h3>ทักทายตามอายุ</h3>
+<input type="text" id="name" placeholder="ชื่อ">
+<input type="number" id="age" placeholder="อายุ">
+<button onclick="showGreeting()">ทักทาย</button>
+
+<hr>
+
+<!-- Password -->
+<h3>ตรวจสอบรหัสผ่าน</h3>
+<input type="password" id="password" placeholder="รหัสผ่าน">
+<button onclick="checkPassword()">ตรวจสอบ</button>
+
+<div id="output"></div>
+
+<script>
+// =================================
+// 1) Function คำนวณ BMI
+// =================================
+function calculateBMI(weight, height){
+    height = height / 100; // แปลง cm → m
+    return weight / (height * height);
+}
+
+function showBMI(){
+    let w = document.getElementById("weight").value;
+    let h = document.getElementById("height").value;
+
+    let bmi = calculateBMI(w, h);
+
+    document.getElementById("output").innerHTML =
+        "ค่า BMI = " + bmi.toFixed(2);
+}
+
+
+
+// =================================
+// 2) Function ทักทายตามอายุ
+// =================================
+function greeting(name, age){
+
+    if(age < 13){
+        return "สวัสดีเด็กน้อย " + name;
+    }
+    else if(age < 20){
+        return "สวัสดีวัยรุ่น " + name;
+    }
+    else{
+        return "สวัสดีคุณ " + name;
+    }
+}
+
+function showGreeting(){
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+
+    document.getElementById("output").innerHTML =
+        greeting(name, age);
+}
+
+
+
+// =================================
+// 3) Function ตรวจสอบรหัสผ่าน
+// =================================
+function isValidPassword(password){
+    return password.length > 8;
+}
+
+function checkPassword(){
+    let pass = document.getElementById("password").value;
+
+    if(isValidPassword(pass)){
+        result = "รหัสผ่านปลอดภัย ✔";
+    }else{
+        result = "รหัสผ่านต้องมากกว่า 8 ตัวอักษร ✖";
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

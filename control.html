@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>แบบทดสอบ 2.3</title>
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    margin-top:30px;
+}
+button{
+    padding:10px 18px;
+    margin:8px;
+    cursor:pointer;
+}
+#output{
+    margin-top:20px;
+    font-size:18px;
+    color:darkblue;
+}
+</style>
+</head>
+<body>
+
+<h2>แบบทดสอบการควบคุมการทำงาน</h2>
+
+<button onclick="checkNumber()">ตรวจเลขคู่/คี่</button>
+<button onclick="showMultiplication()">แสดงสูตรคูณ</button>
+<button onclick="countDown()">นับถอยหลัง</button>
+<button onclick="checkAge()">ตรวจช่วงวัย</button>
+
+<div id="output"></div>
+
+<script>
+// =================================
+// ข้อ 1 ตรวจเลขคู่หรือเลขคี่
+// =================================
+function checkNumber(){
+
+    let number = 7; // เปลี่ยนเลขได้
+
+    if(number % 2 === 0){
+        result = "เลข " + number + " เป็นเลขคู่";
+    }else{
+        result = "เลข " + number + " เป็นเลขคี่";
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+
+
+
+// =================================
+// ข้อ 2 สูตรคูณ
+// =================================
+function showMultiplication(){
+
+    let text = "<b>สูตรคูณแม่ 2 (for loop)</b><br>";
+
+    // for loop แม่ 2
+    for(let i=1;i<=12;i++){
+        text += "2 x " + i + " = " + (2*i) + "<br>";
+    }
+
+    text += "<br><b>สูตรคูณแม่ 3 (while loop)</b><br>";
+
+    // while loop แม่ 3
+    let j=1;
+    while(j<=12){
+        text += "3 x " + j + " = " + (3*j) + "<br>";
+        j++;
+    }
+
+    document.getElementById("output").innerHTML = text;
+}
+
+
+
+// =================================
+// ข้อ 3 นับถอยหลัง
+// =================================
+function countDown(){
+
+    let text="";
+
+    for(let i=10;i>=1;i--){
+        text += i + " ";
+    }
+
+    document.getElementById("output").innerHTML = text;
+}
+
+
+
+// =================================
+// ข้อ 4 ตรวจช่วงวัย
+// =================================
+function checkAge(){
+
+    let age = 20; // เปลี่ยนอายุได้
+    let result="";
+
+    if(age <= 12){
+        result = "วัยเด็ก";
+    }
+    else if(age <= 19){
+        result = "วัยรุ่น";
+    }
+    else{
+        result = "วัยผู้ใหญ่";
+    }
+
+    document.getElementById("output").innerHTML =
+        "อายุ " + age + " ปี → " + result;
+}
+</script>
+
+</body>
+</html>

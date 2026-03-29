@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI</title>
+</head>
+<body>
+
+น้ำหนัก <input type="number" id="w"><br><br>
+ส่วนสูง <input type="number" id="h"><br><br>
+
+<p id="output"></p>
+
+<button onclick="showBMI(
+document.getElementById('w').value,
+document.getElementById('h').value
+)">คำนวณ</button>
+
+<script>
+
+// Arrow Function คำนวณ BMI
+const calcBMI = (w,h) => {
+    h = h/100;
+    return w/(h*h);
+};
+
+// Arrow Function แสดงผล
+const showBMI = (w,h) => {
+
+    let bmi = calcBMI(w,h);
+    let result="";
+
+    if(bmi < 18.5) result="ผอม";
+    else if(bmi < 25) result="สมส่วน";
+    else result="อ้วน";
+
+    document.getElementById("output").innerHTML =
+        "BMI = " + bmi.toFixed(2) + " → " + result;
+};
+
+</script>
+
+</body>
+</html>
