@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึกปฏิบัติ JavaScript</title>
+</head>
+<body>
+
+    <h2>แบบฝึกปฏิบัติที่ 1</h2>
+
+    <!-- ปุ่มที่ 1 : Inline JavaScript -->
+    <button onclick="alert('ชื่อ: สุณัฐชา แก้วลา');">
+        ปุ่มที่ 1 (แสดงชื่อ)
+    </button>
+
+    <br><br>
+
+    <!-- ปุ่มที่ 2 : Internal JavaScript -->
+    <button id="btnDate">
+        ปุ่มที่ 2 (แสดงวันที่ปัจจุบัน)
+    </button>
+
+    <br><br>
+
+    <!-- ปุ่มที่ 3 : External JavaScript -->
+    <button onclick="showTime();">
+        ปุ่มที่ 3 (แสดงเวลาปัจจุบัน)
+    </button>
+
+    <br><br><hr><br>
+
+    <!-- ช่องกรอกข้อความ -->
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showMessage();">แสดงข้อความ</button>
+
+    <p id="result"></p>
+
+    <!-- Internal JavaScript -->
+    <script>
+        // ปุ่มที่ 2 แสดงวันที่ปัจจุบัน
+        document.getElementById("btnDate").onclick = function() {
+            let today = new Date();
+            alert("วันที่ปัจจุบัน: " + today.toLocaleDateString());
+        };
+
+        // ฟังก์ชันแสดงข้อความจาก textbox
+        function showMessage() {
+            let text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML = "ข้อความที่คุณพิมพ์: " + text;
+        }
+    </script>
+
+    <!-- เรียกใช้ External JavaScript -->
+    <script src="lab1.js"></script>
+
+</body>
+</html>

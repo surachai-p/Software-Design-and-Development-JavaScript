@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฟอร์มจองห้องพัก</title>
+</head>
+<body>
+
+<h2>แบบฟอร์มจองห้องพัก</h2>
+
+<form id="bookingForm">
+
+    <label>ชื่อ-นามสกุล</label><br>
+    <input type="text" id="fullname"><br><br>
+
+    <label>เบอร์โทรศัพท์</label><br>
+    <input type="text" id="phone"><br><br>
+
+    <label>ประเภทห้อง</label><br>
+    <select id="roomtype">
+        <option value="">-- เลือกประเภทห้อง --</option>
+        <option value="standard">ห้องมาตรฐาน</option>
+        <option value="deluxe">ห้องดีลักซ์</option>
+        <option value="suite">ห้องสวีท</option>
+    </select>
+    <br><br>
+
+    <label>จำนวนผู้เข้าพัก</label><br>
+    <input type="number" id="guests" min="1">
+    <br><br>
+
+    <label>วันเช็คอิน</label><br>
+    <input type="date" id="checkin"><br><br>
+
+    <label>วันเช็คเอาท์</label><br>
+    <input type="date" id="checkout"><br><br>
+
+    <button type="submit">จองห้องพัก</button>
+
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>
