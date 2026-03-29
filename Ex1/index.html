@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('นายภูผาสุข ผาสุข')">ปุ่มที่ 1 ชื่อนศ.</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2 วันที่ปัจจุบัน</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="hello3();">ปุ่มที่ 3 เวลาปัจจุบัน</button>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('Day/Month/Year: ' + new Date().toLocaleDateString());
+        };
+    </script>
+
+    <input type="text" id="input1" placeholder="Enter Input">
+    <button id="btnS">Show input</button>
+
+    <script>
+        document.getElementById('btnS').onclick = function() {
+            var userInput = document.getElementById('input1').value;
+            alert(userInput);
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
