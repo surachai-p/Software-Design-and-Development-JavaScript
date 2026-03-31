@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.1 - JavaScript Variables & Objects</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 { color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .info-group { margin: 20px 0; line-height: 1.8; }
+        .label { font-weight: bold; color: #555; }
+        .value { color: #2c3e50; }
+        .footer { font-size: 0.8rem; color: #888; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>สรุปข้อมูลนักศึกษา (Lab 2.1)</h2>
+        
+        <div id="display" class="info-group">
+            </div>
+
+        <p class="footer">* ตรวจสอบรายละเอียดเพิ่มเติมได้ที่ Console (F12)</p>
+    </div>
+
+    <script>
+        /* --- 1. การประกาศตัวแปรตามโจทย์ข้อ 1 --- */
+        const student_id = "68030085";      // รหัสนักศึกษา (ใช้ const เพราะรหัสไม่เปลี่ยน)
+        let student_name = "นางสาวณัฐฎวรรณ ช่างเก็บ'";  // ชื่อนักศึกษา (ใช้ let เผื่อเปลี่ยนคำนำหน้าหรือชื่อ)
+        let midterm_score = 38;               // คะแนนกลางภาค
+        let final_score = 45;                 // คะแนนปลายภาค
+
+        /* --- 2. การสร้าง Object ตามโจทย์ข้อ 2 --- */
+        const studentProfile = {
+            id: student_id,
+            name: student_name,
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 3.85
+        };
+
+        // แสดงผลบนหน้าเว็บ (DOM Manipulation)
+        const displayDiv = document.getElementById('display');
+        displayDiv.innerHTML = `
+            <p><span class="label">รหัส:</span> <span class="value">${studentProfile.id}</span></p>
+            <p><span class="label">ชื่อ:</span> <span class="value">${studentProfile.name}</span></p>
+            <p><span class="label">สาขา:</span> <span class="value">${studentProfile.major}</span></p>
+            <p><span class="label">คะแนนรวม:</span> <span class="value">${midterm_score + final_score} / 100</span></p>
+            <p><span class="label">เกรดเฉลี่ย:</span> <span class="value">${studentProfile.gpa}</span></p>
+        `;
+
+        // แสดงผลใน Console ตามมาตรฐานการ Debug
+        console.log("--- แบบทดสอบที่ 2.1 ---");
+        console.log("ข้อมูลตัวแปรเดี่ยว:", student_id, student_name, midterm_score, final_score);
+        console.log("ข้อมูลแบบ Object:", studentProfile);
+    </script>
+</body>
+</html>

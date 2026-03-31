@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.4 - Functions Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --success: #00b894;
+            --danger: #d63031;
+            --dark: #2d3436;
+        }
+        body { font-family: 'Sarabun', sans-serif; background: #dfe6e9; padding: 40px 20px; color: var(--dark); }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; }
+        .result-area { background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 5px solid var(--primary); min-height: 40px; }
+        .status-pass { color: var(--success); font-weight: bold; }
+        .status-fail { color: var(--danger); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Lab 2.4: ระบบประมวลผลด้วย Function</h1>
+
+        <div class="card">
+            <h2>1. คำนวณค่า BMI</h2>
+            <p>น้ำหนัก 70 kg, ส่วนสูง 175 cm</p>
+            <div id="bmi-result" class="result-area"></div>
+        </div>
+
+        <div class="card">
+            <h2>2. ระบบทักทายอัจฉริยะ</h2>
+            <div id="greet-result" class="result-area"></div>
+        </div>
+
+        <div class="card">
+            <h2>3. ตรวจสอบความปลอดภัยรหัสผ่าน</h2>
+            <div id="pass-result" class="result-area"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. Function คำนวณค่า BMI
+        // สูตร: BMI = น้ำหนัก (kg) / (ส่วนสูง (m) * ส่วนสูง (m))
+        // ==========================================
+        function calculateBMI(weight, heightCm) {
+            let heightM = heightCm / 100;
+            let bmi = weight / (heightM * heightM);
+            return bmi.toFixed(2);
+        }
+
+        const bmiVal = calculateBMI(70, 175);
+        document.getElementById('bmi-result').innerHTML = `ค่า BMI ของคุณคือ: <strong>${bmiVal}</strong>`;
+
+
+        // ==========================================
+        // 2. Function ทักทายตามอายุ
+        // ==========================================
+        function smartGreeting(name, age) {
+            let message = "";
+            if (age <= 12) {
+                message = `สวัสดีจ๊ะ น้อง${name} (วัยเด็ก)`;
+            } else if (age <= 22) {
+                message = `สวัสดีครับ คุณ${name} (วัยรุ่น/นักศึกษา)`;
+            } else {
+                message = `สวัสดีครับ ท่าน${name} (วัยทำงาน)`;
+            }
+            return message;
+        }
+
+        const greeting = smartGreeting("สมชาย", 20);
+        document.getElementById('greet-result').textContent = greeting;
+
+
+        // ==========================================
+        // 3. Function ตรวจสอบความยาวรหัสผ่าน
+        // ==========================================
+        const checkPassword = (password) => {
+            if (password.length >= 8) {
+                return `<span class="status-pass">✅ รหัสผ่านปลอดภัย (ความยาว ${password.length} ตัวอักษร)</span>`;
+            } else {
+                return `<span class="status-fail">❌ รหัสผ่านสั้นเกินไป (ต้องมีอย่างน้อย 8 ตัวอักษร)</span>`;
+            }
+        };
+
+        // ทดสอบส่งค่ารหัสผ่านเข้าไปตรวจสอบ
+        document.getElementById('pass-result').innerHTML = checkPassword("mySecret123");
+
+
+        // --- แสดงผลใน Console เพื่อการตรวจสอบ ---
+        console.log("BMI Result:", bmiVal);
+        console.log("Greeting:", greeting);
+    </script>
+</body>
+</html>

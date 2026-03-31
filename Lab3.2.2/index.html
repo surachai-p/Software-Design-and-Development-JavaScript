@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์ - Lab 3.2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f0f2f5; /* ปรับพื้นหลังให้เข้มขึ้นเล็กน้อยเพื่อให้ฟอร์มเด่น */
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* เพิ่มมิติความลึก */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px; /* เพิ่มพื้นที่คลิกให้ง่ายขึ้น */
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: all 0.3s ease; /* เพิ่มความนุ่มนวล */
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52,152,219,0.2);
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #3498db;
+            box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            body { padding: 20px 15px; }
+            form { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏨 ระบบจองห้องพักออนไลน์</h1>
+    
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="นาย/นางสาว ..." required>
+        </div>
+
+        <div style="display: flex; gap: 15px;">
+            <div class="form-group" style="flex: 1;">
+                <label for="email">อีเมล:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="phone">เบอร์โทรศัพท์:</label>
+                <input type="tel" id="phone" name="phone" placeholder="08x-xxx-xxxx" required>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 15px;">
+            <div class="form-group" style="flex: 1;">
+                <label for="checkin">วันที่เช็คอิน:</label>
+                <input type="date" id="checkin" name="checkin" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="checkout">วันที่เช็คเอาท์:</label>
+                <input type="date" id="checkout" name="checkout" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">เลือกห้องพักที่คุณต้องการ</option>
+                <option value="standard">Standard Room (1,200฿)</option>
+                <option value="deluxe">Deluxe Room (2,500฿)</option>
+                <option value="suite">Executive Suite (5,000฿)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="1" required>
+        </div>
+
+        <button type="submit">ยืนยันการจองห้องพัก</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Interaction Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>JS Interaction Lab</h1>
+            <p>การจัดการเหตุการณ์และการควบคุม DOM</p>
+        </header>
+
+        <div class="card">
+            <h3><span class="step-num">1</span> ข้อมูลระบบและเวลา</h3>
+            <div class="button-group">
+                <button class="btn btn-primary" id="btn-name">แสดงชื่อผู้ใช้งาน</button>
+                <button class="btn btn-secondary" id="btn-date">วันที่ปัจจุบัน</button>
+                <button class="btn btn-accent" id="btn-time">เวลาปัจจุบัน</button>
+            </div>
+            <div id="display-output" class="output-box">คลิกที่ปุ่มเพื่อแสดงข้อมูล...</div>
+        </div>
+
+        <div class="card">
+            <h3><span class="step-num">2</span> ดึงข้อมูลจาก Input</h3>
+            <div class="input-wrapper">
+                <input type="text" id="myInput" placeholder="กรอกข้อความที่นี่...">
+                <button id="btn-display" class="btn btn-submit">ส่งข้อมูล</button>
+            </div>
+            <div id="text-output" class="output-box info-box">รอรับข้อมูลจากคุณ...</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

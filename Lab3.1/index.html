@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ 3.1 - BMI Calculator</title>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; }
+        h2 { text-align: center; color: #2c3e50; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #6c5ce7; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #5649c1; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>คำนวณค่า BMI</h2>
+        
+        <div class="input-group">
+            <label>น้ำหนัก (กิโลกรัม)</label>
+            <input type="number" id="weight" placeholder="เช่น 70">
+        </div>
+
+        <div class="input-group">
+            <label>ส่วนสูง (เซนติเมตร)</label>
+            <input type="number" id="height" placeholder="เช่น 175">
+        </div>
+
+        <button onclick="handleCalculation()">คำนวณผลลัพธ์</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // 1. สร้าง Arrow Function สำหรับคำนวณและประเมินผล
+        const calculateBMI = (w, h) => {
+            const heightInMeters = h / 100;
+            const bmi = (w / (heightInMeters * heightInMeters)).toFixed(2);
+            
+            let status = "";
+            let color = "";
+
+            if (bmi < 18.5) {
+                status = "ผอมเกินไป";
+                color = "#fab1a0"; // สีส้มอ่อน
+            } else if (bmi <= 24.9) {
+                status = "สมส่วน (สุขภาพดี)";
+                color = "#55efc4"; // สีเขียว
+            } else {
+                status = "อ้วน / น้ำหนักเกิน";
+                color = "#ff7675"; // สีแดงอ่อน
+            }
+
+            return { bmi, status, color };
+        };
+
+        // 2. ฟังก์ชันจัดการเหตุการณ์เมื่อกดปุ่ม (Event Handler)
+        const handleCalculation = () => {
+            const w = document.getElementById('weight').value;
+            const h = document.getElementById('height').value;
+            const resultDiv = document.getElementById('result');
+
+            if (w > 0 && h > 0) {
+                // เรียกใช้ Arrow Function
+                const res = calculateBMI(w, h);
+
+                // แสดงผลบนหน้าเว็บ
+                resultDiv.style.display = "block";
+                resultDiv.style.backgroundColor = res.color;
+                resultDiv.innerHTML = `ค่า BMI คือ: ${res.bmi}<br>เกณฑ์: ${res.status}`;
+            } else {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้องครับ");
+            }
+        };
+    </script>
+</body>
+</html>
