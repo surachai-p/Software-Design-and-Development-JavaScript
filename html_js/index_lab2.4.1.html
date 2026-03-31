@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Function JavaScript</title>
+</head>
+<body>
+
+    <h2>1. คำนวณค่า BMI</h2>
+    น้ำหนัก (กก.): <input type="number" id="weight"><br><br>
+    ส่วนสูง (เมตร): <input type="number" step="0.01" id="height"><br><br>
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+
+    <hr>
+
+    <h2>2. ฟังก์ชันทักทายตามอายุ</h2>
+    ชื่อ: <input type="text" id="name"><br><br>
+    อายุ: <input type="number" id="age"><br><br>
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greetResult"></p>
+
+    <hr>
+
+    <h2>3. ตรวจสอบความยาวรหัสผ่าน</h2>
+    รหัสผ่าน: <input type="password" id="password"><br><br>
+    <button onclick="checkPassword()">ตรวจสอบ</button>
+    <p id="passResult"></p>
+
+    <script>
+        // คำนวณ BMI 
+        function calculateBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let height = parseFloat(document.getElementById("height").value);
+
+            let bmi = weight / (height * height);
+
+            document.getElementById("bmiResult").innerHTML =
+                "ค่า BMI ของคุณคือ: " + bmi.toFixed(2);
+        }
+
+        // ฟังก์ชันทักทาย 
+        function greetUser() {
+            let name = document.getElementById("name").value;
+            let age = parseInt(document.getElementById("age").value);
+            let message;
+
+            if (age <= 12) {
+                message = "สวัสดีเด็กน้อย " + name;
+            } else if (age <= 19) {
+                message = "Yo! " + name;
+            } else {
+                message = "สวัสดีคุณ " + name;
+            }
+
+            document.getElementById("greetResult").innerHTML = message;
+        }
+
+        // ฟังก์ชันตรวจสอบรหัสผ่าน
+        function checkPassword() {
+            let password = document.getElementById("password").value;
+
+            if (password.length > 8) {
+                document.getElementById("passResult").innerHTML =
+                    "รหัสผ่านปลอดภัย (มากกว่า 8 ตัวอักษร)";
+            } else {
+                document.getElementById("passResult").innerHTML =
+                    "รหัสผ่านสั้นเกินไป (ต้องมากกว่า 8 ตัวอักษร)";
+            }
+        }
+    </script>
+
+</body>
+</html>

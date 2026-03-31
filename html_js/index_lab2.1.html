@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ข้อมูลนักศึกษา</title>
+</head>
+<body>
+
+    <h2>ข้อมูลคะแนนสอบ</h2>
+    <div id="scoreResult"></div>
+
+    <h2>ข้อมูลนักศึกษา (Object)</h2>
+    <div id="studentResult"></div>
+
+    <script>
+        //  ตัวแปร 
+        const studentId = "68030120";
+        const studentName = "ธนาเทพ ธีรปกรณ์";
+        let midtermScore = 35;
+        let finalScore = 40;
+
+        // แสดงผลคะแนนสอบ
+        document.getElementById("scoreResult").innerHTML =
+            "รหัสนักศึกษา: " + studentId + "<br>" +
+            "ชื่อนักศึกษา: " + studentName + "<br>" +
+            "คะแนนกลางภาค: " + midtermScore + "<br>" +
+            "คะแนนปลายภาค: " + finalScore;
+
+        //  Object 
+        const student = {
+            studentId: "68030120",
+            name: "ธนาเทพ ธีรปกรณ์",
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 3.35
+        };
+
+        //  Object
+        document.getElementById("studentResult").innerHTML =
+            "รหัสนักศึกษา: " + student.studentId + "<br>" +
+            "ชื่อ: " + student.name + "<br>" +
+            "สาขาวิชา: " + student.major + "<br>" +
+            "เกรดเฉลี่ย: " + student.gpa;
+    </script>
+
+</body>
+</html>

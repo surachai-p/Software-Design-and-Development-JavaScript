@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Example</title>
+
+    <script>
+        function showDate() {
+            const today = new Date();
+            document.getElementById("result").innerHTML =
+                "19/2/2569 " + today.toLocaleDateString();
+        }
+
+        function showText() {
+            const text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML =
+                "Hello World! " + text;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>ตัวอย่างการใช้ JavaScript</h2>
+
+
+    <button onclick="alert('ชื่อนักศึกษา: นายธนาเทพ ธีรปกรณ์')">
+        แสดงชื่อนักศึกษา (Inline JS)
+    </button>
+
+    <br><br>
+
+
+    <button onclick="showDate()">
+        แสดงวันที่ปัจจุบัน (Internal JS)
+    </button>
+
+    <br><br>
+
+
+    <button onclick="showTime()">
+        แสดงเวลาปัจจุบัน (External JS)
+    </button>
+
+    <hr>
+
+
+    <input type="text" id="myText" placeholder="Hello World!">
+    <button onclick="showText()">Click Me</button>
+
+    <hr>
+
+
+    <p id="result"></p>
+
+ <!-- Time -->
+    <script src="script.js"></script>
+
+</body>
+</html>

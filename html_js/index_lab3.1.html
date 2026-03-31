@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณ BMI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>โปรแกรมคำนวณค่า BMI</h2>
+
+    น้ำหนัก (กก.): 
+    <input type="number" id="weight"><br>
+
+    ส่วนสูง (เมตร): 
+    <input type="number" step="0.01" id="height"><br>
+
+    <button onclick="calculateBMI()">คำนวณ</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        // Arrow Function สำหรับคำนวณ BMI
+        const calculateBMI = () => {
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+
+            if (!weight || !height) {
+                document.getElementById("result").innerHTML = "กรุณากรอกข้อมูลให้ครบ";
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            let status = "";
+
+            if (bmi < 18.5) {
+                status = "ผอม";
+            } else if (bmi < 25) {
+                status = "สมส่วน";
+            } else {
+                status = "อ้วน";
+            }
+
+            document.getElementById("result").innerHTML =
+                "ค่า BMI = " + bmi.toFixed(2) + "<br>ผลลัพธ์: " + status;
+        };
+    </script>
+
+</body>
+</html>
