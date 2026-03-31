@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>โปรแกรมคำนวณ BMI</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .result { font-weight: bold; color: blue; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>คำนวณดัชนีมวลกาย (BMI)</h2>
+    
+    น้ำหนัก (kg): <input type="number" id="weight" placeholder="ตัวอย่าง 70"> <br><br>
+    ส่วนสูง (cm): <input type="number" id="height" placeholder="ตัวอย่าง 175"> <br><br>
+    
+    <button onclick="checkBMI()">คำนวณผลลัพธ์</button>
+
+    <p class="result" id="display_bmi"></p>
+    <p class="result" id="display_status"></p>
+
+    <script>
+        const checkBMI = () => {
+            // 1. ดึงค่าจาก input
+            const w = parseFloat(document.getElementById('weight').value);
+            const h = parseFloat(document.getElementById('height').value) / 100; // แปลง cm เป็น m
+
+            // ตรวจสอบเบื้องต้นว่ากรอกข้อมูลครบไหม
+            if (!w || !h) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วนครับ");
+                return;
+            }
+
+            // 2. คำนวณ BMI
+            const bmi = (w / (h * h)).toFixed(2);
+
+            // 3. วิเคราะห์ผล 
+            let status = "";
+            if (bmi < 18.5) {
+                status = "ผอมเกินไป";
+            } else if (bmi <= 22.9) {
+                status = "สมส่วน (สุขภาพดี)";
+            } else {
+                status = "เริ่มอ้วน / อ้วน";
+            }
+
+            // 4. แสดงผลลงบนหน้าเว็บ
+            document.getElementById('display_bmi').innerHTML = `ค่า BMI ของคุณคือ: ${bmi}`;
+            document.getElementById('display_status').innerHTML = `ผลลัพธ์: ${status}`;
+        };
+    </script>
+
+</body>
+</html>

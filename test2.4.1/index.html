@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.4.1: Functions</title>
+</head>
+<body>
+    <script>
+        //สร้าง function คำนวณค่า BMI (ดัชนีมวลกาย) จากน้ำหนักและส่วนสูง
+        function calculateBMI(weight, height) {
+            let heightInMeters = height / 100;
+            let bmi = weight / (heightInMeters ** 2);
+            return bmi.toFixed(2); 
+        }
+
+        console.log(`BMI ของคุณคือ: ${calculateBMI(70, 175)}`);
+
+        //2. สร้าง function ที่รับชื่อและอายุ แล้วแสดงข้อความทักทายที่เหมาะสมกับอายุ
+        function personalGreet(name, age) {
+            if (age < 20) {
+                console.log(`Hello! ${name}`);
+            } else {
+                console.log(`Hello! sir ${name}`);
+            }
+        }
+
+        personalGreet("Jittratep", 20);
+
+        //3. เขียน function ตรวจสอบรหัสผ่านว่ามีความยาวมากกว่า 8 ตัวอักษรหรือไม่
+        function isPasswordValid(password) {
+            if (password.length > 8) {
+                return true;
+            }   else {
+                    return false;
+            }
+        }
+
+        let myPass = "!JEWdda234";
+        if (isPasswordValid(myPass)) {
+            console.log("Safe password!!!");
+        }   else {
+            console.log("Noob password!!! Please try again...");
+        }
+
+    </script>
+</body>
+</html>

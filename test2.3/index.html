@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบที่ 2.3: การควบคุมการทำงาน</title>
+</head>
+<body>
+    <script>
+        //1. กำหนดตัวเลข และตรวจสอบว่าตัวเลขที่กำหนดเป็นเลขคู่หรือเลขคี่
+        let number = 15;
+
+        if (number % 2 === 0) {
+            console.log(`${number} คือ เลขคู่`);
+        } else {
+            console.log(`${number} คือ เลขคี่`);
+        }
+
+        //2. สร้าง loop แบบ for แสดงตารางสูตรคูณ แม่ 2 และ loop แบบ while แสดงสูตรคูณ แม่ 3
+
+        // สูตรคูณแม่ 2 (for loop)
+        console.log("สูตรคูณแม่ 2");
+        for (let i = 1; i <= 12; i++) {
+            console.log(`2 x ${i} = ${2 * i}`);
+        }
+
+        // สูตรคูณแม่ 3 (while loop)
+        console.log("สูตรคูณแม่ 3");
+        let j = 1;
+        while (j <= 12) {
+            console.log(`3 x ${j} = ${3 * j}`);
+            j++;
+        }
+
+        //3. เขียนโปรแกรมนับถอยหลังจาก 10 ถึง 1
+        console.log("นับถอยหลัง")
+        for (let i = 10; i>=1; i-- ) {
+            console.log(i)
+        }
+
+        //4. เขียนโปรแกรมกำหนดอายุ และตรวจสอบช่วงวัยตามอายุที่กำหนด (กำหนดอายุแต่ละช่วงวัย วัยเด็ก วัยรุ่น วัยผู้ใหญ่)
+        let myAge = 20; 
+
+        if (myAge < 13) {
+            console.log("วัยเด็ก");
+        } else if (myAge < 20) {
+            console.log("วัยรุ่น");
+        } else if (myAge < 60) {
+            console.log("วัยผู้ใหญ่");
+        } else {
+            console.log("วัยสูงอายุ");
+        }
+
+    </script>
+</body>
+</html>
