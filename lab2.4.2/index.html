@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบที่ 2.4.2: Arrow Functions</title>
+    <style>
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #e67e22;
+            /* เปลี่ยนสีเพื่อให้รู้ว่าเป็นชุดใหม่ */
+            padding-bottom: 10px;
+        }
+
+        .task {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #e67e22;
+            background: #f9f9f9;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>เฉลยแบบทดสอบที่ 2.4.2: Arrow Functions</h2>
+        <p>กด <strong>F12</strong> แล้วเลือกแท็บ <strong>Console</strong> เพื่อดูการทำงานของฟังก์ชัน</p>
+
+        <div class="task">
+            <strong>ข้อ 1:</strong> คำนวณค่า BMI (Arrow Function แบบบรรทัดเดียว)
+        </div>
+
+        <div class="task">
+            <strong>ข้อ 2:</strong> ฟังก์ชันทักทายตามช่วงอายุ (Arrow Function + Ternary)
+        </div>
+
+        <div class="task">
+            <strong>ข้อ 3:</strong> ตรวจสอบความยาวรหัสผ่าน (Arrow Function แบบลดรูป)
+        </div>
+    </div>
+
+    <script>
+        console.log("%c--- เริ่มการทดสอบ Arrow Functions ---", "color: orange; font-weight: bold; font-size: 14px;");
+
+        // --- ข้อ 1: Arrow Function คำนวณค่า BMI ---
+        // ใช้แบบบรรทัดเดียว (Implicit Return)
+        const calculateBMI = (weight, height) => (weight / (height * height)).toFixed(2);
+
+        let myBMI = calculateBMI(70, 1.75);
+        console.log("1. ผลการคำนวณ BMI:", myBMI);
+
+
+        // --- ข้อ 2: Arrow Function รับชื่อและอายุ ---
+        // ใช้ Ternary Operator เพื่อความกระชับ
+        const greetByAge = (name, age) => {
+            const message = age < 15 ? `สวัสดีจ๊ะ น้อง${name}` :
+                age < 30 ? `สวัสดีครับ/ค่ะ คุณ${name}` :
+                    `สวัสดีครับ/ค่ะ ท่าน${name}`;
+            console.log("2. ข้อความทักทาย:", message);
+        };
+
+        greetByAge("ก้อง", 12);
+        greetByAge("สมชาย", 25);
+        greetByAge("วิชัย", 45);
+
+
+        // --- ข้อ 3: Arrow Function ตรวจสอบรหัสผ่าน ---
+        // ลดรูปพารามิเตอร์ (ไม่ต้องใส่วงเล็บถ้ามีตัวแปรเดียว) และคืนค่า Boolean ทันที
+        const checkPassword = password => password.length > 8;
+
+        let pass1 = "123456";
+        let pass2 = "securePassword123";
+
+        console.log(`3. ตรวจสอบรหัสผ่าน "${pass1}":`, checkPassword(pass1) ? "ผ่าน ✅" : "สั้นเกินไป ❌");
+        console.log(`3. ตรวจสอบรหัสผ่าน "${pass2}":`, checkPassword(pass2) ? "ผ่าน ✅" : "สั้นเกินไป ❌");
+
+        console.log("%c--- จบการทำงาน ---", "color: orange; font-weight: bold;");
+    </script>
+
+</body>
+
+</html>

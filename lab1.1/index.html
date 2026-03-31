@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึกปฏิบัติที่ 1: การใช้งาน JavaScript เบื้องต้น</title>
+</head>
+
+<body>
+
+    <h2>ข้อที่ 1: ปุ่มแสดงผล 3 รูปแบบ</h2>
+    <button onclick="alert('ชื่อนักศึกษา: นาย ไกรวิชญ์ สุจริตจันทร์')">ชื่อนักศึกษา</button>
+
+    <button id="btn2">วันเดือนปีปัจจุบัน</button>
+
+    <button onclick="showTime()">เวลาปัจจุบัน</button>
+
+    <hr>
+
+    <h2>ข้อที่ 2: กล่องข้อความและปุ่มแสดงผล</h2>
+    <input type="text" id="userInput" placeholder="กรอกข้อความที่นี่">
+    <button onclick="showInputValue()">แสดงข้อความ</button>
+
+    <script>
+        // ปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('btn2').onclick = function () {
+            const today = new Date();
+            alert('วันที่ปัจจุบันคือ: ' + today.toLocaleDateString());
+        };
+
+        // ข้อที่ 2: ฟังก์ชันดึงค่าจาก Textbox
+        function showInputValue() {
+            const val = document.getElementById('userInput').value;
+            alert('ข้อความที่คุณกรอกคือ: ' + val);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
