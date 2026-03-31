@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทดสอบ Function JavaScript</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; }
+        .box { background-color: #f0f8ff; padding: 15px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #b0d4f1; }
+        input { padding: 5px; margin-right: 5px; margin-bottom: 10px; }
+        button { padding: 6px 12px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        .result { font-weight: bold; color: #d9534f; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>1. คำนวณค่า BMI</h2>
+    <div class="box">
+        <input type="number" id="inputWeight" placeholder="น้ำหนัก (กิโลกรัม)">
+        <input type="number" id="inputHeight" placeholder="ส่วนสูง (เมตร เช่น 1.75)">
+        <br>
+        <button onclick="displayBMI()">คำนวณ BMI</button>
+        <div id="resultBMI" class="result"></div>
+    </div>
+
+    <h2>2. ทักทายตามช่วงวัย</h2>
+    <div class="box">
+        <input type="text" id="inputName" placeholder="ชื่อของคุณ">
+        <input type="number" id="inputAge" placeholder="อายุ (ปี)">
+        <br>
+        <button onclick="displayGreeting()">ทักทาย</button>
+        <div id="resultGreeting" class="result"></div>
+    </div>
+
+    <h2>3. ตรวจสอบความยาวรหัสผ่าน</h2>
+    <div class="box">
+        <input type="password" id="inputPassword" placeholder="กรอกรหัสผ่าน">
+        <br>
+        <button onclick="displayPasswordCheck()">ตรวจสอบรหัสผ่าน</button>
+        <div id="resultPassword" class="result"></div>
+    </div>
+
+    <script>
+        function calculateBMI(weight, height) {
+            return weight / (height * height);
+        }
+
+        function displayBMI() {
+            let weight = parseFloat(document.getElementById('inputWeight').value);
+            let height = parseFloat(document.getElementById('inputHeight').value);
+            
+            if (weight > 0 && height > 0) {
+                let bmi = calculateBMI(weight, height);
+                document.getElementById('resultBMI').innerHTML = "ค่า BMI ของคุณคือ: " + bmi.toFixed(2);
+            } else {
+                document.getElementById('resultBMI').innerHTML = "กรุณากรอกตัวเลขให้ถูกต้อง";
+            }
+        }
+
+        function getGreetingMessage(name, age) {
+            if (age <= 12) {
+                return "สวัสดีจ้ะ หนูน้อย " + name + " เรียนสนุกไหม?";
+            } else if (age <= 19) {
+                return "ไงวัยรุ่น " + name + " สบายดีเปล่า?";
+            } else {
+                return "สวัสดีครับ/ค่ะ คุณ " + name + " ขอให้วันนี้เป็นวันที่ดีครับ";
+            }
+        }
+
+        function displayGreeting() {
+            let name = document.getElementById('inputName').value;
+            let age = parseInt(document.getElementById('inputAge').value);
+            
+            if (name !== "" && !isNaN(age)) {
+                let message = getGreetingMessage(name, age);
+                document.getElementById('resultGreeting').innerHTML = message;
+            } else {
+                document.getElementById('resultGreeting').innerHTML = "กรุณากรอกชื่อและอายุให้ครบถ้วน";
+            }
+        }
+
+        function isPasswordStrong(password) {
+            return password.length > 8; 
+        }
+
+        function displayPasswordCheck() {
+            let pwd = document.getElementById('inputPassword').value;
+            let isStrong = isPasswordStrong(pwd);
+            
+            if (isStrong) {
+                document.getElementById('resultPassword').innerHTML = "รหัสผ่านยาวพอ (มีความปลอดภัย)";
+                document.getElementById('resultPassword').style.color = "green";
+            } else {
+                document.getElementById('resultPassword').innerHTML = "รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร";
+                document.getElementById('resultPassword').style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>

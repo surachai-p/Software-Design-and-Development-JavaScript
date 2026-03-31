@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('Vasin Kaewmoragot 68030262')">NAME</button>
+
+    <button id="btn2">Date</button>
+
+    <button id="btn3" onclick="hello3();">TIME</button>
+
+    <hr>
+
+    <input type="text" id="myTextBox" placeholder="text here">
+    <button id="btnShowText">แสดงข้อความ</button>
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            let currentDate = new Date().toLocaleDateString(); 
+            alert(currentDate);
+        }
+
+        document.getElementById('btnShowText').onclick = function() {
+            let userInput = document.getElementById('myTextBox').value; 
+            
+            alert(userInput); 
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

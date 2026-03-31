@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างการใช้งาน Arrow Function</title>
+</head>
+<body>
+    <h1>ผลลัพธ์การทำงานอยู่ใน Console</h1>
+    <p>คลิกขวา -> เลือก Inspect (ตรวจสอบ) -> ไปที่แท็บ Console เพื่อดูผลลัพธ์ครับ</p>
+
+    <script>
+        const calculateBMI = (weightKg, heightCm) => {
+            const heightM = heightCm / 100; 
+            const bmi = weightKg / (heightM * heightM);
+            return bmi.toFixed(2); 
+        };
+
+        const greetByAge = (name, age) => {
+            if (age < 18) {
+                return `สวัสดีจ้าน้อง ${name} วัยรุ่นวัยใส!`;
+            } else if (age < 60) {
+                return `สวัสดีครับ/ค่ะ คุณ ${name} ขอให้วันนี้เป็นวันที่ดีนะ`;
+            } else {
+                return `สวัสดีครับ/ค่ะ ท่าน ${name} รักษาสุขภาพด้วยนะครับ/คะ`;
+            }
+        };
+
+        const isPasswordValid = password => password.length > 8;
+
+        console.log("--- ทดสอบคำนวณ BMI ---");
+        console.log("น้ำหนัก 70kg, สูง 175cm -> BMI:", calculateBMI(70, 175)); 
+
+        console.log("\n--- ทดสอบการทักทายตามอายุ ---");
+        console.log(greetByAge("สมชาย", 15));
+        console.log(greetByAge("สมศรี", 30));
+        console.log(greetByAge("สมปอง", 65));
+
+        console.log("\n--- ทดสอบรหัสผ่าน ---");
+        console.log("รหัส '12345':", isPasswordValid("12345")); // ควรได้ false
+        console.log("รหัส 'password123':", isPasswordValid("password123")); // ควรได้ true
+    </script>
+</body>
+</html>

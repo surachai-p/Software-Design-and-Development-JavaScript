@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงผล JavaScript บนหน้าเว็บ</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .result-box { background-color: #f4f4f4; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>1. ตรวจสอบเลขคู่/คี่</h2>
+    <div id="evenOddResult" class="result-box"></div>
+
+    <h2>2. สูตรคูณแม่ 2 (for loop)</h2>
+    <div id="mul2Result" class="result-box"></div>
+
+    <h2>3. สูตรคูณแม่ 3 (while loop)</h2>
+    <div id="mul3Result" class="result-box"></div>
+
+    <h2>4. นับถอยหลัง 10 ถึง 1</h2>
+    <div id="countdownResult" class="result-box"></div>
+
+    <h2>5. ตรวจสอบช่วงวัย</h2>
+    <div id="ageResult" class="result-box"></div>
+
+    <script>
+        let targetNumber = 15;
+        let result1 = document.getElementById('evenOddResult'); 
+        
+        if (targetNumber % 2 === 0) {
+            result1.innerHTML = targetNumber + " เป็นเลขคู่";
+        } else {
+            result1.innerHTML = targetNumber + " เป็นเลขคี่";
+        }
+
+        let result2 = document.getElementById('mul2Result');
+        let textMul2 = ""; 
+        for (let i = 1; i <= 12; i++) {
+            textMul2 += "2 x " + i + " = " + (2 * i) + "<br>"; 
+        }
+        result2.innerHTML = textMul2; 
+
+        let result3 = document.getElementById('mul3Result');
+        let textMul3 = "";
+        let m = 1;
+        while (m <= 12) {
+            textMul3 += "3 x " + m + " = " + (3 * m) + "<br>";
+            m++; 
+        }
+        result3.innerHTML = textMul3;
+
+        let result4 = document.getElementById('countdownResult');
+        let textCountdown = "";
+        for (let i = 10; i >= 1; i--) {
+            textCountdown += i + "<br>";
+        }
+        result4.innerHTML = textCountdown;
+
+        let currentAge = 21; 
+        let result5 = document.getElementById('ageResult');
+
+        if (currentAge >= 0 && currentAge <= 12) {
+            result5.innerHTML = "อายุ " + currentAge + " ปี: อยู่ในเกณฑ์ 'วัยเด็ก'";
+        } else if (currentAge >= 13 && currentAge <= 19) {
+            result5.innerHTML = "อายุ " + currentAge + " ปี: อยู่ในเกณฑ์ 'วัยรุ่น'";
+        } else if (currentAge >= 20) {
+            result5.innerHTML = "อายุ " + currentAge + " ปี: อยู่ในเกณฑ์ 'วัยผู้ใหญ่'";
+        } else {
+            result5.innerHTML = "ระบุอายุไม่ถูกต้อง"; 
+        }
+    </script>
+
+</body>
+</html>

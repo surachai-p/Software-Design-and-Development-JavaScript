@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมคำนวณ BMI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>คำนวณ BMI</h2>
+        
+        <div class="input-group">
+            <label for="weight">น้ำหนัก (กิโลกรัม):</label>
+            <input type="number" id="weight" placeholder="เช่น 65">
+        </div>
+        
+        <div class="input-group">
+            <label for="height">ส่วนสูง (เซนติเมตร):</label>
+            <input type="number" id="height" placeholder="เช่น 170">
+        </div>
+
+        <button id="calculateBtn">คำนวณผลลัพธ์</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const calculateBMI = (weight, heightCm) => {
+            const heightM = heightCm / 100; 
+            return weight / (heightM * heightM);
+        };
+
+        const checkBMICategory = (bmi) => {
+            if (bmi < 18.5) {
+                return "ผอม";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                return "สมส่วน";
+            } else {
+                return "อ้วน";
+            }
+        };
+
+        const handleCalculation = () => {
+            const weightInput = parseFloat(document.getElementById('weight').value);
+            const heightInput = parseFloat(document.getElementById('height').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(weightInput) || isNaN(heightInput) || weightInput <= 0 || heightInput <= 0) {
+                resultDiv.innerHTML = '<div class="error">กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง</div>';
+                return;
+            }
+
+            const bmiValue = calculateBMI(weightInput, heightInput);
+            const category = checkBMICategory(bmiValue);
+
+            resultDiv.innerHTML = `
+                ค่า BMI ของคุณคือ: <strong>${bmiValue.toFixed(2)}</strong><br>
+                ผลการประเมิน: <strong>${category}</strong>
+            `;
+        };
+
+        document.getElementById('calculateBtn').addEventListener('click', handleCalculation);
+    </script>
+
+</body>
+</html>

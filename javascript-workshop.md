@@ -76,10 +76,43 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+</head>
+<body>
+    <button onclick="alert('Vasin Kaewmoragot 68030262')">NAME</button>
+
+    <button id="btn2">Date</button>
+
+    <button id="btn3" onclick="hello3();">TIME</button>
+
+    <hr>
+
+    <input type="text" id="myTextBox" placeholder="text here">
+    <button id="btnShowText">แสดงข้อความ</button>
+
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            let currentDate = new Date().toLocaleDateString(); 
+            alert(currentDate);
+        }
+
+        document.getElementById('btnShowText').onclick = function() {
+            let userInput = document.getElementById('myTextBox').value; 
+            
+            alert(userInput); 
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+![LAB1](LAB1/LAB1-result.png)
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -134,11 +167,21 @@ let person = {
 2. สร้าง Object สำหรับเก็บข้อมูลนักศึกษา  ประกอบด้วยข้อมูล รหัสนักศึกษา, ชื่อ, สาขาวิชา, เกรดเฉลี่ย
 
 ### บันทึกผลการทดลอง 2.1
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+[const id = 68030262;
+const name = "Vasin Kaewmoragot";
+let midterm = 80;
+let final = 90;
+
+let person = {
+    id : 68030262,
+    name : "Vasin Kaewmoragot",
+    major : "Computer Technology",
+    GPA : 3.8
+};่]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.1](images/image.png)
+![LAB2.1](LAB2/LAB2.1/LAB2.1-result.png)
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -189,9 +232,26 @@ number /= 2;          // เท่ากับ number = number / 2
 2. เขียนโปรแกรม กำหนดชื่อสินค้า ราคาสินค้า คำนวณราคาสินค้าที่รวม VAT 7% แล้วแสดงผลการคำนวณ
 
 ### บันทึกผลการทดลอง 2.2
-```html
-[บันทึกโค้ด ที่นี่]
+```javascript
+[let math = 67;
+let physics = 78;
+let chemistry = 65;
+
+let average = (math + physics + chemistry) / 3;
+
+console.log("Average points: " + average);]
 ```
+
+```javascript
+let computerPrices = 52000;
+
+let vatCalculation = computerPrices * 0.07;
+let totalPrice = computerPrices + vatCalculation;
+
+console.log("VAT: " + vatCalculation);
+console.log("Total Price: " + totalPrice);
+```
+
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.2](images/image.png)
 
@@ -324,10 +384,86 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงผล JavaScript บนหน้าเว็บ</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .result-box { background-color: #f4f4f4; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>1. ตรวจสอบเลขคู่/คี่</h2>
+    <div id="evenOddResult" class="result-box"></div>
+
+    <h2>2. สูตรคูณแม่ 2 (for loop)</h2>
+    <div id="mul2Result" class="result-box"></div>
+
+    <h2>3. สูตรคูณแม่ 3 (while loop)</h2>
+    <div id="mul3Result" class="result-box"></div>
+
+    <h2>4. นับถอยหลัง 10 ถึง 1</h2>
+    <div id="countdownResult" class="result-box"></div>
+
+    <h2>5. ตรวจสอบช่วงวัย</h2>
+    <div id="ageResult" class="result-box"></div>
+
+    <script>
+        let targetNumber = 15;
+        let result1 = document.getElementById('evenOddResult'); 
+        
+        if (targetNumber % 2 === 0) {
+            result1.innerHTML = targetNumber + " เป็นเลขคู่";
+        } else {
+            result1.innerHTML = targetNumber + " เป็นเลขคี่";
+        }
+
+        let result2 = document.getElementById('mul2Result');
+        let textMul2 = ""; 
+        for (let i = 1; i <= 12; i++) {
+            textMul2 += "2 x " + i + " = " + (2 * i) + "<br>"; 
+        }
+        result2.innerHTML = textMul2; 
+
+        let result3 = document.getElementById('mul3Result');
+        let textMul3 = "";
+        let m = 1;
+        while (m <= 12) {
+            textMul3 += "3 x " + m + " = " + (3 * m) + "<br>";
+            m++; 
+        }
+        result3.innerHTML = textMul3;
+
+        let result4 = document.getElementById('countdownResult');
+        let textCountdown = "";
+        for (let i = 10; i >= 1; i--) {
+            textCountdown += i + "<br>";
+        }
+        result4.innerHTML = textCountdown;
+
+        let currentAge = 21; 
+        let result5 = document.getElementById('ageResult');
+
+        if (currentAge >= 0 && currentAge <= 12) {
+            result5.innerHTML = "อายุ " + currentAge + " ปี: อยู่ในเกณฑ์ 'วัยเด็ก'";
+        } else if (currentAge >= 13 && currentAge <= 19) {
+            result5.innerHTML = "อายุ " + currentAge + " ปี: อยู่ในเกณฑ์ 'วัยรุ่น'";
+        } else if (currentAge >= 20) {
+            result5.innerHTML = "อายุ " + currentAge + " ปี: อยู่ในเกณฑ์ 'วัยผู้ใหญ่'";
+        } else {
+            result5.innerHTML = "ระบุอายุไม่ถูกต้อง"; 
+        }
+    </script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.3](images/image.png)
+![รูปผลการทดลองที่ 2.3](LAB2/LAB2.3/LAB2.3-1.png)
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -442,9 +578,7 @@ process(function() {
 [บันทึกโค้ด ที่นี่]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.4.1](images/image.png)
-
-
+![LAB2-4-1](LAB2/LAB2.4/2-4-1-result.png)
 
 #### 2.4.2 Arrow Function
 Arrow Function เป็นวิธีการเขียน function แบบสั้นๆ ที่มาพร้อมกับ JavaScript เวอร์ชัน ES6
@@ -557,7 +691,7 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 [บันทึกโค้ด ที่นี่]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.1](images/image.png)
+![LAB3.1](LAB3/LAB3.1/LAB3.1-result.png)
 
 ## การทดลองที่ 3.2 : การสร้างฟอร์มสำหรับจองห้องพัก
 การสร้างฟอร์มลงทะเบียนเพื่อรวบรวมข้อมูลที่จำเป็นสำหรับการจองห้องพัก
@@ -715,12 +849,175 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### ผลการทดลอง
 ทดสอบปรับแต่ง CSS ในแต่ละส่วน แล้วเขียน สรุปผลการทดลองว่าได้ทดลองเปลี่ยนส่วนใด แล้วผลเป็นอย่างไร พร้อมแนบรูปประกอบการทดลอง
 
+พื้นหลังของหน้าเว็บ เปลี่ยนเป็นสี Gradient 
+
+
+กล่องฟอร์ม เพิ่ม background: rgba(255, 255, 255, 0.4) (สีขาวโปร่งแสง), เพิ่ม backdrop-filter: blur(16px) (เบลอพื้นหลังที่ทะลุเข้ามา), ปรับ border-radius: 24px ให้โค้งมนมากขึ้น และเพิ่มขอบสีขาว
+
+ช่องกรอกข้อมูลเปลี่ยนพื้นหลังของช่องกรอกเป็นสีขาวโปร่งแสง ปรับขอบให้มนขึ้น และเพิ่มแอนิเมชันเมื่อคลิก ให้มีขอบเรืองแสงสีน้ำเงิน
+
+ผลลัพธ์: ช่องกรอกข้อมูลดูกลมกลืนไปกับพื้นผิวกระจกของฟอร์มหลัก และมีการตอบสนองที่ชัดเจนเมื่อผู้ใช้คลิกพิมพ์ข้อมูล
+
 ### บันทึกผลการทดลอง 3.2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            padding: 40px;
+            border-radius: 24px; 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); 
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 12px; 
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 16px;
+            color: #1d1d1f;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #007aff; 
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+        }
+
+        button {
+            background-color: #007aff; 
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Sarabun', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        button:hover {
+            background-color: #005bb5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="bookingForm">
+        <h1>แบบฟอร์มจองห้องพัก</h1>
+        
+        <div>
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+
+        <div>
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div>
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div>
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div>
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" required>
+        </div>
+
+        <button type="submit">จองห้องพัก</button>
+    </form>
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.2](images/image.png)
+![LAB3.2](LAB3/LAB3.2/image.png)
 
 
 ## ขั้นตอนที่ 3.2.3: การเพิ่มฟังก์ชันด้วย JavaScript
@@ -828,7 +1125,7 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 [บันทึกโค้ด ที่นี่]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 3.2.3](images/image.png)
+![LAB3-3-3](LAB3/LAB3.2/3-3-3.png)
 
 
 ## คำแนะนำเพิ่มเติม
