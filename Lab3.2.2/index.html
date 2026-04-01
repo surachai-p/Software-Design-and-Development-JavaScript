@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบจองห้องพักออนไลน์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ส่วนของ CSS สำหรับปรับแต่งหน้าตา */
+        body {
+            font-family: 'Sarabun', sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f0f4f8; /* สีพื้นหลังโทนสะอาด */
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* จัดระยะห่างระหว่างช่องกรอก */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box; /* ป้องกันช่องกรอกล้นขอบ */
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #3498db; /* เปลี่ยนสีเมื่อเอาเมาส์วาง */
+        }
+
+        /* รองรับการแสดงผลบนมือถือ */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            form { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🏨 แบบฟอร์มจองห้องพัก</h1>
+    
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="fullname">ชื่อ-นามสกุล:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="กรอกชื่อ-นามสกุล" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">อีเมล:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">เบอร์โทรศัพท์:</label>
+            <input type="tel" id="phone" name="phone" placeholder="08XXXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+            <label for="checkin">วันที่เช็คอิน:</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+
+        <div class="form-group">
+            <label for="checkout">วันที่เช็คเอาท์:</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <div class="form-group">
+            <label for="roomtype">ประเภทห้องพัก:</label>
+            <select id="roomtype" name="roomtype" required>
+                <option value="">กรุณาเลือกประเภทห้องพัก</option>
+                <option value="standard">ห้องมาตรฐาน</option>
+                <option value="deluxe">ห้องดีลักซ์</option>
+                <option value="suite">ห้องสวีท</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="guests">จำนวนผู้เข้าพัก:</label>
+            <input type="number" id="guests" name="guests" min="1" max="4" value="1" required>
+        </div>
+
+        <button type="submit">ยืนยันการจองห้องพัก</button>
+    </form>
+
+    <script>
+        // เพิ่มลูกเล่นเมื่อกด Submit
+        document.getElementById('bookingForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('บันทึกข้อมูลการจองเรียบร้อยแล้ว! ขอบคุณที่ใช้บริการครับ');
+        };
+    </script>
+</body>
+</html>

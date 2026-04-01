@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึกปฏิบัติที่ 1 - JavaScript</title>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; padding: 20px; background-color: #f4f7f6; }
+        .box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        button { padding: 10px 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; margin: 5px; }
+        button:hover { background-color: #0056b3; }
+        input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 200px; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h3>ข้อที่ 1: ปุ่ม 3 รูปแบบ</h3>
+        <button onclick="alert('ชื่อนักศึกษา: นายใจดี เรียนสนุก')">ปุ่มที่ 1 (ชื่อนักศึกษา)</button>
+
+        <button id="btn-date">ปุ่มที่ 2 (วันที่ปัจจุบัน)</button>
+
+        <button onclick="showTime()">ปุ่มที่ 3 (เวลาปัจจุบัน)</button>
+    </div>
+
+    <div class="box">
+        <h3>ข้อที่ 2: ดึงข้อมูลจากกล่องข้อความ</h3>
+        <input type="text" id="myInput" placeholder="กรอกข้อความที่นี่">
+        <button id="btn-display">แสดงผลข้อความ</button>
+    </div>
+
+    <script>
+        // ปุ่มที่ 2: แสดงวันที่ปัจจุบัน
+        document.getElementById('btn-date').onclick = function() {
+            const d = new Date();
+            alert("วันที่ปัจจุบันคือ: " + d.toLocaleDateString('th-TH'));
+        };
+
+        // ปุ่มแสดงข้อความจากช่องกรอก
+        document.getElementById('btn-display').onclick = function() {
+            // ดึงค่าโดยใช้ ID 'myInput' แล้วใช้ .value
+            const text = document.getElementById('myInput').value;
+            
+            if (text === "") {
+                alert("กรุณากรอกข้อความก่อนครับ!");
+            } else {
+                alert("ข้อความที่คุณกรอกคือ: " + text);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

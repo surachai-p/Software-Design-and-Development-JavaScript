@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บันทึกผลการทดลอง 2.4.2 - Arrow Functions</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.2: การใช้งาน Arrow Functions</h1>
+    <p>ตรวจสอบผลลัพธ์ที่ Console (กด F12)</p>
+
+    <script>
+        // --- 1. Arrow Function คำนวณค่า BMI ---
+        // ใช้รูปแบบย่อบรรทัดเดียว
+        const calculateBMI = (weight, heightCm) => (weight / ((heightCm / 100) ** 2)).toFixed(2);
+
+        console.log("--- 1. คำนวณ BMI (Arrow Function) ---");
+        console.log("น้ำหนัก 70kg, ส่วนสูง 175cm | ค่า BMI คือ: " + calculateBMI(70, 175));
+
+
+        // --- 2. Arrow Function ทักทายตามอายุ ---
+        const smartGreet = (name, age) => {
+            let greeting = age < 15 ? `สวัสดีจ้ะหนู ${name}` : `สวัสดีครับคุณ ${name}`;
+            console.log(`${greeting} (อายุ ${age} ปี)`);
+        };
+
+        console.log("--- 2. ทักทายตามอายุ ---");
+        smartGreet("ส้มโอ", 12);
+        smartGreet("วิชัย", 28);
+
+
+        // --- 3. Arrow Function ตรวจสอบความยาวรหัสผ่าน ---
+        // เขียนแบบสั้นที่สุด (คืนค่าเป็น true/false ทันที)
+        const isPasswordValid = password => password.length > 8;
+
+        console.log("--- 3. ตรวจสอบรหัสผ่าน ---");
+        console.log("รหัส 'abc123' ผ่านเกณฑ์ไหม: " + isPasswordValid("abc123"));
+        console.log("รหัส 'mySecurePassword' ผ่านเกณฑ์ไหม: " + isPasswordValid("mySecurePassword"));
+
+    </script>
+</body>
+</html>

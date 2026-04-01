@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บันทึกผลการทดลอง 2.3 - Control Flow</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.3: การควบคุมการทำงาน</h1>
+    <p>ตรวจสอบผลลัพธ์ที่ Console (กด F12)</p>
+
+    <script>
+        // --- 1. ตรวจสอบเลขคู่หรือเลขคี่ ---
+        console.log("--- 1. ตรวจสอบเลขคู่/คี่ ---");
+        let number = 15; // ลองเปลี่ยนตัวเลขดูได้ครับ
+        if (number % 2 === 0) {
+            console.log(number + " เป็นเลขคู่");
+        } else {
+            console.log(number + " เป็นเลขคี่");
+        }
+
+        // --- 2. ตารางสูตรคูณ (for & while loop) ---
+        console.log("--- 2. ตารางสูตรคูณ ---");
+        // แม่ 2 ใช้ for loop
+        console.log("สูตรคูณแม่ 2 (for loop):");
+        for (let i = 1; i <= 12; i++) {
+            console.log("2 x " + i + " = " + (2 * i));
+        }
+
+        // แม่ 3 ใช้ while loop
+        console.log("สูตรคูณแม่ 3 (while loop):");
+        let j = 1;
+        while (j <= 12) {
+            console.log("3 x " + j + " = " + (3 * j));
+            j++;
+        }
+
+        // --- 3. นับถอยหลัง 10 ถึง 1 ---
+        console.log("--- 3. นับถอยหลัง ---");
+        for (let count = 10; count >= 1; count--) {
+            console.log("นับถอยหลัง: " + count);
+        }
+
+        // --- 4. ตรวจสอบช่วงวัยตามอายุ ---
+        console.log("--- 4. ตรวจสอบช่วงวัย ---");
+        let age = 25; // ลองเปลี่ยนค่าอายุที่นี่
+        console.log("อายุ: " + age + " ปี");
+        if (age >= 0 && age <= 12) {
+            console.log("สถานะ: วัยเด็ก");
+        } else if (age >= 13 && age <= 19) {
+            console.log("สถานะ: วัยรุ่น");
+        } else if (age >= 20) {
+            console.log("สถานะ: วัยผู้ใหญ่");
+        } else {
+            console.log("ข้อมูลอายุไม่ถูกต้อง");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บันทึกผลการทดลอง 2.2</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.2: การคำนวณพื้นฐาน</h1>
+    <p>ผลการคำนวณแสดงอยู่ใน Console (F12)</p>
+
+    <script>
+        // --- ข้อที่ 1: คำนวณคะแนนเฉลี่ย ---
+        let mathScore = 85;
+        let scienceScore = 78;
+        let englishScore = 92;
+
+        let average = (mathScore + scienceScore + englishScore) / 3;
+
+        console.log("--- 1. คำนวณคะแนนเฉลี่ย ---");
+        console.log("คะแนนวิชาคณิตศาสตร์:", mathScore);
+        console.log("คะแนนวิชาวิทยาศาสตร์:", scienceScore);
+        console.log("คะแนนวิชาภาษาอังกฤษ:", englishScore);
+        console.log("คะแนนเฉลี่ยรวมคือ:", average.toFixed(2)); // .toFixed(2) เพื่อแสดงทศนิยม 2 ตำแหน่ง
+
+
+        // --- ข้อที่ 2: คำนวณราคาสินค้ารวม VAT 7% ---
+        const productName = "คีย์บอร์ดไร้สาย";
+        let productPrice = 1500;
+        const VAT_RATE = 0.07;
+
+        let totalVat = productPrice * VAT_RATE;
+        let totalPrice = productPrice + totalVat;
+
+        console.log("--- 2. คำนวณราคาสินค้ารวม VAT ---");
+        console.log("ชื่อสินค้า:", productName);
+        console.log("ราคาก่อน VAT:", productPrice, "บาท");
+        console.log("ภาษีมูลค่าเพิ่ม (7%):", totalVat, "บาท");
+        console.log("ราคาสุทธิที่ต้องจ่าย:", totalPrice, "บาท");
+    </script>
+</body>
+</html>

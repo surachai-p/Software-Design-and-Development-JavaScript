@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>โปรแกรมคำนวณ BMI</title>
+    <style>
+        body { font-family: 'Sarabun', sans-serif; padding: 20px; }
+        .container { max-width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        input { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 1.2rem; color: #007bff; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>โปรแกรมคำนวณค่า BMI</h3>
+        น้ำหนัก (กก.): <input type="number" id="weight" placeholder="เช่น 65">
+        ส่วนสูง (ซม.): <input type="number" id="height" placeholder="เช่น 170">
+        
+        <button id="calcBtn">คำนวณผลลัพธ์</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // ใช้ Arrow Function ในการคำนวณและแสดงผล
+        const calculateBMI = () => {
+            // ดึงค่าจาก Input
+            const w = parseFloat(document.getElementById('weight').value);
+            const h = parseFloat(document.getElementById('height').value);
+            const resultDiv = document.getElementById('result');
+
+            // ตรวจสอบว่ากรอกตัวเลขครบถ้วนไหม
+            if (isNaN(w) || isNaN(h)) {
+                resultDiv.innerHTML = "กรุณากรอกข้อมูลให้ครบถ้วน";
+                return;
+            }
+
+            // คำนวณ BMI
+            const bmi = (w / ((h / 100) ** 2)).toFixed(2);
+            let category = "";
+
+            // ตรวจสอบเงื่อนไข
+            if (bmi < 18.5) {
+                category = "ผอม";
+            } else if (bmi <= 22.9) {
+                category = "สมส่วน";
+            } else {
+                category = "อ้วน";
+            }
+
+            // แสดงผลออกทางหน้าเว็บ (innerHTML)
+            resultDiv.innerHTML = `ค่า BMI ของคุณคือ: ${bmi} <br> สภาวะร่างกาย: ${category}`;
+        };
+
+        // จัดการ Event เมื่อคลิกปุ่ม
+        document.getElementById('calcBtn').onclick = calculateBMI;
+    </script>
+
+</body>
+</html>

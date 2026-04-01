@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บันทึกผลการทดลอง 2.4.1 - Functions</title>
+</head>
+<body>
+    <h1>แบบทดสอบที่ 2.4.1: การใช้งาน Functions</h1>
+    <p>ตรวจสอบผลลัพธ์ที่ Console (กด F12)</p>
+
+    <script>
+        // --- 1. Function คำนวณค่า BMI ---
+        // สูตร: BMI = weight / (height_m * height_m)
+        function calculateBMI(weight, heightCm) {
+            let heightM = heightCm / 100; // แปลงเซนติเมตรเป็นเมตร
+            let bmi = weight / (heightM * heightM);
+            return bmi.toFixed(2); // ส่งค่ากลับเป็นทศนิยม 2 ตำแหน่ง
+        }
+
+        console.log("--- 1. คำนวณ BMI ---");
+        let myBMI = calculateBMI(65, 170);
+        console.log("น้ำหนัก 65kg, ส่วนสูง 170cm | ค่า BMI คือ: " + myBMI);
+
+
+        // --- 2. Function ทักทายตามอายุ ---
+        function smartGreet(name, age) {
+            let greeting = "";
+            if (age < 15) {
+                greeting = "สวัสดีจ้ะ หนู " + name;
+            } else if (age < 60) {
+                greeting = "สวัสดีครับ คุณ " + name;
+            } else {
+                greeting = "สวัสดีครับ ท่าน " + name;
+            }
+            console.log(greeting + " (อายุ " + age + " ปี)");
+        }
+
+        console.log("--- 2. ทักทายตามอายุ ---");
+        smartGreet("น้องแก้ม", 10);
+        smartGreet("สมชาย", 30);
+
+
+        // --- 3. Function ตรวจสอบความยาวรหัสผ่าน ---
+        function checkPassword(password) {
+            if (password.length > 8) {
+                return true; // รหัสผ่านยาวกว่า 8 ตัว
+            } else {
+                return false; // รหัสผ่านสั้นเกินไป
+            }
+        }
+
+        console.log("--- 3. ตรวจสอบรหัสผ่าน ---");
+        let pass1 = "123456";
+        let pass2 = "securePassword123";
+        
+        console.log("รหัส '" + pass1 + "' ผ่านเกณฑ์หรือไม่: " + checkPassword(pass1));
+        console.log("รหัส '" + pass2 + "' ผ่านเกณฑ์หรือไม่: " + checkPassword(pass2));
+
+    </script>
+</body>
+</html>
