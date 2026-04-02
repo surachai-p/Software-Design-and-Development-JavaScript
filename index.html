@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('นัทธพงศ์ เหมือนประสาน')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2" onclick="showDate()">ปุ่มที่ 2</button>
+    
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3" onclick="showTime();">ปุ่มที่ 3</button>
+
+    <!-- Internal JavaScript -->
+     <script>
+        function showDate() {
+            const now = new Date();
+            const dateString = now.toLocaleDateString('th-TH');
+
+            alert("เวลา: " + dateString);
+        }
+    </script>
+    <p></p>
+     <input type="text" id="userInput" placeholder="พิมพ์อะไรหน่อย...">
+
+    <button onclick="displayMessage()">แสดงข้อความ</button>
+
+    <p id = "human"></p>
+
+    <p id = "average"></p>
+
+    <h1>Odd or Even Checker</h1>
+    <label for="numberInput">Enter a number:</label>
+    <input type="text" id="numberInput">
+    <button onclick="calculatoddandeven()">Check</button>
+
+    <p id="multiplicationTable2"></p>
+    <p id="multiplicationTable3"></p>
+
+    <h1>Multiplication Tables</h1>
+    <div id="multiplicationTables"></div>
+
+    <h1>BMI Checker</h1>
+    <label for="weight">Weight (kg):</label>
+    <input type="text" id="weight">
+    <label for="height">Height (cm):</label>
+    <input type="text" id="height">
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <p id="bmiResult"></p>
+
+    <h1>age Checker</h1>
+    <label for="nameInput">Enter your name:</label>
+    <input type="text" id="nameInput">
+    <label for="ageInput">Enter your age:</label>
+    <input type="text" id="ageInput">
+    <button onclick="gretuser()">Check</button>
+
+    <h1>Password Validation</h1>
+    <label for="passwordInput">Enter Password:</label>
+    <input type="password" id="passwordInput" placeholder="Enter your password">
+    <button onclick="validatePassword()">Validate Password</button>
+
+    <hr>
+    <center><h1>Arrow Functions</h1></center>
+    <h1>BMI Checker</h1>
+    <label for="weight2">Weight (kg):</label>
+    <input type="text" id="weight2"> <label for="height2">Height (cm):</label>
+    <input type="text" id="height2"> <button onclick="calculateBMI2()">Calculate BMI</button>
+    <p id="bmiResult2"></p> 
+
+    <h1>age Checker</h1>
+    <label for="nameInput2">Enter your name:</label>
+    <input type="text" id="nameInput2">
+    <label for="ageInput2">Enter your age:</label>
+    <input type="text" id="ageInput2">
+    <button onclick="greetUser2()">Check</button>
+
+    <h1>Password Validation</h1>
+    <label for="passwordInput2">Enter Password:</label>
+    <input type="password" id="passwordInput2" placeholder="Enter your password">
+    <button onclick="validatePassword2()">Validate Password</button>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
