@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop</title>
+</head>
+<body>
+
+    <h2>1. ตรวจสอบเลขคู่ / เลขคี่</h2>
+    <div id="evenOddResult"></div>
+
+    <h2>2. ตารางสูตรคูณ</h2>
+    <div id="multiply2"></div>
+    <br>
+    <div id="multiply3"></div>
+
+    <h2>3. นับถอยหลัง 10 ถึง 1</h2>
+    <div id="countdown"></div>
+
+    <h2>4. ตรวจสอบช่วงวัย</h2>
+    <div id="ageResult"></div>
+
+    <script>
+        // ตรวจสอบเลขคู่หรือเลขคี่ 
+        let number = 7;
+        let result;
+
+        if (number % 2 === 0) {
+            result = "เป็นเลขคู่";
+        } else {
+            result = "เป็นเลขคี่";
+        }
+
+        document.getElementById("evenOddResult").innerHTML =
+            "ตัวเลขที่กำหนดคือ: " + number + "<br>" + result;
+
+
+        //สูตรคูณ 
+        // for loop แม่ 2
+        let table2 = "";
+        for (let i = 1; i <= 12; i++) {
+            table2 += "2 x " + i + " = " + (2 * i) + "<br>";
+        }
+        document.getElementById("multiply2").innerHTML =
+            "<strong>สูตรคูณแม่ 2 (for loop)</strong><br>" + table2;
+
+        // while loop แม่ 3
+        let table3 = "";
+        let j = 1;
+        while (j <= 12) {
+            table3 += "3 x " + j + " = " + (3 * j) + "<br>";
+            j++;
+        }
+        document.getElementById("multiply3").innerHTML =
+            "<strong>สูตรคูณแม่ 3 (while loop)</strong><br>" + table3;
+
+
+        // นับถอยหลัง 
+        let countText = "";
+        for (let k = 10; k >= 1; k--) {
+            countText += k + " ";
+        }
+        document.getElementById("countdown").innerHTML = countText;
+
+
+        // ตรวจสอบช่วงวัย 
+        let age = 18;
+        let ageGroup;
+
+        if (age <= 12) {
+            ageGroup = "วัยเด็ก";
+        } else if (age <= 19) {
+            ageGroup = "วัยรุ่น";
+        } else {
+            ageGroup = "วัยผู้ใหญ่";
+        }
+
+        document.getElementById("ageResult").innerHTML =
+            "อายุ: " + age + " ปี<br>" +
+            "อยู่ในช่วง: " + ageGroup;
+
+    </script>
+
+</body>
+</html>

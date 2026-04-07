@@ -76,10 +76,62 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกปฏิบัติที่ 1 - JavaScript</title>
+</head>
+<body>
+
+    <h2>การใช้งาน JavaScript เบื้องต้น</h2>
+
+    <button onclick="alert('ชื่อนักศึกษา: [ใส่ชื่อ-นามสกุลของคุณ]')">ปุ่มที่ 1 (แสดงชื่อ)</button>
+
+    <button id="btnDate">ปุ่มที่ 2 (แสดงวันที่)</button>
+
+    <button onclick="showTime()">ปุ่มที่ 3 (แสดงเวลา)</button>
+
+    <hr>
+
+    <h3>กรอกข้อความที่นี่:</h3>
+    <input type="text" id="userInput" placeholder="พิมพ์อะไรก็ได้...">
+    <button id="btnShowText">แสดงข้อความ</button>
+
+    <script>
+        document.getElementById('btnDate').onclick = function() {
+            const today = new Date();
+            alert('วันที่ปัจจุบันคือ: ' + today.toLocaleDateString('th-TH'));
+        };
+        
+        document.getElementById('btnShowText').onclick = function() {
+            const message = document.getElementById('userInput').value;
+            if(message === "") {
+                alert('กรุณากรอกข้อความก่อนกดปุ่มครับ');
+            } else {
+                alert('ข้อความที่คุณกรอกคือ: ' + message);
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
 [บันทึกโค้ด ที่นี่]
 ```
+
+function showTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('th-TH');
+    alert('เวลาปัจจุบันคือ: ' + timeString);
+}
+
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 1](images/image.png)
+![alt text](<สกรีนช็อต 2026-02-25 152732.png>)
+
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -136,7 +188,52 @@ let person = {
 ### บันทึกผลการทดลอง 2.1
 ```html
 [บันทึกโค้ด ที่นี่]
-```
+```<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ข้อมูลนักศึกษา</title>
+</head>
+<body>
+
+    <h2>ข้อมูลคะแนนสอบ</h2>
+    <div id="scoreResult"></div>
+
+    <h2>ข้อมูลนักศึกษา (Object)</h2>
+    <div id="studentResult"></div>
+
+    <script>
+        //  ตัวแปร 
+        const studentId = "68030288";
+        const studentName = "sorawit sittirak";
+        let midtermScore = 35;
+        let finalScore = 40;
+
+        // แสดงผลคะแนนสอบ
+        document.getElementById("scoreResult").innerHTML =
+            "รหัสนักศึกษา: " + studentId + "<br>" +
+            "ชื่อนักศึกษา: " + studentName + "<br>" +
+            "คะแนนกลางภาค: " + midtermScore + "<br>" +
+            "คะแนนปลายภาค: " + finalScore;
+
+        //  Object 
+        const student = {
+            studentId: "68030288",
+            name: "sorawit sittirak",
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 3.85
+        };
+
+        //  Object
+        document.getElementById("studentResult").innerHTML =
+            "รหัสนักศึกษา: " + student.studentId + "<br>" +
+            "ชื่อ: " + student.name + "<br>" +
+            "สาขาวิชา: " + student.major + "<br>" +
+            "เกรดเฉลี่ย: " + student.gpa;
+    </script>
+
+</body>
+</html>
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.1](images/image.png)
 
@@ -191,7 +288,50 @@ number /= 2;          // เท่ากับ number = number / 2
 ### บันทึกผลการทดลอง 2.2
 ```html
 [บันทึกโค้ด ที่นี่]
-```
+```<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมคำนวณ</title>
+</head>
+<body>
+    <h2>1. คำนวณคะแนนเฉลี่ย 3 วิชา</h2>
+    <div id="averageResult"></div>
+
+    <h2>2. คำนวณราคาสินค้ารวม VAT 7%</h2>
+    <div id="vatResult"></div>
+
+    <script>
+        // คำนวณคะแนนเฉลี่ย
+        let score1 = 80;
+        let score2 = 75;
+        let score3 = 90;
+
+        let average = (score1 + score2 + score3) / 3;
+
+        document.getElementById("averageResult").innerHTML = 
+        "คะแนนวิชาที่ 1 : " +score1 + "<br>" +
+        "คะแนนวิชาที่ 2 : " +score2 + "<br>" +
+        "คะแนนวิชาที่ 3 : " +score3 + "<br>" +
+        "คะแนนเฉลี่ย : " + average.toFixed(2);
+
+        // คำนวณราคาสินค้ารวม VAT
+        let productName = "a110 alpine";
+        let productPrice = 2700000;
+
+        let vat = productPrice * 0.07;
+        let totalPrice = productPrice + vat;
+
+        document.getElementById("vatResult").innerHTML =
+        "ชื่อสินค้า : " + productName + "<br>" +
+        "ราคาสินค้า : " + productPrice.toLocaleString() + " บาท<br>" +
+        "VAT 7% : " + vat.toLocaleString() + " บาท<br>" +
+        "รวมทั้งหมด : " + totalPrice.toLocaleString() + " บาท"
+    </script>
+    
+</body>
+</html>
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.2](images/image.png)
 
@@ -325,7 +465,91 @@ for (let i = 1; i <= 5; i++) {
 ### บันทึกผลการทดลอง 2.3
 ```html
 [บันทึกโค้ด ที่นี่]
-```
+```<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop</title>
+</head>
+<body>
+
+    <h2>1. ตรวจสอบเลขคู่ / เลขคี่</h2>
+    <div id="evenOddResult"></div>
+
+    <h2>2. ตารางสูตรคูณ</h2>
+    <div id="multiply2"></div>
+    <br>
+    <div id="multiply3"></div>
+
+    <h2>3. นับถอยหลัง 10 ถึง 1</h2>
+    <div id="countdown"></div>
+
+    <h2>4. ตรวจสอบช่วงวัย</h2>
+    <div id="ageResult"></div>
+
+    <script>
+        // ตรวจสอบเลขคู่หรือเลขคี่ 
+        let number = 7;
+        let result;
+
+        if (number % 2 === 0) {
+            result = "เป็นเลขคู่";
+        } else {
+            result = "เป็นเลขคี่";
+        }
+
+        document.getElementById("evenOddResult").innerHTML =
+            "ตัวเลขที่กำหนดคือ: " + number + "<br>" + result;
+
+
+        //สูตรคูณ 
+        // for loop แม่ 2
+        let table2 = "";
+        for (let i = 1; i <= 12; i++) {
+            table2 += "2 x " + i + " = " + (2 * i) + "<br>";
+        }
+        document.getElementById("multiply2").innerHTML =
+            "<strong>สูตรคูณแม่ 2 (for loop)</strong><br>" + table2;
+
+        // while loop แม่ 3
+        let table3 = "";
+        let j = 1;
+        while (j <= 12) {
+            table3 += "3 x " + j + " = " + (3 * j) + "<br>";
+            j++;
+        }
+        document.getElementById("multiply3").innerHTML =
+            "<strong>สูตรคูณแม่ 3 (while loop)</strong><br>" + table3;
+
+
+        // นับถอยหลัง 
+        let countText = "";
+        for (let k = 10; k >= 1; k--) {
+            countText += k + " ";
+        }
+        document.getElementById("countdown").innerHTML = countText;
+
+
+        // ตรวจสอบช่วงวัย 
+        let age = 18;
+        let ageGroup;
+
+        if (age <= 12) {
+            ageGroup = "วัยเด็ก";
+        } else if (age <= 19) {
+            ageGroup = "วัยรุ่น";
+        } else {
+            ageGroup = "วัยผู้ใหญ่";
+        }
+
+        document.getElementById("ageResult").innerHTML =
+            "อายุ: " + age + " ปี<br>" +
+            "อยู่ในช่วง: " + ageGroup;
+
+    </script>
+
+</body>
+</html>
 **รูปผลการทดลอง**
 ![รูปผลการทดลองที่ 2.3](images/image.png)
 
